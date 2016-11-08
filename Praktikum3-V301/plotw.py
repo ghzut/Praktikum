@@ -19,7 +19,7 @@ def plot(x, y, name):
     plt.ylabel(r'$f(t)$')
     plt.legend(loc='best')
     plt.tight_layout()
-    plt.savefig(name)
+    plt.savefig('build/'+name)
 
 
 y, x = np.genfromtxt('Gleichstrom', unpack=True)
