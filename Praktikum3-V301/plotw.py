@@ -61,7 +61,7 @@ y, x = np.genfromtxt('Gleichstrom', unpack=True)
 plot(x, y, r'$I/mA$', r'$U/V$', 'Gleichstrom')
 
 y, x = np.genfromtxt('GleichstromR', unpack=True)
-plot(x, y, r'$I/mA$', r'$U/V', 'GleichstromR')
+plot(x, y, r'$I/mA$', r'$U/V$', 'GleichstromR')
 
 y, x = np.genfromtxt('Aufgabed_Rechteckspannung.txt', unpack=True)
 plot(x, y, r'$I/mA$', r'$U/V$', 'Rechteck')
