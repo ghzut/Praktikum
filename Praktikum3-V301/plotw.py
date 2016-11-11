@@ -29,7 +29,7 @@ def plot(x, y, namex, namey, name):
 
 def makeTable(data, names, name, formats):
     TableFile = open('build/'+name+'.tex', 'w+')
-    TableFile.write(r'\begin{table}'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
+    TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:
             TableFile.write(r'S[table-format='+formats[i]+'] ')
