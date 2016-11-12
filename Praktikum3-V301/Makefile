@@ -3,7 +3,7 @@ all: build | build/*w.pdf python
 python: 
 	python *w.py
 	
-build/*w.pdf: header.tex *w.tex lit.bib
+build/*w.pdf: header.tex *w.tex lit.bib python
 
 build/*w.pdf: FORCE
 	latexmk --lualatex --output-directory=build --interaction=nonstopmode *w.tex
