@@ -1,0 +1,15 @@
+[1] Config.pm:354> INFO - This is Biber 2.6
+[2] Config.pm:357> INFO - Logfile is 'build/Praktikum3w.blg'
+[106] biber:302> INFO - === Sa Nov 12, 2016, 14:48:33
+[165] Biber.pm:359> INFO - Reading 'build/Praktikum3w.bcf'
+[441] Biber.pm:823> INFO - Found 1 citekeys in bib section 0
+[488] Biber.pm:3658> INFO - Processing section 0
+[524] Biber.pm:3828> INFO - Looking for bibtex format file 'lit.bib' for section 0
+[526] bibtex.pm:1425> INFO - Decoding LaTeX character macros into UTF-8
+[529] bibtex.pm:1282> INFO - Found BibTeX data source 'lit.bib'
+[578] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[579] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[579] Biber.pm:3487> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'de-DE'
+[579] Biber.pm:3493> INFO - No sort tailoring available for locale 'de-DE'
+[585] bbl.pm:597> INFO - Writing 'build/Praktikum3w.bbl' with encoding 'UTF-8'
+[586] bbl.pm:701> INFO - Output to build/Praktikum3w.bbl
