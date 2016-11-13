@@ -1,73 +1,78 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
-
-\begin{equation}
-	a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
-\end{equation}
-\begin{equation}
-	b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}
-\end{equation}
-\begin{equation}
-	\sigma_y=\sqrt{\frac{1}{N-2}\sum\limits_{i=1}^{N}(y_i - a x_i - b)^2}
-\end{equation}
-\begin{equation}
-	\sigma_a=\sqrt{\frac{\sigma_y^2}{N ( \overline{x^2} - \overline{x} ^2 )}}
-\end{equation}
-\begin{equation}
-	\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}
-\end{equation}
 
 
-	\subsection{Die U/I Graphen der verschiedenen Spannungsquellen}
+
+\subsection{Die U/I Graphen der verschiedenen Spannungsquellen}
 
 \subsubsection{Gleichspannungsquelle}
 \begin{figure}[H]
 	\centering
-	\caption{Gleichspannung einer Monozelle}
+	\caption{}
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Gleichstrom.png}
 	\label{fig:Gleichstrom}
 \end{figure}
 \input{../build/Gleichstrom.tex}
 
-\subsubsection{ Mit Gegenspannung}
+\newpage
+\subsubsection{Gleichspannungsquelle mit Gegenspannung}
 
 \begin{figure}[H]
 	\centering
-	\caption{Gleichspannung mit Gegenspannungmethode}
+	\caption{}
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{GleichstromR.png}
 	\label{fig:GleichstromR}
 \end{figure}
 \input{../build/GleichstromR.tex}
 
-
-\subsubsection{Sinusspannungsquelle}
+\newpage
+\subsubsection{Sinus-Spannungsquelle}
 
 \begin{figure}[H]
   \centering
-  \caption{Der Sinusausgang des RC-Generators}
+  \caption{}
   \includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Sinus.png}
   \label{fig:Sinus}
 \end{figure}
 \input{../build/Sinus.tex}
 
-\subsubsection{Rechteckspannungsquelle}
+\newpage
+\subsubsection{Rechteck-Spannungsquelle}
 
 \begin{figure}[H]
 	\centering
-	\caption{Der Rechteckausgang des RC-Generators }
+	\caption{}
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Rechteck.png}
 	\label{fig:Rechteck}
 \end{figure}
 \input{../build/Rechteck.tex}
 
+\newpage
+\subsection{Die lineare Ausgleichsrechnung zu den Messwerten}
+Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
+
+\begin{equation}
+a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
+\end{equation}
+\begin{equation}
+b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}
+\end{equation}
+\begin{equation}
+\sigma_y=\sqrt{\frac{1}{N-2}\sum\limits_{i=1}^{N}(y_i - a x_i - b)^2}
+\end{equation}
+\begin{equation}
+\sigma_a=\sqrt{\frac{\sigma_y^2}{N ( \overline{x^2} - \overline{x} ^2 )}}
+\end{equation}
+\begin{equation}
+\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}
+\end{equation}
 
 
 
 \begin{figure}[H]
 	\centering
-	\caption{GleichstromRe.}
+	\caption{}
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{GleichstromRe.png}
-	\label{fig:GleichstromRe}
+	\label{fig:GleichstromLeistung}
 \end{figure}
-\cite{scipy}
+
