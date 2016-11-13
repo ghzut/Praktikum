@@ -3,7 +3,7 @@
 Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
 
 \begin{equation}
-	a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2} 
+	a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
 \end{equation}
 \begin{equation}
 	b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}
@@ -18,46 +18,51 @@ Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
 	\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}
 \end{equation}
 
-\subsection{Gleichspannungsquelle}
+
+	\subsection{Die U/I Graphen der verschiedenen Spannungsquellen}
+
+\subsubsection{Gleichspannungsquelle}
 \begin{figure}[H]
 	\centering
-	\caption{Gleichstrom.}
+	\caption{Gleichspannung einer Monozelle}
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Gleichstrom.png}
 	\label{fig:Gleichstrom}
 \end{figure}
 \input{../build/Gleichstrom.tex}
 
+\subsubsection{ Mit Gegenspannung}
 
-\subsection{Sinusspannungsquelle}
+\begin{figure}[H]
+	\centering
+	\caption{Gleichspannung mit Gegenspannungmethode}
+	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{GleichstromR.png}
+	\label{fig:GleichstromR}
+\end{figure}
+\input{../build/GleichstromR.tex}
+
+
+\subsubsection{Sinusspannungsquelle}
 
 \begin{figure}[H]
   \centering
-  \caption{Sinus.}
+  \caption{Der Sinusausgang des RC-Generators}
   \includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Sinus.png}
   \label{fig:Sinus}
 \end{figure}
 \input{../build/Sinus.tex}
 
-\subsection{Rechteckspannungsquelle}
+\subsubsection{Rechteckspannungsquelle}
 
 \begin{figure}[H]
 	\centering
-	\caption{Rechteck.}
+	\caption{Der Rechteckausgang des RC-Generators }
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Rechteck.png}
 	\label{fig:Rechteck}
 \end{figure}
 \input{../build/Rechteck.tex}
 
 
-\subsection{ Mit Gegenspannung}
 
-\begin{figure}[H]
-	\centering
-	\caption{GleichstromR.}
-	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{GleichstromR.png}
-	\label{fig:GleichstromR}
-\end{figure}
-\input{../build/GleichstromR.tex}
 
 \begin{figure}[H]
 	\centering
@@ -66,4 +71,3 @@ Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
 	\label{fig:GleichstromRe}
 \end{figure}
 \cite{scipy}
-Soweit so gut ... .
