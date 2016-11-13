@@ -1,5 +1,22 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
+
+\begin{equation}
+	a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2} 
+\end{equation}
+\begin{equation}
+	b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}
+\end{equation}
+\begin{equation}
+	\sigma_y=\sqrt{\frac{1}{N-2}\sum\limits_{i=1}^{N}(y_i - a x_i - b)^2}
+\end{equation}
+\begin{equation}
+	\sigma_a=\sqrt{\frac{\sigma_y^2}{N ( \overline{x^2} - \overline{x} ^2 )}}
+\end{equation}
+\begin{equation}
+	\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}
+\end{equation}
 
 \subsection{Gleichspannungsquelle}
 \begin{figure}[H]
