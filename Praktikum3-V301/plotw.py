@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def f(x, a, b):
-    return a * x**np.sin(x) + b
+    return a * x + b
 
 def plot(x, y, namex, namey, name):
     plt.cla()
