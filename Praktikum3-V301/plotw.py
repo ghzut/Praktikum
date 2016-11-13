@@ -6,12 +6,30 @@ import matplotlib.pyplot as plt
 def f(x, a, b):
     return a * x + b
 
+def linregress(x, y):
+    assert len(x) == len(y)
+
+    x, y = np.array(x), np.array(y)
+
+    N = len(y)
+    Delta = N * np.sum(x**2) - (np.sum(x))**2
+
+    A = (N * np.sum(x * y) - np.sum(x) * np.sum(y)) / Delta
+    B = (np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x * y)) / Delta
+
+    sigma_y = np.sqrt(np.sum((y - A * x - B)**2) / (N - 2))
+
+    A_error = sigma_y * np.sqrt(N / Delta)
+    B_error = sigma_y * np.sqrt(np.sum(x**2) / Delta)
+
+    return [A, B], [A_error, B_error]
+
 def plot(x, y, namex, namey, name):
     plt.cla()
     plt.clf()
     t = np.linspace(x[0], x[-1], 1000)
-    parameters, pcov = curve_fit(f, x, y)
-    print(name, parameters, np.sqrt(np.diag(pcov)), sep='\n')
+    parameters, pcov = linregress(x, y)
+    print(name, parameters, pcov, sep='\n')
     plt.plot(x, y, 'rx', label='Daten')
     plt.plot(t, f(t, *parameters), 'b-', label='Fit')
     plt.xlim(t[0], t[-1])
