@@ -74,26 +74,26 @@ def makeTable(data, names, name, formats):
 
 
 y, x = np.genfromtxt('Gleichstrom', unpack=True)
-plot(x, y, r'$I/mA$', r'$U_k/V$', 'Gleichstrom')
+plot(x, y, r'$I/$mA', r'$U_k/$V', 'Gleichstrom')
 
 y, x = np.genfromtxt('GleichstromR', unpack=True)
-plot(x, y, r'$I/mA$', r'$U_k/V$', 'GleichstromR')
+plot(x, y, r'$I/$mA', r'$U_k/$V', 'GleichstromR')
 
 y, x = np.genfromtxt('Aufgabed_Rechteckspannung.txt', unpack=True)
-plot(x, y, r'$I/mA$', r'$U_k/V$', 'Rechteck')
+plot(x, y, r'$I/$mA', r'$U_k/$V', 'Rechteck')
 
 y, x = np.genfromtxt('Aufgabed_Sinusspannung.txt', unpack=True)
-plot(x, y, r'$I/mA$', r'$U_k/V$',  'Sinus')
+plot(x, y, r'$I/$mA', r'$U_k/$V',  'Sinus')
 
 y, x = np.genfromtxt('Gleichstrom', unpack=True)
 plt.cla()
 plt.clf()
-plt.plot((y*1000)/x, y*x/1000, 'rx', label='Daten')
+plt.plot((y*1000)/x, y*x, 'rx', label='Daten')
 plt.xlim((y*1000/x)[-1], (y*1000/x)[0])
-plt.xlabel(r'$R/\Omega$')
-plt.ylabel(r'$L/W$')
+plt.xlabel(r'$R_a/\Omega$')
+plt.ylabel(r'$P/$mW')
 t = np.linspace((y*1000/x)[0], (y*1000/x)[-1], 1000)
-plt.plot(t, t*(1.59/(16.49+t))**2, 'b-', label='Theorie')
+plt.plot(t, t*(1.59/(16.49+t))**2*1000, 'b-', label='Theorie')
 plt.legend(loc='best')
 plt.tight_layout
 plt.savefig('build/GleichstromRe')
