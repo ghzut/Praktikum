@@ -26,17 +26,6 @@
 \input{../build/GleichstromR.tex}
 
 \newpage
-\subsubsection{Sinus-Spannungsquelle}
-
-\begin{figure}[H]
-  \centering
-  \caption{}
-  \includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Sinus.png}
-  \label{fig:Sinus}
-\end{figure}
-\input{../build/Sinus.tex}
-
-\newpage
 \subsubsection{Rechteck-Spannungsquelle}
 
 \begin{figure}[H]
@@ -48,8 +37,19 @@
 \input{../build/Rechteck.tex}
 
 \newpage
+\subsubsection{Sinus-Spannungsquelle}
+
+\begin{figure}[H]
+  \centering
+  \caption{}
+  \includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{Sinus.png}
+  \label{fig:Sinus}
+\end{figure}
+\input{../build/Sinus.tex}
+
+\newpage
 \subsection{Die lineare Ausgleichsrechnung zu den Messwerten}
-Um die Ausgleichsgerade $f(x)=ax+b$ zu berrechnen werden folgende Formeln verwendet:
+Um die Ausgleichsgerade $f(x)=ax+b$ zu berechnen werden folgende Formeln verwendet:
 
 \begin{equation}
 a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
@@ -73,7 +73,7 @@ $\sigma_y$ ist hier die Standartabweichung der $y$-Werte von der ermittelten Aus
 \subsubsection{Ausgleichsrechnung für die Messwerte der Messung mit Gleichspannungsquelle}
 Mit den Formeln (5) und (6) und den Werten aus Tabelle 1 folgt:
 \begin{displaymath}
-	a=16,49\Omega
+	a=-16,50\Omega
 \end{displaymath}
 \begin{displaymath}
 	b=1,59V\text{.}
@@ -82,8 +82,102 @@ Damit ergibt sich mit Formel (7):
 \begin{displaymath}
 	\sigma_y=0,03V
 \end{displaymath}
-und mit 
+und mit den Formeln (8) und (9):
+\begin{displaymath}
+	\sigma_a=0,50\Omega
+\end{displaymath}
+\begin{displaymath}
+	\sigma_b=0,02V\text{.}
+\end{displaymath}
+Hieraus folgt nach Formel (1):
+\begin{displaymath}
+	R_i=16,50\Omega\pm 0,50\Omega
+\end{displaymath}
+\begin{displaymath}
+	U_0=1,59V\pm 0,02V\text{.}
+\end{displaymath}
 
+\subsubsection{Ausgleichsrechnung für die Messwerte der Messung mit Gleichspannungsquelle und Gegenspannung}
+
+Mit den Formeln (5) und (6) und den Werten aus Tabelle 2 folgt:
+\begin{displaymath}
+a=16,48\Omega
+\end{displaymath}
+\begin{displaymath}
+b=1,65V\text{.}
+\end{displaymath}
+Damit ergibt sich mit Formel (7):
+\begin{displaymath}
+\sigma_y=0,06V
+\end{displaymath}
+und mit den Formeln (8) und (9):
+\begin{displaymath}
+\sigma_a=0,65\Omega
+\end{displaymath}
+\begin{displaymath}
+\sigma_b=0,04V\text{.}
+\end{displaymath}
+Hieraus folgt nach Formel (4):
+\begin{displaymath}
+R_i=16,48\Omega\pm 0,65\Omega
+\end{displaymath}
+\begin{displaymath}
+U_0=1,65V\pm 0,04V\text{.}
+\end{displaymath}
+
+\subsubsection{Ausgleichsrechnung für die Messwerte der Messung mit Rechteck-Spannungsquelle}
+Mit den Formeln (5) und (6) und den Werten aus Tabelle 3 folgt:
+\begin{displaymath}
+a=-77,98\Omega
+\end{displaymath}
+\begin{displaymath}
+b=0,582V\text{.}
+\end{displaymath}
+Damit ergibt sich mit Formel (7):
+\begin{displaymath}
+\sigma_y=0,009V
+\end{displaymath}
+und mit den Formeln (8) und (9):
+\begin{displaymath}
+\sigma_a=1,91\Omega
+\end{displaymath}
+\begin{displaymath}
+\sigma_b=0,005V\text{.}
+\end{displaymath}
+Hieraus folgt nach Formel (1):
+\begin{displaymath}
+R_i=77,98\Omega\pm 1,91\Omega
+\end{displaymath}
+\begin{displaymath}
+U_0=0,582V\pm 0,005V\text{.}
+\end{displaymath}
+
+\subsubsection{Ausgleichsrechnung für die Messwerte der Messung mit Sinus-Spannungsquelle}
+Mit den Formeln (5) und (6) und den Werten aus Tabelle 4 folgt:
+\begin{displaymath}
+a=-661,85\Omega
+\end{displaymath}
+\begin{displaymath}
+b=1,094V\text{.}
+\end{displaymath}
+Damit ergibt sich mit Formel (7):
+\begin{displaymath}
+\sigma_y=0,004V
+\end{displaymath}
+und mit den Formeln (8) und (9):
+\begin{displaymath}
+\sigma_a=4,32\Omega
+\end{displaymath}
+\begin{displaymath}
+\sigma_b=0,002V\text{.}
+\end{displaymath}
+Hieraus folgt nach Formel (1):
+\begin{displaymath}
+R_i=661,85\Omega\pm 4,32\Omega
+\end{displaymath}
+\begin{displaymath}
+U_0=1,094V\pm 0,002V\text{.}
+\end{displaymath}
 
 
 
