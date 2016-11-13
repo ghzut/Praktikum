@@ -22,7 +22,7 @@ def linregress(x, y):
     A_error = sigma_y * np.sqrt(N / Delta)
     B_error = sigma_y * np.sqrt(np.sum(x**2) / Delta)
 
-    return [A, B], [A_error, B_error]
+    return [A, B], [A_error, B_error, sigma_y]
 
 def plot(x, y, namex, namey, name):
     plt.cla()
