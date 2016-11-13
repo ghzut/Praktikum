@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def f(x, a, b):
-    return a * x + b
-
+    return a * x**np.sin(x) + b
 
 def plot(x, y, namex, namey, name):
     plt.cla()
@@ -25,7 +24,6 @@ def plot(x, y, namex, namey, name):
     names = namex, namey
     formats = []
     makeTable(data, names, name, formats)
-
 
 def makeTable(data, names, name, formats):
     TableFile = open('build/'+name+'.tex', 'w+')
