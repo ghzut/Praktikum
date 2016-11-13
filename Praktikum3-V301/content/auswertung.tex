@@ -49,14 +49,15 @@
 
 \newpage
 \subsection{Die lineare Ausgleichsrechnung zu den Messwerten}
-Für die Ausgleichsrechnung wurden die folgenden Formeln verwendet:
+Um die Ausgleichsgerade $f(x)=ax+b$ zu berrechnen werden folgende Formeln verwendet:
 
 \begin{equation}
 a=\frac{ \overline{xy} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2}
 \end{equation}
 \begin{equation}
-b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}
+b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\overline{x^2} - \overline{x}^2}\text{.}
 \end{equation}
+Und um die Standartabweichung der ermittelten Parameter zu bestimmen werden folgende Formeln verwendet:
 \begin{equation}
 \sigma_y=\sqrt{\frac{1}{N-2}\sum\limits_{i=1}^{N}(y_i - a x_i - b)^2}
 \end{equation}
@@ -64,10 +65,24 @@ b=\frac{\overline{x^2} \cdot \overline{y} - \overline{x} \cdot \overline{xy}}{\o
 \sigma_a=\sqrt{\frac{\sigma_y^2}{N ( \overline{x^2} - \overline{x} ^2 )}}
 \end{equation}
 \begin{equation}
-\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}
+\sigma_b=\sqrt{\frac{\sigma_y^2 \cdot \overline{x}}{N ( \overline{x^2} - \overline{x} ^2 )}}\text{.}
 \end{equation}
+$\sigma_y$ ist hier die Standartabweichung der $y$-Werte von der ermittelten Ausgleichsgeraden.
 
 
+\subsubsection{Ausgleichsrechnung für die Messwerte der Messung mit Gleichspannungsquelle}
+Mit den Formeln (5) und (6) und den Werten aus Tabelle 1 folgt:
+\begin{displaymath}
+	a=16,49\Omega
+\end{displaymath}
+\begin{displaymath}
+	b=1,59V\text{.}
+\end{displaymath}
+Damit ergibt sich mit Formel (7):
+\begin{displaymath}
+	\sigma_y=0,03V
+\end{displaymath}
+und mit 
 
 
 
