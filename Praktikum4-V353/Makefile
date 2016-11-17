@@ -1,14 +1,20 @@
-all: build tex python
+all: tex python
 
-python:
-	python *w.py
+python: *w.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS="$$(pwd):" python *w.py
 
-tex: build/*w.pdf
+tex: build/*w.pdf | build
 
 build/*w.pdf: header.tex *w.tex lit.bib
 
 build/*w.pdf: FORCE
-	latexmk --lualatex --output-directory=build --interaction=nonstopmode *w.tex
+	BIBINPUTS=build: \
+	latexmk \
+	 --lualatex \
+	 --output-directory=build \
+	 --interaction=nonstopmode \
+	--halt-on-error \
+	*w.tex
 
 build:
 	mkdir -p build
