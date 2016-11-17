@@ -76,8 +76,8 @@ def f(x, a , b):
 
 
 x, y = np.genfromtxt('content/aufgabendatenb.txt', unpack=True)
-makeTable([x, y], ['$f/$Hz', '$A/$V'], '', 'tabb', [])
-namex, namey = ['$f/$Hz', '$A/$V']
+makeTable([x, y], [r'$f/$Hz', r'$A/$V'], '', 'tabb', ['6.1', '2.3'])
+namex, namey = [r'$f/$Hz', r'$A/$V']
 params, covar = curve_fit(f , x, y)
 plt.cla()
 plt.clf()
@@ -98,7 +98,7 @@ def f2(x, a):
     return np.arctan(-x*a)
 
 x, y = np.genfromtxt('content/aufgabendatenc.txt', unpack=True)
-makeTable([x, y], ['$f/$Hz', '$\Delta t/\mu$s'], '', 'tabc', [])
+makeTable([x, y], [r'$f/$Hz', r'$\Delta t/\mu$s'], '', 'tabc', [])
 y = y*(10**(-6))*x*2*np.pi
 x = 2 * np.pi *x
 namex, namey = [r'$\omega/$s$^{-1}$', r'$\varphi$']
