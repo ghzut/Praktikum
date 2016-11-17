@@ -81,18 +81,17 @@ namex, namey = [r'$f/$Hz', r'$A/$V']
 params, covar = curve_fit(f , x, y)
 plt.cla()
 plt.clf()
-t = np.linspace(x[0], x[-1], 1000)
+t = np.linspace(x[0], x[-1], 100000)
 print('b', params, covar, sep='\n')
 plt.plot(x, y, 'rx', label='Daten')
 plt.plot(t, f(t, *params), 'b-', label='Fit')
-plt.xlim(t[0], t[-1])
+plt.xlim(x[0], x[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab')
-
 
 def f2(x, a):
     return np.arctan(-x*a)
