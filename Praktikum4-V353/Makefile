@@ -1,4 +1,4 @@
-all: tex python
+all: python tex
 
 python: *w.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS="$$(pwd):" python *w.py
