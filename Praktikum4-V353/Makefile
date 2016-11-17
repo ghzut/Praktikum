@@ -1,9 +1,11 @@
-all: build | build/*w.pdf python
+all: build tex python
 
-python: 
+python:
 	python *w.py
-	
-build/*w.pdf: header.tex *w.tex lit.bib python
+
+tex: build/*w.pdf
+
+build/*w.pdf: header.tex *w.tex lit.bib
 
 build/*w.pdf: FORCE
 	latexmk --lualatex --output-directory=build --interaction=nonstopmode *w.tex
@@ -14,10 +16,9 @@ build:
 clean:
 	rm -rf build
 
-edittex:                                                                    
+edittex:
 	gnome-open *w.tex & ./makeloop.sh
 
 FORCE:
 
-.PHONY: build all FORCE edittex python
-
+.PHONY: build all FORCE edittex python tex
