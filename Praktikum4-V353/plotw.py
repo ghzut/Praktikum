@@ -3,8 +3,7 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
 
-def f(x, a, b):
-    return a * x + b
+
 
 def linregress(x, y):
     assert len(x) == len(y)
@@ -41,11 +40,11 @@ def plot(x, y, namex, namey, name):
     data = (x, y)
     names = namex, namey
     formats = []
-    makeTable(data, names, name, formats)
+    makeTable(data, names, '', name, formats)
 
-def makeTable(data, names, name, formats):
-    TableFile = open('build/'+name+'.tex', 'w+')
-    TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
+def makeTable(data, names, name, filename, formats):
+    TableFile = open('build/'+filename+'.tex', 'w+')
+    TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:
             TableFile.write(r'S[table-format='+formats[i]+'] ')
@@ -72,28 +71,48 @@ def makeTable(data, names, name, formats):
     TableFile.write(r'\end{table}')
 
 
+def f(x, a , b):
+    return a / np.sqrt(1+x**2 * b**2)
 
-y, x = np.genfromtxt('Gleichstrom', unpack=True)
-plot(x, y, r'$I/$mA', r'$U_k/$V', 'Gleichstrom')
 
-y, x = np.genfromtxt('GleichstromR', unpack=True)
-plot(x, y, r'$I/$mA', r'$U_k/$V', 'GleichstromR')
-
-y, x = np.genfromtxt('Aufgabed_Rechteckspannung.txt', unpack=True)
-plot(x, y, r'$I/$mA', r'$U_k/$V', 'Rechteck')
-
-y, x = np.genfromtxt('Aufgabed_Sinusspannung.txt', unpack=True)
-plot(x, y, r'$I/$mA', r'$U_k/$V',  'Sinus')
-
-y, x = np.genfromtxt('Gleichstrom', unpack=True)
+x, y = np.genfromtxt('content/aufgabendatenb.txt', unpack=True)
+makeTable([x, y], ['$f/$Hz', '$A/$V'], '', 'tabb', [])
+namex, namey = ['$f/$Hz', '$A/$V']
+params, covar = curve_fit(f , x, y)
 plt.cla()
 plt.clf()
-plt.plot((y*1000)/x, y*x, 'rx', label='Daten')
-plt.xlim((y*1000/x)[-1], (y*1000/x)[0])
-plt.xlabel(r'$R_a/\Omega$')
-plt.ylabel(r'$P/$mW')
-t = np.linspace((y*1000/x)[0], (y*1000/x)[-1], 1000)
-plt.plot(t, t*(1.59/(16.49+t))**2*1000, 'b-', label='Theorie')
+t = np.linspace(x[0], x[-1], 1000)
+print('b', params, covar, sep='\n')
+plt.plot(x, y, 'rx', label='Daten')
+plt.plot(t, f(t, *params), 'b-', label='Fit')
+plt.xlim(t[0], t[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.xscale('log')
 plt.legend(loc='best')
-plt.tight_layout
-plt.savefig('build/GleichstromRe')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grab')
+
+
+def f2(x, a):
+    return np.arctan(-x*a)
+
+x, y = np.genfromtxt('content/aufgabendatenc.txt', unpack=True)
+makeTable([x, y], ['$f/$Hz', '$\Delta t/\mu$s'], '', 'tabc', [])
+y = y*(10**(-6))*x*2*np.pi
+x = 2 * np.pi *x
+namex, namey = [r'$\omega/$s$^{-1}$', r'$\varphi$']
+params2, covar = curve_fit(f2 , x[0:-5], y[0:-5])
+plt.cla()
+plt.clf()
+t = np.linspace(x[0], x[-5], 100000)
+print('c', params2, covar, sep='\n')
+plt.plot(x, y, 'rx', label='Daten')
+plt.plot(t, f2(t, *params2), 'b-', label='Fit')
+plt.xlim(t[0], t[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.xscale('log')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grac')
