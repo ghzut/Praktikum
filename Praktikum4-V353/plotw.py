@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+import uncertainties.unumpy as unp
 
 
 
@@ -90,8 +91,10 @@ plt.yscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'graa')
-
-
+Unulla = unp.exp(unp.uarray(params[1], var[1]))
+RCa = -1/ (unp.uarray(params[0], var[0]) * 10 ** 6)
+print('U_0 = ', Unulla)
+print('RC = ', RCa)
 
 
 
@@ -99,8 +102,8 @@ def f2(x, a , b):
     return a / np.sqrt(1+(x*2*np.pi)**2 * b**2)
 
 
-x, y = np.genfromtxt('content/aufgabendatenb.txt', unpack=True)
-makeTable([x, y], [r'$f/$Hz', r'$A/$V'], '', 'tabb', ['6.1', '2.3'])
+x, y, z = np.genfromtxt('content/aufgabendatenb.txt', unpack=True, missing_values='NA')
+makeTable([x, y, z], [r'$f/$Hz', r'$A/$V', r'$\Delta t/$s'], '', 'tabb', ['6.1', '2.3', '3'])
 namex, namey = [r'$f/$Hz', r'$A/$V']
 params, covar = curve_fit(f2 , x, y)
 plt.cla()
@@ -116,20 +119,39 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab')
+Unullb = unp.uarray(params[0], np.sqrt(covar[0][0]))
+RCb = -unp.uarray(params[1], np.sqrt(covar[1][1]))
+print('U_0 = ', Unullb)
+print('RC = ', RCb)
 
 def f3(x, a):
     return np.arctan(-x*a)
 
-x, y = np.genfromtxt('content/aufgabendatenc.txt', unpack=True)
-makeTable([x, y], [r'$f/$Hz', r'$\Delta t/\mu$s'], '', 'tabc', [])
-y = y*(10**(-6))*x*2*np.pi
+indeces = []
+a = 0
+
+for element in z:
+    if np.isnan(element):
+        indeces.append(a)
+    a = a + 1
+
+
+#print(z)
+#print(indeces)
+#print(z)
+x2 = np.delete(x, indeces)
+z2 = np.delete(z, indeces)
+y2 = np.delete(y, indeces)
+#print(z2)
+
+z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
-params2, covar = curve_fit(f3 , x[0:-5], y[0:-5])
+params2, covar = curve_fit(f3 , x2, z2)
 plt.cla()
 plt.clf()
-t = np.linspace(x[0], x[-5], 100000)
+t = np.linspace(x2[0], x2[-1], 100000)
 print('c', params2, covar, sep='\n')
-plt.plot(x, y, 'rx', label='Daten')
+plt.plot(x2, z2, 'rx', label='Daten')
 plt.plot(t, f3(t, *params2), 'b-', label='Fit')
 plt.xlim(t[0], t[-1])
 plt.xlabel(namex)
@@ -138,6 +160,8 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
+RCc = unp.uarray(params2[0], covar[0][0])
+print('RC = ', RCc)
 
 def f4(x):
 	return np.sin(x)*np.sqrt(1/(np.sin(x)**2)-1)
@@ -145,14 +169,9 @@ def f4(x):
 
 p = np.linspace(0, np.pi/2, 100)
 p = p[1:-1]
-print(p)
+#print(p)
 plt.cla()
 plt.clf()
 plt.polar(p, f4(p))
+plt.polar(z2, y2/13, 'rx')
 plt.savefig('build/'+'grad')
-
-
-
-
-
-
