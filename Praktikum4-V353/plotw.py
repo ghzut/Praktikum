@@ -70,26 +70,45 @@ def makeTable(data, names, name, filename, formats):
     TableFile.write(r'\end{tabular}'+'\n')
     TableFile.write(r'\end{table}')
 
+def f(x, a, b):
+	return a*x+b
 
 x, y = np.genfromtxt('content/aufgabendatena.txt', unpack=True)
 makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], '', 'taba', ['4.0', '2.1'])
+namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
+params, var = linregress(x, np.log(y))
+plt.cla()
+plt.clf()
+t = np.linspace(x[0], x[-1], 100000)
+print('a', params, var, sep='\n')
+plt.plot(x, y, 'rx', label='Daten')
+plt.plot(t, np.exp(f(t, *params)), 'b-', label='Fit')
+plt.xlim(x[0], x[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.yscale('log')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'graa')
 
 
 
-def f(x, a , b):
-    return a / np.sqrt(1+x**2 * b**2)
+
+
+def f2(x, a , b):
+    return a / np.sqrt(1+(x*2*np.pi)**2 * b**2)
 
 
 x, y = np.genfromtxt('content/aufgabendatenb.txt', unpack=True)
 makeTable([x, y], [r'$f/$Hz', r'$A/$V'], '', 'tabb', ['6.1', '2.3'])
 namex, namey = [r'$f/$Hz', r'$A/$V']
-params, covar = curve_fit(f , x, y)
+params, covar = curve_fit(f2 , x, y)
 plt.cla()
 plt.clf()
 t = np.linspace(x[0], x[-1], 100000)
 print('b', params, covar, sep='\n')
 plt.plot(x, y, 'rx', label='Daten')
-plt.plot(t, f(t, *params), 'b-', label='Fit')
+plt.plot(t, f2(t, *params), 'b-', label='Fit')
 plt.xlim(x[0], x[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -98,21 +117,20 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab')
 
-def f2(x, a):
+def f3(x, a):
     return np.arctan(-x*a)
 
 x, y = np.genfromtxt('content/aufgabendatenc.txt', unpack=True)
 makeTable([x, y], [r'$f/$Hz', r'$\Delta t/\mu$s'], '', 'tabc', [])
 y = y*(10**(-6))*x*2*np.pi
-x = 2 * np.pi *x
-namex, namey = [r'$\omega/$s$^{-1}$', r'$\varphi$']
-params2, covar = curve_fit(f2 , x[0:-5], y[0:-5])
+namex, namey = [r'$f/$Hz', r'$\varphi$']
+params2, covar = curve_fit(f3 , x[0:-5], y[0:-5])
 plt.cla()
 plt.clf()
 t = np.linspace(x[0], x[-5], 100000)
 print('c', params2, covar, sep='\n')
 plt.plot(x, y, 'rx', label='Daten')
-plt.plot(t, f2(t, *params2), 'b-', label='Fit')
+plt.plot(t, f3(t, *params2), 'b-', label='Fit')
 plt.xlim(t[0], t[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -120,3 +138,21 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
+
+def f4(x):
+	return np.sin(x)*np.sqrt(1/(np.sin(x)**2)-1)
+
+
+p = np.linspace(0, np.pi/2, 100)
+p = p[1:-1]
+print(p)
+plt.cla()
+plt.clf()
+plt.polar(p, f4(p))
+plt.savefig('build/'+'grad')
+
+
+
+
+
+
