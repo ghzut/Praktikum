@@ -71,6 +71,11 @@ def makeTable(data, names, name, filename, formats):
     TableFile.write(r'\end{table}')
 
 
+x, y = np.genfromtxt('content/aufgabendatena.txt', unpack=True)
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], '', 'taba', ['4.0', '2.1'])
+
+
+
 def f(x, a , b):
     return a / np.sqrt(1+x**2 * b**2)
 
