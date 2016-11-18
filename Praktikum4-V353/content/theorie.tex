@@ -3,9 +3,9 @@
 \subsection{Die allgemeine Relaxationsgleichung}
 Unter einer Relaxationserscheinung versteht man allgemein das Phänomen, wenn
  ein System aus seinem Ausgangszustand entfernt wird und es sich nicht osszilatorisch
- in diesen zurückbewegt.Die Änderungsrate der betrachteten Größe S verläuft dabei
- in der Regel proportional zur verliebenen Entfernung bis zum Ausgangszustand. Daher nähert sich
- das System diesem auch nur asymptotisch an, erreicht ihn aber nie wieder.Für diese
+ in diesen zurückbewegt.Die Änderungsrate der betrachteten Größe A verläuft dabei
+ in der Regel proportional zur bis zum Ausgangszustand verbleibenden Entfernung. Daher
+  verläuft die Näherung auch nur asymptotisch. Für diese
  Bewegung gilt dann:
  \begin{equation}
    \frac{dA}{dt} = c[A(t)-A(\infty)]
@@ -14,15 +14,15 @@ Womit man zur allgemeinen Bewegungsgleichung des Systems gelangt:
 \begin{equation}
   A(t) = A(\infty)+[A(0)-A(\infty)]e^{ct}
 \end{equation}
-Damit A einen endlichen Endpunkt hat muss $ c<0$ gelten.
+Damit A einen endlichen Endpunkt hat muss $ c < 0$ gelten.
 
 \subsection{Relaxationsverhalten bei einem RC-Glied}
 
-Für das RC-Glied gilt dann nach den Kirchhoffschen Regeln:
+Für das RC-Glied in Abb. 1 gilt nach den Kirchhoffschen Regeln:
 \begin{equation}
   \frac{dQ}{dt} = -\frac{1}{RC}Q(t)
 \end{equation}
-Es lässt sich bereits jetzt erkennen, dass das RC-Glied ein reines Relaxationsverhalten besitzt.
+Die Gleichung zeigt sich dasselbe Muster wie der allgemeine Fall.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/RC_Kreis1.png}
@@ -37,7 +37,7 @@ Mit der Randbedingung $ Q(\infty)=0$ folgt dann für den Entladevorgang:
 Mit den Randbedingungen $Q(0) = 0 $ und $Q(\infty) = CU_0$ folgt analog für
 den Aufladevorgang:
 \begin{equation}
-  Q(t) = CU_0(1-e^{-\frac{t}{RC}})
+  Q(t) = CU_0 \left(1-e^{-\frac{t}{RC}}\right)
 \end{equation}
 RC wird als Zeitkonstante des Relaxationsvorgangs bezeichnet und in der Regel mit
  $\tau$ abgekürzt. So ändert sich die Ladung auf dem Kondensator in einem Zeitraum
@@ -45,8 +45,8 @@ RC wird als Zeitkonstante des Relaxationsvorgangs bezeichnet und in der Regel mi
 
  \subsection{Relaxationsphänomene aufgrund einer periodischen Auslenkung aus der Gleichgewichtslage}
 
- Solange für die Frequenz der Wechselspannung $ f<<\frac{1}{2RC\pi} $gilt, lässt sich
- $U_C(t)$ für jeden zeitpunkt t mit U(t) gleichsetzen.Bei höheren Antriebsfrequenzen
+ Solange für die Frequenz der Wechselspannung $ f_{Antrieb} \ll \frac{1}{2RC\pi} $ gilt, lässt sich
+ $U_C(t)$ für jeden Zeitpunkt t mit U(t) gleichsetzen.Bei höheren Antriebsfrequenzen
  kann sich der Kondensator jedoch nichtmehr vollständig über den Widerstand
   auf- bzw. entladen und bleibt hinter dem Verlauf der Generatorspannung zurück.
   Es stellt sich also eine Phasenverschiebung zwischen $U_c$ und $U_{Antrieb}$ ein.
@@ -73,10 +73,10 @@ RC wird als Zeitkonstante des Relaxationsvorgangs bezeichnet und in der Regel mi
 
 Es lässt sich erkennen das die Amplitude für $\omega \to 0$ gegen $U_0$ läuft, für
 $\omega \to \infty$ verschwindet. Aufgrund dieser Eigenschaft findet das RC-Glied als
- Tiefpass Verwendung, da Wechselspannungen mit Frequenzen $f_{Antrieb} <<\frac{1}{RC}$
-  unghindert passieren, hochfrequente jedoch immer weiter abgeschwächt werden.
-  Der einzige Nachteil für Anwendungen besteht nur darin das die Schwächung nur eine $1/\omega$
-  Abhängigkeit besizt und damit oft zu flach ist.
+ Tiefpass Verwendung, da Wechselspannungen mit Frequenzen $f_{Antrieb} \gg \frac{1}{RC}$
+  unghindert passieren können, hochfrequente jedoch immer weiter abgeschwächt werden.
+  Der einzige Nachteil für Anwendungen besteht darin das die Schwächung nur eine $\omega^{-1}$
+  Abhängigkeit besizt und damit oft zu flach verläuft.
 
 \subsection{Der RC-Kreis als Integrator}
 
@@ -85,8 +85,8 @@ wie in Abb. 2 angeschlossen ist, zu integrieren. Es folgt aus den kirchhoffschen
 \begin{equation}
   U(t) = RC\frac{dU_C}{dt}+U_C(t)
 \end{equation}
-Wählt man nun eine Frequenz mit $f_{Antrieb} >> \frac{1}{2RC \pi}$ und hat
-$|U_C|<<|U_R|$ und $|U_C| << |U_{Antrieb}|$ kann der zusätzliche Term "$+ U_C(t)$"
+Wählt man nun eine Frequenz mit $f_{Antrieb} \gg \frac{1}{2RC \pi}$ und hat
+$|U_C| \ll |U_R|$ und $|U_C| \ll |U_{Antrieb}|$ kann der zusätzliche Term "$+ U_C(t)$"
  vernachlässigt werden. Hiermit folgt dann:
 \begin{equation}
 U_C(t) = \frac{1}{RC}\int_{0}^{t} U(t') \symup{d}t'
