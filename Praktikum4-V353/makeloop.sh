@@ -1,5 +1,5 @@
 #!/bin/bash
 while [ True ]
 do
-	wait && make all
+	wait && make tex
 done
