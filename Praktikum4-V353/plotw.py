@@ -120,6 +120,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab')
 Unullb = unp.uarray(params[0], np.sqrt(covar[0][0]))
+Unullb2 = params[0]
 RCb = -unp.uarray(params[1], np.sqrt(covar[1][1]))
 print('U_0 = ', Unullb)
 print('RC = ', RCb)
@@ -140,10 +141,11 @@ for element in z:
 #print(indeces)
 #print(z)
 x2 = np.delete(x, indeces)
-z2 = np.delete(z, indeces)
 y2 = np.delete(y, indeces)
+z2 = np.delete(z, indeces)
 #print(z2)
 
+#x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
 z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
 params2, covar = curve_fit(f3 , x2, z2)
@@ -173,5 +175,5 @@ p = p[1:-1]
 plt.cla()
 plt.clf()
 plt.polar(p, f4(p))
-plt.polar(z2, y2/13, 'rx')
+plt.polar(z2, y2/(Unullb2), 'rx')
 plt.savefig('build/'+'grad')
