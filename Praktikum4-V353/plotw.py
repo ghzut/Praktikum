@@ -162,7 +162,7 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
-RCc = unp.uarray(params2[0], covar[0][0])
+RCc = unp.uarray(-params2[0], covar[0][0])
 print('RC = ', RCc)
 
 def f4(x):
