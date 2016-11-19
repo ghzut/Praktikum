@@ -9,12 +9,14 @@
   die Maximal- und die Nullspannung zu sehen sind. Zuletzt wird hiervon ein Bild für die
   Auswertung gespeichert.Für diese werden dem Bild einige Wertepaare entnommen und in einem
   halblogarithmischen Diagramm dargestellt. Für die Bestimmung von $\tau$ wird eine
-  lineare Ausgleichsrechnung mit $\{ln(U_C), t\}$ durchgeführt, dessen Steigung der gesuchte
-  Parameter ist.
+  lineare Ausgleichsrechnung mit $\{(ln(U_C), t)\}$ durchgeführt, für dessen dessen Steigung nach (4) gilt:
+  \begin{equation}
+  a = -\frac{1}{RC}
+  \end{equation}
 
   \item Es wird die Amplitude A von $U_C$ an einem RC-Glied, welches an einem Sinusgenerator
-   angeschlossen ist, in Abhängigkeit von der Frequenz gemessen. Es soll über über
-   3 Zehnerpotenzen hinweg gemessen werden. Zur Auswertung wird $\{A(f_{Antrieb}), f_{Antrieb}\}$
+   angeschlossen ist, in Abhängigkeit von der Frequenz gemessen. Es soll über
+   3 Zehnerpotenzen hinweg gemessen werden. Zur Auswertung wird $\{(A(f_{Antrieb}), f_{Antrieb})\}$
    in einem halblogarithmischen Diagramm aufgetragen. Anschließend werden $\tau$ und $U_0$ mithilfe einer nicht-linearen
     Ausgleichsrechnung ermittelt. Mithilfe dieser wird die Theoriekurve nach (7) erstellt und
     ebenfalls eingetragen. Es soll diskutiert werden ob eine systematische Abweichungen
@@ -23,21 +25,21 @@
 
 
     \item Es wird die Phasenverschiebung zwischen $U_{Antrieb}$ und $U_C$ an einem
-    RC-Glied in Abhängigkeit von $f_{Antrieb}$ gemessen.Hierzu wird ein Zweikanalossziloskop
+    RC-Glied in Abhängigkeit von $f_{Antrieb}$ gemessen.Hierzu wird ein Zweikanaloszilloskop
     einmal über den Ausgang am Kondensator und einmal direkt an den Sinusgenerator angeschlossen
      und so eingestellt, dass beide Graphen übereinander liegen.Es werden jeweils
-      $\Delta T$ zwischen den Maxima und die zugehörige Frequenz notiert. Die jeweilige
+      $\Delta T$ zwischen den Nullstellen und die zugehörige Frequenz notiert. Die jeweilige
        Phasendifferenz berechnet sich mit:
        \begin{equation}
-         \varphi = \Delta Tf_{Antrieb} 2 \pi
+         \varphi = 2 \pi \cdot \Delta T \cdot f_{Antrieb}
        \end{equation}
-       Für die Auswertung wird mit den Messertpaaren $\{(\varphi)(f_{Antrieb}),f_{Antrieb})\}$
+       Für die Auswertung wird mit der Menge der Messertpaare $\{(\varphi(f_{Antrieb}),f_{Antrieb})\}$
        analog wie in Teil b) verfahren.
 
        \item Es soll gezeigt werden, dass der RC-Kreis nach den Voraussetzungen aus 2.4 als
-       Integrator arbeiten kann.Die Schaltung beleibt diesselbe wie bei Aufgabenteil c).
-       Anschließend wird eine hohe Frequenz am Generator eingestellt und das Ossziloskop so eingestellt, dass
-       die zu integrierende und die Integrierte Spannung dargestellt werden. Es werden wieder
+       Integrator arbeiten kann. Die Schaltung beleibt dieselbe, wie bei Aufgabenteil c).
+       Anschließend wird eine hohe Frequenz am Generator eingestellt und das Oszilloskop so eingestellt, dass
+       die zu integrierende und die integrierte Spannung dargestellt werden. Es werden wieder
        Bilder der Graphen erstellt.
 
        \item Zuletzt wird die Relativamplitude $A(\omega) / U_0$ in Abhängigkeit von $\varphi$ dargestellt.
@@ -45,8 +47,7 @@
        \begin{equation}
          A(\varphi) = -U_0\cdot sin(\varphi)\sqrt{\frac{1}{sin^2(\varphi)}-1}
        \end{equation}
-       Mithilfe des in b) ermittelten $\tau$ wird dieses in ein Polarkoordinatensystem eingetragen.
-       Zusätzlich werden auch einige Messwertpaare $\{A(\omega_i)/U_0,\varphi(\omega_i)\}$ in das Diagramm
+       Zusätzlich werden auch einige Messwertpaare $(A(\omega_i)/U_0,\varphi(\omega_i))$ in das Diagramm
         eingetragen.
 
 \end{enumerate}
