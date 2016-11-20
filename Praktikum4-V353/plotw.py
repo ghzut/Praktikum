@@ -147,6 +147,7 @@ z2 = np.delete(z, indeces)
 #print(z2)
 
 x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
+makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], '', 'tabc', ['6.1', '3'])
 z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
 params2, covar = curve_fit(f3 , x2[0:-4], z2[0:-4])
