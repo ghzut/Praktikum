@@ -126,7 +126,7 @@ print('U_0 = ', Unullb)
 print('RC = ', RCb)
 
 def f3(x, a):
-    return np.arctan(-x*a)
+    return np.arctan(-2*np.pi*x*a)
 
 indeces = []
 a = 0
@@ -137,6 +137,7 @@ for element in z:
     a = a + 1
 
 
+#x, y, z = np.genfromtxt('content/aufgabendatenb.txt', unpack=True, missing_values='NA')
 #print(z)
 #print(indeces)
 #print(z)
@@ -145,10 +146,10 @@ y2 = np.delete(y, indeces)
 z2 = np.delete(z, indeces)
 #print(z2)
 
-#x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
+x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
 z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
-params2, covar = curve_fit(f3 , x2, z2)
+params2, covar = curve_fit(f3 , x2[0:-4], z2[0:-4])
 plt.cla()
 plt.clf()
 t = np.linspace(x2[0], x2[-1], 100000)
@@ -162,7 +163,7 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
-RCc = unp.uarray(-params2[0], covar[0][0])
+RCc = unp.uarray(-params2[0], np.sqrt(covar[0][0]))
 print('RC = ', RCc)
 
 def f4(x):
@@ -175,5 +176,5 @@ p = p[1:-1]
 plt.cla()
 plt.clf()
 plt.polar(p, f4(p))
-plt.polar(z2, y2/(Unullb2), 'rx')
+#plt.polar(z2, y2/(Unullb2), 'rx')
 plt.savefig('build/'+'grad')
