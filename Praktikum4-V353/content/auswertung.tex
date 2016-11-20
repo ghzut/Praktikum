@@ -1,5 +1,6 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+In der Auswertung wurden die Graphen in den Abbildungen 3 bis 6 mit Matplotlib \cite{matplotlib} und NumPy \cite{numpy} angefertigt.
 
 \subsection{Bestimmung von RC mithilfe eines Bildes eines Entladevorganges}
 \begin{figure}[H]
@@ -23,8 +24,7 @@ Mittels linearer Ausgleichsrechnung erhält man:
 \end{figure}
 \input{../build/tabb.tex}
 
-Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit der scipy Funktion
-curve\_fit wurden $U_0$ und $\tau$ bestimmt. Es ergeben sich aus den Daten:
+Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurden $U_0$ und $\tau$ bestimmt. Es ergeben sich aus den Daten:
 \begin{displaymath}
 U_0 = 18,44 \text{ V } \pm 0,23 \text{ V}
 \end{displaymath}
@@ -49,8 +49,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\label{fig:grab}
 	 \end{figure}
 	 \input{../build/tabc.tex}
-	 Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit der scipy Funktion
-	 curve\_fit wurde $\tau$ bestimmt. Es ergibt sich aus den Daten:
+	 Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurde $\tau$ bestimmt. Es ergibt sich aus den Daten:
 	 \begin{displaymath}
 	 \tau = 1,38  \text{ ms } \pm 0,18 \text{ ms.}
 	 \end{displaymath}
@@ -90,7 +89,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/MAP004.png}
 	 	\label{fig:Rechteck}
 	 \end{figure}
-	 In Abbildung 9 beschreibt die Spannung an der Spannungsquelle eine Rechteckfunktion (gelb). Offensichtlich ist diese ein konstantes Vielfaches der Steigung der Kondensatorspannung (blau).
+	 In Abbildung 9 beschreibt die Spannung an der Spannungsquelle eine Rechteckfunktion (gelb). Offensichtlich ist diese ein konstantes Vielfaches der Steigung der Kondensatorspannung (blau).\\
 	 
 	 Diese Beobachtungen bestätigen die Vermutung, dass der RC-Kreis auch als Integrator genutzt werden kann.
 	 
