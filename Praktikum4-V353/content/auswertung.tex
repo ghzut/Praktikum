@@ -7,11 +7,11 @@ In der Auswertung wurden die Graphen in den Abbildungen 3 bis 6 mit Matplotlib \
 	\centering
 	\caption{}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{graa.pdf}
-	\label{fig:grab}
+	\label{fig:graa}
 \end{figure}
 \input{../build/taba.tex}
 
-Mittels linearer Ausgleichsrechnung erhält man:
+Mittels linearer Ausgleichsrechnung erhält man mit den Werten aus Tabelle 1:
 \begin{displaymath}
 \tau = 1,18 \text{ ms } \pm 0,02 \text{ ms.} 
 \end{displaymath}
@@ -22,9 +22,7 @@ Mittels linearer Ausgleichsrechnung erhält man:
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grab.pdf}
 	\label{fig:grab}
 \end{figure}
-\input{../build/tabb.tex}
-
-Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurden $U_0$ und $\tau$ bestimmt. Es ergeben sich aus den Daten:
+Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurden $U_0$ und $\tau$ bestimmt. Es ergeben sich aus den Daten aus Tabelle 2:
 \begin{displaymath}
 U_0 = 18,44 \text{ V } \pm 0,23 \text{ V}
 \end{displaymath}
@@ -32,6 +30,7 @@ und
 \begin{displaymath}
 \tau = 1,17  \text{ ms } \pm 0,2 \text{ ms.}
 \end{displaymath}
+\input{../build/tabb.tex}
 
 
 
@@ -46,10 +45,10 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\centering
 	 	\caption{}
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grac.pdf}
-	 	\label{fig:grab}
+	 	\label{fig:grac}
 	 \end{figure}
 	 \input{../build/tabc.tex}
-	 Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurde $\tau$ bestimmt. Es ergibt sich aus den Daten:
+	 Mit einer nichtlinearen Ausgleichsrechnung, ausgeführt mit SciPy \cite{scipy} wurde $\tau$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 3:
 	 \begin{displaymath}
 	 \tau = 1,38  \text{ ms } \pm 0,18 \text{ ms.}
 	 \end{displaymath}
@@ -61,8 +60,11 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	  \centering
 	  \caption{}
 	  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grad.pdf}
-	  \label{fig:grab}
+	  \label{fig:grad}
 	 \end{figure}
+	 \input{../build/tabd.tex}
+	 In diesem Polarkoordinantensystem werden die Werte aus Tabelle 4 eingetragen. Der Winkel $\varphi$ ergibt sich aus den Werten für $\Delta t$ durch die Formel (12). Und die Relativamplitude $A$ durch $A=\frac{U_c}{U_null}$. Die hohe systematische Abweichung muss in der Disskursion geklärt werden.
+	 
 	 
 	 
 	 \subsection{Der RC-Kreis als Integrator}
