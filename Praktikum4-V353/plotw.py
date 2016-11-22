@@ -78,8 +78,8 @@ def f(x, a, b):
 	return a*x+b
 
 x, y = np.genfromtxt('content/aufgabendatena.txt', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], '', 'taba', ['4.0', '2.1'])
-namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], '', 'taba', ['4.0', '2.1'])
+namex, namey = [r'$\Delta t/\mu$s', r'$U_C/$V']
 params, var = linregress(x, np.log(y))
 plt.cla()
 plt.clf()
