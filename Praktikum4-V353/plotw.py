@@ -78,7 +78,7 @@ def f(x, a, b):
 	return a*x+b
 
 x, y = np.genfromtxt('content/aufgabendatena.txt', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], '', 'taba', ['4.0', '2.1'])
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], 'Messwerte zu Versuchsteil a)', 'taba', ['4.0', '2.1'])
 namex, namey = [r'$\Delta t/\mu$s', r'$U_C/$V']
 params, var = linregress(x, np.log(y))
 plt.cla()
@@ -106,7 +106,7 @@ def f2(x, a , b):
 
 
 x, y, z = np.genfromtxt('content/aufgabendatenb.txt', unpack=True, missing_values='NA')
-makeTable([x, y], [r'$f/$Hz', r'$A/$V'], '', 'tabb', ['6.1', '2.3'])
+makeTable([x, y], [r'$f/$Hz', r'$A/$V'], 'Messwerte zu Versuchsteil b)', 'tabb', ['6.1', '2.3'])
 namex, namey = [r'$f/$Hz', r'$A/$V']
 params, covar = curve_fit(f2 , x, y)
 plt.cla()
@@ -146,7 +146,7 @@ y2 = np.delete(y, indeces)
 z2 = np.delete(z, indeces)
 #print(z2)
 #dddddddddddddd
-makeTable([x2, y2, z2], [r'$f/$Hz', r'$A/$V', r'$\Delta t/\mu$s'], '', 'tabd', ['6.1', '2.3', '3'])
+makeTable([x2, y2, z2], [r'$f/$Hz', r'$A/$V', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil d)', 'tabd', ['6.1', '2.3', '3'])
 def f4(x):
 	return np.sin(x)*np.sqrt(1/(np.sin(x)**2)-1)
 
@@ -192,7 +192,7 @@ print('RC = ', RCc)
 
 
 x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
-makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], '', 'tabc', ['6.1', '3'])
+makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.1', '3'])
 z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
 params2, covar = curve_fit(f3 , x2[0:-4], z2[0:-4])
