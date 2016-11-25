@@ -73,21 +73,20 @@ def makeTable(data, names, name, filename, formats):
 
 
 #aaaaaaaaaaaaaaaaaaaaaaaaa
-
+print('a)')
 def f(t, w, U):
 	return U*np.exp(w*t)
 
 x, y = np.genfromtxt('content/aufgabendatena', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], '', 'taba', ['4.0', '2.1'])
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], 'Messwerte zu Versuchsteil a)', 'taba', ['4.0', '2.1'])
 namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
 params, covar = curve_fit(f, x, y)
-params2, var = linregress(x, np.log(y))
 plt.cla()
 plt.clf()
 t = np.linspace(x[0], x[-1], 100000)
-print('a', params, covar, sep='\n')
+print(params, covar, sep='\n')
 plt.plot(x, y, 'rx', label='Daten')
-plt.plot(t, np.exp(f(t, *params)), 'b-', label='Fit')
+plt.plot(t, f(t, *params), 'b-', label='Fit')
 plt.xlim(x[0], x[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -100,6 +99,7 @@ print('w = ', wa)
 print('U(0) = ', U)
 
 #bbbbbbbbbbbbbbbbbbbb
+print('b)')
 C, Cf, L, Lf = np.genfromtxt('content/aufgabendatenb', unpack=True)
 C = unp.uarray(C, Cf)
 L = unp.uarray(L, Lf)
@@ -109,10 +109,25 @@ Rap = unp.sqrt(4 * L / C)
 print(C, L, Rap)
 
 #cccccccccccccccccccc
-
-
-
-
+print('c)')
+f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
+RelativAmplitude = Ac/A
+#makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.0', '2.3', '2.3'])
+namex, namey  = [r'$f/$Hz', r'$A_C/A$']
+#params, covar = curve_fit(f2 , x, y)
+plt.cla()
+plt.clf()
+#t = np.linspace(f[0], f[-1], 100000)
+print(params, covar, sep='\n')
+plt.plot(f, RelativAmplitude, 'rx', label='Daten')
+#plt.plot(t, f2(t, *params), 'b-', label='Fit')
+plt.xlim(f[0], f[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.xscale('log')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grac')
 
 
 
