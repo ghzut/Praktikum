@@ -1,0 +1,14 @@
+ #zeit vor der Nullmessung in mikrosekunden, der Nullpunkte war einviertel T hinter der letzten messung || Amplitude in mV
+456 858
+418 730
+382 632
+346 557
+308 482
+270 407
+234 343
+196 322
+156 279
+122 225
+84 204
+48 182
+10 150
