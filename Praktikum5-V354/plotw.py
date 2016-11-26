@@ -75,18 +75,21 @@ def makeTable(data, names, name, filename, formats):
 #aaaaaaaaaaaaaaaaaaaaaaaaa
 print('a)')
 def f(t, w, U):
-	return U*np.exp(w*t)
+	return U*np.exp(-w*t)
 
 x, y = np.genfromtxt('content/aufgabendatena', unpack=True)
 makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], 'Messwerte zu Versuchsteil a)', 'taba', ['4.0', '2.1'])
 namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
+x = x * 10**(-6)
 params, covar = curve_fit(f, x, y)
 plt.cla()
 plt.clf()
 t = np.linspace(x[0], x[-1], 100000)
 print(params, covar, sep='\n')
+x = x * 10**6
 plt.plot(x, y, 'rx', label='Daten')
-plt.plot(t, f(t, *params), 'b-', label='Fit')
+t2 = t *10**6
+plt.plot(t2, f(t, *params), 'b-', label='Fit')
 plt.xlim(x[0], x[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -109,25 +112,48 @@ Rap = unp.sqrt(4 * L / C)
 print(C, L, Rap)
 
 #cccccccccccccccccccc
+def AcT(f, LCs, RC):
+	return 1/np.sqrt((1-(2*np.pi*f*LCs)**2)**2+(RC*2*np.pi*f)**2)
+	
+
 print('c)')
 f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
 RelativAmplitude = Ac/A
 #makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.0', '2.3', '2.3'])
 namex, namey  = [r'$f/$Hz', r'$A_C/A$']
-#params, covar = curve_fit(f2 , x, y)
+f2 = f / 1000000
+params, covar = curve_fit(AcT, f2, RelativAmplitude)
 plt.cla()
 plt.clf()
-#t = np.linspace(f[0], f[-1], 100000)
+t = np.linspace(f[0], f[-1], 100000)
 print(params, covar, sep='\n')
+t2 = t / 1000000
 plt.plot(f, RelativAmplitude, 'rx', label='Daten')
-#plt.plot(t, f2(t, *params), 'b-', label='Fit')
+plt.plot(t, AcT(t2, *params), 'b-', label='Fit')
 plt.xlim(f[0], f[-1])
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'grac')
+plt.savefig('build/'+'grac1')
+
+f2 = f[11:-7]
+RelativAmplitude2 = RelativAmplitude[11:-7]
+
+plt.cla()
+plt.clf()
+t = np.linspace(f2[0], f2[-1], 100000)
+t2 = t / 1000000
+#print(params, covar, sep='\n')
+plt.plot(f2, RelativAmplitude2, 'rx', label='Daten')
+plt.plot(t, AcT(t2, *params), 'b-', label='Fit')
+plt.xlim(f2[0], f2[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grac2')
 
 
 
