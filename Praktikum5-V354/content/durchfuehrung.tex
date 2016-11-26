@@ -1,55 +1,46 @@
 \section{Durchführung}
 \label{sec:Durchführung}
-Die Durchführung kann mit der Anleitung zum Versuch Nr. 353 \cite{V353} verglichen werden.
 \renewcommand{\labelenumi}{\alph{enumi})}
 \begin{enumerate}
-  \item Es soll die Zeitkonstante $\tau$ durch Beobachtung des Auf- oder Entladevorgangs
-  des Kondensators bestimmt werden.Am Generator wird eine Rechteckspannung gewählt
-  Anschließend wird das Bild des Oszilloskops auf einen
-  geiegneten Bereich eingestellt, auf dem eine fast vollständige Auf- oder Entladung, sowie
-  die Maximal- und die Nullspannung zu sehen sind. Zuletzt wird hiervon ein Bild für die
-  Auswertung gespeichert.Für diese werden dem Bild einige Wertepaare entnommen und in einem
-  halblogarithmischen Diagramm dargestellt. Zur Bestimmung von $\tau$ wird eine
-  lineare Ausgleichsrechnung mit $\{(ln(U_C), t)\}$ durchgeführt, für dessen dessen Steigung nach (4) gilt:
-  \begin{equation}
-  a = -\frac{1}{RC}
-  \end{equation}
+\item Es wird die Zeitabhängigkeit der Amplitude einer gedämpften Schwingung untersucht
+ und der effektive Dämpfungswiderstand daraus ermittelt.Hierzu wird ein RCL-Kreis gemäß
+ Abb. 99999999 angeschlossen. Der Generator wird auf Rechteckimpulse gestellt
+  und die Frequenz so gewählt, dass die Amplitude der Schwingung etwa auf $\frac{1}{6}$
+   der ursprünglichen gesunken ist, bevor sie einen neuen Impuls erfährt. Das Ossziloskop
+    wird dementsprechend eingestellt, dass der Schwingungsverlauf vollständig auf dem Bildschirm dargestellt wird.
+    Anschließend wird ein Abbild des Bildschirm für die Auswertung angefertigt.
+    Für diese wird die Einhüllende der Schwingungskurve in das Abbild eingezeichnet.
+     Zusätzlich werden einige Wertepaare entnommen und eine Ausgleichsrechnung hiermit vollzogen.
+     Aus dem bestimmten Exponenten des exponentiellen Verlaufs werden schließlich nach (9999999)
+     $R_{eff}$ und $T_{ex}$ ermittelt. Zudem soll $R_{eff}$ mit dem originalen R der Schaltung verglichen werden.
 
-  \item Es wird die Amplitude A von $U_C$ an einem RC-Glied, welches an einem Sinusgenerator
-   angeschlossen ist, in Abhängigkeit von der Frequenz gemessen. Es soll über
-   3 Zehnerpotenzen hinweg gemessen werden. Zur Auswertung wird $\{(A(f_{Antrieb}), f_{Antrieb})\}$
-   in einem halblogarithmischen Diagramm aufgetragen. Anschließend werden $\tau$ und $U_0$ mithilfe einer nicht-linearen
-    Ausgleichsrechnung ermittelt. Mithilfe dieser wird die Theoriekurve nach (7) erstellt und
-    ebenfalls eingetragen. Es soll diskutiert werden ob eine systematische Abweichungen
-    zwischen dem $\tau$ aus a) und dem aus b) existiert.
+     \item Es soll der Dämpfungswiderstand $R_{ap}$ bestimmt werden, bei der aperiodische Grenzfall vorliegt.
+     Dazu wird der feste Widerstand der Schaltung von a) durch einen variablen Widerstand $R_v$
+     ausgetauscht. Dieser wird auf seinen Maximalwert eingestellt. Anschließend verringert man $R_v$
+     solange, bis sich das auftretende Relaxationsverhalten zu einer Schwingung ummformt.
+      Hat man dies erreicht, dreht man $R_v$ wieder hoch, bis kein Überschwinger mehr zu sehen ist.
+      Für die Auswertung wird der gemessene $R_{ap}$-Wert mit dem aus L und C berechneten Theoriewert verglichen.
 
+      \item Es wird ein Serien RCL-Kreis auf die Frequenzabhängigkeit seiner Kondensatorspannung hin untersucht.
+      Die Schaltung wird zunächst gemäß Abb. 9999999 aufgebaut, der Generator auf eine Sinusspannung eingestellt.
+      Anschließend wird eine Messreihe von $U_C$ für verschiedene Frequenzen ausgeführt
+       Da auch die Ausgangsspannung U des Tastkopfes frequenzabhängig ist, ist es notwendig, diese mitzunotieren.
+       Zur Auswertung wird $\frac{U_C}{U}$ gegen f in ein halblogarithmisches Diagramm eingetragen und diesem
+        anschließend q entnommen.Der Bereich um die Resonanzfrequenz soll zudem nochmals linear
+         abgebildet werden. Hieraus wird zusätzlich die Breite der Resonanzkurve ermittelt.
+         Anschließend werden die Ergebnisse mit den errechneten Theoriewerten verglichen.
 
-
-    \item Es wird die Phasenverschiebung zwischen $U_{Antrieb}$ und $U_C$ an einem
-    RC-Glied in Abhängigkeit von $f_{Antrieb}$ gemessen.Hierzu wird ein Zweikanaloszilloskop
-    einmal über den Ausgang am Kondensator und einmal direkt an den Sinusgenerator angeschlossen
-     und so eingestellt, dass beide Graphen übereinander liegen.Es werden jeweils
-      $\Delta T$ zwischen den Nullstellen und die zugehörige Frequenz notiert. Die jeweilige
+         \item Zuletzt wird die Frequenzabhängigkeit der Phase zwischen $U_C$ und $U_{Antrieb}$ des
+          SerienRCL_Kreises untersucht werden. Hierzu wird der RCL-Kreis gemäß Abb. 9999999
+          angeschlossen.Das Ossziloskop wird so eingestellt, sodass $U_C$ und U übereinander liegen
+             Anschließend werden jeweils
+      $\Delta t$ zwischen den Nullstellen und die zugehörige Frequenz notiert. Die jeweilige
        Phasendifferenz berechnet sich mit:
        \begin{equation}
-         \varphi = 2 \pi \cdot \Delta T \cdot f_{Antrieb}
+         \varphi = 2 \pi \cdot \Delta t \cdot f_{Antrieb}
        \end{equation}
-       Für die Auswertung wird mit der Menge der Messertpaare $\{(\varphi(f_{Antrieb}),f_{Antrieb})\}$
-       analog wie in Teil b) verfahren.
-
-       \item Es soll gezeigt werden, dass der RC-Kreis nach den Voraussetzungen aus 2.4 als
-       Integrator arbeiten kann. Die Schaltung beleibt dieselbe, wie bei Aufgabenteil c).
-       Anschließend wird eine hohe Frequenz am Generator eingestellt und das Oszilloskop so eingestellt, dass
-       die zu integrierende und die integrierte Spannung dargestellt werden. Es werden wieder
-       Bilder der Graphen erstellt.
-
-       \item Zuletzt wird die Relativamplitude $A(\omega) / U_0$ in Abhängigkeit von $\varphi$ dargestellt.
-       Dies folgt mit:
-       \begin{equation}
-         A(\varphi) = -U_0\cdot sin(\varphi)\sqrt{\frac{1}{sin^2(\varphi)}-1}
-       \end{equation}
-       Zusätzlich werden auch einige Messwertpaare $(A(\omega_i)/U_0,\varphi(\omega_i))$ in das Diagramm
-        eingetragen.
-
+       Für die Auswertung wird $\varphi$ gegenüber f in einem halblogarithmischen
+        Diagramm aufgetragen. Der Bereich um $\varphi = \frac{pi}{2}$ wird zusätzlich
+         linear dargestellt um ihm $f_res$, $f_1$ und $f_2$ zu entnehmen. Auch diese werden wieder
+         mit den berechneten verglichen. 
 \end{enumerate}
-
