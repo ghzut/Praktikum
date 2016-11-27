@@ -6,6 +6,7 @@ import uncertainties.unumpy as unp
 
 
 
+
 def linregress(x, y):
     assert len(x) == len(y)
 
@@ -71,9 +72,27 @@ def makeTable(data, names, name, filename, formats):
     TableFile.write(r'\end{tabular}'+'\n')
     TableFile.write(r'\end{table}')
 
+def bereich(x, u, o):
+	if(x>=u and x<=o):
+		return x
+	if(x<u):
+		return bereich(o - (u-x), u, o)
+	if(x>o):
+		return bereich(u + (x-o), u, o)
+
+
+
+
+#allesallesallesallesalles
+C, Cf, L, Lf = np.genfromtxt('content/aufgabendatenb', unpack=True)
+C = unp.uarray(C, Cf)*10**(-9)
+L = unp.uarray(L, Lf)*10**(-3)
+R2 = unp.uarray(682, 1)
+
 
 #aaaaaaaaaaaaaaaaaaaaaaaaa
 print('a)')
+
 def f(t, w, U):
 	return U*np.exp(-w*t)
 
@@ -96,20 +115,20 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'graa')
-wa = unp.uarray(params[0], np.sqrt(covar[0][0]))
+gamma = unp.uarray(params[0], np.sqrt(covar[0][0]))
 U = unp.uarray(params[1], np.sqrt(covar[1][1]))
-print('w = ', wa)
+print('gamma = ', gamma)
 print('U(0) = ', U)
+R1 = unp.uarray(10, 0.2) #noch falsch R1 noch nicht bekannt
+print('gammaerrechnet (noch falsch) = ', R1/(2*L))
 
-#bbbbbbbbbbbbbbbbbbbb
+#bbbbbbbbbbbbbbbbbbbb 
 print('b)')
-C, Cf, L, Lf = np.genfromtxt('content/aufgabendatenb', unpack=True)
-C = unp.uarray(C, Cf)
-L = unp.uarray(L, Lf)
 
 Rap = unp.sqrt(4 * L / C)
 
-print(C, L, Rap)
+print('C = ', C, ', L = ', L, ', Rap = ', Rap)
+print('Rap gemessen = ', 272)
 
 #cccccccccccccccccccc
 def AcT(f, LCs, RC):
@@ -119,7 +138,7 @@ def AcT(f, LCs, RC):
 print('c)')
 f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
 RelativAmplitude = Ac/A
-#makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.0', '2.3', '2.3'])
+makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.0', '2.3', '2.3'])
 namex, namey  = [r'$f/$Hz', r'$A_C/A$']
 f2 = f / 1000000
 params, covar = curve_fit(AcT, f2, RelativAmplitude)
@@ -137,9 +156,53 @@ plt.xscale('log')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac1')
+LC = (unp.uarray(params[0], np.sqrt(covar[0][0]))/1000000)**2
+RC = unp.uarray(params[1], np.sqrt(covar[1][1]))/1000000
+print('LC = ', LC)
+print('RC = ', RC)
+print('LC errechnet = ', L*C)
+print('RC errechnet = ', R2*C)
 
-f2 = f[11:-7]
-RelativAmplitude2 = RelativAmplitude[11:-7]
+
+q = unp.sqrt(LC)/RC
+print('Güte q = ', q)
+qer = unp.sqrt(L*C)/(R2*C)
+print('Güte q errechnet = ', qer)
+
+
+
+
+
+
+
+a = (RC**2-2*LC)/(2*LC**2)
+print('a = ', a)
+w1 = unp.sqrt(-a - unp.sqrt(a**2 - (1-2/q**2)/LC**2))
+w2 = unp.sqrt(-a + unp.sqrt(a**2 - (1-2/q**2)/LC**2))
+print('w- = ', w1)
+print('w+ = ', w2)
+print('f- = ', w1 / (2*np.pi))
+print('f+ = ', w2 / (2*np.pi))
+print('Breite der Ressonanzkurve = ', (w2 - w1) / (2*np.pi))
+
+aer = ((R2*C)**2-2*L*C)/(2*(L*C)**2)
+print('a errechnet = ', aer)
+w1er = unp.sqrt(-aer - unp.sqrt(aer**2 - (1-2/qer**2)/(L*C)**2))
+w2er = unp.sqrt(-aer + unp.sqrt(aer**2 - (1-2/qer**2)/(L*C)**2))
+print('w- errechnet = ', w1er)
+print('w+ errechnet = ', w2er)
+print('f- errechnet = ', w1er / (2*np.pi))
+print('f+ errechnet = ', w2er / (2*np.pi))
+print('Breite der Ressonanzkurve errechnet = ', (w2er - w1er) / (2*np.pi))
+
+
+fplus = unp.nominal_values(w2)/(2*np.pi)
+fplus2 = fplus / 1000000
+fminus = unp.nominal_values(w1)/(2*np.pi)
+fminus2 = fminus / 1000000
+
+f2 = f[10:-5]
+RelativAmplitude2 = RelativAmplitude[10:-5]
 
 plt.cla()
 plt.clf()
@@ -154,6 +217,68 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac2')
+
+#dddddddddddddddddddddddddddddddd
+print('d)')
+
+def f3(a, LCs, RC):
+	b = []
+	for x in a:
+		b.append(bereich(np.arctan((2*np.pi*x*RC)/(1-(LCs*2*np.pi*x)**2)), 0, np.pi))
+	return np.array(b)
+
+
+x2, z2 = np.genfromtxt('content/aufgabendatend', unpack=True)
+
+makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil d)', 'tabd', ['6.1', '3'])
+z2 = z2*(10**(-6))*x2*2*np.pi
+#b = []
+#for z in z2:
+#	b.append(bereich(z, -np.pi/2, np.pi/2))
+	#print('Zahl = ', z, ' ', bereich(z, -np.pi/2, np.pi/2))
+#z2 = np.array(b)
+namex, namey = [r'$f/$Hz', r'$\varphi$']
+#p0=[np.sqrt(3.6*10**(-11))*10**6, 1.5]
+params2, covar = curve_fit(f3 , x2/1000000, z2, p0=[np.sqrt(3.6*10**(-11))*10**6, 1.5])
+plt.cla()
+plt.clf()
+t = np.linspace(x2[0], x2[-1], 100000)
+t2 = t / 1000000
+print(params2, covar, sep='\n')
+plt.plot(x2, z2, 'rx', label='Daten')
+plt.plot(t, f3(t2, *params2), 'b-', label='Fit')
+plt.xlim(t[0], t[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.xscale('log')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad1')
+LC = (unp.uarray(params[0], np.sqrt(covar[0][0]))/1000000)**2
+RC = unp.uarray(params[1], np.sqrt(covar[1][1]))/1000000
+print('LC = ', LC)
+print('RC = ', RC)
+print('fres = ', unp.sqrt(1/(LC) - (RC**2)/(2*LC**2))/(2*np.pi) )
+print('fres errechnet = ', unp.sqrt(1/(L*C) - (R2**2)/(2*L**2))/(2*np.pi) )
+print('f1 = ', (RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi) )
+print('f1 errechnet = ', (R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi) )
+print('f2 = ', (-RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi) )
+print('f2 errechnet = ', (-R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi) )
+
+
+plt.cla()
+plt.clf()
+t = np.linspace(x2[0], x2[-1], 100000)
+t2 = t / 1000000
+plt.plot(x2, z2, 'rx', label='Daten')
+plt.plot(t, f3(t2, *params2), 'b-', label='Fit')
+plt.xlim(x2[5], t[-1])
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad2')
+
 
 
 
