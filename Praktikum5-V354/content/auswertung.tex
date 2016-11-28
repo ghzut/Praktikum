@@ -1,5 +1,20 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+In der Auswertung wurden die Graphen in den Abbildungen  bis  mit Matplotlib \cite{matplotlib} und NumPy \cite{numpy} angefertigt.
+
+Folgende Werte waren bereits vor der Messung bekannt:
+\begin{displaymath}
+R_1 = \SI{16.78(9)}{\ohm}
+\end{displaymath}
+\begin{displaymath}
+R_2 = \SI{682(1)}{\ohm}
+\end{displaymath}
+\begin{displaymath}
+L = \SI{16.78(9)}{\milli\ohm}
+\end{displaymath}
+\begin{displaymath}
+C = \SI{2.066(6)e-9}{\farad}
+\end{displaymath}
 
 \subsection{Bestimmung von Reff}
 \begin{figure}[H]
@@ -9,23 +24,59 @@
 	\label{fig:graa}
 \end{figure}
 \input{../build/taba.tex}
+$\mu$ wird mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 1:
+\begin{displaymath}
+\mu = \SI{3.87(5)e3}{\per\second}\text{.}
+\end{displaymath}
+Hiermit ergibt sich nach Formel ():
+\begin{displaymath}
+R_{eff} = \SI{130 \pm 1.9}{\ohm}\text{.}
+\end{displaymath}
+Der Vergleich mit $R_1$ ergibt, dass $R_{eff}$ ca. $\SI{60}{\ohm}$ größer ist als $R_1$. Dies wird durch dem Innerwiderstand $R_i$ der Spannungsquelle verursacht.
 
 \subsection{Bestimmung von Rap}
 
 \subsection{Bestimmung von q und Resonanzbreite}
 \begin{figure}[H]
 	\centering
-	\caption{$U_C$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{Antrieb}$.}
+	\caption{$A_C$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{Antrieb}$.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grac1.pdf}
 	\label{fig:grac1}
 \end{figure}
+$LC$ und $RC$ werden mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 2: 
+\begin{displaymath}
+LC = \SI{3.626(13)e-11}{\second\squared}
+\end{displaymath}
+\begin{displaymath}
+RC = \SI{1.505(12)e-6}{\ohm\squared\second}\text{.}
+\end{displaymath}
+Hiermit folgt mit Formel ():
+\begin{displaymath}
+q = \num{4.002(33)}\text{.}
+\end{displaymath}
+Mit den gegebenen Werten $R_2$ und $L$ erhält man mit Formel ():
+\begin{displaymath}
+q = \num{4.179(14)}\text{.}
+\end{displaymath}
+
+
 \begin{figure}[H]
 	\centering
-	\caption{Lineare Betrachtung von $U_C$ im nahen Bereich um $f_{res}$.}
+	\caption{Lineare Betrachtung von $A_C$ im nahen Bereich um $f_{res}$.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grac2.pdf}
 	\label{fig:grac2}
 \end{figure}
 \input{../build/tabc.tex}
+Für die Breite der Ressonanzkurve ergibt sich mithilfe der zuvor bestimmten $LC$ und $RC$ mit Formel ():
+\begin{displaymath}
+f_\text{+} - f_\text{-} = \SI{6.82(6)e3}{\per\second}\text{.}
+\end{displaymath}
+Mit den gegebenen Werten für $L$, $R_2$ und $C$ ergibt sich mit Formel ():
+\begin{displaymath}
+f_+ - f_- = \SI{6.82(6)e3}{\per\second}\text{.}
+\end{displaymath}
+
+
 
 \subsection{Phasenverschiebung}
 \begin{figure}[H]
@@ -41,3 +92,19 @@
 	\label{fig:grad2}
 \end{figure}
 \input{../build/tabd.tex}
+$LC$ und $RC$ werden mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 3:
+\begin{displaymath}
+LC = \SI{3.626(4)e-11}{\second\squared}
+\end{displaymath}
+\begin{displaymath}
+RC = \SI{1.505(10)e-6}{\ohm\squared\second}\text{.}
+\end{displaymath}
+Mit Formel () ergibt sich:
+\begin{displaymath}
+f_{res} = \SI{26014(14)}{\per\second}\text{.}
+\end{displaymath}
+Mit den gegebenen Werten für $R_2$, $L$ und $C$ ergibt sich:
+\begin{displaymath}
+f_{res} = \SI{2664(8)e4}{\per\second}\text{.}
+\end{displaymath}
+
