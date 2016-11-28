@@ -98,8 +98,8 @@ def f(t, w, U):
 	return U*np.exp(-w*t)
 
 x, y = np.genfromtxt('content/aufgabendatena', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], 'Messwerte zu Versuchsteil a).', 'taba', ['3.1', '3.1'])
-namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], 'Messwerte zu Versuchsteil a).', 'taba', ['3.1', '3.1'])
+namex, namey = [r'$\Delta t/\mu$s', r'$U_C/$V']
 x = x * 10**(-6)
 params, covar = curve_fit(f, x, y)
 plt.cla()
