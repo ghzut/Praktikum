@@ -87,6 +87,7 @@ def bereich(x, u, o):
 C, Cf, L, Lf = np.genfromtxt('content/aufgabendatenb', unpack=True)
 C = unp.uarray(C, Cf)*10**(-9)
 L = unp.uarray(L, Lf)*10**(-3)
+R1 = unp.uarray(67.2, 0.2)
 R2 = unp.uarray(682, 1)
 
 
@@ -119,8 +120,9 @@ gamma = unp.uarray(params[0], np.sqrt(covar[0][0]))
 U = unp.uarray(params[1], np.sqrt(covar[1][1]))
 print('gamma = ', gamma)
 print('U(0) = ', U)
-R1 = unp.uarray(10, 0.2) #noch falsch R1 noch nicht bekannt
-print('gammaerrechnet (noch falsch) = ', R1/(2*L))
+#print('gammaerrechnet = ', R1/(2*L))
+print('Reff = ', gamma*2*L)
+print('R gegeben = ', R1)
 
 #bbbbbbbbbbbbbbbbbbbb 
 print('b)')
