@@ -98,7 +98,7 @@ def f(t, w, U):
 	return U*np.exp(-w*t)
 
 x, y = np.genfromtxt('content/aufgabendatena', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], 'Messwerte zu Versuchsteil a)', 'taba', ['4.0', '2.1'])
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$\Delta A/$V'], 'Messwerte zu Versuchsteil a).', 'taba', ['4.0', '2.1'])
 namex, namey = [r'$\Delta t/\mu$s', r'$\Delta A/$V']
 x = x * 10**(-6)
 params, covar = curve_fit(f, x, y)
@@ -140,7 +140,7 @@ def AcT(f, LCs, RC):
 print('c)')
 f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
 RelativAmplitude = Ac/A
-makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.0', '2.3', '2.3'])
+makeTable([f, Ac, A], [r'$f/$Hz', r'$A_C/$V', r'$A/$V'], 'Messwerte zu Versuchsteil c).', 'tabc', ['6.0', '2.3', '2.3'])
 namex, namey  = [r'$f/$Hz', r'$A_C/A$']
 f2 = f / 1000000
 params, covar = curve_fit(AcT, f2, RelativAmplitude)
@@ -232,7 +232,7 @@ def f3(a, LCs, RC):
 
 x2, z2 = np.genfromtxt('content/aufgabendatend', unpack=True)
 
-makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil d)', 'tabd', ['6.1', '3'])
+makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil d).', 'tabd', ['6.1', '3'])
 z2 = z2*(10**(-6))*x2*2*np.pi
 #b = []
 #for z in z2:
