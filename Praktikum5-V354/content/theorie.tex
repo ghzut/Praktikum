@@ -3,10 +3,10 @@
 
 
 \subsection{Der LC-Kreis}
-Der LC-Kreis gehört zu den ungedämpften Schwingkreisen.Unter diesen versteht man
+Der $LC$-Kreis gehört zu den ungedämpften Schwingkreisen.Unter diesen versteht man
  ein System mit zwei Energiespeichern zwischen denen eine vorher eingeführte Energiemenge
-  oszilliert. Bei einem LC-Kreis sind die Speicher durch eine Kapazität C sowie
-  eine Induktivität L realisiert. Da im theoretischen LC-Kreis kein Bauteil mit Energieverbrauch
+  oszilliert. Bei einem $LC$-Kreis sind die Speicher durch eine Kapazität $C$ sowie
+  eine Induktivität $L$ realisiert. Da im theoretischen $LC$-Kreis kein Bauteil mit Energieverbrauch
    existiert, bleiben Oszillation und Anfangsamplitude zeitlich erhalten.
 
    \begin{figure}[H]
@@ -17,9 +17,9 @@ Der LC-Kreis gehört zu den ungedämpften Schwingkreisen.Unter diesen versteht m
    \end{figure}
 
    \subsection{Der RCL-Kreis}
-Eine Erweiterung des Systems ist der RCL-Kreis, in dem eine gewisse Energierate
-kontinuierlich über einen ohmschen Widerstand R in Wärme umgesetzt wird. Als Folge sind
-U(t) und I(t)  monoton fallende Funktionen der Zeit. Es handelt sich daher um eine gedämpfte
+Eine Erweiterung des Systems ist der $RCL$-Kreis, in dem eine gewisse Energierate
+kontinuierlich über einen ohmschen Widerstand $R$ in Wärme umgesetzt wird. Als Folge sind
+$U(t)$ und $I(t)$  monoton fallende Funktionen der Zeit. Es handelt sich daher um eine gedämpfte
  Schwingung.
 
  \begin{figure}[H]
@@ -31,96 +31,97 @@ U(t) und I(t)  monoton fallende Funktionen der Zeit. Es handelt sich daher um ei
 
 Nach den kirchhoffschen Regeln folgt die DGL:
  \begin{equation}
-   \ddot{I} + \frac{R}{L} \dot{I} + \frac{1}{LC}I = 0
+   \ddot{I} + \frac{R}{L} \dot{I} + \frac{1}{LC}I = 0\text{.}
  \end{equation}
- Mit einem komplesen E-Ansatz erhält man die Winkelgeschwindigkeit $\omega$
+ Mit einem komplexen $e$-Ansatz erhält man die Winkelgeschwindigkeit
  \begin{equation}
    \omega = \sqrt{\frac{1}{LC}-\frac{R²}{4L²}}
  \end{equation}
- Sowie den Parameter der Amplitudenabnahme $\mu$:
+ sowie den Parameter der Amplitudenabnahme:
  \begin{equation}
- \mu = \frac{R}{2L}
+ \mu = \frac{R}{2L}\text{.}
  \end{equation}
  Hiermit gelangt man zur allgemeinen Lösung:
  \begin{equation}
-   F(t) = e^{-\mu t} \cdot  \left( A_1e^{i\omega_1t} + A_2e^{-i\omega_2t} \right) \text{$A_1,A_2$ komplex}
+   F(t) = e^{-\mu t} \cdot  \left( A_1e^{i\omega_1t} + A_2e^{-i\omega_2t} \right) \text{ } A_1\text{, } A_2 \text{ komplex.}
  \end{equation}
- Wie die Lösungsfunktion nun genau aussieht, hängt davon ab ob $\omega$ reell, imaginär
+ Wie die Lösungsfunktion nun genau aussieht, hängt davon ab, ob $\omega$ reell, imaginär
   oder gleich 0 ist.
-  bei einem reellen $\omega$ liegt eine gedämpfte Schwingung vor und für I(t) gilt:
+  bei einem reellen $\omega$ liegt eine gedämpfte Schwingung vor und für $I(t)$ gilt:
   \begin{equation}
     I(t) = A_0 e^{-\mu t} \cdot cos(\omega t + \varphi)
   \end{equation}
- mit der Periodendauer T:
+ mit der Periodendauer:
   \begin{equation}
-    T = \frac{2 \pi}{\omega}
+    T = \frac{2 \pi}{\omega}\text{.}
   \end{equation}
-
-  Für die Ablinkdauer der Amplituden \tau folgt zudem:
+  Für die Ablinkdauer der Amplituden $\tau$ folgt zudem:
   \begin{equation}
-    \tau = \frac{2L}{R}
+    \tau = \frac{2L}{R}\text{.}
   \end{equation}
-
+  
 Ist $\omega$ hingegen imaginär kommt es zu einer
 aperiodischen Dämpfung, welche nach hinreichender Zeit  ein einfaches Relaxationsverhalten
- aufzeigt. Je nachdem wie $A_1$ und $A_2$ bestimmt sind, kann I(t) vorher jedoch noch einen
+ aufzeigt. Je nachdem wie $A_1$ und $A_2$ bestimmt sind, kann $I(t)$ vorher jedoch noch einen
  Maximalwert durchlaufen.
-
  \begin{figure}[H]
    \centering
    \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/dämpfungen.png}
    \caption{Relaxationsverhalten bei verschiedenen Dämpfungen}
    \label{fig:Dämpfungen}
  \end{figure}
-
  Beträgt $\omega$ jedoch 0 liegt der aperiodische Grenzfall vor. Bei diesem, in der Darstellung schwarz gestrichelt,
-  durchläuft I(t) kein Maximum und flacht am schnellsten ab.
+  durchläuft $I(t)$ kein Maximum und flacht am schnellsten ab.
 
 \subsection{ Der RCL-Kreis unter Einfluss einer erzwungenen Schwingung}
 
-Wenn ein gedämpfte Schwingkreis einer äußeren periodischen Kraft F(t), im Fall des RCL-Kreises
+Wenn ein gedämpfte Schwingkreis einer äußeren periodischen Kraft $F(t)$, im Fall des $RCL$-Kreises
  eine Wechselspannung, unterworfen wird zeigen sich einige Eigenschaften.
-
 Für die DGl des Schwingkreises folgt dann:
 \begin{equation}
-  LC \ddot{U}_C + RC \dot{U}_C + U_C = U_{0,Antrieb} \cdot e^{i\omega t}
+  LC \ddot{U}_C + RC \dot{U}_C + U_C = A_{Antrieb} \cdot e^{i\omega t}\text{.}
 \end{equation}
-Mithilfe eines komplexen e-Ansatzes für $U_C$ erhält man für den Betrag der zugehörigen $A_C(\omega)$
+
+Mithilfe eines komplexen $e$-Ansatzes für $U_C$ erhält man für den Betrag der zugehörigen:
 \begin{equation}
-  A_C{\omega} = \frac{U_{0,Antrieb}}{\sqrt{(1-LC\omega^2)^2 + \omega^2R^2C^2}}
+  A_C(\omega) = \frac{A_{Antrieb}}{\sqrt{(1-LC\omega^2)^2 + \omega^2R^2C^2}}\text{.}
 \end{equation}
-\begin{equation}
+%\begin{equation}
   %|A(\omega)| = U_0 \vdot sqrt{\frac{(1-LC\omega^2)² + \omega²R²C²}{\left \left 1-LC\omega²\right ^2 + \omega²R²C²\right^2}}
-\end{equation}
-Wie beim Rc-Kreis aus V353 zeigt sich auch beim angetriebenen RCL-Kreis eine Phasenverschiebung zwischen $U_C$ und $U_0$.
+%\end{equation}
+
+Es zeigt sich beim angetriebenen $RCL$-Kreis eine Phasenverschiebung zwischen $U_C$ und $U_{Antrieb}$.
 Für diese gilt:
 \begin{equation}
-  \varphi(\omega) = arctan\left( \frac{-\omega RC}{1-LC \omega^2}\right)
+  \varphi(\omega) = arctan\left( \frac{-\omega RC}{1-LC \omega^2}\right)\text{.}
 \end{equation}
-Es zeigt sich, dass $U_C$ und U für hinreichend kleine Frequenzen weiterhin in Phase sind,
+
+Es zeigt sich, dass $U_C$ und $U_{Antrieb}$ für hinreichend kleine Frequenzen weiterhin in Phase sind,
 während $U_C$ für sehr hohe Frequenzen ca. $\varphi = \pi$ hinter $U_{Antrieb}$ zurückbleibt.
 
 
 
 \subsection{Resonanzen und Güte eines angetriebenen RCL-Kreises}
+
 Die Amplitude der Kondensatorspannung ist daher abhängig von der Frequenz der Generatorspannung.
-Für $\omega \to \infty$ läuft $U_C$ gegen 0, für $\omega \to 0$ gegen $U_{0,Antrieb}$.
-Für eine Frequenz $f_{res}$ erreicht $U_C$  jedoch ein Maximum, welches größer als $U_{0,Antrieb}$ selbst ist.
+Für $\omega \to \infty$ läuft $U_C$ gegen 0, für $\omega \to 0$ gegen $A_{Antrieb}$.
+Für eine Frequenz $f_{res}$ erreicht $U_C$  jedoch ein Maximum, welches größer als $A_{Antrieb}$ selbst ist.
 Diese Frequenz wird als Resonanzfrequenz des Systems bezeichnet. Für $f_{res}$ gilt:
 \begin{equation}
-  f_{res} = \frac{\sqrt{\frac{1}{LC}-\frac{R^2}{2L^2}}}{2 \pi}
+  f_{res} = \frac{\sqrt{\frac{1}{LC}-\frac{R^2}{2L^2}}}{2 \pi}\text{.}
   %f_{res} = \frac{\sqrt{\frac{1}{LC} - \frac{R^2}{2L^2}}{2 \pi}}
 \end{equation}
-Bei auftretender Resonanz ist zwischen zwei Fällen zu unterscheiden:
-Für den Fall einer schwachen Dämpfung, also $\frac{R^2}{2L^2} \ll \frac{1}{LC}$, lässt sich $A_{C,max}$ mit:
+
+Bei auftretender Resonanz ist zwischen zwei Fällen zu unterscheiden.
+In dem Fall einer schwachen Dämpfung, also $\frac{R^2}{2L^2} \ll \frac{1}{LC}$, wird  $A_{C,max}$ durch
 \begin{equation}
-  A_{C,max} = \frac{U_{0,Antrieb}}{\omega_0 RC}
+  A_{C,max} = \frac{A_{Antrieb}}{\omega_0 RC}
   %A_{C,max} = \frac{U_0}{R} \cdot \sqrt{\frac{L}{C}}
 \end{equation}
-beschreiben. $\omega_0$ beschreibt die Eigenfrequenz des ungedämpften Systems.
-Läuft R dann auch noch gegen 0, läuft $A_{C,max}$ gegen unendlich und es kommt zu einer
+beschrieben. $\omega_0$ beschreibt die Eigenfrequenz des ungedämpften Systems.
+Läuft $R$ dann auch noch gegen 0, strebt $A_{C,max}$ gegen unendlich und es kommt zu einer
 Resonanzkatastrophe.
- Der Faktor $\frac{1}{\omega_0 RC}$ wird auch als Güte q bezeichnet.
+ Der Faktor $\frac{1}{\omega_0 RC}$ wird auch als Güte $q$ bezeichnet.
 Letztere lässt sich auch mithilfe von
 \begin{equation}
   q = \frac{\omega_0}{\omega_+ - \omega_-}
@@ -130,13 +131,11 @@ bestimmen. $\omega_+$ und $\omega_-$ werden  hierzu durch die Stellen links und 
  \begin{equation}
    \omega_+ - \omega_- \approx \frac{R}{L}
  \end{equation}
- angegeben. Es zeigt sich, dass diese mit mit den Winkelgesschwindigkeiten $\omega_1,\omega_2$ zusammenfallen.
+ angegeben. Es zeigt sich, dass diese mit mit den Winkelgeschwindigkeiten $\omega_1,\omega_2$ zusammenfallen.
   Bei diesen beträgt die Phasendifferenz $\varphi$ $\pm \frac{\pi}{4}$. Für sie gilt:
 \begin{equation}
-  \omega_{1,2} = \pm \frac{R}{2L} + \sqrt{\frac{R^2}{4L^2} + \frac{1}{LC}}
+  \omega_{1,2} = \pm \frac{R}{2L} + \sqrt{\frac{R^2}{4L^2} + \frac{1}{LC}}\text{.}
 \end{equation}
 
-
- Im Falle einer starken Dämpfung, also $\frac{R^2}{2L^2} \gg \frac{1}{LC}$, existiert keine Resonanzfrequenz, $A_C$ fällt bei steigender Frequenz
- , von $U_0$ ausgehend, monoton gegen 0. Ist die Frequenz ausreichend hoch, zeichnet
-  sich eine $\frac{1}{\omega²}$ Abhängigkeit ab.In diesem Fall findet der RCL-Kreis auch als Tiefpassfilter Verwendung.
+ Im Falle einer starken Dämpfung, also $\frac{R^2}{2L^2} \gg \frac{1}{LC}$, existiert keine Resonanzfrequenz, $A_C$ fällt bei steigender Frequenz, von $U_0$ ausgehend, monoton gegen 0. Ist die Frequenz ausreichend hoch, zeichnet
+  sich eine $\frac{1}{\omega²}$ Abhängigkeit ab.In diesem Fall findet der $RCL$-Kreis auch als Tiefpassfilter Verwendung.
