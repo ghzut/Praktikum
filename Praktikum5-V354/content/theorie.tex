@@ -59,7 +59,7 @@ Nach den kirchhoffschen Regeln folgt die DGL:
   \begin{equation}
     \tau = \frac{2L}{R}\text{.}
   \end{equation}
-  
+
 Ist $\omega$ hingegen imaginär kommt es zu einer
 aperiodischen Dämpfung, welche nach hinreichender Zeit  ein einfaches Relaxationsverhalten
  aufzeigt. Je nachdem wie $A_1$ und $A_2$ bestimmt sind, kann $I(t)$ vorher jedoch noch einen
@@ -127,7 +127,12 @@ Letztere lässt sich auch mithilfe von
   q = \frac{\omega_0}{\omega_+ - \omega_-}
   \end{equation}
 bestimmen. $\omega_+$ und $\omega_-$ werden  hierzu durch die Stellen links und rechts neben dem Maximum,
- an denen $A_C$ $\frac{1}{\sqrt{2}}$ von $A_{C,max}$ erreicht, bestimmt.Die Breite der Resonanzkurve wird durch
+ an denen $A_C$ $\frac{1}{\sqrt{2}}$ von $A_{C,max}$ erreicht, bestimmt.
+ Ist die Güte bekannt lassen sie sich auch über
+ \begin{equation}
+   \omega_{+,-} = \sqrt{-\frac{R²C²-2LC}{2L²C²} \pm \sqrt{(\left \frac{R²C²-2LC}{2L²C²} \right) ^2 - \frac{1- \frac{2}{q²}}{L²C²}}}
+ \end{equation}
+ Die Breite der Resonanzkurve wird durch
  \begin{equation}
    \omega_+ - \omega_- \approx \frac{R}{L}
  \end{equation}
@@ -137,5 +142,5 @@ bestimmen. $\omega_+$ und $\omega_-$ werden  hierzu durch die Stellen links und 
   \omega_{1,2} = \pm \frac{R}{2L} + \sqrt{\frac{R^2}{4L^2} + \frac{1}{LC}}\text{.}
 \end{equation}
 
- Im Falle einer starken Dämpfung, also $\frac{R^2}{2L^2} \gg \frac{1}{LC}$, existiert keine Resonanzfrequenz, $A_C$ fällt bei steigender Frequenz, von $U_0$ ausgehend, monoton gegen 0. Ist die Frequenz ausreichend hoch, zeichnet
+ Im Falle einer starken Dämpfung, also $\frac{R^2}{2L^2} \gg \frac{1}{LC}$, existiert keine Resonanzfrequenz, $A_C$ fällt bei steigender Frequenz, von $A_{Antrieb}$ ausgehend, monoton gegen 0. Ist die Frequenz ausreichend hoch, zeichnet
   sich eine $\frac{1}{\omega²}$ Abhängigkeit ab.In diesem Fall findet der $RCL$-Kreis auch als Tiefpassfilter Verwendung.
