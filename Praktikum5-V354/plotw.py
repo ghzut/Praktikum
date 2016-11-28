@@ -121,7 +121,9 @@ U = unp.uarray(params[1], np.sqrt(covar[1][1]))
 print('gamma = ', gamma)
 print('U(0) = ', U)
 #print('gammaerrechnet = ', R1/(2*L))
+print('tau = ', 1/gamma)
 print('Reff = ', gamma*2*L)
+print('Reff-R1 = ', gamma*2*L-R1)
 print('R gegeben = ', R1)
 
 #bbbbbbbbbbbbbbbbbbbb
