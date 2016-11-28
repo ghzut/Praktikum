@@ -33,9 +33,24 @@ Nach den kirchhoffschen Regeln folgt die DGL:
  \end{equation}
  Mit einem komplexen $e$-Ansatz erhält man die Winkelgeschwindigkeit
  \begin{equation}
-   \overline{\omega_{1,2}} = \frac{R}{2L}i \pm \overbrace{\sqrt{\vphantom{\frac{R²}{4L²}}\smash{\underbrace
-   	{\frac{1}{LC}}_{w_0^2}-\underbrace{\frac{R²}{4L²}}_{\mu^2}}}\vphantom{\sqrt{\underbrace{\frac{R²}{4L²}}_{\mu^2}}}}^{\omega_{res}}
+   \overline{\omega_{1,2}} = \frac{R}{2L}i \pm \sqrt{\frac{1}{LC}-\frac{R²}{4L²}}\text{.}
  \end{equation}
+ Mit
+ \begin{equation}
+ \mu = \frac{R}{2L}
+ \end{equation}
+ \begin{equation}
+ w_0 = \sqrt{\frac{1}{LC}}
+ \end{equation}
+ \begin{equation}
+ w_{res} = \sqrt{w_0^2-\mu^2}
+ \end{equation}
+ ergibt sich:
+ \begin{equation}
+	 \overline{\omega_{1,2}} = \mu i \pm w_{res}\text{.}
+ \end{equation}
+ 
+ 
  Hiermit gelangt man zur allgemeinen Lösung:
  \begin{equation}
    I(t) = e^{-\mu t} \cdot  \operatorname{Re}\left( A_1e^{i\omega_{res} t} + A_2e^{-i\omega_{res} t} \right) \text{ } A_1\text{, } A_2 \text{ komplex.}
@@ -73,7 +88,7 @@ Wenn ein gedämpfte Schwingkreis einer äußeren periodischen Kraft $F(t)$, im F
  eine Wechselspannung, unterworfen wird zeigen sich einige Eigenschaften.
 Für die DGl des Schwingkreises folgt dann:
 \begin{equation}
-  LC \ddot{U}_C + RC \dot{U}_C + U_C = A_{Antrieb} \cdot \operatorname{Re}\left( e^{i\omega t}\right)\text{.}
+  LC \ddot{U}_C + RC \dot{U}_C + U_C = U_{Antrieb} =A_{Antrieb} \cdot \operatorname{Re}\left( e^{i\omega t}\right)\text{.}
 \end{equation}
 Mithilfe eines komplexen $e$-Ansatzes für $U_C$ erhält man für den Betrag der zugehörigen:
 \begin{equation}
