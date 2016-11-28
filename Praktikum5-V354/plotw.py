@@ -124,7 +124,7 @@ print('U(0) = ', U)
 print('Reff = ', gamma*2*L)
 print('R gegeben = ', R1)
 
-#bbbbbbbbbbbbbbbbbbbb 
+#bbbbbbbbbbbbbbbbbbbb
 print('b)')
 
 Rap = unp.sqrt(4 * L / C)
@@ -135,7 +135,7 @@ print('Rap gemessen = ', 272)
 #cccccccccccccccccccc
 def AcT(f, LCs, RC):
 	return 1/np.sqrt((1-(2*np.pi*f*LCs)**2)**2+(RC*2*np.pi*f)**2)
-	
+
 
 print('c)')
 f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
@@ -280,9 +280,3 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad2')
-
-
-
-
-
-
