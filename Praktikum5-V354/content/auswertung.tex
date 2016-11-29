@@ -1,6 +1,6 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-In der Auswertung wurden die Graphen in den Abbildungen  bis  mit Matplotlib \cite{matplotlib} und NumPy \cite{numpy} angefertigt.\\
+In der Auswertung wurden die Graphen mit Matplotlib \cite{matplotlib} und NumPy \cite{numpy} angefertigt.\\
 
 
 Folgende Werte waren geben und somit bereits vor der Messung bekannt:
@@ -40,6 +40,17 @@ und mit der Formel (10):
 Der Vergleich mit $R_1$ ergibt, dass $R_{eff}$ $\SI{62.8(19)}{\ohm}$ größer ist als $R_1$. Dies wird vermutlich durch dem Innerwiderstand $R_i$ der Spannungsquelle verursacht.
 
 \subsection{Bestimmung von Rap}
+Beobachtet wurde der aperiodische Grenzfall bei
+\begin{displaymath}
+R_{ap} = \SI{272}{\ohm}\text{.}
+\end{displaymath}
+Mit den gegebenen Werten $L$ und $C$ errechnet sich jedoch mit Formel (2):
+\begin{displaymath}
+R_{ap} = \SI{5700(17)}{\ohm}\text{.}
+\end{displaymath}
+Die Abweichung zum errechnetem Wert liegt somit bei $\SI{5428(17)}{\ohm}$. 
+Diese starke Abweichung zwischen dem errechneten und gemessenen Wert muss in der Diskussion geklärt werden.
+
 
 \subsection{Bestimmung von q und Resonanzbreite}
 \begin{figure}[H]
@@ -63,6 +74,7 @@ Mit den gegebenen Werten $R_2$, $C$ und $L$ ergibt sich mit Formel (16):
 \begin{displaymath}
 q = \num{4.179(14)}\text{.}
 \end{displaymath}
+Es lässt sich also eine systematische Abweichung  nach unten feststellen.
 
 
 \begin{figure}[H]
@@ -78,8 +90,9 @@ f_\text{+} - f_\text{-} = \SI{6.82(6)e3}{\per\second}\text{.}
 \end{displaymath}
 Mit den gegebenen Werten für $L$, $R_2$ und $C$ ergibt sich:
 \begin{displaymath}
-f_+ - f_- = \SI{6.82(6)e3}{\per\second}\text{.}
+f_+ - f_- = \SI{6.66(4)e3}{\per\second}\text{.}
 \end{displaymath}
+Auch hier ist eine systematische Abweichung zwischen den aus den gegeben Werten und aus den gemessenen Werten errechneten Werten erkennbar.
 
 
 \subsection{Phasenverschiebung}
@@ -119,10 +132,11 @@ Mit den gegebenen Werten für $R_2$, $L$ und $C$ ergibt sich:
 f_{res} = \SI{2664(8)e4}{\per\second}
 \end{displaymath}
 \begin{displaymath}
-f_1 = \SI{29938(29)}{\per\second}
+f_1 = \SI{3.046(10)e4}{\per\second}
 \end{displaymath}
 \begin{displaymath}
-f_2 = \SI{23334(21)}{\per\second}\text{.}
+f_2 = \SI{2.399(7)e4}{\per\second}\text{.}
 \end{displaymath}
+Es ist wieder eine systematsche Abweichung zwischen den aus den gegeben Werten und aus den gemessenen Werten errechneten Werten erkennbar.
 
 
