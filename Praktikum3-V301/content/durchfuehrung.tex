@@ -1,8 +1,7 @@
 \section{Durchführung}
 \label{sec:Durchführung}
 
-\renewcommand{\labelenumi}{\alph{enumi})}
-\begin{enumerate}
+
 
 
 \begin{figure}[H]
@@ -11,7 +10,7 @@
     \begin{subfigure}{0.48\textwidth}
       \centering
       \includegraphics[width=\linewidth-60pt,height=\textheight-60pt,keepaspectratio]{content/Spannungsquelle2.png}
-      \caption{\footnotesize Messungaufbau zur $U_0$ und $R_i$-Bestimmung}
+      \caption{\footnotesize Messungaufbau zur $U_0$ und $R_i$-Bestimmung [1]}
       \label{fig:Spannung2}
     \end{subfigure}
     \begin{subfigure}{0.48\textwidth}
@@ -23,24 +22,27 @@
   \end{figure}
 
 
-    \item Es wird die Leerlauflaufspannung einer Monozelle mit einem Spannungsmesser ermittelt.
-    Es wird der Eingangswiderstand des Voltmeters notiert.
+    Zunächst wird die Leerlauflaufspannung einer Monozelle ermittelt. Hierfür
+     wird die Monozelle direkt and den Voltmeter Ein- bzw. Ausgang eines
+      Multimeters angeschlossen. Aufgrund des hohen Innenwiderstandes des Voltmeters
+       lässt sich die Leerlaufspannung durch die Klemmenspannung nähern. Zur besseren
+        Untersuchung wird auch der Innenwiderstand des Voltmeters notiert.
 
-    \item Es wird die Klemmenspannung $U_k$ in Abhängigkeit des Belastungsstroms I mithilfe
-    der Schaltung aus Abb. 2 (a) gemessen.
-    Hierzu wird der Belastungswiderstand $R_a$ im Bereich von $ 0-50\text{ }\Omega$ variiert.
-
-    \item Es wird eine Gegenspannung wie in Abb. 2 (b) an die Monozelle angelegt, welche ca. $2$ V
-    größer als $U_0$ ist. Der Strom fließt nun in umgekehrter Richtung und es gilt:
-    \begin{equation}
-	    U_k = U_0 + IR_i
-    \end{equation}
-    Es wird wiederum $U_k$ in Abhängigkeit von $I$ gemessen.
-
-    \item Es soll die Messreihe aus b) nochmals mit dem Sinus bzw. dem
-    Rechteckausgang eines RC-Generators durchgeführt werden. Für den Variationsbereich
-    von $R_a$ soll gelten:\\
-    $1$ V-Sinusausgang: $R_a \in [0,1 - 5 $ k$\Omega]$\\
-    $1$ V-Rechteckausgang: $R_a \in [20 -250\text{ }\Omega]$\\
-    Es ist zu beachten das die Messgeräte nur für einen engen Frequenzbereich geeicht sind.
-\end{enumerate}
+Im Anschluss wird die Klemmenspannung $U_k$ in Abhängigkeit des Belastungsstromes I gemessen.
+ Hierzu wird die Schaltung nach Abb. 2(a) verwendet. Volt und Amperemeter werden wieder durch
+  durch die jeweiligen Modi zweier Multimeter realisiert. Um den Belastungsstrom
+   zu ändern, wird ein einstellbarer Widerstand $R_a$ eingesetzt, welcher im bereich von
+    $0-\SI{50}{\ohm}$ variiert wird. Das gleiche Verfahren wird nochmals mit dem Sinus- bzw.
+    dem Rechteckausgang eines RC-generators durchgeführt. Für die Variationsbereiche
+     der dort eingesetzten Widerstände gilt:
+     $\SI{1}{V}$-Sinusausgang: $R_a \in [0,1 -\SI{5}{\kilo\ohm}]$\\
+     $\SI{1}{V}$-Rechteckausgang: $R_a \in [20 -\SI{250}{\ohm}]$\\
+     
+Es ist zu beachten, dass die Multimeter nur für einen engen Frequenzbereich des
+ Wechselstromes geeicht sind. Zuletzt wird das voherige Verfahren an einer Monozelle
+  unter Anschluss einer Gegenspannung betrachtet. Hierzu wird eine Gegenspannung
+   wie in Abb.(b) in den Stromkreis eingeschlossen, welche ca $\SI{2}{V}$ größer als
+   $U_0$ ist. Der Strom fließt nun in umgekehrter Richtung, wodurch gilt:
+   \begin{equation}
+     U_k = U_0 + IR_i
+     \end{equation}
