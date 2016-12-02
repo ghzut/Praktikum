@@ -1,7 +1,7 @@
 all: python tex
 
-python: *w.py matplotlibrc header-matplotlib.tex | build
-	TEXINPUTS="$$(pwd):" python *w.py
+python: scripts/*w.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS="$$(pwd):" python scripts/*w.py
 
 tex: build/*w.pdf
 
