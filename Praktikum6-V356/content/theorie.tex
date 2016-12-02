@@ -3,12 +3,15 @@
 \label{sec:Theorie}
 
 %Abb.1
-Eine LC-Kette beschreibt eine Verkettung von n in Reihe geschalteten LC-Gliedern. Jeder dieser Glieder hat die
- Eigenschaften eines Tiefpasses, welcher Wechselspannungen mit geringen Frequenzen passieren lässt, hochfrequente jedoch verschwinden. Zum anderen kann die LC-Kette auch als System gekoppelter Schwingungssysteme betrachtet werden, welches viele Eigenschwingungen besitzt.
+Eine LC-Kette beschreibt eine Verkettung von n in Reihe geschalteten LC-Gliedern.
+ Jeder dieser Glieder hat die Eigenschaften eines Tiefpasses, welcher
+  Wechselspannungen mit geringen Frequenzen passieren lässt, hochfrequente jedoch
+   verschwinden. Zum anderen kann die LC-Kette auch als System gekoppelter
+    Schwingungssysteme betrachtet werden, welches viele Eigenschwingungen besitzt.
 
 
 \subsection{Die stationäre LC-Kette}
-1. Fall :Die einfache LC-Kette
+1. Fall :Die einfache $LC$-Kette
 
 %abb. 2
 Aus den kirchhoffschen Regeln folgt die BewegungsDGL:
@@ -17,6 +20,29 @@ Aus den kirchhoffschen Regeln folgt die BewegungsDGL:
 \end{equation}
 Mit einem komplexen E-Ansatz erhält man:
 \begin{equation}
-\omega ^2 = \frac{2}{LC}(1-cos\theta)
-\end{equation} 
-Dieser Ausruck wird als Dispersionsrelation beschrieben und stellt die Abhängigkeit
+\omega ^2 = \frac{1}{2LC\pi^2}(1-cos\theta)
+\end{equation}
+Dieser Ausruck wird als Dispersionsrelation beschrieben und stellt die Änderung
+ der Phase pro Kettenglied in Abhängigkeit der Frequenz dar. Anhand der Formel lässt sich erkennen,
+  dass der Frequenzbereich indem Schwingungen auftreten begrenzt ist. Für Frequenzen >
+ $\frac{1}{\sqrt{2LC\pi^2}}$ bilden sich daher keine Schwingungen aus.\\\\
+
+ 2. Fall: Die $C_1C_2$-Kette:
+ %Abb 4
+ Aus den kirchhoffschen Regeln folgen die BewegungsDGLn:
+ \begin{equation}
+   -\omega^2 C_1 U_{2n+1} + \frac{1}{L} \left( -U_{2n} + 2U_{2n+1} - U_{2n+2} \right) = 0
+ \end{equation}
+ und
+ \begin{equation}
+   -\omega^2 C_2 U_{2n} + \frac{1}{L} \left( -U_{2n-1} + 2U_{2n+1} - U_{2n+1} \right) = 0
+ \end{equation}
+
+Es folgt für die auftretende Dispersion:
+\begin{equation}
+  f_{1/2}^2 = \frac{1}{4\pi^2L}\left(\frac{1}{C_1}+\frac{1}{C_2}\right) \pm \frac{1}{4\pi^2L}\sqrt{\left(\frac{1}{C_1}+\frac{1}{C_2} \right)^2 - \frac{4 sin^2\theta}{C_1C_2}}
+\end{equation}
+Es zeigt sich, dass die $C_1C_2$-Kette aufgrund der positiven und negativen Versionen der Wurzel
+zwei Frequenzbereiche besitzt in denen Schwingungen auftreten. Die Verläufe der Unteren und Oberen
+ Grenzfrequenz werden akustischer bzw. optischer Ast genannt. Nähert man den Verlauf mit $sin \theta \approx \theta$ erhält man eine Kurvenverlauf, welcher dann ca so aussieht.
+%Biild einfügen zwei Äaste
