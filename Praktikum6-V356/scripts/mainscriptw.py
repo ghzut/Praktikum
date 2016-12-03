@@ -78,7 +78,7 @@ f2 = np.genfromtxt('scripts/datenbC1C2', unpack = True)
 N = 16;
 theta1 = []
 for n in range(len(f1)):
-	theta1.append(np.pi*n/N)
+	theta1.append(np.pi*(n+1)/N)
 theta1 = np.array(theta1)
 print(theta1)
 
