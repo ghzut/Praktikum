@@ -80,7 +80,7 @@ theta1 = []
 for n in range(len(f1)):
 	theta1.append(np.pi*(n+1)/N)
 theta1 = np.array(theta1)
-print(theta1)
+#print(theta1)
 
 f3 = f2[8:]
 f2 = f2[0:8]
@@ -89,13 +89,13 @@ theta2 = []
 for n in range(len(f2)):
 	theta2.append(np.pi*n/(N))
 theta2 = np.array(theta2)
-print(theta2)
+#print(theta2)
 N = 16;
 theta3 = []
 for n in range(len(f3)):
 	theta3.append(np.pi*(len(f3)+3-n)/(N))
 theta3 = np.array(theta3)
-print(theta3)
+#print(theta3)
 
 
 
@@ -130,9 +130,11 @@ plt.savefig('build/'+'grab2')
 
 
 #cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+print('c)')
 
 def vph(omega, L, C):
 	return omega / np.arccos(1 - 1/2 * omega**2 * L * C)
+
 
 
 namex, namey = [r'$\omega/\si{\per\second}$', r'$v_{ph}/\si{\meter\per\second}$']
@@ -140,13 +142,21 @@ t = np.linspace(0, 2/(np.sqrt(L*C1)), 100000)
 t = t[1:-1]
 plt.cla()
 plt.clf()
-#plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
-plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.plot(f1, f1*(2*np.pi)/theta1, 'rx', label='Daten')
+plt.plot(t/(2*np.pi), vph(t, L, C1), 'b-', label='Theorie')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
+n = 0
+for f in f1:
+	if n == 0:
+		print('Grundschwingung bei: ', f, ' Hz', sep='')
+	else:
+		print(n, '-te Oberschwingung bei: ', f, ' Hz' , sep='')
+	n = n+1
+	
 
 
 #ddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -154,18 +164,47 @@ def sinus(x, A, w, psi):
 	return A*np.sin(w*x+psi)
 
 
+U1, U2, U3 = np.genfromtxt('scripts/datend', unpack = True)
+x = []
+for n in range(len(U1)):
+	x.append(n)
+x = np.array(x)
 
 namex, namey = [r'$kp$', r'$A/\si{\volt}$']
 t = np.linspace(1, 16, 100000)
 plt.cla()
 plt.clf()
-#plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
+plt.plot(x, U1, 'rx', label='Daten')
 #plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
-#plt.xlabel(namex)
-#plt.ylabel(namey)
-#plt.legend(loc='best')
-#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-#plt.savefig('build/'+'grad')
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad1')
+
+namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+t = np.linspace(1, 16, 100000)
+plt.cla()
+plt.clf()
+plt.plot(x, U2, 'rx', label='Daten')
+#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad2')
+
+namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+t = np.linspace(1, 16, 100000)
+plt.cla()
+plt.clf()
+plt.plot(x, U3, 'rx', label='Daten')
+#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad3')
 
 
 	
