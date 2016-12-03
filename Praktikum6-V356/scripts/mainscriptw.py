@@ -133,6 +133,25 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
 
 
+#ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+def sinus(x, A, w, psi):
+	return A*np.sin(w*x+psi)
+
+
+
+namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+t = np.linspace(1, 16, 100000)
+plt.cla()
+plt.clf()
+#plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
+plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grad')
+
+
 	
 
 
