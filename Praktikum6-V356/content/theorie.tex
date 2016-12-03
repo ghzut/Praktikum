@@ -15,7 +15,11 @@ Eine LC-Kette beschreibt eine Verkettung von n in Reihe geschalteten LC-Gliedern
  Jeder dieser Glieder hat die Eigenschaften eines Tiefpasses, welcher
   Wechselspannungen mit geringen Frequenzen passieren lässt, hochfrequente jedoch
    verschwinden. Eine unendliche LC-Kette kann zudem als Ersatzschaltplan einer
-    verlustfreien elektrischen Leitung angesehen werden.
+    verlustfreien elektrischen Leitung angesehen werden. Eine weitere Eigenschaft
+     liegt in der Existenz des Wellenwiderstandes:
+     \begin{equation}
+       Z(f) = \sqrt{\frac{L}{C}} \cdot \frac{1}{2\pi \sqrt{1-0,25\omega² LC}}
+     \end{equation}
 
 1. Fall :Die einfache $LC$-Kette
 
@@ -35,7 +39,6 @@ Dieser Ausruck wird als Dispersionsrelation beschrieben und stellt die Änderung
  $\frac{1}{\sqrt{2LC\pi^2}}$ bilden sich daher keine Schwingungen aus.\\\\
 
  2. Fall: Die $LC_1C_2$-Kette:
- %Abb 4
  Aus den kirchhoffschen Regeln folgen die BewegungsDGLn:
  \begin{equation}
    -\omega^2 C_1 U_{2n+1} + \frac{1}{L} \left( -U_{2n} + 2U_{2n+1} - U_{2n+2} \right) = 0
@@ -60,5 +63,14 @@ Liegt eine LC-Kette endlicher Länge vor, bzw wurden Anfangs und Endwiderstand
  nicht nach Formel () der Frequenz des Wechselsstromes ensprechend angepasst,
   kommt es zur Reflexion ankommender Wellen. Aus den kirchhoffschen Regeln folgt das Verhältnis:
   \begin{equation}
-    \frac{U}
+    \frac{U_ref}{Uein} = \frac{R-Z}{R+Z}\text{.}
   \end{equation}
+  Es folgen die Spezialfälle:\\
+  a) Die LC-Kette besitzt ein offens Ende, $R$ beträgt also $\infty$. An diesem
+   wird eine ankommende Welle vollständig und ohne Phasensprung reflektiert.\\
+
+  b) Die LC-Kette ist kurzgeschlossen, $R$ beträgt daher 0. An diesem Ende wird
+   eine ankommende Welle vollständig, jedoch mit einem Phasensprung von $\pi$ reflektiert.\\
+
+ c) Werden Anfangs und Endwiderstand auf den Wellenwiderstand der LC-Kette eingestellt, verhält
+  sich die endliche wie eine unendliche LC-Kette. Aus diesem Grund kommt es auch nicht zur Reflexion.
