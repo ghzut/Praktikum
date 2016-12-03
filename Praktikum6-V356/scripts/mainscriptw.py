@@ -49,9 +49,9 @@ import uncertainties.unumpy as unp
 
 
 #allesallesallesallesalles
-L = 1
-C1 = 1
-C2 = 1
+L = 1.75 *10**(-3)
+C1 = 22.0 *10**(-9)
+C2 = 9.39 *10**(-9)
 
 #aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 print('a)')
@@ -69,39 +69,43 @@ def w1(theta, L, C1, C2):
 	return np.sqrt(1/L * (1/C1 + 1/C2) + 1/L * np.sqrt((1/C1 + 1/C2)**2 - 4*np.sin(theta)**2 / (C1*C2)))
 
 def w(theta, L, C):
-	return np.sqrt(2/(L*C) * (1-np.cos(theta)))
+	return np.sqrt((2/(L*C)) * (1-np.cos(theta)))
 
 
-f1, f2 = np.genfromtxt('scripts/datenb', unpack = True)
-
-N = 16;
-omega1 = []
-for n in range(3):
-	omega1.append(np.pi*n/N)
-omega1 = np.array(omega1)
-print(omega1)
+f1 = np.genfromtxt('scripts/datenbC', unpack = True)
+f2 = np.genfromtxt('scripts/datenbC1C2', unpack = True)
 
 N = 16;
-omega2 = []
-for n in range(3):
-	omega2.append(np.pi*n/(N))
-omega2 = np.array(omega2)
-print(omega2)
+theta1 = []
+for n in range(len(f1)):
+	theta1.append(np.pi*n/N)
+theta1 = np.array(theta1)
+print(theta1)
+
+N = 16;
+theta2 = []
+for n in range(8):
+	theta2.append(np.pi*n/(N))
+theta2 = np.array(theta2)
+print(theta2)
+f2 = f2[0:8]
 
 namex, namey = [r'$\theta$', r'$\omega/\si{\per\second}$']
 t = np.linspace(0, np.pi/2, 100000)
 plt.cla()
 plt.clf()
-plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
-plt.plot(t, w(t, L, 2*C1), 'b-', label='Theorie')
+plt.plot(theta1, f1/(2*np.pi), 'rx', label='Daten')
+plt.plot(t, w(t, L, C1), 'b-', label='Theorie')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab1')
+
+
 plt.cla()
 plt.clf()
-plt.plot(omega2, f2/(2*np.pi), 'rx', label='Daten')
+plt.plot(theta2, f2/(2*np.pi), 'rx', label='Daten')
 plt.plot(t, w2(t, L, C1, C2), 'b-', label='Theorie')
 plt.plot(t, w1(t, L, C1, C2), 'b-', label='Theorie')
 plt.xlabel(namex)
@@ -144,12 +148,12 @@ t = np.linspace(1, 16, 100000)
 plt.cla()
 plt.clf()
 #plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
-plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
-plt.xlabel(namex)
-plt.ylabel(namey)
-plt.legend(loc='best')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'grad')
+#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+#plt.xlabel(namex)
+#plt.ylabel(namey)
+#plt.legend(loc='best')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+#plt.savefig('build/'+'grad')
 
 
 	
