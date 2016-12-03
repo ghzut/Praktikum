@@ -82,20 +82,30 @@ for n in range(len(f1)):
 theta1 = np.array(theta1)
 print(theta1)
 
+f3 = f2[8:]
+f2 = f2[0:8]
 N = 16;
 theta2 = []
-for n in range(8):
+for n in range(len(f2)):
 	theta2.append(np.pi*n/(N))
 theta2 = np.array(theta2)
 print(theta2)
-f2 = f2[0:8]
+N = 16;
+theta3 = []
+for n in range(len(f3)):
+	theta3.append(np.pi*(len(f3)+3-n)/(N))
+theta3 = np.array(theta3)
+print(theta3)
+
+
 
 namex, namey = [r'$\theta$', r'$\omega/\si{\per\second}$']
-t = np.linspace(0, np.pi/2, 100000)
+t = np.linspace(0, 2*np.pi, 100000)
 plt.cla()
 plt.clf()
 plt.plot(theta1, f1*(2*np.pi), 'rx', label='Daten')
 plt.plot(t, w(t, L, C1), 'b-', label='Theorie')
+plt.xlim(0, theta1[-1]+theta1[-1]*0.02)
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
@@ -106,8 +116,10 @@ plt.savefig('build/'+'grab1')
 plt.cla()
 plt.clf()
 plt.plot(theta2, f2*(2*np.pi), 'rx', label='Daten')
+plt.plot(theta3, f3*(2*np.pi), 'rx')
 plt.plot(t, w2(t, L, C1, C2), 'b-', label='Theorie')
-plt.plot(t, w1(t, L, C1, C2), 'b-', label='Theorie')
+plt.plot(t, w1(t, L, C1, C2), 'b-')
+plt.xlim(0, theta2[-1]+theta2[-1]*0.02)
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
