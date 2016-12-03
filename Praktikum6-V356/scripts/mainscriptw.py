@@ -160,8 +160,8 @@ for f in f1:
 
 
 #ddddddddddddddddddddddddddddddddddddddddddddddddddddd
-def sinus(x, A, w, psi):
-	return A*np.sin(w*x+psi)
+def cosinusbetrag(x, A, w):
+	return A*np.sqrt(np.cos(w*x)**2)
 
 
 U1, U2, U3 = np.genfromtxt('scripts/datend', unpack = True)
@@ -170,36 +170,43 @@ for n in range(len(U1)):
 	x.append(n)
 x = np.array(x)
 
+params, covar = curve_fit(cosinusbetrag, x, U1, p0=[16, np.pi/14])
+print(params, covar, sep='\n')
 namex, namey = [r'$kp$', r'$A/\si{\volt}$']
-t = np.linspace(1, 16, 100000)
+t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
 plt.plot(x, U1, 'rx', label='Daten')
-#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.plot(t, cosinusbetrag(t, *params), 'b-', label='Fit')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad1')
 
+params, covar = curve_fit(cosinusbetrag, x, U2, p0=[0.7, 1.5*np.pi/14])
+print(params, covar, sep='\n')
 namex, namey = [r'$kp$', r'$A/\si{\volt}$']
-t = np.linspace(1, 16, 100000)
+t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
 plt.plot(x, U2, 'rx', label='Daten')
-#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.plot(t, cosinusbetrag(t, *params), 'b-', label='Fit')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad2')
 
+def line(x, a, b):
+	return a*x + b
+
 namex, namey = [r'$kp$', r'$A/\si{\volt}$']
-t = np.linspace(1, 16, 100000)
+t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
 plt.plot(x, U3, 'rx', label='Daten')
-#plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.plot(t, line(t, 0, 24), 'b-', label='Fit')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
