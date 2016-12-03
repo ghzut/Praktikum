@@ -2,13 +2,26 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-%Abb.1
- Es  Zum anderen kann die LC-Kette auch als System gekoppelter
-    Schwingungssysteme betrachtet werden, welches viele Eigenschwingungen besitzt.
-     Desweiteren können Wellenpakete auf ihr übertragen werden.
+\subsection{Die allgemeinen Eigenschaften einer LC-Kette}
+Eine LC-Kette ist eine Verkettung von n in Reihe geschalteten LC-Gliedern.
+ Jedes dieser Glieder hat die Eigenschaften eines Tiefpasses und lässt
+  Wechselspannungen mit geringen Frequenzen passieren, während es hochfrequente jedoch
+   blockiert. Verfeinert man die Anzahl der Kettenglieder und lässt
+   deren Anzahl $\to \infty$ laufen, erhält man eine unendliche LC-Kette. Letztere
+    beschreibt ein Ersatzschaltbild einer elektrischen Leitung, im Fall der
+     LC-Kette einer verlustfreien Leitung. Es zeigt sich, dass eine unendliche
+      Kette einen spezifischen Gesamtwiderstand, den Wellenwiderstand $Z$, besitzt.
+      Dieser ist rein reell und nur von der Generatorfrequenz abhängig. Für ihn gilt:
+      \begin{equation}
+        Z(f) = \sqrt{\frac{L}{C}} \cdot \frac{1}{2\pi \sqrt{1-0,25\omega² LC}}
+      \end{equation}
+
+ Zum anderen kann die LC-Kette auch als System gekoppelter
+    Schwingungen betrachtet werden, welches eine Vielzahl von Eigenschwingungen besitzt.
+      Aufgrunddessen können Wellenpakete auf ihr übertragen werden.
      Da ein Wellenpaket aus einer Menge unterschiedlicher Einzelwellen besteht
-      und jede von diesen eine eigene Phasengeschwindigkeit besitzt, kommt es zu einer Verzerrung
-  der gestalt des Wellenpaketes. Diesen Effekt nennt man Dispersion.
+      und jede eine eigene Phasengeschwindigkeit besitzt, kommt es zu einer Verzerrung
+  der Gestalt des Wellenpaketes. Diesen Effekt nennt man Dispersion.
 
 
      \begin{figure}[H]
@@ -18,26 +31,19 @@
        \label{fig:LC-Kette}
      \end{figure}
 
-\subsection{Die stationäre LC-Kette}
-Eine LC-Kette beschreibt eine Verkettung von n in Reihe geschalteten LC-Gliedern.
- Jeder dieser Glieder hat die Eigenschaften eines Tiefpasses, welcher
-  Wechselspannungen mit geringen Frequenzen passieren lässt, hochfrequente jedoch
-   verschwinden. Eine unendliche LC-Kette kann zudem als Ersatzschaltplan einer
-    verlustfreien elektrischen Leitung angesehen werden. Eine weitere Eigenschaft
-     liegt in der Existenz des Wellenwiderstandes:
-     \begin{equation}
-       Z(f) = \sqrt{\frac{L}{C}} \cdot \frac{1}{2\pi \sqrt{1-0,25\omega² LC}}
-     \end{equation}
+\subsection{Die Eigenschaften einer unendlichen LC-Kette}
 
-1. Fall :Die einfache $LC$-Kette
 
+Im folgenden wird weiter auf die bereits gennanten Effekte eingegangen. Zunächst
+ wird die einfache $LC$-Kette thematisiert. Diese besitzt nur Kondensatoren der
+ gleichen Kapazität $C$.\\\\
 
 Aus den kirchhoffschen Regeln folgt die BewegungsDGL:
 \begin{equation}
 - \omega ^2 C U_n + \frac{1}{L} \left( -U_{n-1} + 2U_ n -U{n-1} \right) = 0
 \end{equation}
 
-Mit einem komplexen E-Ansatz erhält man:
+Mit einem komplexen E-Ansatz gelangt man zu:
 \begin{equation}
 \omega ^2 = \frac{1}{2LC\pi^2}(1-cos\theta)
 \end{equation}
@@ -46,7 +52,8 @@ Dieser Ausruck wird als Dispersionsrelation beschrieben und stellt die Änderung
   dass der Frequenzbereich indem Schwingungen auftreten begrenzt ist. Für Frequenzen >
  $\frac{1}{\sqrt{2LC\pi^2}}$ bilden sich daher keine Schwingungen aus.\\\\
 
- 2. Fall: Die $LC_1C_2$-Kette:
+ Nun wird die $LC_1C_2$-Kette näher betracht. Sie besitzt Kondensatoren mit zwei
+  verschiedenen Kapazitäten $C_1$ und $C_2$, welche im Wechsel verbaut sind.
  Aus den kirchhoffschen Regeln folgen die BewegungsDGLn:
  \begin{equation}
    -\omega^2 C_1 U_{2n+1} + \frac{1}{L} \left( -U_{2n} + 2U_{2n+1} - U_{2n+2} \right) = 0
@@ -60,9 +67,10 @@ Es folgt für die auftretende Dispersion:
 \begin{equation}
   f_{1/2}^2 = \frac{1}{4\pi^2L}\left(\frac{1}{C_1}+\frac{1}{C_2}\right) \pm \frac{1}{4\pi^2L}\sqrt{\left(\frac{1}{C_1}+\frac{1}{C_2} \right)^2 - \frac{4 sin^2\theta}{C_1C_2}}
 \end{equation}
-Es zeigt sich, dass die $C_1C_2$-Kette aufgrund der positiven und negativen Versionen der Wurzel
+Es zeigt sich, dass die $LC_1C_2$-Kette aufgrund der positiven und negativen Wurzel
 zwei Frequenzbereiche besitzt in denen Schwingungen auftreten. Die Verläufe der Unteren und Oberen
- Grenzfrequenz werden akustischer bzw. optischer Ast genannt. Nähert man den Verlauf mit $sin \theta \approx \theta$ erhält man eine Kurvenverlauf, welcher dann ca so aussieht.
+ Grenzfrequenz werden akustischer bzw. optischer Ast genannt. Nähert mit
+  $sin \theta \approx \theta$ erhält man eine Kurvenverlauf, welcher ca. so aussieht.
 
  \begin{figure}[H]
    \centering
@@ -73,18 +81,19 @@ zwei Frequenzbereiche besitzt in denen Schwingungen auftreten. Die Verläufe der
 
 
 \subsection{Die Eigenschaften einer endlichen LC-Kette}
-Liegt eine LC-Kette endlicher Länge vor, bzw wurden Anfangs und Endwiderstand
+Liegt eine LC-Kette endlicher Länge vor, bzw. wurden Anfangs und Endwiderstand
  nicht nach Formel () der Frequenz des Wechselsstromes ensprechend angepasst,
   kommt es zur Reflexion ankommender Wellen. Aus den kirchhoffschen Regeln folgt das Verhältnis:
   \begin{equation}
-    \frac{U_ref}{Uein} = \frac{R-Z}{R+Z}\text{.}
+    \frac{U_{ref}}{U_{ein}} = \frac{R-Z}{R+Z}\text{.}
   \end{equation}
   Es folgen die Spezialfälle:\\
+
   a) Die LC-Kette besitzt ein offens Ende, $R$ beträgt also $\infty$. An diesem
    wird eine ankommende Welle vollständig und ohne Phasensprung reflektiert.\\
 
   b) Die LC-Kette ist kurzgeschlossen, $R$ beträgt daher 0. An diesem Ende wird
-   eine ankommende Welle vollständig, jedoch mit einem Phasensprung von $\pi$ reflektiert.\\
+   eine ankommende Welle vollständig reflektiert, jedoch mit einem Phasensprung von $\pi$.\\
 
  c) Werden Anfangs und Endwiderstand auf den Wellenwiderstand der LC-Kette eingestellt, verhält
   sich die endliche wie eine unendliche LC-Kette. Aus diesem Grund kommt es auch nicht zur Reflexion.
