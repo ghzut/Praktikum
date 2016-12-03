@@ -94,7 +94,7 @@ namex, namey = [r'$\theta$', r'$\omega/\si{\per\second}$']
 t = np.linspace(0, np.pi/2, 100000)
 plt.cla()
 plt.clf()
-plt.plot(theta1, f1/(2*np.pi), 'rx', label='Daten')
+plt.plot(theta1, f1*(2*np.pi), 'rx', label='Daten')
 plt.plot(t, w(t, L, C1), 'b-', label='Theorie')
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -105,7 +105,7 @@ plt.savefig('build/'+'grab1')
 
 plt.cla()
 plt.clf()
-plt.plot(theta2, f2/(2*np.pi), 'rx', label='Daten')
+plt.plot(theta2, f2*(2*np.pi), 'rx', label='Daten')
 plt.plot(t, w2(t, L, C1, C2), 'b-', label='Theorie')
 plt.plot(t, w1(t, L, C1, C2), 'b-', label='Theorie')
 plt.xlabel(namex)
@@ -125,7 +125,7 @@ def vph(omega, L, C):
 
 namex, namey = [r'$\omega/\si{\per\second}$', r'$v_{ph}/\si{\meter\per\second}$']
 t = np.linspace(0, 2/(np.sqrt(L*C1)), 100000)
-t = t[1:]
+t = t[1:-1]
 plt.cla()
 plt.clf()
 #plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
