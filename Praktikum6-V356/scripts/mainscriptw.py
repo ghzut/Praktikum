@@ -73,20 +73,18 @@ def w(theta, L, C):
 
 
 f1, f2 = np.genfromtxt('scripts/datenb', unpack = True)
-n = 0;
+
 N = 16;
 omega1 = []
-for freq1 in f1:
+for n in range(3):
 	omega1.append(np.pi*n/N)
-	n = n + 1
 omega1 = np.array(omega1)
 print(omega1)
-n = 0;
+
 N = 16;
 omega2 = []
-for freq2 in f2:
+for n in range(3):
 	omega2.append(np.pi*n/(N))
-	n = n + 1
 omega2 = np.array(omega2)
 print(omega2)
 
@@ -113,6 +111,26 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab2')
 
 
+
+
+#cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+def vph(omega, L, C):
+	return omega / np.arccos(1 - 1/2 * omega**2 * L * C)
+
+
+namex, namey = [r'$\omega/\si{\per\second}$', r'$v_{ph}/\si{\meter\per\second}$']
+t = np.linspace(0, 2/(np.sqrt(L*C1)), 100000)
+t = t[1:]
+plt.cla()
+plt.clf()
+#plt.plot(omega1, f1/(2*np.pi), 'rx', label='Daten')
+plt.plot(t, vph(t, L, C1), 'b-', label='Theorie')
+plt.xlabel(namex)
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'grac')
 
 
 	
