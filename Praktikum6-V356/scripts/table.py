@@ -1,7 +1,7 @@
 import numpy as np
 
 def makeTable(data, names, name, filename, formats):
-    TableFile = open('../build/'+filename+'.tex', 'w+')
+    TableFile = open('build/'+filename+'.tex', 'w+')
     TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:

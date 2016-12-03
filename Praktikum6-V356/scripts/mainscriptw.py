@@ -126,6 +126,10 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab2')
 
+t = range(len(f1))
+makeTable([t, f1, theta1], [r'Nummer der Eigenschwingung', r'$f/\si{\per\second}$', r'$\theta$'], 'Messwerte zu Versuchsteil b) mit LC-Kette.', 'tabb1', ['1', '3.1', '3.1'])
+makeTable([np.append(f2, f3), np.append(theta2, theta3)], [r'$f/\si{\per\second}$', r'$\theta$'], 'Messwerte zu Versuchsteil b) mit LC_1C_2-Kette.', 'tabb2', ['3.1', '3.1'])
+
 
 
 
