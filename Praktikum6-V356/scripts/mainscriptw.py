@@ -168,7 +168,7 @@ plt.savefig('build/'+'grac')
 
 
  
-makeTable([t2, f1, np.around(theta1, decimals=2)], [r'Nummer der Eigenschwingung', r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil c) mit zugehöriger Phasenverschiebung $\theta$ bei verschiedenen Eigenschwingungen.', 'tabc', ['2', '5.1', '1.2'])
+makeTable([t2, f1, np.around(theta1, decimals=2)], [r'Nummer der Eigenschwingung', r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil c) mit zugehöriger Phasenverschiebung bei verschiedenen Eigenschwingungen.', 'tabc', ['2', '5.1', '1.2'])
 
 
 #ddddddddddddddddddddddddddddddddddddddddddddddddddddd
