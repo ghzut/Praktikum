@@ -58,6 +58,7 @@ print('a)')
 print('gf1 = ', np.sqrt(2/(L*C1))/(2*np.pi))
 print('gf2 = ', np.sqrt(2/(L*C2))/(2*np.pi))
 print('gf3 = ', np.sqrt(2*(C1+C2)/(L*C1*C2))/(2*np.pi))
+print('gf4 = ', np.sqrt(4/(L*C1))/(2*np.pi))
 
 
 #bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -128,8 +129,8 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab2')
 
 
-makeTable([f1, np.around(theta1, decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC$-Kette.', 'tabb1', ['5.1', '1.2'])
-makeTable([np.append(f2, f3), np.around(np.append(theta2, theta3), decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC_1C_2$-Kette.', 'tabb2', ['5.1', '1.2'])
+makeTable([f1, np.around(theta1, decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC$-Kette mit zugehöriger Phasenverschiebung.', 'tabb1', ['5.1', '1.2'])
+makeTable([np.append(f2, f3), np.around(np.append(theta2, theta3), decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC_1C_2$-Kette mit zugehöriger Phasenverschiebung.', 'tabb2', ['5.1', '1.2'])
 t2 = np.array(range(len(f1))) + 1
 
 
@@ -143,7 +144,7 @@ def vph(omega, L, C):
 
 f1 = np.genfromtxt('scripts/datencUnsere', unpack = True)
 t2 = np.append(t2[0:-3],t2[-2:])
-print(t2)
+#print(t2)
 theta1 = np.append(theta1[0:-3],theta1[-2:])
 
 namex, namey = [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$v_{ph}/\si[per-mode=reciprocal]{\meter\per\second}$']
