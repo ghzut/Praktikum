@@ -55,9 +55,10 @@ C2 = 9.39 *10**(-9)
 
 #aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 print('a)')
-print('gf1 = ', np.sqrt(2/(L*C1)))
-print('gf2 = ', np.sqrt(2/(L*C2)))
-print('gf3 = ', np.sqrt(2*(C1+C2)/(L*C1*C2)))
+print('gf1 = ', np.sqrt(2/(L*C1))/(2*np.pi))
+print('gf2 = ', np.sqrt(2/(L*C2))/(2*np.pi))
+print('gf3 = ', np.sqrt(2*(C1+C2)/(L*C1*C2))/(2*np.pi))
+
 
 #bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 print('b)')
@@ -99,12 +100,12 @@ theta3 = np.array(theta3)
 
 
 
-namex, namey = [r'$\theta$', r'$\omega/\si{\per\second}$']
+namex, namey = [r'$\theta$', r'$f/\si[per-mode=reciprocal]{\per\second}$']
 t = np.linspace(0, 2*np.pi, 100000)
 plt.cla()
 plt.clf()
-plt.plot(theta1, f1*(2*np.pi), 'rx', label='Daten')
-plt.plot(t, w(t, L, C1), 'b-', label='Theorie')
+plt.plot(theta1, f1, 'rx', label='Daten')
+plt.plot(t, w(t, L, C1)/(2*np.pi), 'b-', label='Theorie')
 plt.xlim(0, theta1[-1]+theta1[-1]*0.02)
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -115,10 +116,10 @@ plt.savefig('build/'+'grab1')
 
 plt.cla()
 plt.clf()
-plt.plot(theta2, f2*(2*np.pi), 'rx', label='Daten')
-plt.plot(theta3, f3*(2*np.pi), 'rx')
-plt.plot(t, w2(t, L, C1, C2), 'b-', label='Theorie')
-plt.plot(t, w1(t, L, C1, C2), 'b-')
+plt.plot(theta2, f2, 'rx', label='Daten')
+plt.plot(theta3, f3, 'rx')
+plt.plot(t, w2(t, L, C1, C2)/(2*np.pi), 'b-', label='Theorie')
+plt.plot(t, w1(t, L, C1, C2)/(2*np.pi), 'b-')
 plt.xlim(0, theta2[-1]+theta2[-1]*0.02)
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -126,10 +127,10 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab2')
 
-t = range(len(f1))
-makeTable([t, f1, theta1], [r'Nummer der Eigenschwingung', r'$f/\si{\per\second}$', r'$\theta$'], 'Messwerte zu Versuchsteil b) mit LC-Kette.', 'tabb1', ['1', '3.1', '3.1'])
-makeTable([np.append(f2, f3), np.append(theta2, theta3)], [r'$f/\si{\per\second}$', r'$\theta$'], 'Messwerte zu Versuchsteil b) mit LC_1C_2-Kette.', 'tabb2', ['3.1', '3.1'])
 
+makeTable([f1, np.around(theta1, decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC$-Kette.', 'tabb1', ['5.1', '1.2'])
+makeTable([np.append(f2, f3), np.around(np.append(theta2, theta3), decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC_1C_2$-Kette.', 'tabb2', ['5.1', '1.2'])
+t2 = np.array(range(len(f1))) + 1
 
 
 
@@ -140,8 +141,12 @@ def vph(omega, L, C):
 	return omega / np.arccos(1 - 1/2 * omega**2 * L * C)
 
 
+f1 = np.genfromtxt('scripts/datencUnsere', unpack = True)
+t2 = np.append(t2[0:-3],t2[-2:])
+print(t2)
+theta1 = np.append(theta1[0:-3],theta1[-2:])
 
-namex, namey = [r'$\omega/\si{\per\second}$', r'$v_{ph}/\si{\meter\per\second}$']
+namex, namey = [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$v_{ph}/\si[per-mode=reciprocal]{\meter\per\second}$']
 t = np.linspace(0, 2/(np.sqrt(L*C1)), 100000)
 t = t[1:-1]
 plt.cla()
@@ -153,14 +158,17 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
-n = 0
-for f in f1:
-	if n == 0:
-		print('Grundschwingung bei: ', f, ' Hz', sep='')
-	else:
-		print(n, '-te Oberschwingung bei: ', f, ' Hz' , sep='')
-	n = n+1
-	
+#n = 0
+#for f in f1:
+#	if n == 0:
+#		print('Grundschwingung bei: ', f, ' Hz', sep='')
+#	else:
+#		print(n, '-te Oberschwingung bei: ', f, ' Hz' , sep='')
+#	n = n+1
+
+
+ 
+makeTable([t2, f1, np.around(theta1, decimals=2)], [r'Nummer der Eigenschwingung', r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil c) mit zugehöriger Phasenverschiebung $\theta$ bei verschiedenen Eigenschwingungen.', 'tabc', ['2', '5.1', '1.2'])
 
 
 #ddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -176,7 +184,7 @@ x = np.array(x)
 
 params, covar = curve_fit(cosinusbetrag, x, U1, p0=[16, np.pi/14])
 print(params, covar, sep='\n')
-namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+namex, namey = [r'Gliednummer', r'$U_1/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
@@ -190,7 +198,7 @@ plt.savefig('build/'+'grad1')
 
 params, covar = curve_fit(cosinusbetrag, x, U2, p0=[0.7, 1.5*np.pi/14])
 print(params, covar, sep='\n')
-namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+namex, namey = [r'Gliednummer', r'$U_2/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
@@ -205,7 +213,7 @@ plt.savefig('build/'+'grad2')
 def line(x, a, b):
 	return a*x + b
 
-namex, namey = [r'$kp$', r'$A/\si{\volt}$']
+namex, namey = [r'Gliednummer', r'$U_3/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
@@ -216,6 +224,8 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad3')
+
+makeTable([x, U1, U2, U3], [r'Gliednummer', r'$U_{1}/\si{\milli\volt}$', r'$U_{2}/\si{\milli\volt}$', r'$U_{3}/\si{\milli\volt}$'], 'Messwerte zu Versuchsteil d) und e).', 'tabd', ['2', '2.1', '1.2', '2.1'])
 
 
 	
