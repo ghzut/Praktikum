@@ -52,6 +52,7 @@ import uncertainties.unumpy as unp
 L = 1.75 *10**(-3)
 C1 = 22.0 *10**(-9)
 C2 = 9.39 *10**(-9)
+#C2 = 10.00 *10**(-9) #geänderter theoretischer wert
 
 #aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 print('a)')
@@ -106,7 +107,7 @@ t = np.linspace(0, 2*np.pi, 100000)
 plt.cla()
 plt.clf()
 plt.plot(theta1, f1, 'rx', label='Daten')
-plt.plot(t, w(t, L, C1)/(2*np.pi), 'b-', label='Theorie')
+plt.plot(t, w(t, L, C1)/(2*np.pi), 'b-', label='Theoriekurve')
 plt.xlim(0, theta1[-1]+theta1[-1]*0.02)
 plt.xlabel(namex)
 plt.ylabel(namey)
@@ -119,7 +120,7 @@ plt.cla()
 plt.clf()
 plt.plot(theta2, f2, 'rx', label='Daten')
 plt.plot(theta3, f3, 'rx')
-plt.plot(t, w2(t, L, C1, C2)/(2*np.pi), 'b-', label='Theorie')
+plt.plot(t, w2(t, L, C1, C2)/(2*np.pi), 'b-', label='Theoriekurve')
 plt.plot(t, w1(t, L, C1, C2)/(2*np.pi), 'b-')
 plt.xlim(0, theta2[-1]+theta2[-1]*0.02)
 plt.xlabel(namex)
@@ -153,7 +154,7 @@ t = t[1:-1]
 plt.cla()
 plt.clf()
 plt.plot(f1, f1*(2*np.pi)/theta1, 'rx', label='Daten')
-plt.plot(t/(2*np.pi), vph(t, L, C1), 'b-', label='Theorie')
+plt.plot(t/(2*np.pi), vph(t, L, C1), 'b-', label='Theoriekurve')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
@@ -169,12 +170,15 @@ plt.savefig('build/'+'grac')
 
 
  
-makeTable([t2, f1, np.around(theta1, decimals=2)], [r'Nummer der Eigenschwingung', r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil c) mit zugehöriger Phasenverschiebung bei verschiedenen Eigenschwingungen.', 'tabc', ['2', '5.1', '1.2'])
+makeTable([t2, f1, np.around(theta1, decimals=2)], [r'Eigenschwingungsnummer', r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil c) mit zugehöriger Phasenverschiebung bei verschiedenen Eigenschwingungen.', 'tabc', ['2', '5.1', '1.2'])
 
 
 #ddddddddddddddddddddddddddddddddddddddddddddddddddddd
-def cosinusbetrag(x, A, w):
-	return A*np.sqrt(np.cos(w*x)**2)
+def cosinusbetragG(x, A):
+	return A*np.sqrt(np.cos(np.pi/14 *x)**2)
+
+def cosinusbetragO(x, A):
+	return A*np.sqrt(np.cos(2*np.pi/14 *x)**2)
 
 
 U1, U2, U3 = np.genfromtxt('scripts/datend', unpack = True)
@@ -183,28 +187,28 @@ for n in range(len(U1)):
 	x.append(n)
 x = np.array(x)
 
-params, covar = curve_fit(cosinusbetrag, x, U1, p0=[16, np.pi/14])
+params, covar = curve_fit(cosinusbetragG, x, U1, p0=[16])
 print(params, covar, sep='\n')
 namex, namey = [r'Gliednummer', r'$U_1/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
 plt.plot(x, U1, 'rx', label='Daten')
-plt.plot(t, cosinusbetrag(t, *params), 'b-', label='Fit')
+plt.plot(t, cosinusbetragG(t, *params), 'b-', label='Fit')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad1')
 
-params, covar = curve_fit(cosinusbetrag, x, U2, p0=[0.7, 1.5*np.pi/14])
+params, covar = curve_fit(cosinusbetragO, x, U2, p0=[0.7])
 print(params, covar, sep='\n')
 namex, namey = [r'Gliednummer', r'$U_2/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
 plt.plot(x, U2, 'rx', label='Daten')
-plt.plot(t, cosinusbetrag(t, *params), 'b-', label='Fit')
+plt.plot(t, cosinusbetragO(t, *params), 'b-', label='Fit')
 plt.xlabel(namex)
 plt.ylabel(namey)
 plt.legend(loc='best')
