@@ -130,6 +130,13 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grab2')
 
 
+a = np.mean(((f2-w2(theta2, L, C1, C2)/(2*np.pi))[1:]/(w2(theta2, L, C1, C2)/(2*np.pi))[1:]))
+b = np.mean((f3-w1(theta3, L, C1, C2)/(2*np.pi))/(w1(theta3, L, C1, C2)/(2*np.pi)))
+print(a)
+print(b)
+print(np.mean([a,b,0]))
+
+
 makeTable([f1, np.around(theta1, decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC$-Kette mit zugehöriger Phasenverschiebung.', 'tabb1', ['5.1', '1.2'])
 makeTable([np.append(f2, f3), np.around(np.append(theta2, theta3), decimals=2)], [r'$f/\si[per-mode=reciprocal]{\per\second}$', r'$\theta$'], r'Messwerte zu Versuchsteil b) mit $LC_1C_2$-Kette mit zugehöriger Phasenverschiebung.', 'tabb2', ['5.1', '1.2'])
 t2 = np.array(range(len(f1))) + 1
