@@ -189,12 +189,13 @@ def cosinusbetragO(x, A):
 
 
 U1, U2, U3 = np.genfromtxt('scripts/datend', unpack = True)
+U1 = U1 / 10
 x = []
 for n in range(len(U1)):
 	x.append(n)
 x = np.array(x)
 
-params, covar = curve_fit(cosinusbetragG, x, U1, p0=[16])
+params, covar = curve_fit(cosinusbetragG, x, U1, p0=[1.6])
 print(params, covar, sep='\n')
 namex, namey = [r'Gliednummer', r'$U_1/\si{\volt}$']
 t = np.linspace(0, 14, 100000)
@@ -225,7 +226,7 @@ plt.savefig('build/'+'grad2')
 def line(x, a, b):
 	return a*x + b
 
-namex, namey = [r'Gliednummer', r'$U_3/\si{\volt}$']
+namex, namey = [r'Gliednummer', r'$U_3/\si{\milli\volt}$']
 t = np.linspace(0, 14, 100000)
 plt.cla()
 plt.clf()
@@ -237,7 +238,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grad3')
 
-makeTable([x, U1, U2, U3], [r'Gliednummer', r'$U_{1}/\si{\milli\volt}$', r'$U_{2}/\si{\milli\volt}$', r'$U_{3}/\si{\milli\volt}$'], 'Messwerte zu Versuchsteil d) und e).', 'tabd', ['2', '2.1', '1.2', '2.1'])
+makeTable([x, U1, U2, U3], [r'Gliednummer', r'$U_{1}/\si{\volt}$', r'$U_{2}/\si{\volt}$', r'$U_{3}/\si{\milli\volt}$'], 'Messwerte zu Versuchsteil d) und e).', 'tabd', ['2', '2.1', '1.2', '2.1'])
 
 
 	
