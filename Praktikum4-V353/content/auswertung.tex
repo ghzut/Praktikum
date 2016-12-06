@@ -5,16 +5,16 @@ In der Auswertung wurden die Graphen in den Abbildungen 3 bis 6 mit Matplotlib \
 \subsection{Bestimmung von RC mithilfe eines Entladevorgangs}
 \begin{figure}[H]
 	\centering
-	\caption{Die Kondensatorspannung $U_C$ aus Tabelle 1 im Verlauf einer Entladung}
+	\caption{Die Kondensatorspannung $U_C$ aus Tabelle 1 im Verlauf einer Entladung, sowie ihr Fit.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{graa.pdf}
 	\label{fig:graa}
 \end{figure}
 \input{../build/taba.tex}
 
-Mittels linearer Ausgleichsrechnung erhält man mit den Werten aus Tabelle 1:
+Mithilfe einer linearen Ausgleichsrechnung der Form  erhält man mit den Werten aus Tabelle 1:
 \begin{displaymath}
 \tau = \SI{1.18 \pm 0.02}{\milli\second}
-%1,18 \text{ ms } \pm 0,02 \text{ ms.} 
+%1,18 \text{ ms } \pm 0,02 \text{ ms.}
 \end{displaymath}
 \subsection{Bestimmung von RC mithilfe der Amplitudenfrequenzabhängigkeit}
 \begin{figure}[H]
@@ -53,7 +53,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 \tau = \SI{1.38 \pm 0.18}{\milli\second}\text{.}
 	 %\tau = 1,38  \text{ ms } \pm 0,18 \text{ ms.}
 	 \end{displaymath}
-	 
+
 
 	 \subsection{Die RC-Kreis Relativamplitude in Abhängigkeit von der Phase}
 
@@ -65,9 +65,9 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 \end{figure}
 	 \input{../build/tabd.tex}
 	 In diesem Polarkoordinantensystem werden die Werte aus Tabelle 4 eingetragen. Der Winkel $\varphi$ ergibt sich aus den Werten für $\Delta t$ durch die Formel (12) und die Relativamplitude ist $\frac{A}{U_{0}}$, wobei das in b) berechnete $U_{0}$ verwendet wurde. Die hohe systematische Abweichung muss in der Diskussion geklärt werden.
-	 
-	 
-	 
+
+
+
 	 \subsection{Der RC-Kreis als Integrator}
 	 \begin{figure}[H]
 	 	\centering
@@ -75,9 +75,9 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/MAP002.png}
 	 	\label{fig:Sinus}
 	 \end{figure}
-	 In Abbildung 7 ist zu erkennen, dass die Spannung am Kondensator (blau) im Vergleich zur Spannung an der Spannungsquelle (gelb) um $\frac{\pi}{2}$ verschoben ist, was einer Integration der Sinus-Spannung an der Spannungsquelle mit einem Skalierungsfaktor entspricht. 
-	 
-	 
+	 In Abbildung 7 ist zu erkennen, dass die Spannung am Kondensator (blau) im Vergleich zur Spannung an der Spannungsquelle (gelb) um $\frac{\pi}{2}$ verschoben ist, was einer Integration der Sinus-Spannung an der Spannungsquelle mit einem Skalierungsfaktor entspricht.
+
+
 	 \begin{figure}[H]
 	 	\centering
 	 	\caption{Der zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Dreieckspanung}
@@ -85,7 +85,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\label{fig:Dreieck}
 	 \end{figure}
 	 Auch bei Dreieckspannung an der Spannungsquelle (gelb) in Abbildung 8 lässt sich erkennen das die Spannung am Kondensator (blau) das Integral der Dreieckspannung ist, da die Kondensatorspannung sich wie bei einer Integration erwartet quardratisch verhält.
-	 
+
 	 \begin{figure}[H]
 	 	\centering
 	 	\caption{Der zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Rechteckspannung}
@@ -93,6 +93,5 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\label{fig:Rechteck}
 	 \end{figure}
 	 In Abbildung 9 beschreibt die Spannung an der Spannungsquelle eine Rechteckfunktion (gelb). Offensichtlich ist diese ein konstantes Vielfaches der Steigung der Kondensatorspannung (blau).\\
-	 
+
 	 Diese Beobachtungen bestätigen die Vermutung, dass der RC-Kreis auch als Integrator genutzt werden kann.
-	 

@@ -1,14 +1,14 @@
 \section{Theorie}
 \label{sec:Theorie}
 \subsection{Die allgemeine Relaxationsgleichung}
-Unter einer Relaxationserscheinung versteht man allgemein das Phänomen, wenn
+Unter einer Relaxationserscheinung wird allgemein das Phänomen verstanden, dass
  ein System aus seinem Ausgangszustand entfernt wird und es sich nicht oszillatorisch
  in diesen zurückbewegt. Die Änderungsrate der betrachteten Größe A verläuft dabei
  in der Regel proportional zur bis zum Ausgangszustand verbleibenden Entfernung. Daher
   verläuft die Näherung auch nur asymptotisch. Für diese
  Bewegung gilt dann:
  \begin{equation}
-   \frac{dA}{dt} = c[A(t)-A(\infty)]\text{.}
+   \frac{\text{d}A}{\text{d}t} = c[A(t)-A(\infty)]\text{.}
  \end{equation}
 Womit man zur allgemeinen Bewegungsgleichung des Systems gelangt:
 \begin{equation}
@@ -22,11 +22,13 @@ Für das RC-Glied in Abb. 1 gilt nach den Kirchhoffschen Regeln:
 \begin{equation}
   \frac{dQ}{dt} = -\frac{1}{RC}Q(t)\text{.}
 \end{equation}
-Die Gleichung zeigt sich dasselbe Muster wie der allgemeine Fall.
+Hierbei bezeichnet $Q$ die auf dem Kondensator liegende
+ Ladung, $R$ die Größe des Widerstandes und $C$ die Kapazität des Kondensators.
+Die Gleichung zeigt dasselbe Muster wie der allgemeine Fall.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/RC_Kreis1.png}
-  \caption{RC-Kreis \cite{V353}}
+  \caption{Schaltskizze eines RC-Kreises \cite{V353}.}
   \label{fig:RC_Kreis1}
 \end{figure}
 
@@ -45,20 +47,21 @@ RC wird als Zeitkonstante des Relaxationsvorgangs bezeichnet und in der Regel mi
 
  \subsection{Relaxationsphänomene aufgrund einer periodischen Auslenkung aus der Gleichgewichtslage}
 
- Solange für die Frequenz der antreibenden Wechselspannung $ f_{Antrieb} \ll \frac{1}{RC} $ gilt, lässt sich
- $U_C(t)$ für jeden Zeitpunkt t mit U(t) gleichsetzen. Bei höheren Antriebsfrequenzen
+ Solange für die Frequenz der antreibenden Wechselspannung $ f_{\text{Antrieb}} \ll \frac{1}{RC} $ gilt, lässt sich die Kondensatorspannung
+ $U_C(t)$ für jeden Zeitpunkt $t$ mit der antreibenden Spannung $U(t)$, im folgenden mit $U_{\text{Antrieb}}$ bezeichnet, gleichsetzen. Bei höheren Antriebsfrequenzen
  kann sich der Kondensator jedoch nichtmehr vollständig über den Widerstand
   auf- bzw. entladen und bleibt hinter dem Verlauf der Generatorspannung zurück.
-  Es stellt sich also eine Phasenverschiebung zwischen $U_C$ und $U_{Antrieb}$ ein.
+  Es stellt sich also eine Phasenverschiebung $\varphi$ zwischen $U_C$ und $U_{\text{Antrieb}}$ ein.
 
 \begin{figure}[H]
   \centering
 
   \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/RC_Kreis2.png}
-  \caption{periodisch angetriebener RC-Kreis \cite{V353}}
+  \caption{periodisch angetriebener RC-Kreis \cite{V353}.}
   \label{fig:RC_Kreis2}
 \end{figure}
 
+Das in Abb. 2 auftretende $\omega$ bezeichnet die Winkelgeschwindigkeit der Wechselspannungsquelle.
   Mit dem Ansatz
   \begin{equation}
   U_C(t) = A(\omega)cos(\omega t+\varphi(\omega))\text{.}
@@ -68,24 +71,24 @@ RC wird als Zeitkonstante des Relaxationsvorgangs bezeichnet und in der Regel mi
     A(\omega) = \frac{U_0}{\sqrt{1+\omega^2R^2C^2}}
   \end{equation}
   \begin{equation}
-    \varphi(\omega) = arctan(-RC \cdot \omega)\text{.}
+    \varphi(\omega) = \arctan(-RC \cdot \omega)\text{.}
   \end{equation}
 
-Es lässt sich erkennen das die Amplitude für $\omega \to 0$ gegen $U_0$ läuft, für
+Es lässt sich erkennen das die Amplitude für $\omega \to 0$ gegen die Amplitude der Spannung an der Spannungsquelle $U_0$ läuft, für
 $\omega \to \infty$ verschwindet. Aufgrund dieser Eigenschaft findet das RC-Glied als
- Tiefpass Verwendung, da Wechselspannungen mit Frequenzen $f_{Antrieb} \gg \frac{1}{RC}$
+ Tiefpass Verwendung, da Wechselspannungen mit Frequenzen $f_{\text{Antrieb}} \ll \frac{1}{RC}$
   unghindert passieren können, hochfrequente jedoch immer weiter abgeschwächt werden.
-  Der einzige Nachteil für Anwendungen besteht darin, dass die Schwächung nur eine $\frac{1}{\omega}$ Abhängigkeit besizt und damit oft zu flach verläuft.
+  Nachteil für Anwendungen besteht darin, dass die Schwächung nur eine $\frac{1}{\omega}$ Abhängigkeit besizt und damit oft zu flach verläuft.
 
 \subsection{Der RC-Kreis als Integrator}
 
 Ein RC-Kreis bietet auch die Möglichkeit, eine zeitlich veränderliche Spannung U(t), die
-wie in Abb. 2 angeschlossen ist, zu integrieren. Es folgt aus den kirchhoffschen Gesetzen:
+wie in Abb. 2 angeschlossen ist, zu integrieren. Dazu wird zusätzlich die am Widerstand anliegende Spannung $U_R$ betrachtet. Es folgt aus den kirchhoffschen Gesetzen:
 \begin{equation}
-  U(t) = \frac{dU_C}{dt}\cdot RC+U_C(t)\text{.}
+  U(t) = \frac{\text{d}U_C}{\text{d}t}\cdot RC+U_C(t)\text{.}
 \end{equation}
 Wird eine Frequenz mit $f_{Antrieb} \gg \frac{1}{RC}$ gewählt und sind
-$|U_C| \ll |U_R|$ sowie $|U_C| \ll |U_{Antrieb}|$ erfüllt, kann der zusätzliche Term "$+ U_C(t)$"
+$|U_C| \ll |U_R|$ sowie $|U_C| \ll |U_{\text{Antrieb}}|$ erfüllt, kann der zusätzliche Term "$+ U_C(t)$"
  vernachlässigt werden. Hiermit folgt:
 \begin{equation}
 U_C(t) = \frac{1}{RC}\int_{0}^{t} U(t') \symup{d}t'\text{.}
