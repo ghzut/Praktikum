@@ -11,27 +11,31 @@ In der Auswertung wurden die Graphen in den Abbildungen 3 bis 6 mit Matplotlib \
 \end{figure}
 \input{../build/taba.tex}
 
-Mithilfe einer linearen Ausgleichsrechnung der Form $y = mx+b$ erhält man mit den Werten aus Tabelle 1:
+Mit der Beziehung $U_C = \frac{Q}{C}$ und Formel (5) ergibt sich:
 \begin{displaymath}
-\tau = \SI{1.18 \pm 0.02}{\milli\second}
+ln(U_C) = -\frac{1}{RC}\cdot t + \ln U_0\text{.}
+\end{displaymath}
+Mithilfe einer linearen Ausgleichsrechnung der Form $y = mx+b$ ergibt sich mit den Wertepaaren ($\Delta t$, $\ln U_C$) aus Tabelle 1:
+\begin{displaymath}
+\tau = RC = -\frac{1}{m} = \SI{1.18 \pm 0.02}{\milli\second}\text{.}
 %1,18 \text{ ms } \pm 0,02 \text{ ms.}
 \end{displaymath}
 \subsection{Bestimmung von RC mithilfe der Amplitudenfrequenzabhängigkeit}
 \begin{figure}[H]
 	\centering
-	\caption{Amplituden aus Tabelle 2 in Frequenzabhängigkeit und der ermittelte Fit}
+	\caption{Amplituden aus Tabelle 2 in Frequenzabhängigkeit und der ermittelte Fit.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grab.pdf}
 	\label{fig:grab}
 \end{figure}
 \input{../build/tabb.tex}
-$U_0$ und $\tau$ wurden mit einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergeben sich aus den Daten der Tabelle 2:
+Es werden $U_0$ und $\tau$ mit einer nichtlinearen Ausgleichsrechnung der Form $y = \frac{a}{\sqrt{1+(2\pi \cdot b\cdot x)^2}}$ mittels SciPy \cite{scipy} bestimmt. Es ergeben sich aus den Daten der Tabelle 2 und Formel (7):
 \begin{displaymath}
-U_0 = \SI{18.44 \pm 0.23}{\volt}
+U_0 = a = \SI{18.44 \pm 0.23}{\volt}
 %U_0 = 18,44 \text{ V } \pm 0,23 \text{ V}
 \end{displaymath}
 und
 \begin{displaymath}
-\tau = \SI{1.17 \pm 0.02}{\milli\second}\text{.}
+\tau = RC = |b| = \SI{1.17 \pm 0.02}{\milli\second}\text{.}
 %\tau = 1,17  \text{ ms } \pm 0,02 \text{ ms.}
 \end{displaymath}
 
@@ -48,9 +52,9 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	 	\label{fig:grac}
 	 \end{figure}
 	 \input{../build/tabc.tex}
-	 $\tau$ wird mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 3 ohne Berücksichtigung der letzten 4 Werten, da bei hohen Frequenzen vermutlich Störeffekte auftreten:
+	 Es wird $\tau$ mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y = \arctan(-2\pi \cdot a \cdot x)$ mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 3 mit Formel (8) und der Beziehung $\varphi=2\pi \cdot \Delta t \cdot f_{\text{Antrieb}}$ ohne Berücksichtigung der letzten 4 Werten, da bei hohen Frequenzen vermutlich Störeffekte auftreten:
 	 \begin{displaymath}
-	 \tau = \SI{1.38 \pm 0.18}{\milli\second}\text{.}
+	 \tau = RC = a = \SI{1.38 \pm 0.18}{\milli\second}\text{.}
 	 %\tau = 1,38  \text{ ms } \pm 0,18 \text{ ms.}
 	 \end{displaymath}
 
@@ -64,14 +68,14 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 	  \label{fig:grad}
 	 \end{figure}
 	 \input{../build/tabd.tex}
-	 In diesem Polarkoordinantensystem werden die Werte aus Tabelle 4 eingetragen. Der Winkel $\varphi$ ergibt sich aus den Werten für $\Delta t$ durch die Formel (12) und die Relativamplitude ist $\frac{A}{U_{0}}$, wobei das in b) berechnete $U_{0}$ verwendet wurde. Die hohe systematische Abweichung muss in der Diskussion geklärt werden.
+	 In diesem Polarkoordinantensystem werden die Theoriekurve, die durch FORMEL gegeben ist und die Werte aus Tabelle 4 eingetragen. Der Winkel $\varphi$ ergibt sich aus den Werten für $\Delta t$ durch die Beziehung $\varphi=2\pi \cdot \Delta t \cdot f_{\text{Antrieb}}$ und die Relativamplitude ist $\frac{A}{U_{0}}$, wobei das in b) berechnete $U_{0}$ verwendet wurde. Die hohe systematische Abweichung muss in der Diskussion geklärt werden.
 
 
 
 	 \subsection{Der RC-Kreis als Integrator}
 	 \begin{figure}[H]
 	 	\centering
-	 	\caption{Der zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Sinusspannung}
+	 	\caption{Zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Sinusspannung.}
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/MAP002.png}
 	 	\label{fig:Sinus}
 	 \end{figure}
@@ -80,7 +84,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 
 	 \begin{figure}[H]
 	 	\centering
-	 	\caption{Der zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Dreieckspanung}
+	 	\caption{Zeitlicher Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Dreieckspanung.}
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/MAP003.png}
 	 	\label{fig:Dreieck}
 	 \end{figure}
@@ -88,7 +92,7 @@ Es lässt sich erkennen, das zwischen dem $\tau$, berechnet aus den Daten der
 
 	 \begin{figure}[H]
 	 	\centering
-	 	\caption{Der zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Rechteckspannung}
+	 	\caption{Zeitliche Verlauf von $U_0$ (gelb) und $U_C$ (blau) bei einer antreibenden Rechteckspannung.}
 	 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/MAP004.png}
 	 	\label{fig:Rechteck}
 	 \end{figure}
