@@ -125,6 +125,7 @@ print('tau = ', 1/gamma)
 print('Reff = ', gamma*2*L)
 print('Reff-R1 = ', gamma*2*L-R1)
 print('R gegeben = ', R1)
+print('Abweichung in Prozent = ', (gamma*2*L-R1)/R1 * 100)
 
 #bbbbbbbbbbbbbbbbbbbb
 print('b)')
@@ -133,6 +134,7 @@ Rap = unp.sqrt(4 * L / C)
 
 print('C = ', C, ', L = ', L, ', Rap = ', Rap)
 print('Rap gemessen = ', 272)
+print('Abweichung in Prozent = ', (Rap-272)/Rap * 100)
 
 #cccccccccccccccccccc
 def AcT(f, LCs, RC):
@@ -172,6 +174,7 @@ q = unp.sqrt(LC)/RC
 print('Güte q = ', q)
 qer = unp.sqrt(L*C)/(R2*C)
 print('Güte q errechnet = ', qer)
+print('Abweichung in Prozent = ', (qer-q)/qer * 100)
 
 
 
@@ -198,6 +201,7 @@ print('w+ errechnet = ', w2er)
 print('f- errechnet = ', w1er / (2*np.pi))
 print('f+ errechnet = ', w2er / (2*np.pi))
 print('Breite der Ressonanzkurve errechnet = ', (w2er - w1er) / (2*np.pi))
+print('Abweichung in Prozent = ',((w2 - w1) / (2*np.pi)-(w2er - w1er) / (2*np.pi))/((w2er - w1er) / (2*np.pi))*100)
 
 
 fplus = unp.nominal_values(w2)/(2*np.pi)
@@ -264,10 +268,13 @@ print('LC = ', LC)
 print('RC = ', RC)
 print('fres = ', unp.sqrt(1/(LC) - (RC**2)/(2*LC**2))/(2*np.pi) )
 print('fres errechnet = ', unp.sqrt(1/(L*C) - (R2**2)/(2*L**2))/(2*np.pi) )
+print('Abweichung in Prozent = ',(unp.sqrt(1/(L*C) - (R2**2)/(2*L**2))/(2*np.pi)-unp.sqrt(1/(LC) - (RC**2)/(2*LC**2))/(2*np.pi))/(unp.sqrt(1/(L*C) - (R2**2)/(2*L**2))/(2*np.pi))*100)
 print('f1 = ', (RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi) )
 print('f1 errechnet = ', (R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi) )
+print('Abweichung in Prozent = ', ((R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi)-(RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi))/((R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi))*100)
 print('f2 = ', (-RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi) )
 print('f2 errechnet = ', (-R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi) )
+print('Abweichung in Prozent = ', ( (-R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi)-(-RC/(2*LC) + unp.sqrt(RC**2/(2*LC)**2 + 1/LC))/(2*np.pi) )/( (-R2/(2*L) + unp.sqrt(R2**2/(2*L)**2 + 1/(L*C)))/(2*np.pi))*100)
 
 
 plt.cla()

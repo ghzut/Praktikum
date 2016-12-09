@@ -2,7 +2,31 @@
 \label{sec:Diskussion}
 Der Vergleich von dem ermittelten Wert für $R_{eff}$ mit $R_1$ ergibt, dass $R_{eff}$ $\SI{62.8(19)}{\ohm}$ größer ist als $R_1$. Dies wird vermutlich durch dem Innerwiderstand $R_i$ der Spannungsquelle verursacht.
 In allen Graphen lassen sich keine größen Abweichungen zwischen dem Fit bzw. der theoretischen Kurve und den eingetragenen Werten erkennen. Dies lässt sich auch in den Unsicherheiten auf die Parameter der Fits, die aus den Werten mittels nichtlinearer Ausgleichsrechnung bestimmt wurden erkennen. Diese liegt immer unter $\SI{1.5}{\percent}$ und meistens sogar unter $\SI{1}{\percent}$. Jedoch lässt sich in der Auswertung bei der Messung des Widerstandes, bei dem der aperiodische Grenzfall eintritt eine Abweichung von $\SI{5428(17)}{\ohm}$ festellen. Diese ist zu hoch um mit dem Einfluss des Innenwiderstandes der Spannungsquelle, obwohl dieser auch einen Beitrag liefert erklärt zu werden. Da der gemessene Wert eine so große Abweichung besitzt handelt es sich vermutlich um einen groben Ablesefehler. Auch bei der Berechnung der Güte $q$ und der Breite der Resonanzkurve $f_+ - f_-$ lässt sich eine Abweichung zu den aus den gegebenen Werten $L$, $C$ und $R_2$ berechnenten Werten feststellen. Diese kann nicht durch die Eigenschaften der Spannungsquelle begründet werden, da $A$ durch $A_{\text{Antrieb}}$ geteilt wurde. Somit kann die Abweichung nur noch durch die verwendeten Kabel, dem $RCL$-Glied und dem Oszilloskop zustande kommen. Bei der Berechnung von der Resonanzfrequenz $f_{res}$ und $f_{1,2}$ ist auch hier eine Abweichung, welche größer als die Standartabweichung ist, zwischen den mit den gegebenen Werten $L$, $C$ und $R_2$ berechnenten Werten und den mit den experimentell bestimmten Werten für $LC$ und $RC$ festzustellen. Auch hier ist die Messung unabhängig von den Eigenschaften der Spannungsquelle, da die Phasendifferenz $\varphi$ zwischen $U_{\text{Antrieb}}$ und $U_C$ gemessen wird. Bei dem Vergleich der experimentell ermittelten Werte für $LC$ und $RC$ fällt auf, dass diese gleich sind bis auf die Standartabweichung. Dies schließt das Oszilloskop als Quelle der systematischen Abweichung aus, da einmal am Oszilloskop nur die Spanung und das andere Mal die zeitliche Differenz gemessen wurde. Es bleiben also die Kabel und das $RCL$-Glied als mögliche Quelle des systematischen Fehlers. Es lassen sich auch die Kabel ausschließen, da deren L, C und R-Werte zu gering sind um eine solche Differenz zu verantworten. Daher wird vermutet, dass die tatsächlichen Werte für R, C und L teilweise außerhalb der angegeben Standartabweichung befinden.
-
+\begin{table}
+	\centering
+	\caption{Die aus den verschiedenen Messungen zu errechnenen Werte mit den aus den vorher bekannten $L$, $C$, $R_1$ und $R_2$ errechneten Werten und die Abweichung der Werte aus den Messungen zu diesen in Prozent.}
+	\label{tab:tabrc}
+	\sisetup{table-format=1.2}
+	\begin{tabular}{| r | S | S | S |}
+		\hline
+		{Wert} & {aus den gemessenen Werten} & {aus den bekannten Werten} & {Abweichung}\\
+		\hline
+		$R_{eff}$& \SI{130.0(19)}{\ohm} & \SI{67.2(2)}{\ohm} & \SI{93.4(28)}{\percent} \\
+		\hline
+		$R_{ap}$& \SI{272}{\ohm} & \SI{5700(17)}{\ohm} & \SI{95.228(15)}{\percent} \\
+		\hline
+		$q$& \num{4.002(33)} & \num{4.179(14)} & \SI{4.2(8)}{\percent} \\
+		\hline
+		$B$& \SI{6.82(6)e3}{\per\second} & \SI{6.66(4)e3}{\per \second} & \SI{2.4(11)}{\percent} \\
+		\hline
+		$f_{res}$& \SI{26014(14)}{\per\second} & \SI{2.664(8)e4}{\per\second} & \SI{2.35(30)}{\percent} \\
+		\hline
+		$f_1$& \SI{29938(29)}{\per\second} & \SI{3.046(10)e4}{\per\second} & \SI{1.71(34)}{\percent} \\
+		\hline
+		$f_2$& \SI{23334(21)}{\per\second} & \SI{2.399(7)e4}{\per\second} & \SI{2.73(29)}{\percent} \\
+		\hline
+	\end{tabular}
+\end{table}
 
 
 
