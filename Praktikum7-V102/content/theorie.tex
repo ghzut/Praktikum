@@ -72,14 +72,37 @@ Sie wird gelöst durch:
 \varphi(t) = \varphi_0 \cos\frac{2\pi}{T}
 \end{equation}
 Der Winkel $\varphi(t)$ bezeichnet den zeitabhängigen Torsionswinkel,
- $\varphi_0$ den Winkel der Anfangstorsion. Die Periodendauer T lässt sich mit
+ $\varphi_\text{0}$ den Winkel der Anfangstorsion. Die Periodendauer T lässt sich mit
 \begin{equation}
   T = 2\pi\sqrt{\frac{\theta}{D}}
 \end{equation}
-ausdrücken. Im Fall einer Kugelförmigen, angehängten Masse mit $R_k \gg R$ folgt für $G$ schließlich
+ausdrücken. Im Fall einer Kugelförmigen, angehängten Masse mit $R_\text{k} \gg R$ folgt für $G$ schließlich
 \begin{equation}
-G = \frac{16}{5} \pi \frac{m_kR^2_kL}{T^2R⁴}
+G = \frac{16}{5} \pi \frac{m_\text{k}R^2_\text{k}L}{T^2R⁴}
 \end{equation}
-mit dem Radius der Kugel $R_k$, der Kugelmasse $m_k$, dem Stabradius $R$ und der Stablänge $L$.
+mit dem Radius der Kugel $R_\text{k}$, der Kugelmasse $m_\text{k}$, dem Stabradius $R$ und der Stablänge $L$.
 
 \subsection{Messung des magnetischen Momentes eines Permanentmagneten}
+Unter einem magnetischen Moment $m'$ wird das Produkt der Polstärke $p$
+ und dem Abstandsvektor der beiden Pole $a$ in Richtung des Südpols verstanden.
+  Wird der Stabmagnet nun in ein homogenes $B$-Feld gesetzt,
+   erhält er ein Drehmoment $M_{\text{mag}}$
+Zur Bestimmung des magnetischen Momentes wird wieder ein Torsionsschwingung wie
+ beim Schubmodul verwendet, diesmal jedoch unter Einfluss eines $B$-Feldes.
+  Aufgrund des $B$-Feldes kommt es zu einer veränderten Periodendauer $T_\text{m}$.  Wenn
+  der Magnet im Inneren der Kugel untergebracht wird und paralel zur Feldrichtung liegt, gilt:
+  \begin{equation}
+    mB\sin\varphi + D\varphi + \theta\frac{\text{d}^2\varphi}{\text{d}t²} = 0
+  \end{equation}
+  Für kleine Ablenkungen kann $\sin \varphi$ mit $\varphi$ genähert werden und die DGL wird durch
+  \begin{equation}
+    \varphi(t) = \varphi_\text{0} \cos\frac{2\pi}{T_\text{m}}t
+  \end{equation}
+  gelöst. Für die neue Periodendauer $T_\text{m}$ gilt:
+  \begin{equation}
+    T_\text{m} = 2\pi\sqrt{\frac{\theta}{mB + D}}\text{.}
+  \end{equation}
+Das magnetische Moment $m$ berechnet sich schlussendlich mit:
+\begin{equation}
+  m = \frac{4\pi²\theta}{BT_\text{m}^2} - \frac{D}{B}
+\end{equation}
