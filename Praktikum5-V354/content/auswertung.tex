@@ -3,7 +3,7 @@
 In der Auswertung wurden die Graphen mit Matplotlib \cite{matplotlib} und NumPy \cite{numpy} angefertigt.\\
 
 
-Folgende Werte waren geben und somit bereits vor der Messung bekannt:
+Folgende Werte waren bereits vor der Messung bekannt:
 \begin{displaymath}
 R_1 = \SI{67.2(2)}{\ohm}
 \end{displaymath}
@@ -17,13 +17,14 @@ L = \SI{16.78(9)e-3}{\henry}
 C = \SI{2.066(6)e-9}{\farad}
 \end{displaymath}
 
-\subsection{Bestimmung von effektiven Widerstandes}
-\begin{figure}[H]
-	\centering
-	\caption{Einhüllende.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Einhuellende.JPG}
-	\label{fig:graein}
-\end{figure}
+
+\subsection{Bestimmung vom effektivem Widerstand}
+%\begin{figure}[H]
+%	\centering
+%	\caption{Einhüllende.}
+%	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Einhuellende.JPG}
+%	\label{fig:graein}
+%\end{figure}
 \begin{figure}[H]
 	\centering
 	\caption{$A_C$ im $RCL$-Kreis in Abhängigkeit der Zeit.}
@@ -31,9 +32,13 @@ C = \SI{2.066(6)e-9}{\farad}
 	\label{fig:graa}
 \end{figure}
 \input{../build/taba.tex}
-$\mu$ wird mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 1:
+Es gilt:
+\begin{equation}
+	U_C(t) = A_C \cdot e^{-\mu \cdot t} \cdot \cos(\omega_{res} \cdot t + \theta)\text{.}
+\end{equation}
+Es wird mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=a\cdot e^{-b t}$ mittels SciPy \cite{scipy} $\mu$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 1 und Formel (21):
 \begin{displaymath}
-\mu = \SI{3.87(5)e3}{\per\second}\text{.}
+\mu = b = \SI{3.87(5)e3}{\per\second}\text{.}
 \end{displaymath}
 Hiermit ergibt sich durch die Formel (3):
 \begin{displaymath}
@@ -43,9 +48,9 @@ und mit der Formel (10):
 \begin{displaymath}
 \tau = \SI{2.582(34)e-4}{\second}\text{.}
 \end{displaymath}
-Der Vergleich mit $R_1$ ergibt, dass $R_{eff}$ $\SI{62.8(19)}{\ohm}$ größer ist als $R_1$. Dies wird vermutlich durch dem Innerwiderstand $R_i$ der Spannungsquelle verursacht.
 
-\subsection{Bestimmung des Widerstandes, beim welchem der aperiodische Grenzfall erreicht wird}
+
+\subsection{Bestimmung des Widerstandes, bei welchem der aperiodische Grenzfall erreicht wird}
 Beobachtet wurde der aperiodische Grenzfall bei
 \begin{displaymath}
 R_{ap} = \SI{272}{\ohm}\text{.}
@@ -61,16 +66,16 @@ Diese starke Abweichung zwischen dem errechneten und gemessenen Wert muss in der
 \subsection{Bestimmung der Güte q sowie der Resonanzbreite des RCL-Kreises}
 \begin{figure}[H]
 	\centering
-	\caption{$A_C$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{Antrieb}$.}
+	\caption{$A_C$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{\text{Antrieb}}$.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grac1.pdf}
 	\label{fig:grac1}
 \end{figure}
-$LC$ und $RC$ werden mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 2: 
+Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\frac{1}{\sqrt{(1-(2a\cdot x)^2)^2+(b\cdot x)^2}} $ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 2 und Formel (12): 
 \begin{displaymath}
-LC = \SI{3.626(13)e-11}{\second\squared}
+LC = a^2 = \SI{3.626(13)e-11}{\second\squared}
 \end{displaymath}
 \begin{displaymath}
-RC = \SI{1.505(12)e-6}{\ohm\squared\second}\text{.}
+RC = b = \SI{1.505(12)e-6}{\ohm\squared\second}\text{.}
 \end{displaymath}
 Hiermit berechnet sich mit Formel (16):
 \begin{displaymath}
@@ -101,10 +106,11 @@ f_+ - f_- = \SI{6.66(4)e3}{\per\second}\text{.}
 Auch hier ist eine systematische Abweichung zwischen den aus den gegeben Werten und aus den gemessenen Werten errechneten Werten erkennbar.
 
 
-\subsection{Untersuchung der Phasenverschiebung in Abhängigkeit der Frequenz}
+
+\subsection{Untersuchung der Phasendifferenz in Abhängigkeit der Frequenz}
 \begin{figure}[H]
 	\centering
-	\caption{$\varphi$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{Antrieb}$ }
+	\caption{Phase $\varphi$ im angetriebenen $RCL$-Kreis in Abhängigkeit von $f_{\text{Antrieb}}$ }
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grad1.pdf}
 	\label{fig:grad1}
 \end{figure}
@@ -115,12 +121,12 @@ Auch hier ist eine systematische Abweichung zwischen den aus den gegeben Werten 
 	\label{fig:grad2}
 \end{figure}
 \input{../build/tabd.tex}
-$LC$ und $RC$ werden mithilfe einer nichtlinearen Ausgleichsrechnung mittels SciPy \cite{scipy} bestimmt. Es ergibt sich aus den Daten aus Tabelle 3:
+Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\arctan \left(\frac{a\cdot x}{1-(b\cdot x)^2}\right)$ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 3 und Formel (13):
 \begin{displaymath}
-LC = \SI{3.626(4)e-11}{\second\squared}
+LC = b^2 = \SI{3.626(4)e-11}{\second\squared}
 \end{displaymath}
 \begin{displaymath}
-RC = \SI{1.505(10)e-6}{\ohm\squared\second}\text{.}
+RC = a = \SI{1.505(10)e-6}{\ohm\squared\second}\text{.}
 \end{displaymath}
 Mit Formel (14) ergibt sich:
 \begin{displaymath}
