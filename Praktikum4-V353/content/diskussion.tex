@@ -4,7 +4,7 @@ Bei den Graphen in Abbildung 6 und 7 liegen die Messwerte sehr nah an dem berech
 
 \begin{figure}[H]
 	\centering
-	\caption{Phasendifferenz zwischen $U_{\text{Antrieb}}$ und $U_C$ aus Tabelle 4 in Abhängigkeit der Antriebsfrequenz mit ermittelten Fit.}
+	\caption{Phasendifferenz $\varphi$ zwischen $U_{\text{Antrieb}}$ und $U_C$ aus Tabelle 4 in Abhängigkeit von der Antriebsfrequenz mit ermittelten Fit.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/gradis.pdf}
 	\label{fig:Dis}
 \end{figure}
@@ -13,6 +13,23 @@ Eine nichtlineare Ausgleichsrechnung der Form $y = \arctan(-2\pi \cdot a \cdot x
 \tau = RC = a = \SI{0.68 \pm 0.01}{\milli\second}\text{.}
 %0,68 \text{ ms } \pm 0,01 \text{ ms.}
 \end{displaymath}
+\begin{table}
+	\centering
+	\caption{Die in den verschiedenen Versuchsteilen ermittelten Werte für $RC$.}
+	\label{tab:tabrc}
+	\sisetup{table-format=1.2}
+	\begin{tabular}{r | S  }
+		\toprule
+		{Versuchsteil} & {$RC$ (Messung)} \\
+		\hline
+		a) & \SI{1.18(2)}{\milli\second} \\
+		\hline
+		b) & \SI{1.17(2)}{\milli\second} \\
+		\hline
+		c) & \SI{1.38(18)}{\milli\second} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 
 

@@ -45,7 +45,7 @@ def plot(x, y, namex, namey, name):
 
 def makeTable(data, names, name, filename, formats):
     TableFile = open('build/'+filename+'.tex', 'w+')
-    TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+name+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
+    TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+filename+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:
             TableFile.write(r'S[table-format='+formats[i]+'] ')
@@ -78,7 +78,7 @@ def f(x, a, b):
 	return a*x+b
 
 x, y = np.genfromtxt('content/aufgabendatena.txt', unpack=True)
-makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], 'Messwerte zu Versuchsteil a)', 'taba', ['4.0', '2.1'])
+makeTable([x, y], [r'$\Delta t/\mu$s', r'$U_C/$V'], r'Die in Versuchsteil a) gemessene Spannung am Kondensator $U_C$ nach der Zeit $\Delta t$.', 'taba', ['4.0', '2.1'])
 namex, namey = [r'$\Delta t/\mu$s', r'$U_C/$V']
 params, var = linregress(x, np.log(y))
 plt.cla()
@@ -106,7 +106,7 @@ def f2(x, a , b):
 
 
 x, y, z = np.genfromtxt('content/aufgabendatenb.txt', unpack=True, missing_values='NA')
-makeTable([x, y], [r'$f/$Hz', r'$A/$V'], 'Messwerte zu Versuchsteil b)', 'tabb', ['6.1', '2.3'])
+makeTable([x, y], [r'$f/$Hz', r'$A/$V'], 'Die Versuchsteil b) gemessene Spannungsamplitude am Kondensator $A$ bei verschiedenen Frequenzen $f$.', 'tabb', ['6.1', '2.3'])
 namex, namey = [r'$f/$Hz', r'$A/$V']
 params, covar = curve_fit(f2 , x, y)
 plt.cla()
@@ -146,7 +146,7 @@ y2 = np.delete(y, indeces)
 z2 = np.delete(z, indeces)
 #print(z2)
 #dddddddddddddd
-makeTable([x2, y2, z2], [r'$f/$Hz', r'$A/$V', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil d)', 'tabd', ['6.1', '2.3', '3'])
+makeTable([x2, y2, z2], [r'$f/$Hz', r'$A/$V', r'$\Delta t/\mu$s'], r'Die in der Nachmessung zu Versuchsteil c) gemessen Zeitdifferenzen $\Delta t$ zwischen den Nulldurchgängen der Spannung am Kondensator $U_C$ und an der Spannungsquelle $U_{\text{Antrieb}}$ bei verschieden Frequenzen $f$ und die zugehörigen in Versuchsteil b) gemessenen Spannungsamplituden am Kondensator $A$.', 'tabd', ['6.1', '2.3', '3'])
 def f4(x):
 	return np.sin(x)*np.sqrt(1/(np.sin(x)**2)-1)
 
@@ -192,7 +192,7 @@ print('RC = ', RCc)
 
 
 x2, z2 = np.genfromtxt('content/aufgabendatencalt.txt', unpack=True)
-makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], 'Messwerte zu Versuchsteil c)', 'tabc', ['6.1', '3'])
+makeTable([x2, z2], [r'$f/$Hz', r'$\Delta t/\mu$s'], r'Die in Versuchsteil c) gemessene Zeitdifferenz $\Delta t$ zwischen den Nulldurchgängen der Spannung am Kondensator $U_C$ und an der Spannungsquelle $U_{\text{Antrieb}}$ bei verschieden Frequenzen $f$.', 'tabc', ['6.1', '3'])
 z2 = z2*(10**(-6))*x2*2*np.pi
 namex, namey = [r'$f/$Hz', r'$\varphi$']
 params2, covar = curve_fit(f3 , x2[0:-4], z2[0:-4])
@@ -211,5 +211,9 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'grac')
 RCc = unp.uarray(-params2[0], np.sqrt(covar[0][0]))
 print('RC = ', RCc)
+
+#theorie
+
+
 
 
