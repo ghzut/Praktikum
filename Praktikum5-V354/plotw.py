@@ -98,7 +98,7 @@ def f(t, w, U):
 	return U*np.exp(-w*t)
 
 x, y = np.genfromtxt('content/aufgabendatena', unpack=True)
-makeTable([x, y], [r'$\Delta t/\si{\micro\second}$', r'$A_C/\si{\milli\volt}$'], 'Messwerte zu Versuchsteil a).', 'taba', ['3.1', '3.1'])
+makeTable([x, y], [r'$\Delta t/\si{\micro\second}$', r'$A_C/\si{\milli\volt}$'], r'Aus dem Bild des Spannungsverlaufes aus Versuchsteil a) entnommene Amplituden $A_C$ nach der Zeit $\Delta t$.', 'taba', ['3.1', '3.1'])
 namex, namey = [r'$\Delta t/\si{\micro\second}$', r'$A_C/\si{\milli\volt}$']
 x = x * 10**(-6)
 params, covar = curve_fit(f, x, y)
@@ -144,8 +144,8 @@ def AcT(f, LCs, RC):
 print('c)')
 f, Ac, A = np.genfromtxt('content/aufgabendatenc', unpack=True)
 RelativAmplitude = Ac/A
-makeTable([f, Ac, A], [r'$f_{Antrieb}/\si{\hertz}$', r'$A_C/\si{\volt}$', r'$A_{Antrieb}/\si{\volt}$'], 'Messwerte zu Versuchsteil c).', 'tabc', ['6.1', '1.3', '1.2'])
-namex, namey  = [r'$f_{Antrieb}/\si{\hertz}$', r'$A_C/A_{Antrieb}$']
+makeTable([f, Ac, A], [r'$f_{\text{Antrieb}}/\si{\hertz}$', r'$A_C/\si{\volt}$', r'$A_{\text{Antrieb}}/\si{\volt}$'], r'Die in Versuchsteil c) gemessenen Werte für die Amplitude am Kondensator $A_C$ und an der Spannungsquelle $A_{\text{Antrieb}}$ bei verschiedenen Frequenzen.', 'tabc', ['6.1', '1.3', '1.2'])
+namex, namey  = [r'$f_{\text{Antrieb}}/\si{\hertz}$', r'$A_C/A_{\text{Antrieb}}$']
 f2 = f / 1000000
 params, covar = curve_fit(AcT, f2, RelativAmplitude)
 plt.cla()
@@ -238,14 +238,14 @@ def f3(a, LCs, RC):
 
 x2, z2 = np.genfromtxt('content/aufgabendatend', unpack=True)
 
-makeTable([x2, z2], [r'$f_{Antrieb}/\si{\hertz}$', r'$\Delta t/\si{\micro\second}$'], 'Messwerte zu Versuchsteil d).', 'tabd', ['6.1', '2.2'])
+makeTable([x2, z2], [r'$f_{\text{Antrieb}}/\si{\hertz}$', r'$\Delta t/\si{\micro\second}$'], r'Die in Versuchsteil d) gemessene Zeitdifferenz $\Delta t$ zwischen den Nulldurchgängen der Spannung am Kondensator und an der Spannungsquelle bei verschiedenen Frequenzen.', 'tabd', ['6.1', '2.2'])
 z2 = z2*(10**(-6))*x2*2*np.pi
 #b = []
 #for z in z2:
 #	b.append(bereich(z, -np.pi/2, np.pi/2))
 	#print('Zahl = ', z, ' ', bereich(z, -np.pi/2, np.pi/2))
 #z2 = np.array(b)
-namex, namey = [r'$f_{Antrieb}/\si{\hertz}$', r'$\varphi$']
+namex, namey = [r'$f_{\text{Antrieb}}/\si{\hertz}$', r'$\varphi$']
 #p0=[np.sqrt(3.6*10**(-11))*10**6, 1.5]
 params2, covar = curve_fit(f3 , x2/1000000, z2, p0=[np.sqrt(3.6*10**(-11))*10**6, 1.5])
 plt.cla()
