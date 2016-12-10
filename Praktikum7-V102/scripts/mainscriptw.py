@@ -68,7 +68,11 @@ T3 = np.genfromtxt('scripts/inderhelmholtzspule')
 print('Periodendauer in der Helmholzspule: ')
 print(T3)
 
-# Pa Schubmodul
+#Pa Elastizitätsmodul
+E = unp.uarray(210, 0.5) * 10**9
+print('Elastizitätsmodul: ', E)
+
+#Pa Schubmodul
 G = 8 * np.pi * LD * (TK+TKh)/ (T1**2 * RD**4)
 print('Schubmodul: ', G)
 
