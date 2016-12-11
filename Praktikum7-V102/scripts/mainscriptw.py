@@ -14,7 +14,7 @@ MK = unp.uarray(0.5122, 0.5122*0.04)
 print('Masse der Kugel: ', MK, 'kg')
 
 #m Durchmesser der Kugel
-DK = unp.uarray(50.76/(10**3), 50.76/(10**3) * 0.007) 
+DK = unp.uarray(50.76/(10**3), (50.76*7)/(10**6)) 
 print('Durchmesser der Kugel: ', DK, 'm')
 
 #m Radius der Kugel
@@ -26,7 +26,7 @@ TK = 2/5 * MK * RK **2
 print('Trägheitsmoment der Kugel: ', TK, 'kg*m^2')
 
 #kg m^2 Trägheitsmoment der Kugelhalterung
-TKh = (22.5/10**4)/10**3 
+TKh = 22.5/10**7 
 print('Trägheitsmoment der Kugelhalterung: ', TKh, 'kg*m^2')
 
 # Windungszahl der Spule Helmholzspule
@@ -91,12 +91,12 @@ for line in T3:
 #A Stromstärke
 I = np.array(I)
 
-print('ahhh', T3a[:, 0])
-makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_g/\si{\second}$}' , 'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]'])
+#print('ahhh', T3a[:, 0])
+makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_g/\si{\second}$}' , 'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken und die geschätzten Mittelwerte der Periodendauern $T_g$.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]'])
 
 
 #T Magnetfeldstärke
-B = 4 * np.pi * 10**(-7) * 8 * I * WzH / (RH * np.sqrt(125))
+B = 4 * np.pi * 10**(-7) * 8 * I * (WzH/2) / (RH * np.sqrt(125))
 print('Magnetfeldstärken: ', B, 'T')
 
 #Pa Elastizitätsmodul
@@ -129,7 +129,7 @@ for value in dT3s:
 dT3sn = np.array(dT3sn)
 dT3sstd = np.array(dT3sstd)
 
-namex, namey = [r'$T^{-2}/\si{\per\second\squared}$', r'$B/\si{\tesla}$']
+namex, namey = [r'$T_m^{-2}/\si{\per\second\squared}$', r'$B/\si{\tesla}$']
 t = np.linspace(dT3sn[0]-dT3sn[-1]*0.02 , dT3sn[-1]*1.02 , 10000)
 params, covar = curve_fit(line, B, dT3sn, sigma=dT3sstd)
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
@@ -149,8 +149,17 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'helmholzspule')
 
 #Am^2 magnetisches Moment
-m =  a / (2*np.pi)**2
+m =  1/a * (2*np.pi)**2 * (TK+TKh)
 print('magnetisches Moment: ', m, 'A*m^2')
+
+print('b: ', b, 'T')
+G2 = -b*m*2*LD/(np.pi * RD**4)
+mu2 = E / (2*G2) - 1
+Q2 = E / (3*(1-2*mu2))
+print('G: ', G2, 'Pa')
+print('mu: ', mu2,)
+print('Q: ', Q2, 'Pa')
+
 
 
 #T Erdmagnetfeld
