@@ -5,15 +5,15 @@ def makeTable(data, names, name, filename, formats):
     TableFile.write(r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t'+r'\label{tab:'+filename+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:
-            TableFile.write(r'S[table-format='+formats[i]+'] ')
+            TableFile.write(formats[i])
         else:
             TableFile.write('S ')
     TableFile.write('}\n\t\t')
     TableFile.write(r'\toprule'+'\n\t\t')
-    for nam in names[0:-1]:
-        TableFile.write('{'+nam+'} & ')
+    
+    TableFile.write(names)
 
-    TableFile.write('{'+names[-1]+'}'+r' \\'+'\n\t\t')
+    TableFile.write(r' \\'+'\n\t\t')
     TableFile.write(r'\midrule'+'\n\t\t')
     for i in range(len(data[0])):
         for value in data[0:-1]:
