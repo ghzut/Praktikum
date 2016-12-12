@@ -96,7 +96,7 @@ makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3
 
 
 #T Magnetfeldstärke
-B = 4 * np.pi * 10**(-7) * 8 * I * (WzH/2) / (RH * np.sqrt(125))
+B = 4 * np.pi * 10**(-7) * 8 * I * (WzH) / (RH * np.sqrt(125))
 print('Magnetfeldstärken: ', B, 'T')
 
 #Pa Elastizitätsmodul
