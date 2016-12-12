@@ -7,15 +7,15 @@ Die Masse der Kugel beträgt:
 \begin{displaymath}
 	m_\text{K} = \SI{0.512(20)}{\kilogram}\text{,}
 \end{displaymath}
-der Durchmesser der Kugel:
+der Durchmesser der Kugel beträgt:
 \begin{displaymath}
 	D_\text{K} = \SI{0.0508(4)}{\meter}\text{,}
 \end{displaymath}
-das Trägheitsmoment der Kugelhalterung:  
+das Trägheitsmoment der Kugelhalterung beträgt:  
 \begin{displaymath}
 	\theta_\text{H} = \SI{2.25(6)e-6}{\kilogram\meter\squared}\text{,}
 \end{displaymath}
-die Windungszahl der Helmholzspule:
+die Windungszahl der Helmholzspule beträgt:
 \begin{displaymath}
 	N = \num{390}
 \end{displaymath}
@@ -23,6 +23,8 @@ und der Wert des Elastizitätsmoduls:
 \begin{displaymath}
 	E = \SI{2.100(5)e11}{\pascal}\text{.}
 \end{displaymath}
+
+Die Werte für den Drahtdurchmesser in Tabelle 1 wurden als Vorbereitung gemessen. 
 \input{build/tabDraht.tex}
 Aus den Werten aus Tabelle 1 berechnet sich für den Mittelwert des Drahtdurchmessers:
 \begin{displaymath}
@@ -72,7 +74,7 @@ und aus Formel (2):
 \input{build/tabh.tex}
 Abbildung 4 wurde mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
 Die magnetische Flussdichte $B$ in Tabelle 3 wurde mit Formel (13) berechnet.
-Eine lineare Ausgleichsrechnung der Form $y = a \cdot x + b$ mittels SciPy \cite{scipy} der Wertepaare $\left(\frac{1}{T_\text{m}^2}, B\right)$ aus Tabelle 3 liefert nach Formel (12) für das magnetische Moment des Stabmagneten im innerem der Kugel:
+Eine lineare Ausgleichsrechnung der Form $y = a \cdot x + b$ mittels SciPy \cite{scipy} der Wertepaare $\left(T_\text{m}^{-2}, B\right)$ aus Tabelle 3 liefert nach Formel (12) für das magnetische Moment des Stabmagneten im innerem der Kugel:
 \begin{displaymath}
 	m' = \frac{4 \pi ^2 (\theta_k + \theta_{\text{KH}})}{a} = \SI{3.37(15)e-2}{\ampere\meter\squared}\text{,}
 \end{displaymath}
@@ -104,7 +106,7 @@ Aus den Werten aus Tabelle 4 ergibt sich für den Mittelwert der Periodendauer:
 \begin{displaymath}
 	T_\text{m} = \SI{20.0088(35)}{\second}\text{.}
 \end{displaymath}
-Die Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes kann durch einsetzen von $x=\frac{1}{T_\text{m}^2}$ in die Gerade der Form $y = a \cdot x +b$ mit den zuvor bestimmten Parametern $a$ und $b$ bestimmt werden. Nach Formel (12) folgt:
+Die Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes kann durch einsetzen von $x=T_\text{m}^{-2}$ in die Gerade der Form $y = a \cdot x +b$ mit den zuvor bestimmten Parametern $a$ und $b$ bestimmt werden. Nach Formel (12) folgt:
 \begin{displaymath}
 	B_\text{E} = y = \SI{ 4.3(17)e-5}{\tesla}\text{.}
 \end{displaymath}
