@@ -4,25 +4,25 @@
 Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
 Folgende Werte waren vor der Messung bekannt.\\
 Die Masse der Kugel beträgt:
-\begin{equation}
-	m_k = \SI{0.512(20)}{\kilogram}\text{,}
-\end{equation}
+\begin{displaymath}
+	m_\text{K} = \SI{0.512(20)}{\kilogram}\text{,}
+\end{displaymath}
 der Durchmesser der Kugel:
-\begin{equation}
-	D_{k} = \SI{0.0508(4)}{\meter}\text{,}
-\end{equation}
+\begin{displaymath}
+	D_\text{K} = \SI{0.0508(4)}{\meter}\text{,}
+\end{displaymath}
 das Trägheitsmoment der Kugelhalterung:  
-\begin{equation}
-	\theta_{kh} = \SI{2.25(6)e-6}{\kilogram\meter\squared}\text{,}
-\end{equation}
+\begin{displaymath}
+	\theta_\text{KH} = \SI{2.25(6)e-6}{\kilogram\meter\squared}\text{,}
+\end{displaymath}
 die Windungszahl der Helmholzspule:
-\begin{equation}
+\begin{displaymath}
 	N = \num{390}
-\end{equation}
+\end{displaymath}
 und der Wert des Elastizitätsmoduls:  
-\begin{equation}
+\begin{displaymath}
 	E = \SI{2.100(5)e11}{\pascal}\text{.}
-\end{equation}
+\end{displaymath}
 
 
 
@@ -30,30 +30,30 @@ und der Wert des Elastizitätsmoduls:
 \subsection{Bestimmung des Schubmoduls G mithilfe einer Torsionsschwingung}
 \input{build/tabDraht.tex}
 Aus den Werten aus Tabelle 1 berechnet sich für den Mittelwert des Drahtdurchmessers:
-\begin{equation}
-	D_d = \SI{0.1723(20)e-3}{\meter}\text{.}
-\end{equation}
+\begin{displaymath}
+	D_\text{D} = \SI{0.1723(20)e-3}{\meter}\text{.}
+\end{displaymath}
 \input{build/tabn.tex}
 Aus den Werten aus Tabelle 2 ergibt sich für den Mittelwert der Periodendauer:
-\begin{equation}
+\begin{displaymath}
 	T = \SI{20.0006(11)}{\second}\text{.}
-\end{equation}
-Mithilfe der Masse der Kugel und deren Durchmesser lässt sich mit Formel (NUMMER) das Trägheitsmoment der Kugel berechnen:
-\begin{equation}
-	\theta_{k} = \SI{0.132(6)e-3}{\kilogram\meter\squared}\text{.}
-\end{equation}
-Nun lässt sich der Schubmodul mit Formel (NUMMER) berechnen:
-\begin{equation}
+\end{displaymath}
+Mithilfe der Masse der Kugel und deren Durchmesser lässt sich mit Formel (8) das Trägheitsmoment der Kugel berechnen:
+\begin{displaymath}
+	\theta_{\text{K}} = \SI{0.132(6)e-3}{\kilogram\meter\squared}\text{.}
+\end{displaymath}
+Nun lässt sich der Schubmodul mit Formel (7) berechnen:
+\begin{displaymath}
 	G = \SI{8.9(6)e10}{\pascal}\text{.}
-\end{equation}
-Aus dem Schub- und Elastizitätsmoduls lassen sich der Kompressionsmodul und die poissonsche Querkontraktionszahl berechnen. Aus Formel (NUMMER) folgt:
-\begin{equation}
+\end{displaymath}
+Aus dem Schub- und Elastizitätsmoduls lassen sich der Kompressionsmodul und die poissonsche Querkontraktionszahl berechnen. Aus Formel (1) folgt:
+\begin{displaymath}
 	\mu = \num{0.17(7)}
-\end{equation}
-und aus Formel (NUMMER):
-\begin{equation}
+\end{displaymath}
+und aus Formel (2):
+\begin{displaymath}
 	Q = \SI{1.07(24)e11}{\pascal}\text{.}
-\end{equation}
+\end{displaymath}
 
 NUR HINWEIS\\
 (Handelt sich vermutlich um Stahl \cite[624\psq]{TaschenbuchPhysik}) 210 GPa
@@ -67,32 +67,32 @@ NUR HINWEIS\\
 \subsection{Bestimmung des magnetischen Momentes des Permanentmagneten in der Kugel}
 \begin{figure}[H]
 	\centering
-	\caption{Die magnetische Flussdichte $B$ gegen $\frac{1}{T_m ^2}$ aufgetragen.}
+	\caption{Die magnetische Flussdichte $B$ gegen $T_m ^{-2}$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/helmholzspule.pdf}
 	\label{fig:grad3}
 \end{figure}
 \input{build/tabh.tex}
 Abbildung 3 wurde mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
-Eine lineare Ausgleichsrechnung der Form $y = a \cdot x + b$ mittels SciPy \cite{scipy} der Wertepaare $\left(\frac{1}{T^2}, B\right)$ aus Tabelle 3 liefert nach Formel (NUMMER) für das magnetische Moment des Stabmagneten im innerem der Kugel:
-\begin{equation}
-	m = \frac{4 \pi ^2 (\theta_k + \theta_{kh})}{a} = \SI{6.74(29)e-2}{\ampere\meter\squared}\text{,}
-\end{equation}
+Eine lineare Ausgleichsrechnung der Form $y = a \cdot x + b$ mittels SciPy \cite{scipy} der Wertepaare $\left(\frac{1}{T_\text{m}^2}, B\right)$ aus Tabelle 3 liefert nach Formel (12) für das magnetische Moment des Stabmagneten im innerem der Kugel:
+\begin{displaymath}
+	m' = \frac{4 \pi ^2 (\theta_k + \theta_{\text{KH}})}{a} = \SI{6.74(29)e-2}{\ampere\meter\squared}\text{,}
+\end{displaymath}
 und zusätzlich:
-\begin{equation} 
-	-\frac{D}{m} = b =  \SI{-1.75(9)e-4}{\tesla}\text{.}
-\end{equation}
-Mit Formel (NUMMER) folgt:
-\begin{equation} 
+\begin{displaymath} 
+	-\frac{D}{m'} = b =  \SI{-1.75(9)e-4}{\tesla}\text{.}
+\end{displaymath}
+Mit Formel (3) folgt:
+\begin{displaymath} 
 	G =  \SI{8.0(6)e10}{\pascal}\text{.}
-\end{equation}
-Hieraus folgt mit den Formeln (NUMMER), (NUMMER) und (NUMMER):
-\begin{equation} 0.32+/-0.10
+\end{displaymath}
+Hieraus folgt mit den Formeln (1) und (2):
+\begin{displaymath}
 	\mu = \num{0.32(10)}
-\end{equation}
+\end{displaymath}
 und
-\begin{equation} 
+\begin{displaymath} 
 	Q =  \SI{1.9(11)e11}{\pascal}\text{.}
-\end{equation}
+\end{displaymath}
 
 NUR HINWEIS\\
 Werte passen besser trotz höherer Standartabweichung (systematischer Fehler bei erster Messung vielleicht unterschiedliche trägheitsmomente um verschiedene achsen vermutlich erste messung mist)
@@ -104,13 +104,13 @@ Werte passen besser trotz höherer Standartabweichung (systematischer Fehler bei
 \subsection{Bestimmung der Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes}
 \input{build/tabe.tex}
 Aus den Werten aus Tabelle 4 ergibt sich für den Mittelwert der Periodendauer:
-\begin{equation}
-	T = \SI{20.0088(35)}{\second}\text{.}
-\end{equation}
-Die Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes kann durch einsetzen von $x=\frac{1}{T^2}$ in die Gerade der Form $y = a \cdot x +b$ mit den zuvor bestimmten Parametern $a$ und $b$ bestimmt werden. Nach Formel (NUMMER) folgt:
-\begin{equation}
-	B_e = y = \SI{ 2.2(8)e-5}{\tesla}\text{.}
-\end{equation}
+\begin{displaymath}
+	T_\text{m} = \SI{20.0088(35)}{\second}\text{.}
+\end{displaymath}
+Die Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes kann durch einsetzen von $x=\frac{1}{T_\text{m}^2}$ in die Gerade der Form $y = a \cdot x +b$ mit den zuvor bestimmten Parametern $a$ und $b$ bestimmt werden. Nach Formel (12) folgt:
+\begin{displaymath}
+	B_\text{E} = y = \SI{ 2.2(8)e-5}{\tesla}\text{.}
+\end{displaymath}
 
 NUR HINWEIS\\
 Vergleich mit theorie wert \SI{20}{\micro\tesla} \cite{Erdmagnetfeld}.

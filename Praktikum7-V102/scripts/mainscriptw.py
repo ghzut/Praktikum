@@ -56,7 +56,7 @@ print('Radius des Drahtes: ', RD, 'm')
 
 #s Periodendauer normal
 T1 = np.genfromtxt('scripts/magnetachseIstFadenachse', unpack=True)
-makeTable([T1], r'{$T/\si{\second}$}', 'Die gemessenen Periodendauern der Schwingung ohne Einwirkung eines Magnetfeld.', 'tabn', ['S[table-format=2.3]'])
+makeTable([T1], r'{$T/\si{\second}$}', 'Die gemessenen Periodendauern der Schwingung ohne Einwirkung eines Magnetfeldes.', 'tabn', ['S[table-format=2.3]'])
 T1 = unp.uarray(np.mean(T1), stats.sem(T1))
 print('Periodendauer normal: ', T1, 's')
 
@@ -92,7 +92,7 @@ for line in T3:
 I = np.array(I)
 
 #print('ahhh', T3a[:, 0])
-makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_g/\si{\second}$}' , 'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken und die geschätzten Mittelwerte der Periodendauern $T_g$.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]'])
+makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_\text{m}/\si{\second}$}' , r'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken und die geschätzten Mittelwerte der Periodendauern $T_\text{m}$.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]'])
 
 
 #T Magnetfeldstärke
