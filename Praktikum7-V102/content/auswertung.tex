@@ -23,16 +23,16 @@ und der Wert des Elastizitätsmoduls:
 \begin{displaymath}
 	E = \SI{2.100(5)e11}{\pascal}\text{.}
 \end{displaymath}
+\input{build/tabDraht.tex}
+Aus den Werten aus Tabelle 1 berechnet sich für den Mittelwert des Drahtdurchmessers:
+\begin{displaymath}
+D_\text{D} = \SI{0.1723(20)e-3}{\meter}\text{.}
+\end{displaymath}
 
 
 
 
 \subsection{Bestimmung des Schubmoduls G mithilfe einer Torsionsschwingung}
-\input{build/tabDraht.tex}
-Aus den Werten aus Tabelle 1 berechnet sich für den Mittelwert des Drahtdurchmessers:
-\begin{displaymath}
-	D_\text{D} = \SI{0.1723(20)e-3}{\meter}\text{.}
-\end{displaymath}
 \input{build/tabn.tex}
 Aus den Werten aus Tabelle 2 ergibt sich für den Mittelwert der Periodendauer:
 \begin{displaymath}
@@ -55,9 +55,7 @@ und aus Formel (2):
 	Q = \SI{1.07(24)e11}{\pascal}\text{.}
 \end{displaymath}
 
-NUR HINWEIS\\
-(Handelt sich vermutlich um Stahl \cite[624\psq]{TaschenbuchPhysik}) 210 GPa
-\cite{EinführungMechanik}  	79,3 GPa
+
 
 
 
@@ -72,7 +70,8 @@ NUR HINWEIS\\
 	\label{fig:grad3}
 \end{figure}
 \input{build/tabh.tex}
-Abbildung 3 wurde mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
+Abbildung NUMMER wurde mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
+Die magnetische Flussdichte $B$ in Tabelle 3 wurde mit Formel (13) berechnet.
 Eine lineare Ausgleichsrechnung der Form $y = a \cdot x + b$ mittels SciPy \cite{scipy} der Wertepaare $\left(\frac{1}{T_\text{m}^2}, B\right)$ aus Tabelle 3 liefert nach Formel (12) für das magnetische Moment des Stabmagneten im innerem der Kugel:
 \begin{displaymath}
 	m' = \frac{4 \pi ^2 (\theta_k + \theta_{\text{KH}})}{a} = \SI{3.37(15)e-2}{\ampere\meter\squared}\text{,}
@@ -94,8 +93,6 @@ und
 	Q =  \SI{1.9(11)e11}{\pascal}\text{.}
 \end{displaymath}
 
-NUR HINWEIS\\
-Werte passen besser trotz höherer Standartabweichung (systematischer Fehler bei erster Messung vielleicht unterschiedliche trägheitsmomente um verschiedene achsen vermutlich erste messung mist)
 
 
 
@@ -112,5 +109,4 @@ Die Horizontalkomponente des magnetischen Flusses des Erdmagnetfeldes kann durch
 	B_\text{E} = y = \SI{ 4.3(17)e-5}{\tesla}\text{.}
 \end{displaymath}
 
-NUR HINWEIS\\
-Vergleich mit theorie wert \SI{20}{\micro\tesla} \cite{Erdmagnetfeld}.
+

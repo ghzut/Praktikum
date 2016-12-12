@@ -91,13 +91,15 @@ for line in T3:
 #A Stromstärke
 I = np.array(I)
 
-#print('ahhh', T3a[:, 0])
-makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_\text{m}/\si{\second}$}' , r'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken und die geschätzten Mittelwerte der Periodendauern $T_\text{m}$.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]'])
-
-
 #T Magnetfeldstärke
 B = 4 * np.pi * 10**(-7) * 8 * I * (WzH) / (RH * np.sqrt(125))
 print('Magnetfeldstärken: ', B, 'T')
+
+#print('ahhh', T3a[:, 0])
+makeTable([I,T3a[:, 0], T3a[:, 1], T3a[:, 2], T3a[:, 3], T3a[:, 4], np.around(T3n, decimals=3), np.around(T3nn, decimals=3), np.around(B*1000, decimals=3)], r'{$I/\si{\ampere}$} & {$T_1/\si{\second}$} & {$T_2/\si{\second}$} & {$T_3/\si{\second}$} & {$T_4/\si{\second}$} & {$T_5/\si{\second}$} & \multicolumn{2}{c}{$T_\text{m}/\si{\second}$} & {$B/\si{\milli\tesla}$}' , r'Die gemessenen Periodendauern der Schwingung unter Einwirkung des Magnetfeldes der Helmholzspule bei verschiedenen Stromstärken und die geschätzten Mittelwerte der Periodendauern $T_\text{m}$ sowie die zugehörigen magnetischen Flussdichten.', 'tabh', ['S[table-format=1.1]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'S[table-format=2.3]', r'@{${}\pm{}$} S[table-format=1.3]', r'S[table-format=1.3]'])
+
+
+
 
 #Pa Elastizitätsmodul
 E = unp.uarray(210, 0.5) * 10**9
