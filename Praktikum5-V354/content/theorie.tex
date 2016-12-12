@@ -56,11 +56,11 @@ Nach den kirchhoffschen Regeln folgt die DGL:
  \begin{equation}
    I(t) = e^{-\mu t} \cdot  \operatorname{Re}\left( A_1e^{i\omega_{res} t} + A_2e^{-i\omega_{res} t} \right) \text{ mit } A_1\text{, } A_2 \text{ komplex.}
  \end{equation}
- Die endgültige Form der Lösungsfunktion hängt nun davon wie $\omega_{res}$ aussieht.
+ Die endgültige Form der Lösungsfunktion hängt nun vom Aussehen von $\omega_res$ ab.
   Es wird zwischen 3 Fällen unterschieden.
   \begin{itemize}
 
-  \item Ist $\omega_{res}$ reell und ungleich 0, liegt nach (7) eine gedämpfte Schwingung vor, da $I(t)$ nun komplexe $e$-Funktionen enthält.
+  \item Gilt $\omega_0 > \mu $, wird die Lösungsfunktion nach (7) komplex und es liegt eine gedämpfte Schwingung vor.
   In diesem Fall lässt sich $I(t)$ durch
   \begin{equation}
     I(t) = A_0 e^{-\mu t} \cdot cos(\omega_{res} t + \varphi)
@@ -74,8 +74,7 @@ Nach den kirchhoffschen Regeln folgt die DGL:
     \tau = \frac{2L}{R}\text{.}
   \end{equation}
 
-  \item Ist $\omega_{res}$ hingegen imaginär kommt es nach (7) zu einer
-  aperiodischen Dämpfung, da $I(t)$ nun vollständig reell ist. Diese zeigt nach hinreichender Zeit ein einfaches Relaxationsverhalten.
+  \item Liegt $\omega_0 < \mu $ vor wird die Lösungsfunktion nach (7) reell und es liegt eine Dämpfung vor. Diese zeigt nach hinreichender Zeit ein einfaches Relaxationsverhalten.
    Je nachdem wie die Parameter $A_1$ und $A_2$ bestimmt sind, kann $I(t)$ vorher jedoch noch einen
    Maximalwert durchlaufen.
    \begin{figure}[H]
@@ -85,7 +84,7 @@ Nach den kirchhoffschen Regeln folgt die DGL:
      \label{fig:Dämpfungen}
    \end{figure}
 
-\item Beträgt $\omega_{res}$ 0 liegt der aperiodische Grenzfall vor. Bei diesem, in der Darstellung schwarz gestrichelt,
+\item Ist $\omega_0 = \mu $ erfüllt, liegt der aperiodische Grenzfall vor. Bei diesem, in der Darstellung schwarz gestrichelt,
  durchläuft $I(t)$ kein Maximum und flacht am schnellsten ab.
 
 \end{itemize}

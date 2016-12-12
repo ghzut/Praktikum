@@ -40,7 +40,7 @@ Es wird mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=a\cdot e^{-b
 \begin{displaymath}
 \mu = b = \SI{3.87(5)e3}{\per\second}\text{.}
 \end{displaymath}
-Hiermit ergibt sich durch die Formel (3):
+Hiermit ergibt sich für den effektiven Widerstand $R_{eff}$ durch die Formel (3):
 \begin{displaymath}
 R_{eff} = \SI{130 \pm 1.9}{\ohm}
 \end{displaymath}
@@ -121,6 +121,7 @@ Auch hier ist eine systematische Abweichung zwischen den aus den gegeben Werten 
 	\label{fig:grad2}
 \end{figure}
 \input{../build/tabd.tex}
+\newpage
 Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\arctan \left(\frac{a\cdot x}{1-(b\cdot x)^2}\right)$ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 3 und Formel (13):
 \begin{displaymath}
 LC = b^2 = \SI{3.626(4)e-11}{\second\squared}
