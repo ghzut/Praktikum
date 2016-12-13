@@ -59,7 +59,7 @@ Mit den gegebenen Werten $L$ und $C$ errechnet sich jedoch mit Formel (2):
 \begin{displaymath}
 R_{ap} = \SI{5700(17)}{\ohm}\text{.}
 \end{displaymath}
-Die Abweichung zum errechnetem Wert liegt somit bei $\SI{5428(17)}{\ohm}$. 
+Die Abweichung zum errechnetem Wert liegt somit bei $\SI{5428(17)}{\ohm}$.
 Diese starke Abweichung zwischen dem errechneten und gemessenen Wert muss in der Diskussion geklärt werden.
 
 
@@ -70,7 +70,7 @@ Diese starke Abweichung zwischen dem errechneten und gemessenen Wert muss in der
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{grac1.pdf}
 	\label{fig:grac1}
 \end{figure}
-Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\frac{1}{\sqrt{(1-(2a\cdot x)^2)^2+(b\cdot x)^2}} $ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 2 und Formel (12): 
+Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\frac{1}{\sqrt{(1-(2a\cdot x)^2)^2+(b\cdot x)^2}} $ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 2 und Formel (12):
 \begin{displaymath}
 LC = a^2 = \SI{3.626(13)e-11}{\second\squared}
 \end{displaymath}
@@ -122,7 +122,13 @@ Auch hier ist eine systematische Abweichung zwischen den aus den gegeben Werten 
 \end{figure}
 \input{../build/tabd.tex}
 \newpage
-Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form $y=\arctan \left(\frac{a\cdot x}{1-(b\cdot x)^2}\right)$ mittels SciPy \cite{scipy} $LC$ und $RC$ bestimmt. Es ergibt sich aus den Daten aus Tabelle 3 und Formel (13):
+Es werden mithilfe einer nichtlinearen Ausgleichsrechnung der Form
+$y=\arctan \left(\frac{a\cdot x}{1-(b\cdot x)^2}\right)$ mittels SciPy
+ \cite{scipy} $LC$ und $RC$ bestimmt.
+% Genauer besteht die Funktion aus 2 Bereichen, da die Funktion im verwendeten Intervall eine Polstelle besitzt. In den Abb. 8 und 9 werden die hintere Teile daher auf die Höhe der Enden der Vorderen angepasst. Die Messwerte zeigen dieses Verhalten auch.   
+  Es ergibt sich aus den
+  Daten aus Tabelle 3 und Formel (13):
+
 \begin{displaymath}
 LC = b^2 = \SI{3.626(4)e-11}{\second\squared}
 \end{displaymath}
@@ -151,5 +157,3 @@ f_1 = \SI{3.046(10)e4}{\per\second}
 f_2 = \SI{2.399(7)e4}{\per\second}\text{.}
 \end{displaymath}
 Es ist wieder eine systematsche Abweichung zwischen den aus den gegeben Werten und aus den gemessenen Werten errechneten Werten erkennbar.
-
-
