@@ -1,0 +1,127 @@
+
+\section{Theorie}
+\label{sec:Theorie}
+
+\subsection{das Einwirken von Kräften auf deformierbare Körper}
+In der Mechanik wird bei Kräften auf einen Körper zwischen zwei Wirkungsweisen unterschieden.
+ Es existieren Kräfte, welche auf jedes Volumenelement des Körpers wirken. Sie
+  führen entweder zu einer Translation oder einer Rotation des Körpers.
+  Andererseits gibt es auch die Kräfte, welche auf jedes Oberflächenelement des Körpers wirken.
+    Sie führen zu einer Gestaltsänderung oder einer Volumenänderung des Körpers.
+    Eine Kraft der letzten Kategorie wird als Spannung bezeichnet und bezieht sich im Normalfall
+     auf die Kraft pro Fläche. Sie lässt sich in Komponenten zerlegen.
+     Die Komponente, welche senkrecht auf der Oberfläche des Körpers steht
+      wird als Normalspannung $\sigma$ bezeichnet,
+       die paralele Komponente als Tangentialspannung $\tau$.
+       Verformt sich der Körper wieder zurück in seine ursprüngliche Form,
+        wird von einer elastischen Deformation gesprochen.
+        Ist die auf den Körper einwirkende Spannung hinreichend klein,
+         besteht zwischen den wirkenden Spannungskomponenten
+          und den relativen Länge- und Volumenänderungen ein linearer
+           Zusammenhang. Dieser wird Hooksches Gesetz genannt.
+
+
+
+\subsection{Die elastischen Konstanten eines isotropen Körpers}
+Unter einem Isotropen Körper werden Materialien verstanden,
+ deren elastische Konstanten richtungsunabhängig sind. Zu ihnen gehören
+  unter anderem Polykristalline Metalle. Theoretisch lässt sich ihr Verhalten
+  mit 2 Konstanten beschreiben. Aus Bequemlichkeitsgründen werden jedoch 4 Konstanten verwendet:
+  \begin{itemize}
+    \item Der Schubmodul $G$ bezeichnet die Elastizität, bezogen auf eine Änderung
+     der Gestalt. Seine Größe ist $\frac{\text{Kraft}}{\text{Fläche}}$.
+
+    \item Der Kompressionsmodul $Q$ bezeichnet die Elastizität, bezogen auf
+     eine Änderung des Volumens. Auch dessen Größe ist $\frac{\text{Kraft}}{\text{Fläche}}$.
+
+    \item Der Elastizitätsmodul $E$ bezeichnet die relative Längenänderung in
+     Spannungsrichtung eines Körpers unter Einfluss einer Normalspannung.
+
+    \item Die Poissonsche Querkontraktionszahl $\mu$ bezeichnet die relative
+     Längenänderung senkrecht zur Spannungsrichtung eines Körpers unter
+      Einfluss einer Normalspannung.
+\end{itemize}
+Die 4 Größen sind nicht unabhängig voneinander und es bestehen folgende Beziehungen zwischen ihnen:
+\begin{equation}
+  E = 2G(\mu + 1)
+\end{equation}
+\begin{equation}
+  E = 3(1-2\mu)Q
+\end{equation}
+Es lässt sich erkennen, dass $E$ und $G$ bestimmt werden müssen, während $Q$ und $\mu$
+ anschließend mit ihnen berechnet werden können. Ein weiterer Effekt ist die
+  elastische Nachwirkung. Sie tritt auf, wenn sich ein deformierbarer Körper
+   unter Belastung nicht sofort in seinen Endzustand versetzt, oder sich bei
+    Aufhebung der Spannung nicht sofort wieder in den Ursprungszustand zurückversetzt.
+
+ \subsection{Bestimmung des Schubmoduls G mithilfe einer Torsion}
+ Soll der Schubmodul eines Materials bestimmt werden, wird dieses in die Form eines Drahtes mit Radius $R\text{D}$ gebracht.
+  Dieser wird an einer Seite festgehalten und an der anderen verdreht. Über das auftretende
+   Drehmoment $M$ gelangt man anschließend an $G$ mithilfe der Richtgröße $D$. Für letztere gilt:
+   \begin{equation}
+     D = \frac{\pi GR\text{D}⁴}{2L}
+   \end{equation}
+Aufgrund der elastischen Nachwirkungen kann es jedoch zu Fehlern kommen.
+Um diesen entgegenzuwirken wird der Draht zu einer Drehschwingung angeregt, bei denen das Problem nicht auftritt.
+ Hierzu wird eine schwingfähige Masse an den Körper gehängt, welche ein Trägheitsmoment $\theta$ besitzt.
+Unter Vernachlässigung des Energieverlustes lautet dann die Bewegungsgleichung:
+\begin{equation}
+  D\varphi + \theta\frac{\text{d}²\varphi}{\text{d}t²} = 0
+\end{equation}
+Sie wird gelöst durch:
+\begin{equation}
+\varphi(t) = \varphi_0 \cos\frac{2\pi}{T}
+\end{equation}
+Der Winkel $\varphi(t)$ bezeichnet den zeitabhängigen Torsionswinkel,
+ $\varphi_\text{0}$ den Winkel der Anfangstorsion. Die Periodendauer T lässt sich mit
+\begin{equation}
+  T = 2\pi\sqrt{\frac{\theta}{D}}
+\end{equation}
+ausdrücken. Für $G$ folgt dann:
+\begin{equation}
+  G = 8\pi \frac{L}{T²R\text{D}⁴}(\theta_\text{K} + \theta_\text{H}) \text{ mit } \theta = \theta_\text{K} + \theta_\text{H}
+\end{equation}
+Die Trägheitsmomente $\theta_\text{K}$ und $\theta_\text{H}$ gehören zur Schwungmasse,
+ bzw. zur Massenhalterung, mit welcher die Masse am Draht befestigt ist.
+  Ist die Schwungmasse Kugelförmig folgt für $\theta_\text{K}$:
+  \begin{equation}
+    \theta_\text{K} = \frac{2}{5} m_\text{K} R_\text{K}^2
+    \end{equation}
+% Im Fall einer Kugelförmigen, angehängten Masse mit $R_\text{k} \gg R$ folgt für $G$ schließlich
+%\begin{equation}
+%G = \frac{16}{5} \pi \frac{m_\text{k}R^2_\text{k}L}{T^2R⁴}
+%\end{equation}
+%mit dem Radius der Kugel $R_\text{k}$, der Kugelmasse $m_\text{k}$, dem Stabradius $R$ und der Stablänge $L$.
+
+\subsection{Messung des magnetischen Momentes eines Permanentmagneten}
+Unter einem magnetischen Moment $m'$ wird das Produkt der Polstärke $p$
+ und dem Abstandsvektor der beiden Pole $\vec{a}$ in Richtung des Südpols verstanden.
+  Wird der Stabmagnet nun in ein homogenes $B$-Feld gesetzt,
+   erhält er ein Drehmoment $M_{\text{mag}}$
+Zur Bestimmung des magnetischen Momentes wird wieder ein Torsionsschwingung wie
+ beim Schubmodul verwendet, diesmal jedoch unter Einfluss eines $B$-Feldes.
+  Aufgrund des $B$-Feldes kommt es zu einer veränderten Periodendauer $T_\text{m}$.  Wenn
+  der Magnet im Inneren der Kugel untergebracht wird und parallel zur Feldrichtung
+  liegt, gilt für den Drehwinkel \varphi die Bewegungsgleichung:
+  \begin{equation}
+    m'B\sin\varphi + D\varphi + \theta\frac{\text{d}^2\varphi}{\text{d}t²} = 0
+  \end{equation}
+  Für kleine Ablenkungen kann $\sin \varphi$ mit $\varphi$ genähert werden und die DGL wird durch
+  \begin{equation}
+    \varphi(t) = \varphi_\text{0} \cos\frac{2\pi}{T_\text{m}}t
+  \end{equation}
+  gelöst. Für die neue Periodendauer $T_\text{m'}$ gilt:
+  \begin{equation}
+    T_\text{m} = 2\pi\sqrt{\frac{\theta}{m'B + D}}\text{.}
+  \end{equation}
+Das magnetische Moment $m'$ berechnet sich schlussendlich mit:
+\begin{equation}
+  m' = \frac{4\pi²\theta}{BT_\text{m'}^2} - \frac{D}{B}\text{.}
+\end{equation}
+Wird für das homogene $B$-Feld ein Helmholtzspulenpaar verwendet gilt für die
+ magnetische Feldstärke:
+ \begin{equation}
+   B = \mu_0 \cdot \frac{8 I N}{\sqrt{125}R_\text{H}}\text{.}
+ \end{equation}
+Die Wicklungen pro Spule werden mit $N$ bezeichnet, der Radius der Spulen durch $R_\text{H}$.
+ Die verwendete Stromstärke ist $I$.
