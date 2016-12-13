@@ -3,7 +3,7 @@
 #Durchmesser: 10 mm
 #Länge: 57,5 cm
 # in der vorrichtung eingespannte länge: 5,5 cm
-#Länge des freihängenden Stückes || delta x in 0,001 mm ohne last || delta x in 0,001mm
+#Länge des freihängenden Stückes || delta x in 0,001 mm ohne last || delta x in 0,001mm mit Last
 3 8890 8820
 4 8920 8820
 5 8930 8780
