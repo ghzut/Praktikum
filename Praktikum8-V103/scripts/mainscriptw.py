@@ -8,11 +8,15 @@ import uncertainties.unumpy as unp
 
 
 #Für alle#####################################
-
+namex = r'$x/\si{\centi\meter}$'
+namey = r'$D(x)/\si{\milli\meter}$'
 
 #eineitig eingespannt#########################
 
 #RUNDSTAB#####################################
+Ir = np.pi/4 * (0.005)**4
+F = 9.81 * 0.7415
+
 def DurchbiegungEinseitig1(x, a):
 	return a*(0.52*x**2-(x**3)/3)
 
@@ -22,19 +26,25 @@ yd = (y1-y2)/1000**2
 params, covar = curve_fit(DurchbiegungEinseitig1, x, yd, maxfev=1000)
 print(params)
 print(covar)
-t = np.linspace(0, x[-1]*1.02, 500)
+t = np.linspace(0, x[-1], 500)
 plt.cla()
 plt.clf()
-plt.plot(x, yd, 'rx', label='Daten')
-plt.plot(t, DurchbiegungEinseitig1(t, *params), 'b-', label='Fit')
-plt.xlim(t[0], t[-1])
-#plt.xlabel(namex)
-#plt.ylabel(namey)
+plt.plot(x*100, yd*1000, 'rx', label='Daten')
+plt.plot(t*100, DurchbiegungEinseitig1(t, *params)*1000, 'b-', label='Fit')
+plt.xlim(t[0]*100, t[-1]*102)
+plt.xlabel(namex)
+plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'rundstab')
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+E = F/(2*a*Ir)
+print('E1 =', E)
 
 #QUARDRATSTAB#################################
+Iq = 1/12 * 0.01**4
+F = 9.81 * 1.2123
+
 def DurchbiegungEinseitig2(x, a):
 	return a*(0.5*x**2-(x**3)/3)
 
@@ -44,20 +54,24 @@ yd = (y1-y2)/1000**2
 params, covar = curve_fit(DurchbiegungEinseitig2, x, yd, maxfev=1000)
 print(params)
 print(covar)
-t = np.linspace(0, x[-1]*1.02, 500)
+t = np.linspace(0, x[-1], 500)
 plt.cla()
 plt.clf()
-plt.plot(x, yd, 'rx', label='Daten')
-plt.plot(t, DurchbiegungEinseitig2(t, *params), 'b-', label='Fit')
-plt.xlim(t[0], t[-1])
-#plt.xlabel(namex)
-#plt.ylabel(namey)
+plt.plot(x*100, yd*1000, 'rx', label='Daten')
+plt.plot(t*100, DurchbiegungEinseitig2(t, *params)*1000, 'b-', label='Fit')
+plt.xlim(t[0]*100, t[-1]*102)
+plt.xlabel(namex)
+plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabeinseitig')
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+E = F/(2*a*Iq)
+print('E2 =', E)
 
 
 #QUARDRATSTABBEIDSEITIG########################
+F = 9.81 * 3.5313
 
 def DurchbiegungBeidseitig(x, a):
 	links = a*(3*0.555**2*x[x<0.555/2]-4*(x[x<0.555/2]**3))
@@ -75,14 +89,17 @@ print(covar)
 t = np.linspace(0, 0.555, 500)
 plt.cla()
 plt.clf()
-plt.plot(x, yd, 'rx', label='Daten')
-plt.plot(t, DurchbiegungBeidseitig(t, *params), 'b-', label='Fit')
-plt.xlim(t[0], t[-1])
-#plt.xlabel(namex)
-#plt.ylabel(namey)
+plt.plot(x*100, yd*1000, 'rx', label='Daten')
+plt.plot(t*100, DurchbiegungBeidseitig(t, *params)*1000, 'b-', label='Fit')
+plt.xlim(t[0]*100, t[-1]*100)
+plt.xlabel(namex)
+plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabbeidseitig')
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+E = F/(48*a*Iq)
+print('E3 =', E)
 
 
 
