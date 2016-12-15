@@ -25,7 +25,8 @@ v_{ph} = \frac{\omega}{\theta}\text{.}
 	$\theta$ beschreibt dabei den Phasenunterschied pro Kettenglied. Auf ihn wird später näher eingegangen.
      Da ein Wellenpaket aus einer Menge unterschiedlicher Einzelwellen besteht
       und jede eine eigene Phasengeschwindigkeit besitzt, kommt es zu einer Verzerrung
-  der Gestalt des Wellenpaketes. Diesen Effekt nennt man Dispersion.
+  der Gestalt des Wellenpaketes. Daraus folgt, dass die auftretende Phasenverschiebung Frequenzabhängig ist.
+   Dieser Effekt heißt Dispersion.
      \begin{figure}[H]
        \centering
        \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/Grafiken/LCKette.png}
@@ -37,7 +38,7 @@ v_{ph} = \frac{\omega}{\theta}\text{.}
 
 Im folgenden wird weiter auf die bereits gennanten Effekte eingegangen. Zunächst
  wird die einfache $LC$-Kette thematisiert. Diese besitzt nur Kondensatoren der
- gleichen Kapazität $C$.\\\\
+ gleichen Kapazität $C$.
 
 Aus den kirchhoffschen Regeln folgt die Bewegungsgleichung:
 \begin{equation}
@@ -69,35 +70,56 @@ Es folgt für die auftretende Dispersion:
 Es zeigt sich, dass die $LC_1C_2$-Kette aufgrund der positiven und negativen Wurzel
 zwei Frequenzbereiche besitzt, in denen Schwingungen auftreten. Die Verläufe der
  negativen und postiven Wurzel werden akustischer bzw. optischer Ast genannt.
- Der Kurvenverlauf hat die unten dargestellte Form.
+ Der Kurvenverlauf hat die in \ref{thetaf} dargestellte Form.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=\linewidth-200pt,height=\textheight-200pt,keepaspectratio]{content/Grafiken/Dispersionskurven.png}
+   \includegraphics[width=\linewidth-100pt,height=\textheight-100pt,keepaspectratio]{content/Grafiken/Dispersionskurven.png}
    \caption{Die Frequenz in Abhängigkeit der Phasendifferenz \cite{V356}.}
-   \label{fig:LC-Kette}
+   \label{fig:thetaf}
  \end{figure}
  Es zeigt sich, dass zwischen beiden Ästen eine Lücke existiert,
   in denen keine Schwingungen auftreten, da die untere Grenzfrequenz des
    optischen Astes größer ist als die obere Grenzfrequenz des akustischen Astes.
+\subsection{stehende Wellen}
+Breitet sich eine Wellenfront auf einem im Ort beschränkten Träger aus, trifft diese
+nach endlicher Zeit auf den Rand des Trägers. An diesem kommt es zur Reflexion
+ der Wellenfront und zur Überlagerung der ankommenden und der reflektierten
+  Wellenfronten. Es bildet sich eine stehende Welle auf dem Träger aus. Diese besitzt
+   Minima und Maxima welche örtlich und zeitlich konstant bleiben. Die Minima heißen Knoten,
+    die Orte der Amplitudenmaxima heißen Bäuchen. Je höher die Frequenz der
+     Welle ist, desto mehr Bäuche und Knoten bilden sich, da ihre Anzahl abhängig
+      von der Wellenlänge $\lambda$ ist. Passt genau ein n-faches der halben Wellenlänge
+       auf die Länge des Trägers, wird von der n-ten Eigenschwingung gesprochen. Es existieren
+    folgende Spezialfälle:
+    \begin{itemize}
+      \item Besitzt der Träger zwei offene Enden, kommt es zu einer vollständigen
+       Reflexion der Welle ohne einen Phasensprung. An beiden Enden bilden sich
+        Bäuche aus. Die Schwingungsbäuche liegen bei $n \cdot \frac{\lambda}{2}$,
+        die Knoten bei $2n+1 \cdot \frac{\lambda}{4}$.
+
+\item Besitzt der Träger zwei feste Enden, kommt es zu einer vollständigen
+ Reflexion der Welle mit einem Phasensprung von $\pi$. An beiden Enden bilden sich Knoten aus.
+ Die Schwingungsbäuche liegen bei $2n+1 \cdot \frac{\lambda}{4}$,
+ die Knoten bei $n \cdot \frac{\lambda}{2}$.
+      \end{itemize}
 
 
 \subsection{Die Eigenschaften einer endlichen LC-Kette}
 Liegt eine LC-Kette endlicher Länge vor, bzw. wurden beide Abschlusswiderstände
  nicht nach Formel (1) der Frequenz des Wechselstromes ensprechend angepasst,
-  kommt es zur Reflexion ankommender Wellen. Aus den kirchhoffschen Regeln folgt das Verhältnis:
+  kommt es zur Reflexion ankommender Wellen. Wenn dies geschieht bilden sich auf der
+   $LC$-Kette stehende Wellen aus. Aus den kirchhoffschen Regeln folgt das Verhältnis:
   \begin{equation}
     \frac{U_{ref}}{U_{ein}} = \frac{R-Z}{R+Z}\text{.}
   \end{equation}
-  Es folgen die Spezialfälle:\\
+  Es gelten die Spezialfälle:\\
 \begin{itemize}
-  \item Die LC-Kette besitzt ein offenes Ende, $R$ beträgt also $\infty$. An diesem
-   wird eine ankommende Welle vollständig und ohne Phasensprung reflektiert.
-   Die Phasenunterschiede der entstehenden Bäuche liegen bei Vielfachen von $\pi$.\\
+  \item Die LC-Kette besitzt ein offenes Ende, $R$ beträgt also $\infty$. Die $LC$-Kette
+   besitzt dann zwei offene Enden.\\
 
-  \item Die LC-Kette ist kurzgeschlossen, $R$ beträgt daher 0. An diesem Ende wird
-   eine ankommende Welle vollständig reflektiert, jedoch mit einem Phasensprung von $\pi$.
-   Auch hier liegen die Phasenunterschiede der entstehenden Bäuche bei Vielfachen von $\pi$.\\
+  \item Die LC-Kette ist kurzgeschlossen, $R$ beträgt daher 0. Die $LC$-Kette besitzt zwei
+  feste Enden.\\
 
- \item Werden beide Abschlusswiderstände auf den Wellenwiderstand der LC-Kette eingestellt,
-  so verhält sie sich wie eine unendliche LC-Kette. Aus diesem Grund kommt es auch nicht zur Reflexion.
+ \item Werden beide Abschlusswiderstände auf den Wellenwiderstand der $LC$-Kette eingestellt,
+  kommt es zu keiner Reflexion. Die $LC$-Kette verhält sich dann wie eine unendliche Kette.
 \end{itemize}
