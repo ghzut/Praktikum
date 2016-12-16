@@ -41,7 +41,8 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Ir)
 print('E1 =', E)
 
-makeTable([x*100, yd*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+makeTable([x[0:int len(x)/2]*100, yd[0:int len(yd)/2]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund1', ['S[table-format=3.1]', 'S[table-format=1.3]'])
+makeTable([x[int len(x)/2:]*100, yd[int len(yd)/2:]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund2', ['S[table-format=3.1]', 'S[table-format=1.3]'])
 
 
 plt.cla()
@@ -83,8 +84,9 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Iq)
 print('E2 =', E)
 
-makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 
+makeTable([x[0:int len(x)/2]*100, yd[0:int len(yd)/2]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig1', ['S[table-format=3.1]', 'S[table-format=1.3]'])
+makeTable([x[int len(x)/2:]*100, yd[int len(yd)/2:]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig2', ['S[table-format=3.1]', 'S[table-format=1.3]'])
 
 plt.cla()
 plt.clf()
@@ -124,7 +126,10 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabbeidseitig')
-makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabbeidseitig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+
+makeTable([x[0:int len(x)/2]*100, yd[0:int len(yd)/2]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabbeidseitig1', ['S[table-format=3.1]', 'S[table-format=1.3]'])
+makeTable([x[int len(x)/2:]*100, yd[int len(yd)/2:]*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabbeidseitig2', ['S[table-format=3.1]', 'S[table-format=1.3]'])
+
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(48*a*Iq)
 print('E3 =', E)
