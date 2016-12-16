@@ -41,7 +41,7 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Ir)
 print('E1 =', E)
 
-makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 
 
 plt.cla()
@@ -83,7 +83,7 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Iq)
 print('E2 =', E)
 
-makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 
 
 plt.cla()
@@ -124,7 +124,7 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabbeidseitig')
-makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabbeidseitig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabbeidseitig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(48*a*Iq)
 print('E3 =', E)
@@ -191,6 +191,3 @@ plt.savefig('build/'+'quadratstabbeidseitig3')
 #plt.legend(loc='best')
 #plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 #plt.savefig('build/'+'helmholzspule')
-
-
-
