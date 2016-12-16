@@ -4,13 +4,16 @@
 
 \subsection{}
 Kräfte, die auf die Oberfläche eines Körpers wirken, können dessen Gestalt oder
- Volumen verändern. Solche Kräfte werden als Spannung bezeichnet und normalerweise
-  in form von $\frac{\text{Kraft}}{\text{Fläche}}$ angegeben. Ihre oberflächenparallele
-   Komponente wird als Tangentialspannung $\sigma$ bezeichnet, ihre senkrechte Normalspannung $\tau$.
-    Sind die relativen Längenänderung der Gestaltsänderung klein, so liegt ein
-     linearer Zusammenhang zwischen Längenänderung und wirkender Spannung vor.
+ Volumen verändern. Eine solche Kraft wird als Spannung bezeichnet und normalerweise
+  in der Form $\frac{\text{Kraft}}{\text{Fläche}}$ angegeben. Ihre oberflächenparallele
+   Komponente wird als Tangentialspannung $\sigma$ bezeichnet, ihre senkrechte als Normalspannung $\tau$.
+Sind die aufgrund der Spannung auftretenden relativen Längenänderungen hinreichend
+ klein, liegt ein linearer Zusammenhang zwischen wirkender Spannung und Längenänderung vor.
+    %Sind der Gestaltsänderung klein, so l ein
+     %linearer Zusammenhang zwischen Längenänderung und wirkender Spannung vor.
       Dieser wird Hooksches Gesetz genannt.
-
+       Allgemein lässt sich das Verhalten eines Stoffes unter einer Spannung durch eine
+        $6\times6$ Matrix ausdrücken.
       Handelt es sich beim Material des Körpers um einen isotropen Stoff,
        reichen zwei Materialkonstanten aus um sein Verhalten unter einer Spannung
         zu beschreiben, aus praktischen Gründen werden zwei weitere eingeführt.
@@ -18,14 +21,23 @@ Kräfte, die auf die Oberfläche eines Körpers wirken, können dessen Gestalt o
          relative Längenänderung eines Körpers in Spannungsrichtung unter
           einer Normalspannung beschreibt.
 
-\subsection{Der einseitig eingespannte homogene Stab unter Einfluss einer konstanten Kraft}
-Wird ein homogener Stab einseitig eingespannt und anschließend unter den Einfluss
- einer Kraft gestellt, kommt es zu einer Biegung des Stabes. Diese führt zu einer
-  Auslenkung $D(x)$ im Vergleich zum unbelasteten Stab. Während die oberen
-   Schichten des Stabes bei der Biegung gedehnt werden, werden die Unteren gestaucht.
-   In ihrer Mitte existiert eine Schicht welche keine Längenänderung erfährt.
-   Diese heißt neutrale Faser. Ist die auftretende Krümmung des Stabes
-    hinreichend klein folgt über einen Drehmomentansatz:
+\subsection{Der einseitig eingespannte homogene Stab unter Einfluss einer konstanten Normalspannung}
+Wird ein homogener Stab einseitig eingespannt und anschließend am freien Ende unter den Einfluss
+ einer konstanten Normalspannung gestellt, kommt es zu einer Biegung des Stabes. Diese
+  reicht soweit bis die innere Gegenkraft des Stabes gleich der angreifenden Kraft ist. Die
+   innere Kraft entsteht aufgrund von Streckungen und Stauchungen der einzelnen
+    Materialschichten, welche durch die Biegung verursacht werden. Da es sich bei
+     der Kraftwirkung um eine Drehung handelt, kann die verursachte Durchbiegung
+      $D(x)$ an der Stelle $x$ durch einen Drehmomentansatz bestimmt werden.
+       Ist die Durchbiegung klein im Verhältnis zur Stablänge folgt daraus:
+
+
+ % Diese führt zu einer
+  %Durchbiegung $D(x)$ im Vergleich zum unbelasteten Stab. Während die oberen
+   %Schichten des Stabes bei der Biegung gedehnt werden, werden die Unteren gestaucht.
+   %In ihrer Mitte existiert eine Schicht welche keine Längenänderung erfährt.
+   %Diese heißt neutrale Faser. Ist die auftretende Krümmung des Stabes
+    %hinreichend klein folgt über einen Drehmomentansatz:
    \begin{equation}
      D(x) = \frac{F}{2EI}\left(Lx² - \frac{x³}{3}\right) \text{ mit }0 \leq x \leq L
      \end{equation}
@@ -36,14 +48,15 @@ Wird ein homogener Stab einseitig eingespannt und anschließend unter den Einflu
 \end{equation}
 Hierzu wird über die Querschnittsfläche $Q$ des Stabes integriert.
 
-\subsection{Der beidseitig auflegte Stab unter Einfluss einer konstanten Kraft}
-Auch bei beidseitiger Auflage des Stabes kommt es zu einer Durchbiegung, wenn
- der Stab einer konstanten Kraft unterliegt. Da beide Enden frei sind, kommt
- Auch hier gelangt man über einen Ansatz der wirkenden Drehmomente an die
-  auftretende Auslenkung. Wirkt die Kraft auf die Mitte des Stabes folgt für die
-   Auslenkung der linken Hälfte $D_\text{L}$:
+\subsection{Der beidseitig aufgelegte Stab unter Einfluss einer konstanten Normalspannung}
+Der Stab liegt nun an beiden Enden auf einem Träger auf. Wirkt nun eine
+ konstante Normalspannung auf den Mittelpunkt des Stabes, kommt es auch in diesem Fall
+  zu einer Durchbiegung.
+ Auch hier gelangt man über das Gleichgewicht der auftretenden Drehmomente an die Durchbiegung des Stabes.
+ Der Länge des Stabes wird von linken Ende $ = 0$ bis zum rechten Ende $= L$ ausgedrückt.
+    Dann folgt für die Durchbiegung der linken Hälfte $D_\text{L}$:
   \begin{equation}
-    D_\text{L}(x) = \frac{F}{48 EI}\left(3L²x-4x³)\right) \text{ mit } 0 \leq x \leq \frac{L}{2}\text{.}
+    D_\text{L}(x) = \frac{F}{48 EI}\left(3L²x-4x³\right) \text{ mit } 0 \leq x \leq \frac{L}{2}\text{.}
   \end{equation}
 Für die rechte Hälfte folgt:
 \begin{equation}
