@@ -41,7 +41,7 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Ir)
 print('E1 =', E)
 
-makeTable([x*100, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+makeTable([x*100, yd*1000], r'{'+namex+r'} & {'+namey+r'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 
 
 plt.cla()
