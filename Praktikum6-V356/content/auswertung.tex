@@ -15,11 +15,17 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
   markanten Stellen, welche die Grenzfrequenzen der Dispersionsgleichung
 	 markieren. Es folgt nun zunächst die einfache $LC$-Kette:
 
-   \begin{figure}[H]
+   \begin{figure}
    	\centering
    	\caption{Die Durchlasskurve der $LC$-Kette.}
    	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Scans/LC.png}
    	\label{fig:Lc}
+   \end{figure}
+   \begin{figure}
+   	\centering
+   	\caption{aus Abbildung \ref{fig:Lc}.}
+   	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Scans/LC.png}
+   	\label{fig:LcMist}
    \end{figure}
 
 	 Für diese verschwinden, dem Ausdruck nach, sämtliche Spannungen ab ca.
@@ -29,7 +35,7 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 			 sowohl die Grenzfrequenz des unteren Astes, aber auch die untere als auch obere Grenzfrequenz des
 			  oberen Astes untersucht werden.
 
-        \begin{figure}[H]
+        \begin{figure}
          \centering
          \caption{Die Durchlasskurve der $LC_1C_2$-Kette.}
          \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Scans/LC1C2.png}
@@ -38,7 +44,7 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 
          Aufgrund des im Graphen erkennbaren, seichten
 				Ausgang am unteren Ast, lässt sich nicht genau angeben, wo die
-				 Grenzfrequenz genau liegt. Sie lässt sich jedoch zwischen dem dritten
+				 Grenzfrequenz liegt. Sie lässt sich jedoch zwischen dem dritten
 				  und dem vierten Messwert, also zwischen $\SI{35,6}{\kilo\hertz}$ und
 					$\SI{38,8}{\kilo\hertz}$, vermuten, da der Graph in diesem Bereich
 					 stark abflacht. Der berechnete Wert liefert ca. $\SI{36,3}{\kilo\hertz}$,
@@ -57,23 +63,23 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 \subsubsection{Die LC-Kette mit Kondensatoren einer Kapazität}
 \begin{figure}[H]
 	\centering
-	\caption{Die Frequenz in Abhängigkeit der Phasendifferenz pro Kettenglied $LC$-Kette.}
+	\caption{Die Frequenz in Abhängigkeit der Phasenverschiebung pro Kettenglied $LC$-Kette.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/grab1.pdf}
 	\label{fig:grab1}
 \end{figure}
 \input{build/tabb1.tex}
-Wie im Graph zu erkennen ist, liegen die gemessenen Werte gut auf der Theoriekurve des akustischen Astes.
+Wie im Graph in Abbildung \ref{fig:grab1} zu erkennen ist, liegen die gemessenen Werte gut auf der Theoriekurve des akustischen Astes. Die Theoriekurve wurde durch Formel (4) und den bekannten Werten für $L$ und $C_1$ berechnet.
+
 
 \subsubsection{Die LC-Kette mit Kondensatoren zweier Kapazitäten}
 \begin{figure}[H]
 	\centering
-	\caption{Die Frequenz in Abhängigkeit der Phasendifferenz pro Kettenglied bei einer $LC_1C_2$-Kette.}
+	\caption{Die Frequenz in Abhängigkeit der Phasenverschiebung pro Kettenglied bei einer $LC_1C_2$-Kette.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/grab2.pdf}
 	\label{fig:grab2}
 \end{figure}
 \input{build/tabb2.tex}
-Auch hier bestätigen die Messwerte die errechnete Theoriekurve. Hier befinden sich zusätzlich zu den Wertepaaren im akustischen Ast welche im optischen Ast und bestätigen somit dessen Existenz. 
-
+Auch in Abbildung \ref{fig:grab2} bestätigen die Messwerte die mit Formel (7) aus $L$, $C_1$ und $C_2$ errechnete Theoriekurve des akustischen bzw. optischen Astes. Hier befinden sich zusätzlich zu den Wertepaaren im akustischen Ast welche im optischen Ast und bestätigen somit dessen Existenz. 
 
 \subsection{Bestimmung der Phasengeschwindigkeit}
 
@@ -84,6 +90,7 @@ Auch hier bestätigen die Messwerte die errechnete Theoriekurve. Hier befinden s
 	\label{fig:grac}
 \end{figure}
 \input{build/tabc.tex}
+Die in Abbildung \ref{fig:grac} dargestellte Theoriekurve wurde aus $L$ und $C_1$ mit Formel (2) berechnet. 
 Es zeigt sich, dass die Messwerte in der Nähe der Theoriekurve liegen und ihr Verlauf
  streng monoton fallend ist. Es sind keine größeren Abweichungen erkennbar. Am
   Verlauf der Theoriekurve lässt sich zudem wieder erkennen, dass sich, wie bereits zuvor
@@ -98,8 +105,8 @@ Es zeigt sich, dass die Messwerte in der Nähe der Theoriekurve liegen und ihr V
 	\label{fig:grad1}
 \end{figure}
 
-\hspace{1.8ex} Wie im Graph zu erkennen ist, bildet sich auf der $LC$-Kette eine stehende Welle aus.
- Da eine offene Kette gewählt wurde, ist die Phasendifferenz zwischen den Enden ein Vielfaches
+\hspace{1.8ex} In der Abbildung \ref{fig:grad1} besitzt der Fit die Form $y = a  |\cos(\frac{\pi}{14} \cdot x)|$. Wie im Graph zu erkennen ist, bildet sich auf der $LC$-Kette eine stehende Welle aus.
+ Da eine offene Kette gewählt wurde, ist die Phasenverschiebung zwischen den Enden ein Vielfaches
   von $\pi$ und da es sich hier um die 1. Eigenschwingung handelt einfach nur $\pi$. Aus diesem Grund zeigt
  sich an beiden Enden ein Bauch und in der Mitte ein Knoten. Damit erfüllen die Messdaten die theoretischen Überlegungen.
 \begin{figure}[H]
@@ -108,7 +115,7 @@ Es zeigt sich, dass die Messwerte in der Nähe der Theoriekurve liegen und ihr V
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/grad2.pdf}
 	\label{fig:grad2}
 \end{figure}
-Auch hier bildet die Form der Messwertkurve den Verlauf einer stehenden Welle ab. Diesmal jedoch den Verlauf der 2. Eigenschwingung, welcher zwei erkennbare Knoten statt einem besitzt.
+In der Abbildung \ref{fig:grad2} besitzt der Fit die Form $y = a  |\cos(\frac{\pi}{7} \cdot x)|$. Auch hier bildet die Form der Messwertkurve den Verlauf einer stehenden Welle ab. Diesmal jedoch den Verlauf der 2. Eigenschwingung, welcher zwei erkennbare Knoten statt einem besitzt.
 
 \subsection{Der Spannungsverlauf auf der LC-Kette mit dem Wellenwiderstand als Abschlusswiderstand}
 \begin{figure}[H]
@@ -118,8 +125,4 @@ Auch hier bildet die Form der Messwertkurve den Verlauf einer stehenden Welle ab
 	\label{fig:grad3}
 \end{figure}
 \input{build/tabd.tex}
-Da der Wellenwiderstand für die Abschlusswiderstände eingestellt worden ist,
-verhält sich die LC-Kette wie eine unendliche LC-Kette. Da diese verständlicherweise
- kein Ende besitzt, an dem eine Reflexion geschehen könnte, bildet sich keine stehende Welle aus.
-  Daher bleibt der Spannungsverlauf des Graphen konstant. Die Messwerte
-   bestätigen also die Theoriekurve.
+In der Abbildung \ref{fig:grad3} besitzt der Fit die Form $y = a  x + b$. Da der Wellenwiderstand für die Abschlusswiderstände eingestellt worden ist, findet keine Reflexion an den Enden der $LC$-Kette statt. Ohne eine Reflexion der Welle kann sich jedoch keine stehende Welle ausbilden, daher bleibt der Spannungsverlauf des Graphen konstant. Die Messwerte bestätigen also die Theorie.

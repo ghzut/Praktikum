@@ -41,6 +41,20 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Ir)
 print('E1 =', E)
 
+makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigrund', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+
+
+plt.cla()
+plt.clf()
+plt.plot(0.52*(x)**2-(x)**3/3, yd*1000, 'rx', label='Daten')
+plt.plot(0.52*(t)**2-(t)**3/3, DurchbiegungEinseitig1(t, *params)*1000, 'b-', label='Fit')
+#plt.xlim(t[0]*100, t[-1]*102)
+plt.xlabel(r'$\left(L\cdot x^2-\frac{x^3}{3}\right)/\si{\meter}$')
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'rundstab2')
+
 #QUARDRATSTAB#################################
 Iq = 1/12 * 0.01**4
 F = 9.81 * 1.2123
@@ -69,6 +83,19 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Iq)
 print('E2 =', E)
 
+makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabeinseitigeckig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
+
+
+plt.cla()
+plt.clf()
+plt.plot(0.55*(x)**2-(x)**3/3, yd*1000, 'rx', label='Daten')
+plt.plot(0.55*(t)**2-(t)**3/3, DurchbiegungEinseitig2(t, *params)*1000, 'b-', label='Fit')
+plt.xlim(0, (0.55*(t[-1])**2-(t[-1])**3/3)*1.02)
+plt.xlabel(r'$\left(L\cdot x^2-\frac{x^3}{3}\right)/\si{\meter}$')
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'quadratstabeinseitig2')
 
 #QUARDRATSTABBEIDSEITIG########################
 F = 9.81 * 3.5313
@@ -97,12 +124,33 @@ plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabbeidseitig')
+makeTable([x*1000, yd*1000], r'{'+namex+'} & {'+namey+'}', r'ÜBERSCHRIEFT', 'tabbeidseitig', ['S[table-format=3.1]', 'S[table-format=1.2]'])
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(48*a*Iq)
 print('E3 =', E)
 
+plt.cla()
+plt.clf()
+plt.plot(3*0.555**2*x[x<0.555/2]-4*(x[x<0.555/2]**3), yd[:int(len(yd)/2)]*1000, 'rx', label='Daten')
+plt.plot(3*0.555**2*t[t<0.555/2]-4*(t[t<0.555/2]**3), DurchbiegungBeidseitig(t[t<0.555/2], *params)*1000, 'b-', label='Fit')
+#plt.xlim(0, (0.55*(t[-1])**2-(t[-1])**3/3)*1.02)
+plt.xlabel(r'$\left(3L^2\cdot x-\frac{x^3}{3}\right)/\si{\meter}$')
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'quadratstabbeidseitig2')
 
 
+plt.cla()
+plt.clf()
+plt.plot((4*x[x>=0.555/2]**3 -12* 0.555* x[x>=0.555/2]**2 + 9 * 0.555**2 * x[x>=0.555/2] -0.555**3 ), yd[int(len(yd)/2):]*1000, 'rx', label='Daten')
+plt.plot((4*t[t>=0.555/2]**3 -12* 0.555* t[t>=0.555/2]**2 + 9 * 0.555**2 * t[t>=0.555/2] -0.555**3 ), DurchbiegungBeidseitig(t[t>=0.555/2], *params)*1000, 'b-', label='Fit')
+#plt.xlim(0, (0.55*(t[-1])**2-(t[-1])**3/3)*1.02)
+plt.xlabel(r'$\left(3L^2\cdot x-\frac{x^3}{3}\right)/\si{\meter}$')
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'quadratstabbeidseitig3')
 #T2 = unp.uarray(np.mean(T2), stats.sem(T2))
 
 
