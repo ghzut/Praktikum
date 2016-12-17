@@ -11,11 +11,16 @@ import uncertainties.unumpy as unp
 namex = r'$x/\si{\centi\meter}$'
 namey = r'$D(x)/\si{\milli\meter}$'
 
+def line (x, a):
+	return a * x
+
 #eineitig eingespannt#########################
 
 #RUNDSTAB#####################################
 Ir = np.pi/4 * (0.005)**4
 F = 9.81 * 0.7415
+print('Ir:', Ir)
+print('F:', F)
 
 def DurchbiegungEinseitig1(x, a):
 	return a*(0.52*x**2-(x**3)/3)
@@ -41,24 +46,45 @@ a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(2*a*Ir)
 print('E1 =', E)
 
-makeTable([x[0:int(len(x)/2)]*100, np.around(yd[0:int(len(yd)/2)]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des einseitig eingespannten, runden Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.', 'tabeinseitigrund1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
-makeTable([x[int(len(x)/2):]*100, np.around(yd[int(len(yd)/2):]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des runden eingespannten, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.', 'tabeinseitigrund2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[0:int(len(x)/2)]*100, np.around(yd[0:int(len(yd)/2)]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', 'tabeinseitigrund1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[int(len(x)/2):]*100, np.around(yd[int(len(yd)/2):]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', 'tabeinseitigrund2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
 
 
 plt.cla()
 plt.clf()
 plt.plot((0.52*(x)**2-(x)**3/3)*10**3, yd*1000, 'rx', label='Daten')
 plt.plot((0.52*(t)**2-(t)**3/3)*10**3, DurchbiegungEinseitig1(t, *params)*1000, 'b-', label='Fit')
-plt.xlim(0, (0.55*(t[-1])**2-(t[-1])**3/3)*1.02*10**3)
+plt.xlim(0, (0.52*(t[-1])**2-(t[-1])**3/3)*1.02*10**3)
 plt.xlabel(r'$\left(L\cdot x^2-\frac{x^3}{3}\right)/\si{\centi\meter\cubed}$')
 plt.ylabel(namey)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'rundstab2')
 
+
+#params, covar = curve_fit(line, (0.52*(x)**2-(x)**3/3), yd, maxfev=1000)
+#print(params)
+#print(covar)
+#a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+#E = F/(2*a*Ir)
+#print('E1lin =', E)
+
+plt.cla()
+plt.clf()
+plt.plot((0.52*(x)**2-(x)**3/3)*10**3, yd*1000, 'rx', label='Daten')
+plt.plot((0.52*(t)**2-(t)**3/3)*10**3, line((0.52*(t)**2-(t)**3/3), *params)*1000, 'b-', label='Fit')
+plt.xlim(0, (0.52*(t[-1])**2-(t[-1])**3/3)*1.02*10**3)
+plt.xlabel(r'$\left(L\cdot x^2-\frac{x^3}{3}\right)/\si{\centi\meter\cubed}$')
+plt.ylabel(namey)
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'rundstab3')
+
 #QUARDRATSTAB#################################
 Iq = 1/12 * 0.01**4
 F = 9.81 * 1.2123
+print('Iq:', Iq)
+print('F:', F)
 
 def DurchbiegungEinseitig2(x, a):
 	return a*(0.5*x**2-(x**3)/3)
@@ -85,8 +111,8 @@ E = F/(2*a*Iq)
 print('E2 =', E)
 
 
-makeTable([x[0:int(len(x)/2)]*100, np.around(yd[0:int(len(yd)/2)]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des einseitig eingespannten, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.', 'tabeinseitigeckig1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
-makeTable([x[int(len(x)/2):]*100, np.around(yd[int(len(yd)/2):]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des einseitig eingespannten, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.', 'tabeinseitigeckig2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[0:int(len(x)/2)]*100, np.around(yd[0:int(len(yd)/2)]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', 'tabeinseitigeckig1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[int(len(x)/2):]*100, np.around(yd[int(len(yd)/2):]*1000, decimals=2)], r'{'+namex+r'} & {'+namey+r'}', 'tabeinseitigeckig2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
 
 plt.cla()
 plt.clf()
@@ -101,6 +127,8 @@ plt.savefig('build/'+'quadratstabeinseitig2')
 
 #QUARDRATSTABBEIDSEITIG########################
 F = 9.81 * 3.5313
+print('Iq:', Iq)
+print('F:', F)
 
 def DurchbiegungBeidseitig(x, a):
 	links = a*(3*0.555**2*x[x<0.555/2]-4*(x[x<0.555/2]**3))
@@ -128,8 +156,8 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'quadratstabbeidseitig')
 
 
-makeTable([x[0:int(len(x)/2)]*100, yd[0:int(len(yd)/2)]*1000], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des beidseitig aufliegenden, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum rechten Auflagepunkt.', 'tabbeidseitig1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
-makeTable([x[int(len(x)/2):]*100, yd[int(len(yd)/2):]*1000], r'{'+namex+r'} & {'+namey+r'}', r'Die gemessene Durchbiegung $D(x)$ des beidseitig aufliegenden, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum rechten Auflagepunkt.', 'tabbeidseitig2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[0:int(len(x)/2)]*100, yd[0:int(len(yd)/2)]*1000], r'{'+namex+r'} & {'+namey+r'}', 'tabbeidseitig1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
+makeTable([x[int(len(x)/2):]*100, yd[int(len(yd)/2):]*1000], r'{'+namex+r'} & {'+namey+r'}', 'tabbeidseitig2', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
 
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 E = F/(48*a*Iq)

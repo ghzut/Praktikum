@@ -77,11 +77,19 @@
 \floatplacement{figure}{htbp}
 \floatplacement{table}{htbp}
 
-% Floats innerhalb einer Section halten
-\usepackage[
-  section, % Floats innerhalb der Section halten
-  %below,   % unterhalb der Section aber auf der selben Seite ist ok
-]{placeins}
+
+%keine Floats in anderen Sectionen
+\usepackage{placeins}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
 
 % Seite drehen für breite Tabellen: landscape Umgebung
 \usepackage{pdflscape}

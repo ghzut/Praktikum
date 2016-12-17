@@ -39,12 +39,12 @@ Wird ein homogener Stab einseitig eingespannt und anschließend am freien Ende u
    %Diese heißt neutrale Faser. Ist die auftretende Krümmung des Stabes
     %hinreichend klein folgt über einen Drehmomentansatz:
    \begin{equation}
-     D(x) = \frac{F}{2EI}\left(Lx² - \frac{x³}{3}\right) \text{ mit }0 \leq x \leq L
+     D(x) = \frac{F}{2EI}\left(Lx² - \frac{x³}{3}\right) \text{ mit }0 \leq x \leq L \label{eq:EinseitigEingespannt}
      \end{equation}
      mit der Kraft $F$ und der Stablänge $L$. Die Variable $I$ bezeichnet das
      Flächenträgheitsmoment:
 \begin{equation}
-  I = \int_{Q}^{}y^2 \, \symup{d}q
+  I = \int_{Q}^{}y^2 \, \symup{d}q \label{eq:Flächenträgheitsmoment}
 \end{equation}
 Hierzu wird über die Querschnittsfläche $Q$ des Stabes integriert.
 
@@ -56,9 +56,9 @@ Der Stab liegt nun an beiden Enden auf einem Träger auf. Wirkt nun eine
  Der Länge des Stabes wird von linken Ende $ = 0$ bis zum rechten Ende $= L$ ausgedrückt.
     Dann folgt für die Durchbiegung der linken Hälfte $D_\text{L}$:
   \begin{equation}
-    D_\text{L}(x) = \frac{F}{48 EI}\left(3L²x-4x³\right) \text{ mit } 0 \leq x \leq \frac{L}{2}\text{.}
+    D_\text{L}(x) = \frac{F}{48 EI}\left(3L²x-4x³\right) \text{ mit } 0 \leq x \leq \frac{L}{2}\text{.}\label{eq:BeidseitigAufgelegtLinks}
   \end{equation}
 Für die rechte Hälfte folgt:
 \begin{equation}
-  D_\text{R}(x) = \frac{F}{48EI}\left(4x³ -12Lx² +9L²x-L³\right) \text{ mit } \frac{L}{2} \leq x \leq L\text{.}
+  D_\text{R}(x) = \frac{F}{48EI}\left(4x³ -12Lx² +9L²x-L³\right) \text{ mit } \frac{L}{2} \leq x \leq L\text{.}\label{eq:BeidseitigAufgelegtRechts}
 \end{equation}
