@@ -29,7 +29,7 @@
 		\input{build/tabeinseitigrund2.tex}
 	\end{minipage}
 \end{table}
-Der Fit in Abbildung \ref{fig:rund} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:rundlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{4.91e-2}{\centi\meter\tothe{4}}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{52}{\centi\meter}$, dem Flächenträgheitsmoment $I$, der Kraft $F$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigrund1} mit Formel \eqref{eq:EinseitigEingespannt}:
+Der Fit in Abbildung \ref{fig:rund} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:rundlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{4.91e-2}{\centi\meter\tothe{4}}$. Die Normalkraft F berechnet sich aus dem angehängtem Gewicht mit Formel \eqref{Gewichtskraft} zu $\SI{7.27}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{52}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigrund1} nach Formel \eqref{eq:EinseitigEingespannt}:
 \begin{displaymath}
 	E = \frac{F}{2 a I}= \SI{91.0(4)}{\giga\pascal}\text{.}
 \end{displaymath}
@@ -64,7 +64,7 @@ Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können
 		\input{build/tabeinseitigeckig2.tex}
 	\end{minipage}
 \end{table}
-Der Fit in Abbildung \ref{fig:quadratisch} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:quadratischlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{50}{\centi\meter}$, dem Flächenträgheitsmoment $I$, der Kraft $F$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigeckig1} mit Formel \eqref{eq:EinseitigEingespannt}:
+Der Fit in Abbildung \ref{fig:quadratisch} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:quadratischlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$. Die Normalkraft F berechnet sich aus dem angehängtem Gewicht mit Formel \eqref{Gewichtskraft} zu $\SI{11.89}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{50}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigeckig1} nach Formel \eqref{eq:EinseitigEingespannt}:
 \begin{displaymath}
 E = \frac{F}{2 a I}= \SI{87.38(26)}{\giga\pascal}\text{.}
 \end{displaymath}
@@ -110,11 +110,11 @@ Der Fit in Abbildung \ref{fig:beidseitig} besitzt die Form:
 \begin{equation}
 	y = 
 	\begin{cases}
-	3L^2 x-4x^3& 0\leq x \leq \frac{L}{2} \\ 
-	4 x^3 -12 L x^2 + 9 L^2 x -L 3  & \frac{L}{2} < x < L 
-	\end{cases}\text{.} \label{FunktionBeidseitig}
+	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\ 
+	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L 
+	\end{cases} \label{FunktionBeidseitig}
 \end{equation}
-In den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$, dem Flächenträgheitsmoment $I$, der Kraft $F$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} mit Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
+und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$.  Die Normalkraft F berechnet sich aus dem angehängtem Gewicht mit Formel \eqref{Gewichtskraft} zu $\SI{34.64}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} nach Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
 \begin{displaymath}
 E = \frac{F}{48 a I}= \SI{91.63(25)}{\giga\pascal}\text{.}
 \end{displaymath}
