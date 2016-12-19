@@ -4,17 +4,13 @@
 Die Graphen in den Abbildungen \ref{fig:LcMist}, \ref{fig:Lc1c2Mist}, \ref{fig:grab1},
  \ref{fig:grab2}, \ref{fig:grac}, \ref{fig:grad1}, \ref{fig:grad2} und \ref{fig:grad3}
   wurden jeweils sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} angefertigt.
-	
-Die Messwerte in der Tabelle 4 wurden mit 14 statt 16 $LC$-Gliedern mit anderen
+
+Die Messwerte in der Tabelle 4 wurden mit 14 statt 16 $LC$-Gliedern und anderen
  Kapazitäten und Induktivitäten ($L = \SI{1.217}{\milli\henry}$ und $C = \SI{20.13}{\nano\farad}$) von der anderen Gruppe aufgenommen.
 Die SI-Präfixe der Einheiten von $U_1$ und $U_2$ waren nicht bekannt.
 
 
 \subsection{Die Durchlasskurven beider LC-Ketten}
-Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
- erstellt worden untersucht. Man beschränkt sich dabei auf die Frequenzen der
-  markanten Stellen, welche die Grenzfrequenzen der Dispersionsgleichung
-	 markieren. Es folgt nun zunächst die einfache $LC$-Kette:
 
    \begin{figure}
    	\centering
@@ -40,15 +36,15 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 		\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/gramist2.pdf}
 		\label{fig:Lc1c2Mist}
 	\end{figure}
-
-	 Für diese verschwinden nach Abbildung \ref{fig:Lc} sämtliche Spannungen ab ca.
+  Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
+   erstellt worden untersucht. Man beschränkt sich dabei auf die Frequenzen der
+    markanten Stellen, welche die Grenzfrequenzen der Dispersionsgleichung
+  	 markieren. Diese lassen sich mithilfe der Graphen in \ref{fig:LcMist} und \ref{fig:Lc1c2Mist},
+      welche die logarithmischen Skalen der Durchlasskurven von \ref{fig:Lc} bzw. \ref{fig:Lc1c2} in Abhängigkeit der Zentimeterkästchen des Milimeterpapier darstellen, auslesen.Für die einfache $LC$-Kette verschwinden nach Abbildung \ref{fig:Lc} sämtliche Spannungen ab ca.
 	  $\SI{51}{\kilo\hertz}$. Die berechnete Grenzfrequenz liegt nach (4) bei
 		 ca. $\SI{51,3}{\kilo\hertz}$. Daher liegt die Abweichung vom berechneten Wert bei $\SI{0.6}{\percent}$. Es folgt nun die $LC_1C_2$-Kette. Bei dieser müssen
 			 sowohl die Grenzfrequenz des unteren Astes, aber auch die untere als auch obere Grenzfrequenz des
 			  oberen Astes untersucht werden.
-
-
-
          Aufgrund des im Graphen in Abbildung \ref{fig:Lc1c2} erkennbaren, seichten
 				Ausgang am unteren Ast, lässt sich nicht genau angeben, wo die
 				 Grenzfrequenz liegt. Sie lässt sich jedoch zwischen dem dritten
@@ -64,8 +60,6 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 							 des oberen Astes. Bei dieser liegt die Frequenz dem Graphen nach bei ca.
 							  $\SI{65}{\kilo\hertz}$. Der Theoriewert beträgt ca. $\SI{66,3}{\kilo\hertz}$. Damit liegt die relative Abweichung vom berechnetem Wert bei $\SI{2.0}{\percent}$.
 							Somit passen theoretischer und experimenteller Wert zueinander.
-
-
 \subsection{Die auftretende Dispersion in beiden Ketten}
 \subsubsection{Die LC-Kette mit Kondensatoren einer Kapazität}
 \begin{figure}[H]
@@ -75,7 +69,9 @@ Zunächst werden die Durchlasskurven der Ketten, welche mit dem XY-Schreiber
 	\label{fig:grab1}
 \end{figure}
 \input{build/tabb1.tex}
-Wie im Graph in Abbildung \ref{fig:grab1} zu erkennen ist, liegen die gemessenen Werte gut auf der Theoriekurve des akustischen Astes. Die Theoriekurve wurde durch Formel (4) und den bekannten Werten für $L$ und $C_1$ berechnet.
+Der in Abbildung \ref{fig:grab1} dargestellte Graph zeigt den Frequenzverlauf in Abhängigkeit der davon verursachten Phasenverschiebung $\theta$.
+Es ist zu erkennen, dass die gemessenen Werte gut auf der Theoriekurve des akustischen Astes liegen.
+ Dessen Theoriekurve wurde durch Formel (4) und den bekannten Werten für $L$ und $C_1$ berechnet.
 
 
 \subsubsection{Die LC-Kette mit Kondensatoren zweier Kapazitäten}
@@ -86,7 +82,10 @@ Wie im Graph in Abbildung \ref{fig:grab1} zu erkennen ist, liegen die gemessenen
 	\label{fig:grab2}
 \end{figure}
 \input{build/tabb2.tex}
-Auch in Abbildung \ref{fig:grab2} bestätigen die Messwerte die mit Formel (7) aus $L$, $C_1$ und $C_2$ errechnete Theoriekurve des akustischen bzw. optischen Astes. Hier befinden sich zusätzlich zu den Wertepaaren im akustischen Ast welche im optischen Ast und bestätigen somit dessen Existenz.
+Der  Graph in Abbildung \ref{fig:grab2} stellt nun den Frequenzverlauf der $LC_1C_2$-Kette dar.
+ Wie bereits aus der Theorie bekannt kommt es hier zu zwei verschiedenen Ästen, was sich auch in den Messwerten erkennen lässt.
+Sie bestätigen daher die mit Formel (7) aus $L$, $C_1$ und $C_2$ errechnete Theoriekurve des akustischen bzw. optischen Astes.
+% Hier befinden sich zusätzlich zu den Wertepaaren im akustischen Ast welche im optischen Ast und bestätigen somit dessen Existenz.
 
 \subsection{Bestimmung der Phasengeschwindigkeit}
 
@@ -97,7 +96,7 @@ Auch in Abbildung \ref{fig:grab2} bestätigen die Messwerte die mit Formel (7) a
 	\label{fig:grac}
 \end{figure}
 \input{build/tabc.tex}
-Die in Abbildung \ref{fig:grac} dargestellte Theoriekurve wurde aus $L$ und $C_1$ mit Formel (2) berechnet.
+Die in Abbildung \ref{fig:grac} dargestellte Theoriekurve der frequenzabhängigen Phasengeschwindigkeit wurde aus $L$ und $C_1$ mit Formel (2) berechnet.
 Es zeigt sich, dass die Messwerte in der Nähe der Theoriekurve liegen und ihr Verlauf
  streng monoton fallend ist. Es sind keine größeren Abweichungen erkennbar. Am
   Verlauf der Theoriekurve lässt sich zudem wieder erkennen, dass sich, wie bereits zuvor
@@ -112,7 +111,7 @@ Es zeigt sich, dass die Messwerte in der Nähe der Theoriekurve liegen und ihr V
 	\label{fig:grad1}
 \end{figure}
 
-\hspace{1.8ex} In der Abbildung \ref{fig:grad1} besitzt der Fit die Form $y = a  |\cos(\frac{\pi}{14} \cdot x)|$. Wie im Graph zu erkennen ist, bildet sich auf der $LC$-Kette eine stehende Welle aus.
+\hspace{1.8ex} Der in der Abbildung \ref{fig:grad1} dargestellte Fit besitzt die Form $y = a  |\cos(\frac{\pi}{14} \cdot x)|$. Wie im Graph zu erkennen ist, bildet sich auf der $LC$-Kette eine stehende Welle aus.
  Da eine offene Kette gewählt wurde, ist die Phasenverschiebung zwischen den Enden ein Vielfaches
   von $\pi$ und da es sich hier um die 1. Eigenschwingung handelt einfach nur $\pi$. Aus diesem Grund zeigt
  sich an beiden Enden ein Bauch und in der Mitte ein Knoten. Damit erfüllen die Messdaten die theoretischen Überlegungen.
