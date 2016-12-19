@@ -1,7 +1,10 @@
 
 \section{Auswertung}
 \label{sec:Auswertung}
-Die Graphen in Abbildung \ref{fig:rund} bis \ref{fig:beidseitiglinear2} wurden jeweils sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt. Die Gewichtskraft $F$ kann mit $g=\SI{9.81}{\newton\per\kilogram}$ berechnet werden durch:
+Die Graphen in Abbildung \ref{fig:rund} bis \ref{fig:beidseitiglinear2} wurden
+ jeweils sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
+  Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties}
+	 durchgeführt. Die Gewichtskraft $F$ kann mit $g=\SI{9.81}{\newton\per\kilogram}$ \cite{g} berechnet werden durch:
 \begin{equation}
 	F = m \cdot g \text{.} \label{Gewichtskraft}
 \end{equation}
@@ -111,10 +114,10 @@ Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können
 \end{table}
 Der Fit in Abbildung \ref{fig:beidseitig} besitzt die Form:
 \begin{equation}
-	y = 
+	y =
 	\begin{cases}
-	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\ 
-	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L 
+	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\
+	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L
 	\end{cases} \label{FunktionBeidseitig}
 \end{equation}
 und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$.  Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{3531.3}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{34.64}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} nach Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
@@ -122,5 +125,3 @@ und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear
 E = \frac{F}{48 a I}= \SI{91.63(25)}{\giga\pascal}\text{.}
 \end{displaymath}
 Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können.
-
-
