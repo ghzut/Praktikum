@@ -1,0 +1,128 @@
+
+\section{Auswertung}
+\label{sec:Auswertung}
+Die Graphen in Abbildung \ref{fig:rund} bis \ref{fig:beidseitiglinear2} wurden
+ jeweils sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
+  Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties}
+	 durchgeführt. Die Gewichtskraft $F$ kann mit $g=\SI{9.81}{\newton\per\kilogram}$ \cite{g} berechnet werden durch:
+\begin{equation}
+	F = m \cdot g \text{.} \label{Gewichtskraft}
+\end{equation}
+
+\subsection{Bestimmung des Elastizitätsmoduls über die Durchbiegung eines runden, einseitig eingespannten Stabes}
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des runden, einseitig eingespannten Stabes
+	 in Abhängigkeit des horizontalen Abstandes zum fixierten Ende.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/rundstab.pdf}
+	\label{fig:rund}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des runden, einseitig eingespannten Stabes
+	 in Abhängigkeit des horizontalen Abstandes zum fixierten Ende in linearisierter Darstellung.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/rundstab2.pdf}
+	\label{fig:rundlinear}
+\end{figure}
+\begin{table}
+	\caption{Die gemessene Durchbiegung $D(x)$ des einseitig eingespannten, runden Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tabeinseitigrund1.tex}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tabeinseitigrund2.tex}
+	\end{minipage}
+\end{table}
+Der Fit in Abbildung \ref{fig:rund} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:rundlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{4.91e-2}{\centi\meter\tothe{4}}$. Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{741.5}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{7.27}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{52}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigrund1} nach Formel \eqref{eq:EinseitigEingespannt}:
+\begin{displaymath}
+	E = \frac{F}{2 a I}= \SI{91.0(4)}{\giga\pascal}\text{.}
+\end{displaymath}
+Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können. Die linearisierte Darstellung in
+ \ref{fig:rundlinear} belegt zudem die Richtigkeit der vorangegangenen, theoretischen Überlegungen. 
+
+
+
+\subsection{Bestimmung des Elastizitätsmoduls über die Durchbiegung eines quadratischen, einseitig eingespannten Stabes}
+
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des quadratischen, einseitig eingespannten Stabes
+	 in Abhängigkeit des horizontalen Abstandes zum fixierten Ende.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/quadratstabeinseitig.pdf}
+	\label{fig:quadratisch}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des quadratischen, einseitig eingespannten Stabes
+	 in Abhängigkeit des horizontalen Abstandes zum fixierten Ende in linearisierter Darstellung.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/quadratstabeinseitig2.pdf}
+	\label{fig:quadratischlinear}
+\end{figure}
+\begin{table}
+	\caption{Die gemessene Durchbiegung $D(x)$ des einseitig eingespannten, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum fixierten Ende.}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tabeinseitigeckig1.tex}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tabeinseitigeckig2.tex}
+	\end{minipage}
+\end{table}
+Der Fit in Abbildung \ref{fig:quadratisch} besitzt die Form $y = a ( L x^2 - \frac{x^3}{3} ) $ und in Abbildung \ref{fig:quadratischlinear} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$. Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{1212.3}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{11.89}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form $y = a ( L x^2 - \frac{x^3}{3})$ liefert mit der gemessenen Länge $L$ von $\SI{50}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabeinseitigeckig1} nach Formel \eqref{eq:EinseitigEingespannt}:
+\begin{displaymath}
+E = \frac{F}{2 a I}= \SI{87.38(26)}{\giga\pascal}\text{.}
+\end{displaymath}
+Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können. Die Theorie wird wieder bestätigt.
+
+
+
+\subsection{Bestimmung des Elastizitätsmoduls über die Durchbiegung eines quadratischen, beidseitig aufgelegten Stabes}
+
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des quadratischen, beidseitig aufliegenden Stabes
+	 in Abhängigkeit des horizontalen Abstandes zum rechten Auflagepunkt.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/quadratstabbeidseitig.pdf}
+	\label{fig:beidseitig}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des quadratischen, beidseitig aufliegenden Stabes von der rechten Seite bis zur Stabmitte
+	 in Abhängigkeit des horizontalen Abstandes zum rechten Auflagepunkt in linearisierter Form.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/quadratstabbeidseitig2.pdf}
+	\label{fig:beidseitiglinear1}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die gemessene Durchbiegung $D(x)$ des quadratischen, beidseitig aufliegenden Stabes von der linken Seite bis zur Stabmitte
+	 in Abhängigkeit des horizontalen Abstandes zum rechten Auflagepunkt in linearisierter Form.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/quadratstabbeidseitig3.pdf}
+	\label{fig:beidseitiglinear2}
+\end{figure}
+\begin{table}
+	\caption{Die gemessene Durchbiegung $D(x)$ des beidseitig aufliegenden, quadratischen Stabes an den jeweiligen horizontalen Abständen $x$ zum rechten Auflagepunkt.}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\input{build/tabbeidseitig1.tex}
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		\centering
+		\input{build/tabbeidseitig2.tex}
+	\end{minipage}
+\end{table}
+Der Fit in Abbildung \ref{fig:beidseitig} besitzt die Form:
+\begin{equation}
+	y =
+	\begin{cases}
+	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\
+	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L
+	\end{cases} \label{FunktionBeidseitig}
+\end{equation}
+und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$.  Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{3531.3}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{34.64}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} nach Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
+\begin{displaymath}
+E = \frac{F}{48 a I}= \SI{91.63(25)}{\giga\pascal}\text{.}
+\end{displaymath}
+Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können. Auch hier zeigen die Graphen das vorhergesagte Verhalten auf.
