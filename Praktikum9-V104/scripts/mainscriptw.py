@@ -126,6 +126,9 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'VgegenDeltaV')
 
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+print('vNull/c:', a)
+print('c:', vNull/a)
 
 # makeTable([x[0:int(len(x)/2)]*100, yd[0:int(len(yd)/2)]*1000], r'{'+namex+r'} & {'+namey+r'}', 'tabbeidseitig1', ['S[table-format=2.1]', 'S[table-format=1.2]'], ["%3.1f", "%3.2f"])
 
@@ -139,5 +142,5 @@ x, y = np.genfromtxt('scripts/Wellenlängenmessungundnormalfrequenz', unpack=Tru
 y = y - y[0]
 wellenlaenge = unp.uarray(np.mean(y[1:]/x[1:]), stats.sem(y[1:]/x[1:]))
 print('Wellenlänge:', wellenlaenge, 'mm')
-print('1/Wellenlänge:', 1/wellenlaenge, '1/mm')
+print('1/Wellenlänge:', (1/wellenlaenge), '1/mm')
 print('c:', wellenlaenge*vNull/1000, 'm/s')
