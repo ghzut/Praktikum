@@ -16,6 +16,8 @@ vNull = 16594
 
 # Vmessung------------------------------------------------------------------------------
 Gang, timeForwards, timeBackwards = np.genfromtxt('scripts/Vmessung', unpack=True)
+makeTable([Gang[0:int(len(Gang)/2)], timeForwards[0:int(len(Gang)/2)], timeBackwards[0:int(len(Gang)/2)]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv1', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
+makeTable([Gang[int(len(Gang)/2):], timeForwards[int(len(Gang)/2):], timeBackwards[int(len(Gang)/2):]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv2', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
 LaengeDerStrecke = 445
 
 ForwardsV = []
@@ -37,8 +39,8 @@ print(BackwardsV)
 Gang, frequenzForwards, frequenzBackwards = np.genfromtxt('scripts/dopllereffektmessung', unpack=True)
 frequenzForwards[Gang==6] = frequenzForwards[Gang==6]/10
 frequenzBackwards[Gang==6] = frequenzBackwards[Gang==6]/10
-makeTable([Gang[0:len(Gang)/2], frequenzForwards[0:len(Gang)/2], frequenzBackwards[0:len(Gang)/2]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=1.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
-makeTable([Gang[len(Gang)/2:], frequenzForwards[len(Gang)/2:], frequenzBackwards[len(Gang)/2:]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab2', ['S[table-format=1.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+makeTable([Gang[0:len(Gang)/2], frequenzForwards[0:len(Gang)/2], frequenzBackwards[0:len(Gang)/2]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+makeTable([Gang[len(Gang)/2:], frequenzForwards[len(Gang)/2:], frequenzBackwards[len(Gang)/2:]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab2', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
 
 
 Forwards = []
