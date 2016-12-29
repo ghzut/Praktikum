@@ -37,6 +37,9 @@ print(BackwardsV)
 Gang, frequenzForwards, frequenzBackwards = np.genfromtxt('scripts/dopllereffektmessung', unpack=True)
 frequenzForwards[Gang==6] = frequenzForwards[Gang==6]/10
 frequenzBackwards[Gang==6] = frequenzBackwards[Gang==6]/10
+makeTable([Gang[0:len(Gang)/2], frequenzForwards[0:len(Gang)/2], frequenzBackwards[0:len(Gang)/2]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=1.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+makeTable([Gang[len(Gang)/2:], frequenzForwards[len(Gang)/2:], frequenzBackwards[len(Gang)/2:]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab2', ['S[table-format=1.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+
 
 Forwards = []
 for i in range(1, 11):
@@ -120,7 +123,7 @@ plt.plot(ForwardsVNominal, DeltaVForwardsNominal, 'gx', label='Forwards')
 plt.plot(BackwardsVNominal, DeltaVBackwardsNominal, 'rx', label='Backwards')
 plt.ylim(0, line(t[-1], *params)+0.1)
 plt.xlim(0, t[-1])
-plt.xlabel(r'v$/\si{\meter\per\second}$')
+plt.xlabel(r'$v/\si{\meter\per\second}$')
 plt.ylabel(r'$\Delta \nu / \si{\hertz}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)

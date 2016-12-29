@@ -2,3 +2,40 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+Der Graph in Abbildung \ref{fig:Graph1} wurde sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
+  Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties}
+	 durchgeführt.
+
+\subsection{Bestimmung der Schallgeschwindigkeit}
+\begin{figure}
+	\centering
+	\caption{Die Differenz $\Delta \nu $ zwischen $\nu_0$ und der gemessenen Frequenz $\nu$ gegen die Geschwindigkeit $v$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/VgegenDeltaV.pdf}
+	\label{fig:Graph1}
+\end{figure}
+
+\begin{table}
+	\caption{Die gemessene Frequenz $\nu_\text{v}$ beim auf das Mikrofon zufahren und die gemessene Frequenz $\nu_\text{r}$ beim fahren in die entgegengesetzte Richtung in verschiedenen Gängen.}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tab1.tex}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\input{build/tab2.tex}
+	\end{minipage}
+\end{table}
+Der Fit in Abbildung \ref{fig:beidseitig} besitzt die Form:
+\begin{equation}
+	y =
+	\begin{cases}
+	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\
+	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L
+	\end{cases} \label{FunktionBeidseitig}
+\end{equation}
+und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$.  Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{3531.3}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{34.64}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} nach Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
+\begin{displaymath}
+E = \frac{F}{48 a I}= \SI{91.63(25)}{\giga\pascal}\text{.}
+\end{displaymath}
+Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können. Auch hier zeigen die Graphen das vorhergesagte Verhalten auf.
+
