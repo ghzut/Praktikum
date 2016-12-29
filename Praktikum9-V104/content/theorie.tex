@@ -1,64 +1,33 @@
 
 \section{Theorie}
 \label{sec:Theorie}
-
-\subsection{Das Verhalten von deformierbaren Körpern unter einer Spannung}
-Kräfte, die auf die Oberfläche eines Körpers wirken, können dessen Gestalt oder
- Volumen verändern. Eine solche Kraft wird als Spannung bezeichnet und normalerweise
-  in der Form $\frac{\text{Kraft}}{\text{Fläche}}$ angegeben. Ihre oberflächenparallele
-   Komponente wird als Tangentialspannung $\sigma$ bezeichnet, ihre senkrechte als Normalspannung $\tau$.
-Sind die aufgrund der Spannung auftretenden relativen Längenänderungen hinreichend
- klein, liegt ein linearer Zusammenhang zwischen wirkender Spannung und Längenänderung vor.
-    %Sind der Gestaltsänderung klein, so l ein
-     %linearer Zusammenhang zwischen Längenänderung und wirkender Spannung vor.
-      Dieser wird Hooksches Gesetz genannt.
-       Allgemein lässt sich das Verhalten eines Stoffes unter einer Spannung durch eine
-        $6\times6$ Matrix ausdrücken.
-      Handelt es sich beim Material des Körpers um einen isotropen Stoff,
-       reichen zwei Materialkonstante aus um dieses vollständig
-        zu beschreiben, aus praktischen Gründen werden zwei weitere eingeführt.
-         Eine davon ist der Elastizitätsmodul $E$, welcher die
-         relative Längenänderung eines Körpers in Spannungsrichtung unter
-          einer Normalspannung beschreibt.
-
-\subsection{Der einseitig eingespannte homogene Stab unter Einfluss einer konstanten Normalspannung}
-Wird ein homogener Stab einseitig eingespannt und anschließend am freien Ende unter den Einfluss
- einer konstanten Normalspannung gestellt, kommt es zu einer Biegung des Stabes. Diese
-  reicht soweit bis ein gleichgewicht zwischen der angreifenden Kraft und einer Stabinneren Gegenkraft besteht. Die
-   innere Kraft entsteht aufgrund von Streckungen und Stauchungen der einzelnen
-    Materialschichten, welche durch die Biegung verursacht werden. Da es sich bei
-     der Kraftwirkung um eine Drehung handelt, kann die verursachte Durchbiegung
-      $D(x)$ an der Stelle $x$ mithilfe eines Drehmomentansatz bestimmt werden.
-       Ist die Durchbiegung klein im Verhältnis zur Stablänge folgt:
-
-
- % Diese führt zu einer
-  %Durchbiegung $D(x)$ im Vergleich zum unbelasteten Stab. Während die oberen
-   %Schichten des Stabes bei der Biegung gedehnt werden, werden die Unteren gestaucht.
-   %In ihrer Mitte existiert eine Schicht welche keine Längenänderung erfährt.
-   %Diese heißt neutrale Faser. Ist die auftretende Krümmung des Stabes
-    %hinreichend klein folgt über einen Drehmomentansatz:
-   \begin{equation}
-     D(x) = \frac{F}{2EI}\left(Lx² - \frac{x³}{3}\right) \text{ mit }0 \leq x \leq L \label{eq:EinseitigEingespannt}
-     \end{equation}
-     mit der Spannung $F$ und der Stablänge $L$. Die Variable $I$ bezeichnet das
-     Flächenträgheitsmoment des Stabes:
-\begin{equation}
-  I = \int_{Q}^{}y^2 \, \symup{d}q \label{eq:Flächenträgheitsmoment}
-\end{equation}
-Hierzu wird über die Querschnittsfläche $Q$ des Stabes integriert.
-
-\subsection{Der beidseitig aufgelegte Stab unter Einfluss einer konstanten Normalspannung}
-Der Stab liegt nun an beiden Enden auf einem Träger auf. Wirkt nun eine wieder
- konstante Kraft auf den Mittelpunkt des Stabes, kommt es auch in diesem Fall
-  zu einer Durchbiegung.
- Auch hier gelangt man über das Gleichgewicht der auftretenden Drehmomente an die Durchbiegung des Stabes.
- Das rechte Ende wird mit $ x = 0$, das linke Ende mit $x= L$ ausgedrückt.
-    Dann folgt für die Durchbiegung der linken Hälfte $D_\text{L}$:
-  \begin{equation}
-    D_\text{R}(x) = \frac{F}{48 EI}\left(3L²x-4x³\right) \text{ mit } 0 \leq x \leq \frac{L}{2}\text{.}\label{eq:BeidseitigAufgelegtRechts}
-  \end{equation}
-Für die rechte Hälfte folgt:
-\begin{equation}
-  D_\text{L}(x) = \frac{F}{48EI}\left(4x³ -12Lx² +9L²x-L³\right) \text{ mit } \frac{L}{2} \leq x \leq L\text{.}\label{eq:BeidseitigAufgelegtLinks}
-\end{equation}
+Eine ausbreitende Welle beschreibt den Limes einer Schwingung von N-Teilchen,
+ welche sich von einem Sender ausgehend im Raum ausbreitet. Sie besitzt eine Frequenz $f_0$ und eine Wellenlänge $\lambda_0$. Über
+ \begin{equation}
+   c = f_0 \lambda_0 \label{eq:c}
+   \end{equation}
+   folgt die Ausbreitungsgeschwindigkeit $c$ der Welle.
+Der Dopplereffekt ist nun ein Phänomen, welches auftritt,
+ wenn sich Sender und Empfänger relativ zueinander bewegen. Er äussert sich in
+  einer für den Empänger veränderten Wellenfrequenz gegenüber der ursprünglich
+   Ausgesendeten. An diesem Punkt muss zwischen Wellenausbreitungen im Vakuum
+    und denen in Materie unterschieden werden. Im folgenden wird nur der letzte
+     Fall behandelt. Breitet sich die Welle in einem
+     Medium aus, wird zwischen einem bewegten Empfänger oder einem bewegten
+      Sender separiert.
+\begin{itemize}
+\item Bewegt sich sich der Empänger relativ zu einem ruhenden Sender mit der
+ Geschwindigkeit $v$ folgt für die Frequenz $f_\text{E}$ am Empänger:
+ \begin{equation}
+   f_\text{E} = f_0\left(1+\frac{v}{c}\right) \text{ Mit der Frequenzänderung }\Delta f = f_0\frac{v}{c}\text{.}\label{eq:bewegE}
+   \end{equation}
+   \item Bewegt sich hingegen der Sender relativ zu einem ruhenden Empfänger mit der
+    Geschwindigkeit $v$ folgt in Näherung für die Frequenz $f_\text{S}$ am Sender:
+    \begin{equation}
+      f_\text{S} = f_\text{E} + f_0\left(\frac{v}{c}\right)²\text{.}\label{eq:bewegS}
+      \end{equation}
+      Für die Frequenzen bei einem $v > 0$ gilt daher $f_\text{S} > f_\text{E} > f_0$.
+\end{itemize}
+Ist die Geschwindigkeit des Senders betragsmäßig jedoch viel kleiner als
+ die Ausbreitungsgeschwindigkeit der Welle nähern sich die Ergebnisse von
+  \eqref{eq:bewegE} und \eqref{eq:bewegS} beliebig nah an.
