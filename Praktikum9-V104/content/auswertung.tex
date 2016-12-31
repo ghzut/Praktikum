@@ -1,20 +1,24 @@
-
 \section{Auswertung}
 \label{sec:Auswertung}
 
-Der Graph in Abbildung \ref{fig:Graph1} wurde sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt.
-  Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties}
-	 durchgeführt.
+Der Graph in Abbildung \ref{fig:Graph1} wurde sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
 
-\subsection{Bestimmung der Schallgeschwindigkeit}
-\begin{figure}
-	\centering
-	\caption{Die Differenz $\Delta \nu $ zwischen $\nu_0$ und der gemessenen Frequenz $\nu$ gegen die Geschwindigkeit $v$ aufgetragen.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/VgegenDeltaV.pdf}
-	\label{fig:Graph1}
-\end{figure}
+\subsection{Bestimmung des Proportionalitätsfaktors mithilfe der Wellenlängenmessungen}
 \begin{table}
-	\caption{Die gemessene benötigte Zeit $\Delta t_\text{v}$ vom linkem Sensor zum rechtem und die benötigte Zeit $\Delta t_\text{r}$ vom rechtem zum linkem in verschiedenen Gängen.}
+	\centering
+	\caption{Die Stellen $x$ an denen eine Phasenverschiebung von dem Vielfachen von $\pi$ gemessen wurde.}
+	\input{build/tabwelle}
+\end{table}
+Aus Tabelle \ref{tab:tabwelle} berechnet sich die Wellenlänge $\lambda_0$ zu $\SI{16.95(7)}{\milli\meter}$. Mit Formel \eqref{eq:c} ergibt sich für den Proportionalitätsfaktor somit:
+\begin{displaymath}
+	\frac{f_0}{c} = \frac{1}{\lambda_0} = \SI{59.0(2)}{\per\meter}\text{.}
+\end{displaymath}
+Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{16594}{\hertz}$ berechnet sich aus dem Proportionalitätsfaktor die Schallgeschwindigkeit $c$ zu $\SI{281(1)}{\meter\per\second}$.
+
+\subsection{Bestimmung des Proportionalitätsfaktors  mithilfe einer linearen Ausgleichsrechnung}
+Aus Tabelle \ref{tab:tabv1} berechnet sich die Geschwindigkeiten in den verschiedenen Gängen und Richtungen zu den Werten in Tabelle \ref{tab:tabges}.
+\begin{table}
+	\caption{Die gemessene benötigte Zeit $t_\text{v}$ vom linkem Sensor zum rechtem und die benötigte Zeit $t_\text{r}$ vom rechtem zum linkem in verschiedenen Gängen.}
 	\begin{minipage}{0.5\textwidth}
 		\centering
 		\input{build/tabv1.tex}
@@ -25,7 +29,29 @@ Der Graph in Abbildung \ref{fig:Graph1} wurde sowohl mit Matplotlib \cite{matplo
 	\end{minipage}
 \end{table}
 \begin{table}
-	\caption{Die gemessene Frequenz $\nu_\text{v}$ beim auf das Mikrofon zufahren und die gemessene Frequenz $\nu_\text{r}$ beim fahren in die entgegengesetzte Richtung in verschiedenen Gängen.}
+	\centering
+	\caption{Die aus Tabelle \ref{tab:tabv1} berechneten Geschwindigkeiten in den verschiedenen Gängen und Richtungen}
+	\input{build/tabges}
+\end{table}
+
+In Tabelle \ref{tab:tabges} kann man die maximale Geschwindigkeit $v_{\text{max}}$, mit der sich der Wagen bewegt zu $\SI{51,43(2)}{\centi\meter\per\second}$ entnehmen. Es wurde eine Frequenz $f_0$ von $\SI{16594}{\hertz}$ gemessen. 
+Da $v_{\text{max}} \cdot f_0 > c$ gilt lässt sich nach Formel \eqref{eq:bewegS} $\Delta f$ messen, da ganzzahlige Unterschiede in diesem Versuchsaufbau gemessen werden können.
+Es muss nicht unterschieden werden zwischen den Formeln \eqref{eq:bewegE} und \eqref{eq:bewegS}, da $|v_\text{max}| \ll c$ gilt. Dies ist auch in Abbildung \ref{fig:Graph1} daran zu erkennen, dass alle Wertepaare durch eine Gerade genähert werden können.
+
+Der Fit in Abbildung \ref{fig:Graph1} besitzt die Form $y=a x$. Eine lineare Ausgleichsrechnung der Form $y=a x$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tabv1} nach Formel \eqref{eq:bewegE}:
+\begin{displaymath}
+a = \frac{f_0}{c} = \SI{47.6(4)}{\per\meter}\text{.}
+\end{displaymath}
+Dies ist der gesuchte Proportionalitätsfaktor. Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{16594}{\hertz}$ berechnet sich aus $a$ die Schallgeschwindigkeit $c$ zu $\SI{349(3)}{\meter\per\second}$.
+Es ist in Abbildung \ref{fig:Graph1} zu erkennen, dass die Messwerte durch den Fit angenähert werden können und dass es eine systematische Abweichung gibt, die in der Diskussion geklärt werden muss.
+\begin{figure}
+	\centering
+	\caption{Die Differenz $\Delta f $ zwischen $f_0$ und der gemessenen Frequenz $f$ gegen die Geschwindigkeit $v$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/VgegenDeltaV.pdf}
+	\label{fig:Graph1}
+\end{figure}
+\begin{table}
+	\caption{Die gemessene Frequenz $f_\text{v}$ beim auf das Mikrofon zufahren und die gemessene Frequenz $f_\text{r}$ beim fahren in die entgegengesetzte Richtung in verschiedenen Gängen.}
 	\begin{minipage}{0.5\textwidth}
 		\centering
 		\input{build/tab1.tex}
@@ -35,17 +61,6 @@ Der Graph in Abbildung \ref{fig:Graph1} wurde sowohl mit Matplotlib \cite{matplo
 		\input{build/tab2.tex}
 	\end{minipage}
 \end{table}
-Der Fit in Abbildung \ref{fig:beidseitig} besitzt die Form:
-\begin{equation}
-	y =
-	\begin{cases}
-	a\left(3L^2 x-4x^3\right)& \text{für }0\leq x \leq \frac{L}{2} \\
-	a\left(4 x^3 -12 L x^2 + 9 L^2 x -L 3 \right)& \text{für }\frac{L}{2} < x \leq L
-	\end{cases} \label{FunktionBeidseitig}
-\end{equation}
-und in den Abbildungen \ref{fig:beidseitiglinear1} und \ref{fig:beidseitiglinear2} die Form $y=a x$. Aus Formel \eqref{eq:Flächenträgheitsmoment} ergibt sich das Flächenträgheitsmoment $I$ zu $\SI{8.33e-2}{\centi\meter\tothe{4}}$.  Die Kraft F berechnet sich aus dem angehängtem Gewicht von $\SI{3531.3}{\gram}$ mit Formel \eqref{Gewichtskraft} zu $\SI{34.64}{\newton}$. Eine nicht lineare Ausgleichsrechnung der Form \eqref{FunktionBeidseitig} liefert mit der gemessenen Länge $L$ von $\SI{55.5}{\centi\meter}$ und den Wertepaaren aus Tabelle \ref{tab:tabbeidseitig1} nach Formel \eqref{eq:BeidseitigAufgelegtLinks} und \eqref{eq:BeidseitigAufgelegtRechts}:
-\begin{displaymath}
-E = \frac{F}{48 a I}= \SI{91.63(25)}{\giga\pascal}\text{.}
-\end{displaymath}
-Es ist zu erkennen, dass die Messwerte durch die Fits angenähert werden können. Auch hier zeigen die Graphen das vorhergesagte Verhalten auf.
+
+\subsection{Vergleich zwischen den Ergebnissen mithilfe eines Studentschen  t-Testes}
 

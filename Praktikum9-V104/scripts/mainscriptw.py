@@ -34,13 +34,14 @@ print(ForwardsV)
 print(BackwardsV)
 
 
+
 # Dopplereffektmessung------------------------------------------------------------------
 
 Gang, frequenzForwards, frequenzBackwards = np.genfromtxt('scripts/dopllereffektmessung', unpack=True)
 frequenzForwards[Gang==6] = frequenzForwards[Gang==6]/10
 frequenzBackwards[Gang==6] = frequenzBackwards[Gang==6]/10
-makeTable([Gang[0:len(Gang)/2], frequenzForwards[0:len(Gang)/2], frequenzBackwards[0:len(Gang)/2]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
-makeTable([Gang[len(Gang)/2:], frequenzForwards[len(Gang)/2:], frequenzBackwards[len(Gang)/2:]], r'{'+r'Gang'+r'} & {'+r'$\nu_\text{v}/\si{\hertz}$'+r'} & {'+r'$\nu_\text{r}/\si{\hertz}$'+r'}', 'tab2', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+makeTable([Gang[0:int(len(Gang)/2)], frequenzForwards[0:int(len(Gang)/2)], frequenzBackwards[0:int(len(Gang)/2)]], r'{'+r'Gang'+r'} & {'+r'$f_\text{v}/\si{\hertz}$'+r'} & {'+r'$f_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
+makeTable([Gang[int(len(Gang)/2):], frequenzForwards[int(len(Gang)/2):], frequenzBackwards[int(len(Gang)/2):]], r'{'+r'Gang'+r'} & {'+r'$f_\text{v}/\si{\hertz}$'+r'} & {'+r'$f_\text{r}/\si{\hertz}$'+r'}', 'tab2', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
 
 
 Forwards = []
@@ -87,6 +88,10 @@ for value in BackwardsV:
 BackwardsVNominal = np.array(BackwardsVNominal)
 BackwardsVStd = np.array(BackwardsVStd)
 
+Gaenge = np.array([6,12,18,24,30,36,42,48,54,60])
+makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
+
+
 VNominal = np.append(ForwardsVNominal, BackwardsVNominal)
 
 
@@ -120,13 +125,13 @@ print(params, covar, sep='\n')
 t = np.linspace(0, ForwardsVNominal[-1]*1.03, 1000)
 plt.cla()
 plt.clf()
-plt.plot(t, line(t, *params), 'b-', label='Fit')
-plt.plot(ForwardsVNominal, DeltaVForwardsNominal, 'gx', label='Forwards')
-plt.plot(BackwardsVNominal, DeltaVBackwardsNominal, 'rx', label='Backwards')
+plt.plot(t*100, line(t, *params), 'b-', label='Fit')
+plt.plot(ForwardsVNominal*100, DeltaVForwardsNominal, 'gx', label='Daten mit Bewegungsrichtung aufs Mikrofon zu')
+plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'rx', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
 plt.ylim(0, line(t[-1], *params)+0.1)
-plt.xlim(0, t[-1])
-plt.xlabel(r'$v/\si{\meter\per\second}$')
-plt.ylabel(r'$\Delta \nu / \si{\hertz}$')
+plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
+plt.ylabel(r'$\Delta f / \si{\hertz}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'VgegenDeltaV')
@@ -143,7 +148,8 @@ print('c:', vNull/a)
 # Schallges-----------------------------------------------------------------------------
 
 x, y = np.genfromtxt('scripts/Wellenlängenmessungundnormalfrequenz', unpack=True)
-
+print(y)
+makeTable([y], r'{'+r'$x/\si{\milli\meter}$'+r'}', 'tabwelle', [r'S[table-format=2.2]'], ["%2.2f"])
 y = y - y[0]
 wellenlaenge = unp.uarray(np.mean(y[1:]/x[1:]), stats.sem(y[1:]/x[1:]))
 print('Wellenlänge:', wellenlaenge, 'mm')
