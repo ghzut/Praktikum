@@ -158,17 +158,17 @@ print('c:', wellenlaenge*vNull/1000, 'm/s')
 
 # t-Test--------------------------------------------------------------------------------
 
-c1 = wellenlaenge*vNull/1000
+a1 = 1/wellenlaenge *1000
 n = len(y) - 1
-c1m = unp.nominal_values(c1)
-sx = unp.std_devs(c1)
-c2 = vNull/a
+a1m = unp.nominal_values(a1)
+sx = unp.std_devs(a1)
+a2 = a
 m = len(DeltaVNominal)
-c2m = unp.nominal_values(c2)
-sy = unp.std_devs(c2)
+a2m = unp.nominal_values(a2)
+sy = unp.std_devs(a2)
 s = np.sqrt(((n-1)*sx**2+(m-1)*sy**2)/(n+m-2))
-print('Anzahl der Freiheitsgerade (n+m-2)',m+n-2)
-print('s',s)
-t = np.sqrt((n*m)/(n+m))* (c1m-c2m)/s
-print('t',t)
+print('Anzahl der Freiheitsgerade (n+m-2)', m+n-2)
+print('s', s)
+t = np.sqrt((n*m)/(n+m))* (a1m-a2m)/s
+print('t', t)
 print('Nach dem t-Test nahezu 100 Prozent Wahrscheinlichkeit einer systematischen Abweichung')
