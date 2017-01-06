@@ -167,6 +167,8 @@ m = len(DeltaVNominal)
 a2m = unp.nominal_values(a2)
 sy = unp.std_devs(a2)
 s = np.sqrt(((n-1)*sx**2+(m-1)*sy**2)/(n+m-2))
+print('n', n)
+print('m', m)
 print('Anzahl der Freiheitsgerade (n+m-2)', m+n-2)
 print('s', s)
 t = np.sqrt((n*m)/(n+m))* (a1m-a2m)/s

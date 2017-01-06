@@ -63,6 +63,16 @@ Es ist in Abbildung \ref{fig:Graph1} zu erkennen, dass die Messwerte durch den F
 \end{table}
 
 \subsection{Vergleich zwischen den Ergebnissen mithilfe eines Studentschen t-Testes}
+Mithilfe des t-Testes wird überprüft mit welcher Wahrscheinlichkeit sich die Erwartungsgrößen, der aus den zwei Messreihen bestimmten Werte für den Proportionalitätsfaktor, unterscheiden. Für die Anzahl der Werte für $\lambda_1 ^{-1}$ aus Tabelle \ref{tab:tabwelle} gilt $n=5$ und für die Anzahl der Werte für $\lambda_2 ^{-1}$ aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tabv1} gilt $m=20$. Somit gibt es $n+m-2=23$ Freiheitsgrade. Es berechnet sich die gewichtete Standartabweichung mit den zuvor berechneten Standartabweichungen von $\lambda ^{-1}$ $s_1 = \SI{0.2}{\per\meter}$ und $s_2 = \SI{0.4}{\per\meter}$ zu:
+\begin{displaymath}
+	s = \sqrt{\frac{(n-1)s_1^2+(m-1)s_2^2}{n+m-2}} = \SI{0.4}{\per\meter}\text{.}
+\end{displaymath}
+Daraus berechnet sich die Prüfgröße zu:
+\begin{displaymath}
+	t = \sqrt{\frac{n \cdot m}{n+m}} \cdot \frac{\overline{\lambda_1^{-1}} -\overline{\lambda_2^{-1}}}{s} = 55.7\text{.}
+\end{displaymath}
+Dies entspricht bei $23$ Freiheitsgeraden annähernd einer Wahrscheinlichkeit von $\SI{100}{\percent}$, dass sich die Erwartungsgrößen unterscheiden. Dies widerspricht jedoch der Annahme, dass zweimal die selbe Größe bestimmt wird. Es muss entweder ein grober oder systematischer Fehler bei einer der Messungen vorliegen. Dies muss in der Diskussion näher betrachtet werden.
+
 
 $t-Wert = 45.7$ -> 100 Prozent Wahrscheinlichkeit eines systematischen Fehlers. Was für einer ? Zweites Ergebnis nah am Theoriewert erstes nicht.
 
