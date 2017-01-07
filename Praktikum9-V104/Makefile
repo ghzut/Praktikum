@@ -20,7 +20,7 @@ build/*w.pdf: header.tex *w.tex lit.bib | build
 
 build/*w.pdf: FORCE
 	TEXINPUTS="$(call translate,build:)" \
-	BIBINPUTS=build: \
+	BIBINPUTS="$(call translate,$(pwd):)" \
 	latexmk \
 	 --lualatex \
 	 --output-directory=build \
