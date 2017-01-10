@@ -24,7 +24,7 @@ Sind die aufgrund der Spannung auftretenden relativen Längenänderungen hinreic
 \subsection{Der einseitig eingespannte homogene Stab unter Einfluss einer konstanten Normalspannung}
 Wird ein homogener Stab einseitig eingespannt und anschließend am freien Ende unter den Einfluss
  einer konstanten Normalspannung gestellt, kommt es zu einer Biegung des Stabes. Diese
-  reicht soweit bis ein gleichgewicht zwischen der angreifenden Kraft und einer Stabinneren Gegenkraft besteht. Die
+  reicht soweit bis ein Gleichgewicht zwischen der angreifenden Kraft und einer Stabinneren Gegenkraft besteht. Die
    innere Kraft entsteht aufgrund von Streckungen und Stauchungen der einzelnen
     Materialschichten, welche durch die Biegung verursacht werden. Da es sich bei
      der Kraftwirkung um eine Drehung handelt, kann die verursachte Durchbiegung
@@ -47,7 +47,15 @@ Wird ein homogener Stab einseitig eingespannt und anschließend am freien Ende u
   I = \int_{Q}^{}y^2 \, \symup{d}q \label{eq:Flächenträgheitsmoment}
 \end{equation}
 Hierzu wird über die Querschnittsfläche $Q$ des Stabes integriert.
-
+In der Versuchsdurchführung wird jeweils ein Stab mit qudratischer
+ und einer mit kreisförmiger Querschnittsfläche verwendet.
+ Diese lassen sich explizit durch folgende Formeln berechnen.
+ \begin{equation}
+   I_\text{Kreis} = \int_{0}^{2\pi}\text{d}\varphi \int_{0}^{R} ry^2\text{d}r \stackrel{y = rsin(\varphi)}{=}  \int_{0}^{2\pi}\text{d}\varphi \int_{0}^{R} r^3 \sin²(\varphi)\text{d}r = \frac{\pi R⁴}{4} \label{eq:Ir}
+   \end{equation}
+\begin{equation}
+  I_\text{Quadrat} = a \int_{-\frac{a}{2}}^{\frac{a}{2}}y²\text{d}y = a \left[\frac{1}{3}y^3\right]_{-\frac{a}{2}}^{\frac{a}{2}} = \frac{a⁴}{12} \label{eq:Iq}
+\end{equation}
 \subsection{Der beidseitig aufgelegte Stab unter Einfluss einer konstanten Normalspannung}
 Der Stab liegt nun an beiden Enden auf einem Träger auf. Wirkt nun eine wieder
  konstante Kraft auf den Mittelpunkt des Stabes, kommt es auch in diesem Fall
