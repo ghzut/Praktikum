@@ -32,11 +32,12 @@ import uncertainties.unumpy as unp
 
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 
-T1, p1 = np.genfromtxt("Niedrigdruck", unpack=True)
-T2, p2 = np.genfromtxt("Hochdruck", unpack=True)
-
-T = np.append(T1, T2)
-p = np.append(p1, p2)
+T1, p1 = np.genfromtxt("scripts/Unterdruckmessung", unpack=True)
+T2, p2 = np.genfromtxt("scripts/Uberdruckmessung", unpack=True)
+p1 = p1*10**2
+p2 = p2*10**5
+T1 = T1+273.15
+T2 = T2+273.15
 
 def MessungNiedrig(T, L):
     return p_01*np.exp(-(L/R) * (1/T))
@@ -44,16 +45,68 @@ def MessungNiedrig(T, L):
 def MessungHoch(T, L):
     return p_02*np.exp(-(L/R) * (1/T))
 
-def line(T, L):
-    return
+def line(x, a, b):
+    return a*x+b
 
-plt.cla
-plt.clf
-plt.plot(T, np.log(p), 'rx', label='Daten')
-plt.ylim(0, line(t[-1], *params)+0.1)
-plt.xlim(0, t[-1]*100)
-plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
-plt.ylabel(r'$\Delta f / \si{\hertz}$')
+params, covar = curve_fit(line, 1/T1[15:], np.log(p1[15:]))
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+b = unp.uarray(params[1], np.sqrt(covar[1][1]))
+print('a:', a)
+print('b:', b)
+
+plt.cla()
+plt.clf()
+plt.plot(1/T1, np.log(p1), 'rx', label='Daten1')
+plt.plot(1/T2, np.log(p2), 'gx', label='Daten2')
+# plt.ylim(0,1)
+# plt.xlim(T1[0], T2[-1]+2)
+plt.xlabel(r'$T^{-1}/\si{\per\kelvin}$')
+plt.ylabel(r'$\log (p / \si{\pascal})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'logpgegenT')
+plt.savefig('build/'+'logpgegen1durchT')
+
+t = np.linspace((1/T1[-1])*0.98, (1/T1[15])*1.02)
+plt.cla()
+plt.clf()
+plt.plot(1/T1[15:], np.log(p1[15:]), 'rx', label='Daten1')
+plt.plot(t, line(t, *params), 'b-', label='linearer Fit')
+# plt.ylim(0,1)
+plt.xlim(t[0], t[-1])
+plt.xlabel(r'$T^{-1}/\si{\per\kelvin}$')
+plt.ylabel(r'$\log (p / \si{\pascal})$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'logpgegen1durchTausgleich')
+
+R = 1
+L = a*R
+
+def Polynom3(x, a1, a2, a3, b):
+    return Polynomn(x, [b, a3, a2, a1])
+
+def Polynomn(x, params=[]):
+    v = 0
+    for i in range(len(params)):
+        v = v + params[i]*x**i
+    return v
+
+params, covar = curve_fit(Polynom3, T2, p2)
+print('params:', params)
+print('covar:', covar)
+print(np.sqrt(np.diag(covar)))
+
+t = np.linspace(T2[0]*0.98, T2[-1]*1.02)
+plt.cla()
+plt.clf()
+plt.plot(T2, p2, 'gx', label='Daten2')
+plt.plot(t, Polynom3(t, *params), 'b-', label='Ausgleichspolynom 3. Grades')
+# plt.ylim(0,1)
+plt.xlim(t[0], t[-1])
+plt.xlabel(r'$T/\si{\kelvin}$')
+plt.ylabel(r'$p / \si{\pascal}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'pgegenTausgleich')
+
+
