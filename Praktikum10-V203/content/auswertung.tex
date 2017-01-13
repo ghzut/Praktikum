@@ -1,2 +1,65 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+Die Graphen in Abbildung \ref{fig:Graph1}, \ref{fig:Graph2} und \ref{fig:Graph3} wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
+\subsection{Darstellung der Dampfdruckkurve}
+\begin{figure}
+	\centering
+	\caption{Der Logarithmus des Dampfdruckes $p$ gegen die reziproke absolute Temperatur $T^{-1}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/logpgegen1durchT.pdf}
+	\label{fig:Graph1}
+\end{figure}
+\begin{center}
+	\begin{table}
+		\caption{Die gemessene Temperatur $T$ und der zugehörige Dampfdruck $p$ aus der Messung im Bereich von $30-\SI{1000}{\milli\bar}$.}
+		\begin{minipage}[t]{0.24\textwidth}
+			\centering
+			\input{build/tab11.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.24\textwidth}
+			\centering
+			\input{build/tab12.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.24\textwidth}
+			\centering
+			\input{build/tab13.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.24\textwidth}
+			\centering
+			\input{build/tab14.tex}
+		\end{minipage}
+	\end{table}
+	\begin{table}
+		\caption{Die gemessene Temperatur $T$ und der zugehörige Dampfdruck $p$ aus der Messung im Bereich von $1-\SI{8}{\bar}$.}
+		\begin{minipage}[t]{0.5\textwidth}
+			\centering
+			\input{build/tab21.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\centering
+			\input{build/tab22.tex}
+		\end{minipage}
+	\end{table}
+\end{center}
+
+\subsection{Bestimmung des durchschnittlichen Wertes für die Verdampfungswärme mithilfe einer Ausgleichsrechnung}
+\begin{figure}
+	\centering
+	\caption{Der Logarithmus des Dampfdruckes $p$ gegen die reziproke absolute Temperatur $T^{-1}$ aufgetragen mit den Messwerten aus der Messreihe für $p\leq \SI{1}{\bar}$ ohne die ersten 14 Messwertepaare und deren linearer Fit.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/logpgegen1durchTausgleich.pdf}
+	\label{fig:Graph2}
+\end{figure}
+Der Fit in Abbildung \ref{fig:Graph2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tab11} nach Formel \eqref{eq:bewegE}:
+\begin{displaymath}
+L = -a*R = \SI{47.6(4)}{\per\meter}\text{.}
+\end{displaymath}
+
+\subsection{Berechnung der benötigten Energie zur Überwindung der molekularen Anziehungskräfte für ein Wassermolekül}
+\begin{figure}
+	\centering
+	\caption{Der Dampfdruck $p$ gegen die absolute Temperatur $T$ aufgetragen mit den Messwerten aus der Messreihe für $p>\SI{1}{\bar}$ und deren Ausgleichspolynom vom 6. Grad.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/pgegenTausgleich.pdf}
+	\label{fig:Graph3}
+\end{figure}
+\subsection{}
+
+

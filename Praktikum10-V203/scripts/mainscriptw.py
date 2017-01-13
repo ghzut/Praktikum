@@ -81,7 +81,8 @@ plt.savefig('build/'+'logpgegen1durchTausgleich')
 
 R = 1
 L = a*R
-
+def Polynom6(x, a6, a5, a4, a3, a2, a1, a0):
+    return  Polynomn(x, [a0, a1, a2, a3, a4, a5, a6])
 def Polynom3(x, a1, a2, a3, b):
     return Polynomn(x, [b, a3, a2, a1])
 
@@ -91,7 +92,7 @@ def Polynomn(x, params=[]):
         v = v + params[i]*x**i
     return v
 
-params, covar = curve_fit(Polynom3, T2, p2)
+params, covar = curve_fit(Polynom6, T2, p2)
 print('params:', params)
 print('covar:', covar)
 print(np.sqrt(np.diag(covar)))
@@ -100,7 +101,7 @@ t = np.linspace(T2[0]*0.98, T2[-1]*1.02)
 plt.cla()
 plt.clf()
 plt.plot(T2, p2, 'gx', label='Daten2')
-plt.plot(t, Polynom3(t, *params), 'b-', label='Ausgleichspolynom 3. Grades')
+plt.plot(t, Polynom6(t, *params), 'b-', label='Ausgleichspolynom 6. Grades')
 # plt.ylim(0,1)
 plt.xlim(t[0], t[-1])
 plt.xlabel(r'$T/\si{\kelvin}$')
@@ -109,4 +110,10 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'pgegenTausgleich')
 
+makeTable([T1[0:int(len(p1)/4)], p1[0:int(len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab11', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T1[int(len(p1)/4):int(2*len(p1)/4)], p1[int(len(p1)/4):int(2*len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab12', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T1[int(2*len(p1)/4):int(3*len(p1)/4)], p1[int(2*len(p1)/4):int(3*len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab13', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T1[int(3*len(p1)/4):], p1[int(3*len(p1)/4):]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab14', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T2[0:int(len(p2)/2)], p2[0:int(len(p2)/2)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab21', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T2[int(len(p2)/2):], p2[int(len(p2)/2):]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab22', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
 
