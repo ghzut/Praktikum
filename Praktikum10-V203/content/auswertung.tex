@@ -1,7 +1,7 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 Die Graphen in Abbildung \ref{fig:Graph1}, \ref{fig:Graph2} und \ref{fig:Graph3} wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
-\subsection{Darstellung der Dampfdruckkurve}
+\subsection{Bestimmung des durchschnittlichen Wertes für die Verdampfungswärme für einen Druck von unter einen Bar mithilfe einer Ausgleichsrechnung}
 \begin{figure}
 	\centering
 	\caption{Der Logarithmus des Dampfdruckes $p$ gegen die reziproke absolute Temperatur $T^{-1}$ aufgetragen.}
@@ -41,25 +41,79 @@ Die Graphen in Abbildung \ref{fig:Graph1}, \ref{fig:Graph2} und \ref{fig:Graph3}
 	\end{table}
 \end{center}
 
-\subsection{Bestimmung des durchschnittlichen Wertes für die Verdampfungswärme mithilfe einer Ausgleichsrechnung}
 \begin{figure}
 	\centering
 	\caption{Der Logarithmus des Dampfdruckes $p$ gegen die reziproke absolute Temperatur $T^{-1}$ aufgetragen mit den Messwerten aus der Messreihe für $p\leq \SI{1}{\bar}$ ohne die ersten 14 Messwertepaare und deren linearer Fit.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/logpgegen1durchTausgleich.pdf}
 	\label{fig:Graph2}
 \end{figure}
-Der Fit in Abbildung \ref{fig:Graph2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tab11} nach Formel \eqref{eq:bewegE}:
+Der Fit in Abbildung \ref{fig:Graph2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ mittels SciPy \cite{scipy} liefert mit den Wertepaaren aus Tabelle \ref{tab:tab11} und mit $R=\SI{8.3144598(48)}{\joule\per\mol\kelvin}$ \cite{R} nach Formel \eqref{eq:DGLLs}:
 \begin{displaymath}
-L = -a*R = \SI{47.6(4)}{\per\meter}\text{.}
+L = -a R = \SI{3.43(2)}{\joule\per\mol}\text{.}
 \end{displaymath}
 
-\subsection{Berechnung der benötigten Energie zur Überwindung der molekularen Anziehungskräfte für ein Wassermolekül}
+\subsection{Berechnung der benötigten Energie zur Überwindung der molekularen Anziehungskräfte für ein Wassermolekül bei 373 Kelvin}
+Nach der allgemeinen Gasgleichung gilt:
+\begin{equation}
+p V = R T = W \text{,}\label{eq:Gas}
+\end{equation}
+wobei $W$ eine Energie ist.
+Für die Energie um ein Mol von $V_1$ auf $V_2$ isobar auszudehnen folgt:
+\begin{equation}
+W_\text{1,2} = p (V_2-V_1)\text{.}
+\end{equation}
+Da bei einer Temperatur von $T=\SI{373}{K}$ bei Wasser $V_\text{F}\ll V_\text{D}$ gilt, folgt:
+\begin{equation}
+	L_\text{a} = W_\text{F,D} \approx p V_D = R T
+\end{equation} 
+um ein Mol von $V_\text{F}$ auf $V_\text{D}$ auszudehnen.
+Für die benötigte Energie um die molekularen Anziehungskräfte zu überwinden gilt:
+\begin{equation}
+	L_\text{i}= L - L_\text{a} = \SI{3.12(2)}{\joule\per\mol}\text{.}
+\end{equation}
+Für ein Molekül ergibt sich mit $n=\SI{6.022140857(74)e23}{\per\mol}$ \cite{n} und $\SI{1}{\electronvolt}=\SI{1.6021766208(98)e-19}{\joule}$ \cite{eV}:
+\begin{equation}
+	\frac{L_\text{i}}{n} = \SI{0.323(3)}{\electronvolt}\text{.}
+\end{equation}
+
+\subsection{Näherung der Funktion von der Verdampfungswärme}
+
 \begin{figure}
-	\centering
-	\caption{Der Dampfdruck $p$ gegen die absolute Temperatur $T$ aufgetragen mit den Messwerten aus der Messreihe für $p>\SI{1}{\bar}$ und deren Ausgleichspolynom vom 6. Grad.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/pgegenTausgleich.pdf}
-	\label{fig:Graph3}
+\centering
+\caption{Der Dampfdruck $p$ gegen die absolute Temperatur $T$ aufgetragen mit den Messwerten aus der Messreihe für $p>\SI{1}{\bar}$ und deren Ausgleichspolynom vom 6. Grad.}
+\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/pgegenTausgleich.pdf}
+\label{fig:Graph3}
 \end{figure}
-\subsection{}
+Durch Umformen der Formel \eqref{eq:DGL} ergibt sich:
+\begin{equation}
+	L=(V_\text{D}-V_\text{F})\cdot T\cdot \frac{\text{d} p}{\text{d} T}\text{.}\label{eq:L}
+\end{equation}
+Da weiterhin $V_\text{F}\ll V_\text{D}$ gilt, kann $V_\text{F}$ vernachlässigt werden. Für $V_\text{D}$ gilt nun nicht mehr die allgemeine Gasgleichung, sondern kann besser mithilfe von Formel \eqref{??} genähert werden. Umgestellt nimmt diese folgende Gestalt an:
+\begin{equation}
+	V_\text{D} \approx \frac{R T}{2p} \pm \sqrt{\left(\frac{R T}{2p}\right)^2-\frac{a}{p}}\text{   mit }a=\SI{0.9}{\joule\meter\tothe{3}\per\mol\squared}\label{eq:VD}\text{,}
+\end{equation}
+wobei die Lösung mit der positiven Wurzel die physikalisch sinnvolle ist, da diese sich ähnlich zu der Beziehung für $V_\text{D}$ aus der allgemeinen Gasgleichung verhält und die andere Lösung nicht.
+Das Ausgleichspolynom 6. Grades in Abbildung \ref{fig:Graph3} wurde mir SciPy \cite{scipy} ermittelt und besitzt die Form:
+\begin{equation}
+\begin{aligned}
+p \approx &- \SI{9e-7}{\pascal\per\kelvin\tothe{6}} \cdot T^6 + \SI{2.2e-3}{\pascal\per\kelvin\tothe{5}} \cdot T^5 - \SI{2.1}{\pascal\per\kelvin\tothe{4}}\cdot T^4 + \SI{1.1e3}{\pascal\per\kelvin\tothe{3}} \cdot T^3 \\
+&- \SI{3.1e5}{\pascal\per\kelvin\tothe{2}} \cdot T^2 + \SI{4.8e7}{\pascal\per\kelvin} \cdot T - \SI{3.0e9}{\pascal}\text{.}
+\end{aligned}\label{eq:p}
+\end{equation}
+Damit folgt für die Ableitung nach $T$:
+\begin{equation}
+\begin{aligned}
+\frac{\text{d} p}{\text{d} T} \approx &- \SI{5.6e-6}{\pascal\per\kelvin\tothe{5}} \cdot T^5 + \SI{1.1e-2}{\pascal\per\kelvin\tothe{4}}\cdot T^4 - \SI{9}{\pascal\per\kelvin\tothe{3}} \cdot T^3 \\
+&+ \SI{3.3e3}{\pascal\per\kelvin\tothe{2}} \cdot T^2 - \SI{6.3e5}{\pascal\per\kelvin} \cdot T + \SI{4.8e7}{\pascal}\text{.}
+\end{aligned}\label{eq:dpdT}
+\end{equation}
+Somit kann nach \eqref{eq:L} und \eqref{eq:VD} die Verdampfungswärme folgendermaßen genähert werden:
+\begin{displaymath}
+	\begin{aligned}
+		L \approx \left(\frac{R T}{2 p} + \sqrt{\left(\frac{R T}{2p}\right)^2-\frac{a}{p}}\right) T \frac{\text{d} p}{\text{d} T}
+	\end{aligned}\text{,}
+\end{displaymath}
+wobei für $p$ die Näherung \eqref{eq:p} und für $\frac{\text{d} p}{\text{d} T}$ die Näherung \eqref{eq:dpdT} verwendet wird.
+
 
 

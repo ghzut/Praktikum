@@ -72,6 +72,9 @@
 % schöne Brüche im Text
 \usepackage{xfrac}
 
+% automatische Zeilenumbrüche in z.B dmath-Umgebung packet unbekannt
+% \usepackage{breqn}
+
 % Standardplatzierung für Floats einstellen
 \usepackage{float}
 \floatplacement{figure}{htbp}
@@ -153,3 +156,6 @@
   }{}%
 }
 %\publishers{TU Dortmund – Fakultät Physik}
+
+% Ableitungen mit \diff
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}

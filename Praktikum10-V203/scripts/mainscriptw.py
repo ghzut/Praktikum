@@ -31,7 +31,9 @@ import uncertainties.unumpy as unp
 # plt.savefig('build/'+'VgegenDeltaV')
 
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
-
+R = unp.uarray(8.3144598, 0.0000048)
+eV = unp.uarray(1.6021766208, 0.0000000098)*10**(-19)
+n = unp.uarray(6.022140857, 0.000000074)*10**23
 T1, p1 = np.genfromtxt("scripts/Unterdruckmessung", unpack=True)
 T2, p2 = np.genfromtxt("scripts/Uberdruckmessung", unpack=True)
 p1 = p1*10**2
@@ -56,11 +58,11 @@ print('b:', b)
 
 plt.cla()
 plt.clf()
-plt.plot(1/T1, np.log(p1), 'rx', label='Daten1')
-plt.plot(1/T2, np.log(p2), 'gx', label='Daten2')
+plt.plot(1000/T1, np.log(p1), 'rx', label='Daten1')
+plt.plot(1000/T2, np.log(p2), 'gx', label='Daten2')
 # plt.ylim(0,1)
 # plt.xlim(T1[0], T2[-1]+2)
-plt.xlabel(r'$T^{-1}/\si{\per\kelvin}$')
+plt.xlabel(r'$T^{-1}/\si{\per\milli\kelvin}$')
 plt.ylabel(r'$\log (p / \si{\pascal})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
@@ -69,22 +71,35 @@ plt.savefig('build/'+'logpgegen1durchT')
 t = np.linspace((1/T1[-1])*0.98, (1/T1[15])*1.02)
 plt.cla()
 plt.clf()
-plt.plot(1/T1[15:], np.log(p1[15:]), 'rx', label='Daten1')
-plt.plot(t, line(t, *params), 'b-', label='linearer Fit')
+plt.plot(1000/T1[15:], np.log(p1[15:]), 'rx', label='Daten1')
+plt.plot(t*1000, line(t, *params), 'b-', label='linearer Fit')
 # plt.ylim(0,1)
-plt.xlim(t[0], t[-1])
-plt.xlabel(r'$T^{-1}/\si{\per\kelvin}$')
+plt.xlim(t[0]*1000, t[-1]*1000)
+plt.xlabel(r'$T^{-1}/\si{\per\milli\kelvin}$')
 plt.ylabel(r'$\log (p / \si{\pascal})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'logpgegen1durchTausgleich')
 
-R = 1
-L = a*R
+
+L = -a*R
+print('L:', L)
+print('Energie 1 kg Wasser:', L *1000/18)
+La = R*373
+print('La:', La)
+Li = L - La
+print('Li:', Li)
+Lin = Li/(n*eV)
+print('Li pro Molekül in eV', Lin)
+
+def Polynom5(x, a5, a4, a3, a2, a1, a0):
+    return Polynomn(x, [a0, a1, a2, a3, a4, a5])
+
 def Polynom6(x, a6, a5, a4, a3, a2, a1, a0):
     return  Polynomn(x, [a0, a1, a2, a3, a4, a5, a6])
-def Polynom3(x, a1, a2, a3, b):
-    return Polynomn(x, [b, a3, a2, a1])
+
+def Polynom3(x, a3, a2, a1, a0):
+    return Polynomn(x, [a0, a1, a2, a3])
 
 def Polynomn(x, params=[]):
     v = 0
@@ -92,28 +107,72 @@ def Polynomn(x, params=[]):
         v = v + params[i]*x**i
     return v
 
+#def Polynom5(x, a2, a1, a0):
+#   return Polynomn(x, [a0, a1, a2])
+
+#def Polynom6(x, a3, a2, a1, a0):
+#    return Polynomn(x, [a0, a1, a2, a3])
+
 params, covar = curve_fit(Polynom6, T2, p2)
 print('params:', params)
 print('covar:', covar)
-print(np.sqrt(np.diag(covar)))
+var = np.sqrt(np.diag(covar))
+print(var)
+print('*:')
+paramsableitung = []
+varableitung = []
+for i in range(len(params)):
+    paramsableitung.append((len(params)-i-1)*params[i])
+    varableitung.append((len(params)-i-1)*var[i])
+paramsableitung = np.array(paramsableitung)[0:-1]
+varableitung = np.array(varableitung)[0:-1]
+print(paramsableitung)
+print(varableitung)
 
 t = np.linspace(T2[0]*0.98, T2[-1]*1.02)
 plt.cla()
 plt.clf()
-plt.plot(T2, p2, 'gx', label='Daten2')
-plt.plot(t, Polynom6(t, *params), 'b-', label='Ausgleichspolynom 6. Grades')
+plt.plot(T2, p2*10**-6, 'gx', label='Daten2')
+plt.plot(t, Polynom6(t, *params)*10**-6, 'b-', label='Ausgleichspolynom 6. Grades')
 # plt.ylim(0,1)
 plt.xlim(t[0], t[-1])
 plt.xlabel(r'$T/\si{\kelvin}$')
-plt.ylabel(r'$p / \si{\pascal}$')
+plt.ylabel(r'$p / \si{\mega\pascal}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'pgegenTausgleich')
 
-makeTable([T1[0:int(len(p1)/4)], p1[0:int(len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab11', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
-makeTable([T1[int(len(p1)/4):int(2*len(p1)/4)], p1[int(len(p1)/4):int(2*len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab12', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
-makeTable([T1[int(2*len(p1)/4):int(3*len(p1)/4)], p1[int(2*len(p1)/4):int(3*len(p1)/4)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab13', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
-makeTable([T1[int(3*len(p1)/4):], p1[int(3*len(p1)/4):]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab14', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
-makeTable([T2[0:int(len(p2)/2)], p2[0:int(len(p2)/2)]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab21', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
-makeTable([T2[int(len(p2)/2):], p2[int(len(p2)/2):]], r'{$T/\si{\kelvin}$} & {$p/\si{\pascal}$}', 'tab22', ['S[table-format=2.1]', 'S[table-format=3.0]'], ["%2.1f", "%3.0f"])
+makeTable([T1[0:int(len(p1)/4)], p1[0:int(len(p1)/4)]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab11', ['S[table-format=2.1]', 'S[table-format=2.1]'], ["%2.1f", "%2.1f"])
+makeTable([T1[int(len(p1)/4):int(2*len(p1)/4)], p1[int(len(p1)/4):int(2*len(p1)/4)]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab12', ['S[table-format=2.1]', 'S[table-format=2.1]'], ["%2.1f", "%2.1f"])
+makeTable([T1[int(2*len(p1)/4):int(3*len(p1)/4)], p1[int(2*len(p1)/4):int(3*len(p1)/4)]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab13', ['S[table-format=2.1]', 'S[table-format=2.1]'], ["%2.1f", "%2.1f"])
+makeTable([T1[int(3*len(p1)/4):], p1[int(3*len(p1)/4):]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab14', ['S[table-format=2.1]', 'S[table-format=2.1]'], ["%2.1f", "%2.1f"])
+makeTable([T2[0:int(len(p2)/2)], p2[0:int(len(p2)/2)]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab21', ['S[table-format=3.0]', 'S[table-format=3.0]'], ["%3.0f", "%3.0f"])
+makeTable([T2[int(len(p2)/2):], p2[int(len(p2)/2):]/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal}$}', 'tab22', ['S[table-format=3.0]', 'S[table-format=3.0]'], ["%3.0f", "%3.0f"])
+
+T = np.linspace(T2[0]*0.98, T2[-1]*1.02, 1000)
+R2 = unp.nominal_values(R)
+
+#print(T)
+#print((((R2*T)/(2*Polynom6(T, *params)))**2)-0.9/Polynom6(T, *params))
+#print('R2:', R2)
+#print('R2*T:', (R2*T))
+#print(2*Polynom6(T, *params))
+print(paramsableitung)
+
+plt.cla()
+plt.clf()
+plt.plot(T2, (R2*T2/(2*p2) + np.sqrt((R2*T2/(2*p2))**2-0.9/p2))*T2*Polynom5(T2, *paramsableitung), 'gx', label='mit orginal P')
+plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung), 'b-', label='Genäherte Funktion von L')
+plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt((R2*T)**2/(2*Polynom6(T, *params))**2-0.9/Polynom6(T, *params)))*T*1000, 'rx', label='Test' )
+plt.plot(T, Polynom5(T, *paramsableitung), 'g-', label='Genäherte Funktion von P.')
+plt.plot(T, (50.09-0.9298*T/1000-65.19*(T/1000)**2)*1000, 'y-', label='Literaturkurve')
+plt.plot(T, (R2*T/Polynom6(T, *params))*T*Polynom5(T, *paramsableitung), 'o-', label='allgemeine Gasgleichung')
+plt.ylim(-20000,140000)
+plt.xlim(T[0], T[-1])
+plt.xlabel(r'$T/\si{\kilo\kelvin}$')
+plt.ylabel(r'$L / \si{\joule\per\mol}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'LgegenT')
+
 
