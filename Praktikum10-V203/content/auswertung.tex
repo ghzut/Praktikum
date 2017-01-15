@@ -2,7 +2,7 @@
 \label{sec:Auswertung}
 Die Graphen in Abbildung \ref{fig:Graph1}, \ref{fig:Graph2} und \ref{fig:Graph3} wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
 \subsection{Bestimmung des durchschnittlichen Wertes für die Verdampfungswärme für einen Druck von unter einen Bar mithilfe einer Ausgleichsrechnung}
-\begin{figure}
+\begin{figure}\ref{}
 	\centering
 	\caption{Der Logarithmus des Dampfdruckes $p$ gegen die reziproke absolute Temperatur $T^{-1}$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/logpgegen1durchT.pdf}
@@ -49,7 +49,7 @@ Die Graphen in Abbildung \ref{fig:Graph1}, \ref{fig:Graph2} und \ref{fig:Graph3}
 \end{figure}
 Der Fit in Abbildung \ref{fig:Graph2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ mittels SciPy \cite{scipy} liefert mit den Wertepaaren aus Tabelle \ref{tab:tab11} und mit $R=\SI{8.3144598(48)}{\joule\per\mol\kelvin}$ \cite{R} nach Formel \eqref{eq:DGLLs}:
 \begin{displaymath}
-L = -a R = \SI{3.43(2)}{\joule\per\mol}\text{.}
+L = -a R = \SI{3.43(2)e4}{\joule\per\mol}\text{.}
 \end{displaymath}
 
 \subsection{Berechnung der benötigten Energie zur Überwindung der molekularen Anziehungskräfte für ein Wassermolekül bei 373 Kelvin}
@@ -62,14 +62,14 @@ Für die Energie um ein Mol von $V_1$ auf $V_2$ isobar auszudehnen folgt:
 \begin{equation}
 W_\text{1,2} = p (V_2-V_1)\text{.}
 \end{equation}
-Da bei einer Temperatur von $T=\SI{373}{K}$ bei Wasser $V_\text{F}\ll V_\text{D}$ gilt, folgt:
+Da bei einer Temperatur von $T=\SI{373}{\kelvin}$ bei Wasser $V_\text{F}\ll V_\text{D}$ gilt, folgt:
 \begin{equation}
-	L_\text{a} = W_\text{F,D} \approx p V_D = R T
+	L_\text{a} = W_\text{F,D} \approx p V_D = R T = \SI{3101.294(2)}{\joule\per\mol}
 \end{equation} 
 um ein Mol von $V_\text{F}$ auf $V_\text{D}$ auszudehnen.
 Für die benötigte Energie um die molekularen Anziehungskräfte zu überwinden gilt:
 \begin{equation}
-	L_\text{i}= L - L_\text{a} = \SI{3.12(2)}{\joule\per\mol}\text{.}
+	L_\text{i}= L - L_\text{a} = \SI{3.12(2)e4}{\joule\per\mol}\text{.}
 \end{equation}
 Für ein Molekül ergibt sich mit $n=\SI{6.022140857(74)e23}{\per\mol}$ \cite{n} und $\SI{1}{\electronvolt}=\SI{1.6021766208(98)e-19}{\joule}$ \cite{eV}:
 \begin{equation}
