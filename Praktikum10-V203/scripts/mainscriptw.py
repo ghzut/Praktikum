@@ -179,4 +179,4 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'LgegenT')
 
-makeTable([Tl, Ll/1000], r'{$T/\si{\kelvin}$} & {$p/\si{\kilo\pascal\per\mol}$}', 'tab3', ['S[table-format=3.0]', 'S[table-format=2.3]'], ["%3.0f", "%2.3f"])
+makeTable([Tl, Ll/1000], r'{$T/\si{\kelvin}$} & {$p/\si[per-mode=reciprocal]{\kilo\pascal\per\mol}$}', 'tab3', ['S[table-format=3.0]', 'S[table-format=2.3]'], ["%3.0f", "%2.3f"])
