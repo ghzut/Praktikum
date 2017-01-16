@@ -88,7 +88,11 @@ Durch Umformen der Formel \eqref{eq:DGL} ergibt sich:
 \begin{equation}
 	L=(V_\text{D}-V_\text{F})\cdot T\cdot \frac{\text{d} p}{\text{d} T}\text{.}\label{eq:L}
 \end{equation}
-Da weiterhin $V_\text{F}\ll V_\text{D}$ gilt, kann $V_\text{F}$ vernachlässigt werden. Für $V_\text{D}$ gilt nun nicht mehr die allgemeine Gasgleichung, sondern kann besser mithilfe von Formel \eqref{??} genähert werden. Umgestellt nimmt diese folgende Gestalt an:
+Da weiterhin $V_\text{F}\ll V_\text{D}$ gilt, kann $V_\text{F}$ vernachlässigt werden. Nach den Hinweisen zur Auswertung des Versuches V203 kann $V_\text{D}$ durch folgende Formel besser genähert werden:
+\begin{equation}
+	\left( p + \frac{a}{V^2}\right) V = R T \text{   mit }a=\SI{0.9}{\joule\meter\tothe{3}\per\mol\squared}
+\end{equation}
+Umgestellt nimmt diese folgende Gestalt an:
 \begin{equation}
 	V_\text{D} \approx \frac{R T}{2p} \pm \sqrt{\left(\frac{R T}{2p}\right)^2-\frac{a}{p}}\text{   mit }a=\SI{0.9}{\joule\meter\tothe{3}\per\mol\squared}\label{eq:VD}\text{,}
 \end{equation}
@@ -110,7 +114,7 @@ Damit folgt für die Ableitung nach $T$:
 Somit kann nach \eqref{eq:L} und \eqref{eq:VD} die Verdampfungswärme folgendermaßen genähert werden:
 \begin{displaymath}
 	\begin{aligned}
-		L \approx \left(\frac{R T}{2 p} + \sqrt{\left(\frac{R T}{2p}\right)^2-\frac{a}{p}}\right) T \frac{\text{d} p}{\text{d} T}
+		L \approx \left(\frac{R T}{2 p} + \sqrt{\left(\frac{R T}{2p}\right)^2-\frac{a}{p}}\right) T \frac{\text{d} p}{\text{d} T}\text{   mit }a=\SI{0.9}{\joule\meter\tothe{3}\per\mol\squared}
 	\end{aligned}\text{,}
 \end{displaymath}
 wobei für $p$ die Näherung \eqref{eq:p} und für $\frac{\text{d} p}{\text{d} T}$ die Näherung \eqref{eq:dpdT} verwendet wird.
