@@ -1,47 +1,46 @@
 
 \section{Theorie}
 \label{sec:Theorie}
-Eine Materialeigenschaft eines Körpers ist die Speicherung von Wärme bzw. Abgabe
-die von bereits gespeicherter Wärme. Existiert nun auf auf einem solchen Körper
- ein Wärmeungleichgewicht zwischen verschiedenen Stellen, kommt es zum Ausgleich
- und dem hierzu nötigen Wärmetransport.
-mögliche Vorgänge des Wärmetransportes sind Wärmestrahlung, Konvektion oder
-  Wärmeleitung. Im Folgenden wird sich auf letzteren Vorgang beschränkt. Im
-  Allgemeinen basiert diese in festen Material zu großen Teilen auf Phonomen und
-   frei beweglichen Elektronen. Wird ein Metall betrachtet können Effekte der
-    bestehenden Gitterstrukturen vernachlässigt werden. Im Folgenden ein Stab der
+Eine Materialeigenschaft eines Körpers ist die Speicherung von Wärme bzw. die Abgabe
+ von bereits gespeicherter Wärme. Existiert nun auf auf einem solchen Körper
+ ein Temperaturungleichgewicht zwischen verschiedenen Stellen, kommt es zum Temperaturausgleich.
+ Hierzu wird Wärmeenergie über den Körper transportiert.
+Mögliche Vorgänge des Wärmetransportes sind Wärmestrahlung, Konvektion oder
+  Wärmeleitung. Im Folgenden wird sich auf den letzten Vorgang beschränkt. Im
+  allgemeinen basiert die Wärmeleitung in festen Material zu großen Teilen auf Phonomen und
+   frei beweglichen Elektronen. Ist das Material des Körpers ein Metall können auch die Effekte der
+    bestehenden Gitterstrukturen vernachlässigt werden. Im Folgenden wird ein metallischer Stab der
     Länge $L$, sowie der Querschnittfläche $A$ betrachtet. Er besitzt die
     gleichmäßige Dichte $\rho$ und die spezifische Wärme $c$. Existiert nun ein
     Temperaturungleichgewicht $T$ zwischen den beiden Stabenden, folgt für den Fluss
      der Wärmeenergie $\text{d}Q$ durch $A$ in der Zeit $\text{d}t$ :
      \begin{equation}
-       \text{d}Q = -\kappa A \frac{\partial T}{\partial x} \text{d}t
+       \text{d}Q = -\kappa A \frac{\partial T}{\partial x} \text{d}t \label{eq:form1}
        \end{equation}
        Der Faktor \kappa beschreibt dabei die Wärmeleitfähigkeit und ist eine
         Konstante des Materials. Nach Konvention fließt die Wärmeenergie vom
          energiereicheren zum energieärmeren Stabende. Analog folgt für die Wärmestromdichte $j_\text{w}$:
          \begin{equation}
-           j_\text{w} = -\kappa \frac{\partial T}{\partial x}
+           j_\text{w} = -\kappa \frac{\partial T}{\partial x} \label{eq:form2}
            \end{equation}
-           Auf Basis beider Gleichungen, sowie die Kontinuitätsgleichung folgt
+           Auf Basis der Gleichungen \ref{eq:form1} und \ref{eq:form2}, sowie die Kontinuitätsgleichung folgt
             die eindimensionale Wärmeleitungsgleichung
             \begin{equation}
               \frac{\partial T}{\partial t} = \frac{\kappa}{\rho c}\frac{\partial² T}{\partial x²}
               \end{equation}
               mit der materialspezifischen Temperaturleitfähigkeit
               \begin{equation}
-                \sigma_\text{T} = \frac{\kappa}{\rho c}
+                \sigma_\text{T} = \frac{\kappa}{\rho c}\text{.}
                 \end{equation}
-               definieren.
-             Diese beschreibt
+             Sie beschreibt
              die zeitliche und räumliche Abhängigkeit des Temperaturverlaufes im Stab.
              Die Schnelligkeit, mit welcher sich die Temperaturausgleich abläuft wird
-             über $\sigma_\text{T}$ definiert. Die Lösungsfunktion ist abhängig
+             über die Temperaturleitfähigkeit festgelegt. Die Lösungsfunktion ist abhängig
              von der Geometrie des Stabes und den angenommenen Anfangsbedingungen.
 
-In der konfiguration wird der Stab nun abwechselnd erwärmt und  danach wieder
+In der folgenden Konfiguration wird der Stab nun abwechselnd erwärmt und
 abgekühlt. Lässt sich diesem Vorgang eine gleichbleibende Periodendauer zuordnen und
- ist der Stab ziemlich lang, bildet sich eine räumliche und zeitliche Temperaturwelle
+ kann der Stab als ziemlich lang angenommen werden, bildet sich eine räumliche und zeitliche Temperaturwelle
   innerhalb des Stabes aus. Diese besitzt die Form:
   \begin{equation}
     T(x,t) = T_\text{max}e^{-\sqrt{{\frac{\omega \rho c}{2\kappa}}x}}\cos \left( \omega t - \sqrt{\frac{\omega \rho c}{2\kappa}}x \right)
