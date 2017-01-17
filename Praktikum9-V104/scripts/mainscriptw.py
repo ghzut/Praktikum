@@ -13,9 +13,11 @@ def betrag(x):
     return unp.sqrt(x**2)
 
 vNull = 16594
+vNull *= 5/4
 
 # Vmessung------------------------------------------------------------------------------
 Gang, timeForwards, timeBackwards = np.genfromtxt('scripts/Vmessung', unpack=True)
+timeBackwards = -timeBackwards
 makeTable([Gang[0:int(len(Gang)/2)], timeForwards[0:int(len(Gang)/2)], timeBackwards[0:int(len(Gang)/2)]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv1', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
 makeTable([Gang[int(len(Gang)/2):], timeForwards[int(len(Gang)/2):], timeBackwards[int(len(Gang)/2):]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv2', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
 LaengeDerStrecke = 445
@@ -38,6 +40,8 @@ print(BackwardsV)
 # Dopplereffektmessung------------------------------------------------------------------
 
 Gang, frequenzForwards, frequenzBackwards = np.genfromtxt('scripts/dopllereffektmessung', unpack=True)
+frequenzForwards *= 5/4
+frequenzBackwards *= 5/4
 frequenzForwards[Gang==6] = frequenzForwards[Gang==6]/10
 frequenzBackwards[Gang==6] = frequenzBackwards[Gang==6]/10
 makeTable([Gang[0:int(len(Gang)/2)], frequenzForwards[0:int(len(Gang)/2)], frequenzBackwards[0:int(len(Gang)/2)]], r'{'+r'Gang'+r'} & {'+r'$f_\text{v}/\si{\hertz}$'+r'} & {'+r'$f_\text{r}/\si{\hertz}$'+r'}', 'tab1', ['S[table-format=2.0]', 'S[table-format=5.0]', 'S[table-format=5.0]'], ["%2.0f", "%5.0f", "%5.0f"])
@@ -60,12 +64,12 @@ print(Backwards)
 # DeltaVKursiv--------------------------------------------------------------------------
 DeltaVForwards = []
 for value in Forwards:
-    DeltaVForwards.append(betrag(value-vNull))
+    DeltaVForwards.append(value-vNull)
 DeltaVForwards = np.array(DeltaVForwards)
 
 DeltaVBackwards = []
 for value in Backwards:
-    DeltaVBackwards.append(betrag(value-vNull))
+    DeltaVBackwards.append(value-vNull)
 DeltaVBackwards = np.array(DeltaVBackwards)
 
 print(DeltaVForwards)
@@ -89,10 +93,10 @@ BackwardsVNominal = np.array(BackwardsVNominal)
 BackwardsVStd = np.array(BackwardsVStd)
 
 Gaenge = np.array([6,12,18,24,30,36,42,48,54,60])
-makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
+makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=3.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
 
 
-VNominal = np.append(ForwardsVNominal, BackwardsVNominal)
+VNominal = np.append(BackwardsVNominal, ForwardsVNominal)
 
 
 DeltaVForwardsNominal = []
@@ -111,7 +115,7 @@ for value in DeltaVBackwards:
 DeltaVBackwardsNominal = np.array(DeltaVBackwardsNominal)
 DeltaVBackwardsStd = np.array(DeltaVBackwardsStd)
 
-DeltaVNominal = np.append(DeltaVForwardsNominal, DeltaVBackwardsNominal)
+DeltaVNominal = np.append(DeltaVBackwardsNominal, DeltaVForwardsNominal)
 
 
 
@@ -122,14 +126,14 @@ def line(x, a):
 params, covar = curve_fit(line, VNominal, DeltaVNominal, maxfev=1000)
 print(params, covar, sep='\n')
 
-t = np.linspace(0, ForwardsVNominal[-1]*1.03, 1000)
+t = np.linspace(-ForwardsVNominal[-1]*1.03, ForwardsVNominal[-1]*1.03, 1000)
 plt.cla()
 plt.clf()
 plt.plot(t*100, line(t, *params), 'b-', label='Fit')
 plt.plot(ForwardsVNominal*100, DeltaVForwardsNominal, 'gx', label='Daten mit Bewegungsrichtung aufs Mikrofon zu')
 plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'rx', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
-plt.ylim(0, line(t[-1], *params)+0.1)
-plt.xlim(0, t[-1]*100)
+#plt.ylim(-line(t[-1], line(t[-1], *params)+0.1)
+plt.xlim(-t[-1]*100, t[-1]*100)
 plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
 plt.ylabel(r'$\Delta f / \si{\hertz}$')
 plt.legend(loc='best')
