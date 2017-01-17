@@ -14,10 +14,9 @@ def betrag(x):
 
 vNull = 16594
 vNull *= 5/4
-
+print('vNull:', vNull)
 # Vmessung------------------------------------------------------------------------------
 Gang, timeForwards, timeBackwards = np.genfromtxt('scripts/Vmessung', unpack=True)
-timeBackwards = -timeBackwards
 makeTable([Gang[0:int(len(Gang)/2)], timeForwards[0:int(len(Gang)/2)], timeBackwards[0:int(len(Gang)/2)]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv1', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
 makeTable([Gang[int(len(Gang)/2):], timeForwards[int(len(Gang)/2):], timeBackwards[int(len(Gang)/2):]], r'{ Gang } & {$ t_\text{v}/\si{\milli\second} $} & { $ t_\text{r}/\si{\milli\second} $ }', 'tabv2', [r'S[table-format=2.0]', r'S[table-format=4.0]', r'S[table-format=4.0]'], ["%2.0f", "%4.0f", "%4.0f"])
 LaengeDerStrecke = 445
@@ -29,7 +28,7 @@ ForwardsV = np.array(ForwardsV)
 
 BackwardsV = []
 for i in range(1, 11):
-    BackwardsV.append(LaengeDerStrecke / unp.uarray(np.mean(timeBackwards[Gang == i*6]), stats.sem(timeBackwards[Gang == i*6])))
+    BackwardsV.append(-LaengeDerStrecke / unp.uarray(np.mean(timeBackwards[Gang == i*6]), stats.sem(timeBackwards[Gang == i*6])))
 BackwardsV = np.array(BackwardsV)
 
 print(ForwardsV)
@@ -131,7 +130,7 @@ plt.cla()
 plt.clf()
 plt.plot(t*100, line(t, *params), 'b-', label='Fit')
 plt.plot(ForwardsVNominal*100, DeltaVForwardsNominal, 'gx', label='Daten mit Bewegungsrichtung aufs Mikrofon zu')
-plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'rx', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
+plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'r+', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
 #plt.ylim(-line(t[-1], line(t[-1], *params)+0.1)
 plt.xlim(-t[-1]*100, t[-1]*100)
 plt.xlabel(r'$v/\si{\centi\meter\per\second}$')

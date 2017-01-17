@@ -13,7 +13,7 @@ Aus Tabelle \ref{tab:tabwelle} berechnet sich die Wellenlänge $\lambda_0$ zu $\
 \begin{displaymath}
 	\frac{f_0}{c} = \frac{1}{\lambda_0} = \SI{59.0(2)}{\per\meter}\text{.}
 \end{displaymath}
-Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{16594}{\hertz}$ berechnet sich aus dem Proportionalitätsfaktor die Schallgeschwindigkeit $c$ zu $\SI{281(1)}{\meter\per\second}$.
+Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{20743}{\hertz}$ berechnet sich aus dem Proportionalitätsfaktor die Schallgeschwindigkeit $c$ zu $\SI{352(1)}{\meter\per\second}$.
 
 \subsection{Bestimmung des Proportionalitätsfaktors  mithilfe einer linearen Ausgleichsrechnung}
 Aus Tabelle \ref{tab:tabv1} berechnet sich die Geschwindigkeiten in den verschiedenen Gängen und Richtungen zu den Werten in Tabelle \ref{tab:tabges}.
@@ -34,19 +34,19 @@ Aus Tabelle \ref{tab:tabv1} berechnet sich die Geschwindigkeiten in den verschie
 	\input{build/tabges}
 \end{table}
 
-In Tabelle \ref{tab:tabges} kann die maximale Geschwindigkeit $v_{\text{max}}$, mit der sich der Wagen bewegt, von $\SI{51,43(2)}{\centi\meter\per\second}$ entnommen werden. Es wurde eine Frequenz $f_0$ von $\SI{16594}{\hertz}$ gemessen. 
+In Tabelle \ref{tab:tabges} kann die maximale Geschwindigkeit $v_{\text{max}}$, mit der sich der Wagen bewegt, von $\SI{51,43(2)}{\centi\meter\per\second}$ entnommen werden. Es wurde eine Frequenz $f_0$ von $\SI{20743}{\hertz}$ gemessen.
 Da $v_{\text{max}} \cdot f_0 > c$ gilt lässt sich nach Formel \eqref{eq:bewegS} $\Delta f$ messen, da ganzzahlige Unterschiede in diesem Versuchsaufbau gemessen werden können.
 Es muss nicht unterschieden werden zwischen den Formeln \eqref{eq:bewegE} und \eqref{eq:bewegS}, da $|v_\text{max}| \ll c$ gilt. Dies ist auch in Abbildung \ref{fig:Graph1} daran zu erkennen, dass alle Wertepaare durch eine Gerade genähert werden können.
 
 Der Fit in Abbildung \ref{fig:Graph1} besitzt die Form $y=a x$. Eine lineare Ausgleichsrechnung der Form $y=a x$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tabv1} nach Formel \eqref{eq:bewegE}:
 \begin{displaymath}
-a = \frac{f_0}{c} = \SI{47.6(4)}{\per\meter}\text{.}
+a = \frac{f_0}{c} = \SI{59.5(5)}{\per\meter}\text{.}
 \end{displaymath}
-Dies ist der gesuchte Proportionalitätsfaktor. Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{16594}{\hertz}$ berechnet sich aus $a$ die Schallgeschwindigkeit $c$ zu $\SI{349(3)}{\meter\per\second}$.
+Dies ist der gesuchte Proportionalitätsfaktor. Mit der zuvor gemessenen Frequenz $f_0$ von $\SI{20743}{\hertz}$ berechnet sich aus $a$ die Schallgeschwindigkeit $c$ zu $\SI{348(3)}{\meter\per\second}$.
 Es ist in Abbildung \ref{fig:Graph1} zu erkennen, dass die Messwerte durch den Fit angenähert werden können und dass es eine systematische Abweichung gibt, die in der Diskussion geklärt werden muss.
 \begin{figure}
 	\centering
-	\caption{Die Differenz $\Delta f $ zwischen $f_0$ und der gemessenen Frequenz $f$ gegen die Geschwindigkeit $v$ aufgetragen.}
+	\caption{Die  gerichtete Differenz $\Delta f $ zwischen $f_0$ und der gemessenen Frequenz $f$ gegen die Geschwindigkeit $v$ aufgetragen. Bei $v > 0$ fährt der Wagen vorwärts, bei $v < 0$ rückwärts.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/VgegenDeltaV.pdf}
 	\label{fig:Graph1}
 \end{figure}
@@ -63,16 +63,15 @@ Es ist in Abbildung \ref{fig:Graph1} zu erkennen, dass die Messwerte durch den F
 \end{table}
 
 \subsection{Vergleich zwischen den Ergebnissen mithilfe eines Studentschen t-Testes}
-Mithilfe des t-Testes wird überprüft mit welcher Wahrscheinlichkeit sich die Erwartungsgrößen, der aus den zwei Messreihen bestimmten Werte für den Proportionalitätsfaktor, unterscheiden. Für die Anzahl der Werte für $\lambda_1 ^{-1}$ aus Tabelle \ref{tab:tabwelle} gilt $n=5$ und für die Anzahl der Werte für $\lambda_2 ^{-1}$ aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tabv1} gilt $m=20$. Somit gibt es $n+m-2=23$ Freiheitsgrade. Es berechnet sich die gewichtete Standartabweichung mit den zuvor berechneten Standartabweichungen von $\lambda ^{-1}$ $s_1 = \SI{0.2}{\per\meter}$ und $s_2 = \SI{0.4}{\per\meter}$ zu:
+Mithilfe des t-Testes wird überprüft mit welcher Wahrscheinlichkeit sich die Erwartungsgrößen, der aus den zwei Messreihen bestimmten Werte für den Proportionalitätsfaktor, unterscheiden. Für die Anzahl der Werte für $\lambda_1 ^{-1}$ aus Tabelle \ref{tab:tabwelle} gilt $n=5$ und für die Anzahl der Werte für $\lambda_2 ^{-1}$ aus Tabelle \ref{tab:tab1} und Tabelle \ref{tab:tabv1} gilt $m=20$. Somit gibt es $n+m-2=23$ Freiheitsgrade. Es berechnet sich die gewichtete Standartabweichung mit den zuvor berechneten Standartabweichungen von $\lambda ^{-1}$ $s_1 = \SI{0.2}{\per\meter}$ und $s_2 = \SI{0.5}{\per\meter}$ zu:
 \begin{displaymath}
-	s = \sqrt{\frac{(n-1)s_1^2+(m-1)s_2^2}{n+m-2}} = \SI{0.4}{\per\meter}\text{.}
+	s = \sqrt{\frac{(n-1)s_1^2+(m-1)s_2^2}{n+m-2}} = \SI{0.5}{\per\meter}\text{.}
 \end{displaymath}
 Daraus berechnet sich die Prüfgröße zu:
 \begin{displaymath}
-	t = \sqrt{\frac{n \cdot m}{n+m}} \cdot \frac{\overline{\lambda_1^{-1}} -\overline{\lambda_2^{-1}}}{s} = \num{55.7}\text{.}
+	t = \sqrt{\frac{n \cdot m}{n+m}} \cdot \frac{|\overline{\lambda_1^{-1}} -\overline{\lambda_2^{-1}}|}{s} = \num{2.0}\text{.}
 \end{displaymath}
 Dies entspricht bei $23$ Freiheitsgeraden annähernd einer Wahrscheinlichkeit von $\SI{100}{\percent}$, dass sich die Erwartungsgrößen unterscheiden. Dies widerspricht jedoch der Annahme, dass zweimal die selbe Größe bestimmt wird. Es muss folglich entweder ein grober oder systematischer Fehler bei einer der Messungen vorliegen. Dies muss in der Diskussion näher betrachtet werden.
 
 
 %$t-Wert = 45.7$ -> 100 Prozent Wahrscheinlichkeit eines systematischen Fehlers. Was für einer ? Zweites Ergebnis nah am Theoriewert erstes nicht.
-
