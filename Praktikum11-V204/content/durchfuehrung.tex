@@ -5,13 +5,31 @@
 \renewcommand{\labelenumi}{\alph{enumi})}
 \begin{enumerate}
   \item Zunächst wird eine statische Methode zur Bestimmung der Wärmeleitkoeffizienten
-  durchgeführt. Hierzu werden am Explorer GLX zunächst alle Thermometer zugeschaltet.
-  Dies geschieht über den Menüunterpunkt "SENSOREN". Über den Menüpunkt "DIGITAl"
+  durchgeführt. Hierzu werden am Explorer GLX zunächst alle Thermoelemente aktiv geschaltet.
+  Dies geschieht über den Menüunterpunkt "SENSOREN". Über den Menüpunkt "DIGITAL"
    wird eine Abtastrate von $\SI{5}{\second}$ eingestellt. An der Energiequelle wird
     eine Spannung von $\SI{5}{\volt}$ bei maximaler Stromstärke eingerichtet. Um
      einer Wärmeabgabe der Metalle über die Umgebung vorzubeugen, werden
      Isolierungen über alle Stäbe gelegt. Nach einer Zeit von $\SI{700}{\second}$
      werden die Temperaturen der Thermoelemente T1, T4, T5 und T8 notiert. Die Messreihe
-      wird beendet sobald entweder das Thermoelement T7 eine Temperatur von ca.
-       $\SI{45}{\degreeCelsius}$ erreicht hat oder aber eine Messzeit von über $\SI{40}{\minutes}$ erreicht ist.
+      wird beendet sobald das Thermoelement T7 eine Temperatur von ca.
+       $\SI{45}{\degreeCelsius}$ erreicht hat oder eine Messzeit von über
+       $\SI{40}{\minute}$ erreicht ist. Mithilfe des Xplorer GLX wird jeweils
+       ein Graph mit T1 und T4 sowie einer mit T5 und T8 erstellt und ausgedruckt.
+       Zusätzlich werden auch die Differenzgraphen von T2-T1 und T7-T8 ausgedruckt.
+       Die Stäbe sollen vor Beginn des nächsten Versuches auf unter $\SI{30}{\degreeCelsius}$ abgekühlt sein.
+
+
+       \item Nun wird eine dynamische Methode zur Bestimmung der Wärmeleitkoeffizienten verwendet.
+       Die Abtastrate wird auf $\SI{2}{\second}$ eingestellt. Die Spannung wird
+       auf $\SI{8}{\volt}$ erhöht. Die Stäbe werden nun unter einer Periode von $\SI{80}{\second}$
+        periodisch erwärmt und wieder abgekühlt. Hierzu wird der Schalter alle
+        $\SI{40}{\second}$ umgelegt. Die Messung wird nach frühestens 10 Perioden
+        beendet. Es wird jeweils ein Graph des breiten Messingstabes (T1 und T2)
+        und einer des Alluminiumstabes( T5 und T6) erstellt und gedruckt.
+        Nachdem die Stäbe wieder abgekühlt sind wird der Versuch unter einer
+        Periodendauer von $\SI{200}{\second}$ wiederholt. Diesmal wird die Messung
+         beendet, wenn das erste Thermoelement $\SI{80}{\degreeCelsius}$ erreicht.
+         Es wird ein Graph des Edelstahls (T7 und T8) erstellt und ausgedruckt.
+
 \end{enumerate}
