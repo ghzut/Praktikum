@@ -34,23 +34,24 @@ Mögliche Vorgänge des Wärmetransportes sind Wärmestrahlung, Konvektion oder
                 \end{equation}
              Sie beschreibt
              die zeitliche und räumliche Abhängigkeit des Temperaturverlaufes im Stab.
-             Die Schnelligkeit, mit welcher sich die Temperaturausgleich abläuft wird
+             Die Schnelligkeit, mit welcher der Temperaturausgleich abläuft wird
              über die Temperaturleitfähigkeit festgelegt. Die Lösungsfunktion ist abhängig
              von der Geometrie des Stabes und den angenommenen Anfangsbedingungen.
 
-In der folgenden Konfiguration wird der Stab nun abwechselnd erwärmt und
-abgekühlt. Lässt sich diesem Vorgang eine gleichbleibende Periodendauer zuordnen und
- kann der Stab als ziemlich lang angenommen werden, bildet sich eine räumliche und zeitliche Temperaturwelle
-  innerhalb des Stabes aus. Diese besitzt die Form:
+In der folgenden Konfiguration wird der Stab nun periodisch erwärmt und
+ wieder abgekühlt.
+ Im zuge dessen bildet sich eine räumliche und zeitliche Temperaturwelle
+  innerhalb des Stabes aus. Ist der Stab sehr lang im Vergleich zur Breite, lassen
+   sich die Wellen durch folgende Formel ausdrücken:
   \begin{equation}
     T(x,t) = T_\text{max}e^{-\sqrt{{\frac{\omega \rho c}{2\kappa}}x}}\cos \left( \omega t - \sqrt{\frac{\omega \rho c}{2\kappa}}x \right)
   \end{equation}
 mit der Phasengeschwindigkeit
 \begin{equation}
-  v = sqrt{\frac{2 \kappa \omega}{\rho c}}\text{.}
+  v = \sqrt{\frac{2 \kappa \omega}{\rho c}}\text{.}
 \end{equation}
-Sind zwei Amplituden $A_\text{nah}$ und $A_\text{fern}$ zu zwei Messstellen
-$x_\text{nah}$ und $x_\text{fern}$ und die dazwischenliegende Phasenverschiebung $\Delta t$
+Sind die zugehörigen Amplituden $A_\text{nah}$ und $A_\text{fern}$ zu zwei Messstellen
+$x_\text{nah}$ und $x_\text{fern}$ im Abstand $\Delta x$ und die dazwischenliegende Phasenverschiebung $\Delta t$
  der Temperaturwelle bekannt, lässt sich $\kappa$ mithilfe dieser bestimmen. Für $\kappa$ folgt:
  \begin{equation}
    \kappa = \frac{\rho c (\Delta x)²}{2 \Delta t (\ln(A_\text{nah})-\ln(A_\text{fern})}
