@@ -1,17 +1,32 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+Die Fehlerrechnung wurde mit Unterstützung von Uncertainties \cite{uncertainties} durchgeführt.
+\subsection{Statische Methode}
 \begin{figure}
 	\centering
-	\caption{Die Temperatur, am fernem Thermoelement des breiten Messingstabes, $T1$ und, am fernem Thermoelement des schmalen Messingstabe,s $T4$ gegen die vergangene Zeit $t$ aufgetragen.}
+	\caption{Die Temperatur, am fernem Thermoelement des breiten Messingstabes, $T1$ und, am fernem Thermoelement des schmalen Messingstabes $T4$ gegen die vergangene Zeit $t$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Bilder/T1T4-rotated.pdf}
 	\label{fig:Graph1}
 \end{figure}
+In Abbildung \ref{fig:Graph1} sind die Temperaturverläufe an den fernen Thermoelementen der beiden Messingstäbe dargestellt. Es fällt auf, dass in den ersten $\SI{150}{\second}$ beide Temperaturen gleich schnell steigen, danach jedoch die Temperatur am Thermoelement des breitem Stabes $T1$ nicht so früh abflacht, wie $T4$ am schmalem Stab. Die Steigungen der Temperaturverläufe nähern sich im weiterem Verlauf wieder an.
 \begin{figure}
 	\centering
 	\caption{Die Temperatur, am fernem Thermoelement des Aluminiumstabes, $T5$ und, am fernem Thermoelement des Edelstahlstabes, $T8$ gegen die vergangene Zeit $t$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{content/Bilder/T5T8-rotated.pdf}
 	\label{fig:Graph2}
 \end{figure}
+In Abbildung \ref{fig:Graph2} ist auch ein Unterschied in den Temperaturverläufen zu erkennen. So beginnt die Temperatur am Edelstahlstab erst später zu steigen als am Aluminiumstab und auch zu Beginn mit einer geringeren Steigung, die sich später der Steigung des Temperaturanstieges am Aluminiumstab annähert.
+In allen Graphen in den Abbildungen \ref{fig:Graph1} und \ref{fig:Graph2}  ist direkt bzw. kurz nach Beginn der Messung der größte Temperaturanstieg erkennbar. Dieser fällt bei den unterschiedlichen Materialien unterschiedlich stark aus. Danach nimmt der Anstieg der Temperatur bei allen Graphen ab, wobei sich die Steigungen aneinander annähern. Somit laufen die Graphen gegen unterschiedliche Grenztemperaturen. Die höchste Grenztemperatur besitzt Aluminium, dann Messing und die niedrigste Edelstahl. Dies geht auch schon durch die Temperaturen nach $\SI{700}{\second}$ hervor:
+\begin{displaymath}
+\begin{aligned}
+T5 =& \SI{29.59}{\degreeCelsius}\\
+T1 =& \SI{28.09}{\degreeCelsius}\\
+T4 =& \SI{27.32}{\degreeCelsius}\\
+T8 =& \SI{24.02}{\degreeCelsius}\text{.}
+\end{aligned}
+\end{displaymath}
+Aufgrund der selben Startbedingungen besitzt somit der Aluminiumstab die größte Wärmeleitung.
+
 \begin{figure}
 	\centering
 	\caption{Die Temperaturdifferenz $T2-T1$ bei dem breitem Messingstab gegen die vergangene Zeit $t$ aufgetragen.}
@@ -34,6 +49,9 @@
 	\caption{Der nach Formel \eqref{eq:form1} berechnete Wärmestrom $\frac{\Delta Q_{78}}{\Delta t}$ nach der Zeit $t$ und die aus \ref{fig:Graph4} entnommene Temperaturdifferenz $T7-T8$ bei dem Edelstahlstab.}
 	\input{./build/tabT78.tex}
 \end{table}
+Der Wärmestrom $\frac{\Delta Q}{\Delta t}$ wurde in den Tabellen \ref{tab:tabT21} und \ref{tab:tabT78} mithilfe von Formel \eqref{eq:form1} berechnet. Hierfür wurde in beiden Tabellen die Temperaturdifferenz durch den vorher gemessenen Abstand zwischen den Thermoelementen $\Delta x$ von $\SI{3}{\centi\meter}$ geteilt. In Tabelle \ref{tab:tabT21} wurden die Querschnittsfläche $A$ von $\SI{0.48}{\centi\meter\squared}$, die Dichte $p$ von $\SI{8520}{\kilo\gram\per\meter\squared}$ und die spezifische Wärme $c$ von $\SI{385}{\joule\per\kilo\gram\kelvin}$ von Messing aus der Versuchsanleitung \cite{V204} und der Literaturwert für die Wärmeleitfähigkeit $\kappa$ von $\SI{93}{}$ für die Berechnung verwendet.
+In Tabelle \ref{tab:tabT78} wurden die Querschnittsfläche $A$ von $\SI{0.48}{\centi\meter\squared}$, die Dichte $p$ von $\SI{8000}{\kilo\gram\per\meter\squared}$ und die spezifische Wärme $c$ von $\SI{400}{\joule\per\kilo\gram\kelvin}$ von Messing aus der Versuchsanleitung \cite{V204} und der Literaturwert für die Wärmeleitfähigkeit $\kappa$ von $\SI{20}{}$ für die Berechnung verwendet. 
+\subsection{Dynamische Methode}
 \begin{figure}
 	\centering
 	\caption{Die Temperatur, am nahem Thermoelement des Messingstabes, $T2$ und, am fernem Thermoelement, $T1$ gegen die vergangene Zeit $t$ aufgetragen.}

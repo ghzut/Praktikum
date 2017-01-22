@@ -39,24 +39,28 @@ AMessingS = 0.007*0.004
 pMessingS = 8520
 cMessingS = 385
 kMessingS = 93
+print('p*c MessingS:',pMessingS*cMessingS)
 
 # Messing Breit 9 x 1.2 x 0.4
 AMessingB = 0.012*0.004
 pMessingB = 8520
 cMessingB = 385
 kMessingB = 93
+print('p*c MessingB:',pMessingB*cMessingB)
 
 # Aluminium 9 x 1.2 x 0.4
 AAluminium = 0.012*0.004
 pAluminium = 2800
 cAluminium = 830
 kAluminium = 220
+print('p*c Aluminium:',pAluminium*cAluminium)
 
 # Edelstahl 9 x 1.2 x 0.4
 AEdlestahl = 0.012*0.004
 pEdelstahl = 8000
 cEdlestahl = 400
 kEdelstahl = 20
+print('p*c Edelstahl:',pEdelstahl*cEdlestahl)
 
 # Abstand zwischen Thermoelementen an einem Stab
 AbT = 0.03
