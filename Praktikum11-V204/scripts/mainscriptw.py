@@ -49,7 +49,7 @@ kMessingB = 93
 # Aluminium 9 x 1.2 x 0.4
 AAluminium = 0.012*0.004
 pAluminium = 2800
-cAluminium = 380
+cAluminium = 830
 kAluminium = 220
 
 # Edelstahl 9 x 1.2 x 0.4
@@ -98,15 +98,24 @@ makeTable([x78, dT78, -dT78/AbT * AEdlestahl *kEdelstahl], r'{$t/\si{\second}$} 
 # Berechnung von den kappas
 
 def kappa(Anah, Afern, deltat, p, c):
-	return (p*c*0.03**2) / (2*deltat*únp.ln(Anah/Afern))
+	return (p*c*0.03**2) / (2*deltat*unp.log(Anah/Afern))
 
 AnahMessing, AfernMessing, deltatMessing = np.genfromtxt('scripts/Messing', unpack=True)
+AnahMessing *= 10/5.8 /2
+AfernMessing *= 10/5.8 /2
+deltatMessing *= 1000/14.95
 AnahAluminium, AfernAluminium, deltatAluminium = np.genfromtxt('scripts/Aluminium', unpack=True)
+AnahAluminium *= 10/5.8 /2
+AfernAluminium *= 10/5.8 /2
+deltatAluminium *= 1000/14.95 
 AnahEdelstahl, AfernEdelstahl, deltatEdelstahl = np.genfromtxt('scripts/Edelstahl', unpack=True)
+AnahEdelstahl *= 100/23
+AfernEdelstahl *= 100/23
+deltatEdelstahl *= 1000/11.9
 
-makeTable([AnahMessing, AfernMessing, deltatMessing], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{second}$}', 'tabMessing', [r'S[table-format=5.5]', r'S[table-format=5.5', r'S[table-format=5.5'], ["%5.5f", "%5.5f", "5.5f"])
-makeTable([AnahAluminium, AfernAluminium, deltatAluminium], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{second}$}', 'tabAluminium', [r'S[table-format=5.5]', r'S[table-format=5.5', r'S[table-format=5.5'], ["%5.5f", "%5.5f", "5.5f"])
-makeTable([AnahEdelstahl, AfernEdelstahl, deltatEdelstahl], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{second}$}', 'tabEdelstahl', [r'S[table-format=5.5]', r'S[table-format=5.5', r'S[table-format=5.5'], ["%5.5f", "%5.5f", "5.5f"])
+makeTable([AnahMessing, AfernMessing, deltatMessing], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabMessing', [r'S[table-format=1.2]', r'S[table-format=1.2]', r'S[table-format=2.0]'], ["%1.2f", "%1.2f", "%2.0f"])
+makeTable([AnahAluminium, AfernAluminium, deltatAluminium], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabAluminium', [r'S[table-format=1.1]', r'S[table-format=1.1]', r'S[table-format=1.1]'], ["%1.1f", "%1.1f", "%1.0f"])
+makeTable([AnahEdelstahl, AfernEdelstahl, deltatEdelstahl], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabEdelstahl', [r'S[table-format=1.1]', r'S[table-format=1.1]', r'S[table-format=2.0]'], ["%1.1f", "%1.1f", "%2.0f"])
 
 
 # Mittelwert + Standartabweichung des Mittelwertes Messing
@@ -125,7 +134,7 @@ AfernAluminium = unp.uarray(np.mean(AfernAluminium), stats.sem(AfernAluminium))
 print('AfernAluminium:', AfernAluminium)
 deltatAluminium = unp.uarray(np.mean(deltatAluminium), stats.sem(deltatAluminium))
 print('deltatAluminium:', deltatAluminium)
-print('KappaAluminium:', kappa(AnahAluminium, AfernAluminium, deltatAluminium. pAluminium, cAluminium))
+print('KappaAluminium:', kappa(AnahAluminium, AfernAluminium, deltatAluminium, pAluminium, cAluminium))
 
 # Mittelwert + Standartabweichung des Mittelwertes Edelstahl
 AnahEdelstahl = unp.uarray(np.mean(AnahEdelstahl), stats.sem(AnahEdelstahl))
