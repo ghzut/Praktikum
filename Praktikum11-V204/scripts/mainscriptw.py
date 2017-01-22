@@ -118,7 +118,7 @@ AfernEdelstahl *= 100/23
 deltatEdelstahl *= 1000/11.9
 
 makeTable([AnahMessing, AfernMessing, deltatMessing], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabMessing', [r'S[table-format=1.2]', r'S[table-format=1.2]', r'S[table-format=2.0]'], ["%1.2f", "%1.2f", "%2.0f"])
-makeTable([AnahAluminium, AfernAluminium, deltatAluminium], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabAluminium', [r'S[table-format=1.1]', r'S[table-format=1.1]', r'S[table-format=1.1]'], ["%1.1f", "%1.1f", "%1.0f"])
+makeTable([AnahAluminium, AfernAluminium, deltatAluminium], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabAluminium', [r'S[table-format=1.1]', r'S[table-format=1.1]', r'S[table-format=1.1]'], ["%1.1f", "%1.1f", "%1.1f"])
 makeTable([AnahEdelstahl, AfernEdelstahl, deltatEdelstahl], r'{$A_\text{nah}$} & {$A_\text{fern}$} & {$\Delta t / \si{\second}$}', 'tabEdelstahl', [r'S[table-format=1.1]', r'S[table-format=1.1]', r'S[table-format=2.0]'], ["%1.1f", "%1.1f", "%2.0f"])
 
 
