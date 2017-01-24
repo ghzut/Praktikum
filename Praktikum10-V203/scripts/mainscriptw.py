@@ -165,7 +165,7 @@ Ll=18*Ll
 plt.cla()
 plt.clf()
 #plt.plot(T2, (R2*T2/(2*p2) + np.sqrt((R2*T2/(2*p2))**2-0.9/p2))*T2*Polynom5(T2, *paramsableitung), 'gx', label='mit orginal P')
-plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000, 'b-', label='Genäherte Funktion von L')
+plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000, 'b-', label='Genäherte Funktion von $L$')
 plt.plot(Tl, Ll/1000, 'rx', label='Theoriewerte')
 # plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt((R2*T)**2/(2*Polynom6(T, *params))**2-0.9/Polynom6(T, *params)))*T*1000, 'rx', label='Test' )
 #plt.plot(T, Polynom5(T, *paramsableitung), 'g-', label='Genäherte Funktion von P.')
@@ -179,4 +179,74 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'LgegenT')
 
-makeTable([Tl, Ll/1000], r'{$T/\si{\kelvin}$} & {$p/\si[per-mode=reciprocal]{\kilo\pascal\per\mol}$}', 'tab3', ['S[table-format=3.0]', 'S[table-format=2.3]'], ["%3.0f", "%2.3f"])
+makeTable([Tl, Ll/1000, ((R2*Tl)/(2*Polynom6(Tl, *params))+np.sqrt(((R2*Tl)/(2*Polynom6(Tl, *params)))**2-0.9/Polynom6(Tl, *params)))*Tl * Polynom5(Tl, *paramsableitung)/1000], r'{$T/\si{\kelvin}$} & {$L_\text{Lit}/\si[per-mode=reciprocal]{\kilo\joule\per\mol}$} & {$L_\text{App}/\si[per-mode=reciprocal]{\kilo\joule\per\mol}$}', 'tab3', ['S[table-format=3.0]', 'S[table-format=2.3]', 'S[table-format=2.3]'], ["%3.0f", "%2.3f", "%2.3f"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+T = np.linspace(-T2[-1]*1.02, T2[-1]*1.02, 1000000)
+R2 = unp.nominal_values(R)
+
+#print(T)
+#print((((R2*T)/(2*Polynom6(T, *params)))**2)-0.9/Polynom6(T, *params))
+#print('R2:', R2)
+#print('R2*T:', (R2*T))
+#print(2*Polynom6(T, *params))
+print(paramsableitung)
+
+Tl, MM, MMM, Ll = np.genfromtxt("scripts/Literaturwerte", unpack=True)
+Tl = Tl + 273.15
+Ll=18*Ll
+plt.cla()
+plt.clf()
+plt.ylim(-20,600)
+plt.xlim(250, T[-1])
+#plt.plot(T2, (R2*T2/(2*p2) + np.sqrt((R2*T2/(2*p2))**2-0.9/p2))*T2*Polynom5(T2, *paramsableitung), 'gx', label='mit orginal P')
+plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000, 'b-', label='Genäherte Funktion von $L$')
+plt.plot(T, (((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000)*np.sin(((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000), 'g-', label='Genäherte Funktion von $L sin(L)$')
+plt.plot(T, np.exp(np.sqrt(T*np.cos(np.arcsin(((R2*T)/(2*Polynom6(T, *params))+np.sqrt(((R2*T)/(2*Polynom6(T, *params)))**2-0.9/Polynom6(T, *params)))*T * Polynom5(T, *paramsableitung)/1000))))/10**6, 'r-', label='Genäherte Funktion von $L$')
+plt.plot(Tl, Ll/1000, 'rx', label='Theoriewerte')
+# plt.plot(T, ((R2*T)/(2*Polynom6(T, *params))+np.sqrt((R2*T)**2/(2*Polynom6(T, *params))**2-0.9/Polynom6(T, *params)))*T*1000, 'rx', label='Test' )
+#plt.plot(T, Polynom5(T, *paramsableitung), 'g-', label='Genäherte Funktion von P.')
+#plt.plot(T, (50.09-0.9298*T/1000-65.19*(T/1000)**2)*1000, 'y-', label='Literaturkurve')
+#plt.plot(T, (R2*T/Polynom6(T, *params))*T*Polynom5(T, *paramsableitung), 'o-', label='allgemeine Gasgleichung')
+plt.xlabel(r'$T/\si{\kelvin}$')
+plt.ylabel(r'$L / \si{\kilo\joule\per\mol}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'LgegenT2')
