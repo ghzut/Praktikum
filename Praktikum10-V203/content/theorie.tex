@@ -5,7 +5,7 @@
 Ein Stoff kann verschiedene Phasen annehmen. Der Begriff der "Phase" beschreibt
  einen räumlich begrenzten Bereich eines abgeschlossenen System, in dem sich ein Stoff
   in einem homogenem Zustand befindet. Wichtige Phasen sind die Aggregatzustände.
-  Wechselt der Stoff nun den Aggregatzustand ist dieser Vorgang eine Phasenumwandlung.
+  Ein Wechsel des Aggregatzustandes ist daher ein Phasenwechsel.
   Die einzelnen Phasen und ihre Übergänge lassen sich mithilfe Zustandsdiagrammes
    wie in Abb. \ref{fig:diagram} darstellen. Ihn ihnen werden Druck und Temperatur
     des Systems, in welchem sich der Stoff befindet, gegeneinander aufgetragen.
@@ -18,16 +18,17 @@ Ein Stoff kann verschiedene Phasen annehmen. Der Begriff der "Phase" beschreibt
   Die Phase und das mögliche Verhalten des Stoffes hängen nun von den Parametern $P$ und $T$ ab.
   In den Flächen der Aggregatzustände können alle $P$ und $T$
    Kombinationen des jeweiligen Bereiches erreicht werden ohne das sich etwas an der Phase des Stoffes ändert.
-    Liegen Die Koordinaten $(P,T)$ hingegen auf einer der Grenzlinien zwischen
+    Liegen Die Koordinaten $(T,P)$ hingegen auf einer der Grenzlinien zwischen
     zwei Phasen, koexistieren Teilchen in beiden Zuständen.
     Dementsprechend hat das System auf diesen Linien nur noch einen Freiheitsgrad.
-    Am Knotenpunkt aller Grenzlinien koexistieren zuletzt Teilchen aller Drei
+    Am Knotenpunkt aller Grenzlinien, dem Tripplepunkt $T.P$, koexistieren zuletzt Teilchen aller drei
      Zustände. Das System ist an diesem daher fest bestimmt.
 
      Im folgenden wird sich auf die Grenzkurve zwischen dem flüssigen und dem
       gasförmigen Zustand beschränkt. Diese heißt Dampfdruckkurve und wird hauptsächlich durch die
-      Verdampfungwärme $L$ festgelegt. An ihrem oberen Ende liegt eine kritische
-       Temperatur $T_\text{k}$ vor, bei welcher keine genaue Phase mehr angegeben werden kann. Es folgt ein näherer Blick auf die Vorgänge von
+      Verdampfungwärme $L$ festgelegt. An ihrem oberen Ende liegt der kritische Punkt
+       $K.P$ vor. Bei dieser Kombination von Temparatur und Druck können den
+       Teilchen keine eindeutigen Phasen mehr zugeordnet werden. Es folgt ein näherer Blick auf die Vorgänge von
       Verdampfung und Kondensation im Vakuum.
 \subsection{Vorgänge bei Verdampfung und Kondensation}
 Wird eine Flüssigkeit in ein evakuiertes Gefäß gefüllt, so lässt sich eine
@@ -47,7 +48,8 @@ Wird eine Flüssigkeit in ein evakuiertes Gefäß gefüllt, so lässt sich eine
          	\caption{Eine mathematische Hilfsskizze zur Ermittlung der Funktion des Druckes auf der Verdampfungskurve\cite{V203}.}
          	\label{fig:Kreislauf}
          \end{figure}
-         Stellt man den Kreisprozess nun mathematisch da, so wie in Abb. \ref{fig:Kreislauf} abgebildet, folgt die Clausius-Clapeyronsche Gleichung:
+         In mathematischer Darstellung lässt sich der Kreislauf wie in Abb.
+         \ref{fig:Kreislauf} darstellen. Aus ihm folgt die Clausius-Clapeyronsche Gleichung:
          \subsection{Lösung der Clausius-Clapeyronschen Gleichung}
          \begin{equation}
            (V_\text{D}-V_\text{F})\text{d}p = \frac{L}{T}\text{d}T \label{eq:DGL}
@@ -63,5 +65,5 @@ Liegen die verwendeten Temperaturen jedoch weit unterhalb von $T_\text{k}$ könn
 \end{itemize}
 Mit diesen folgt für die Funktion des Druckes auf der Verdampfungskurve:
 \begin{equation}
-  p = p_0 \cdot exp \left(-\frac{L}{RT}\right) \label{eq:DGLLs}
+  p = p_0 \cdot exp \left(-\frac{L}{RT}\right) \label{eq:DGLLs} \text{oder} \ln(p) = -\frac{L}{RT}+ \text{const} 
 \end{equation}
