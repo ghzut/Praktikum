@@ -19,7 +19,7 @@ Mögliche Vorgänge des Wärmetransportes sind Wärmestrahlung, Konvektion oder
        \end{equation}
        Der Faktor \kappa beschreibt dabei die Wärmeleitfähigkeit und ist eine
         Konstante des Materials. Nach Konvention fließt die Wärmeenergie vom
-         energiereichen zum energieärmeren Stabende. Analog folgt für die Wärmestromdichte $j_\text{w}$:
+         energiereicheren zum energieärmeren Stabende. Analog folgt für die Wärmestromdichte $j_\text{w}$:
          \begin{equation}
            j_\text{w} = -\kappa \frac{\partial T}{\partial x} \label{eq:form2}
            \end{equation}
@@ -40,19 +40,19 @@ Mögliche Vorgänge des Wärmetransportes sind Wärmestrahlung, Konvektion oder
 
 In der folgenden Konfiguration wird der Stab nun periodisch erwärmt und
  wieder abgekühlt.
- Im zuge dessen bildet sich eine räumliche und zeitliche Temperaturwelle
+ Im Zuge dessen bildet sich eine räumliche und zeitliche Temperaturwelle
   innerhalb des Stabes aus. Ist der Stab sehr lang im Vergleich zur Breite, lassen
    sich die Wellen durch folgende Formel ausdrücken:
   \begin{equation}
-    T(x,t) = T_\text{max}e^{-\sqrt{{\frac{\omega \rho c}{2\kappa}}x}}\cos \left( \omega t - \sqrt{\frac{\omega \rho c}{2\kappa}}x \right)\label{eq:form5}
+    T(x,t) = T_\text{max}e^{-\sqrt{{\frac{\omega \rho c}{2\kappa}}}x}\cos \left( \omega t - \sqrt{\frac{\omega \rho c}{2\kappa}}x \right)\label{eq:form5}
   \end{equation}
 mit der Phasengeschwindigkeit
 \begin{equation}
   v = \sqrt{\frac{2 \kappa \omega}{\rho c}}\text{.}\label{eq:form6}
 \end{equation}
 Sind die zugehörigen Amplituden $A_\text{nah}$ und $A_\text{fern}$ zu zwei Messstellen
-$x_\text{nah}$ und $x_\text{fern}$ im Abstand $\Delta x$ und die dazwischenliegende Phasenverschiebung $\Delta t$
+$x_\text{nah}$ und $x_\text{fern}$ im Abstand $\Delta x$ sowie die dazwischenliegende Phasenverschiebung $\Delta t$
  der Temperaturwelle bekannt, lässt sich $\kappa$ mithilfe dieser bestimmen. Für $\kappa$ folgt:
  \begin{equation}
-   \kappa = \frac{\rho c (\Delta x)²}{2 \Delta t (\ln(A_\text{nah})-\ln(A_\text{fern}))}\label{eq:form7}
+   \kappa = \frac{\rho c (\Delta x)²}{2 \Delta t (\ln(A_\text{nah})-\ln(A_\text{fern}))}\text{.}\label{eq:form7}
  \end{equation}
