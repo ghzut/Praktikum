@@ -39,40 +39,43 @@ v = \frac{T1}{T1-T2}\label{eq:vid}\text{,}
 mit den Temperaturen $T1$ für das wärmere und $T2$ für das kältere Reservoir.
 Da im realistischen Fall der Prozess nicht irreversibel ist, ist der Gütefaktor einer realen Wärmepumpe geringer.
 
+
 Im folgendem wird die Güteziffer $v$, der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet. 
 
-Für die durchschnittlich im Reservoir 1 pro Zeiteinheit zugeführte Wärmemenge gilt, mit der Wärmekapazität des Wassers $m_1c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
+
+Für die momentane im Reservoir 1 pro Zeiteinheit zugeführte Wärmemenge gilt, mit der Wärmekapazität des Wassers $m_1c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
 \begin{equation}
-  \frac{\diff Q1}{\diff t} = \left( m_1c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_1}{\diff t}\text{.}\label{eq:T1Q1}
+  \frac{\diff Q_1}{\diff t} = \left( m_1c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_1}{\diff t}\text{.}\label{eq:T1Q1}
 \end{equation}
-Mit $\diff t= t_1 -t_0$ folgt die Beziehung
+Es folgt die Beziehung
 \begin{equation}
 	v = \frac{\diff Q_1}{\diff A} = \frac{\diff Q_1}{\diff t N_\text{mech}}\text{,}\label{eq:v}
 \end{equation}
 wobei $N_\text{mech}$ die momentane mechanische Kompressorleistung ist.
 
 \subsection{Der Massendurchsatz}
-Es wird der Massendurchsatz der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
+Es wird der Massendurchsatz, der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
 
-Analog zu Formel \eqref{eq:T1Q1} gilt für die durchschnittlich im Reservoir 2 pro Zeiteinheit entnommene Wärmemenge, mit der Wärmekapazität des Wassers $m_2c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
+
+Analog zu Formel \eqref{eq:T1Q1} gilt für die momentane im Reservoir 2 pro Zeiteinheit entnommene Wärmemenge, mit der Wärmekapazität des Wassers $m_2c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
 \begin{equation}
-\frac{\diff Q2}{\diff t} = \left( m_2c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_2}{\diff t}\text{.}\label{eq:T2Q2}\text{.}
+\frac{\diff Q_2}{\diff t} = \left( m_2c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_2}{\diff t}\label{eq:T2Q2}\text{.}
 \end{equation}
 Es wird die Wärmemenge $\diff Q_2$ durch verdampfen der Masse $\diff m$ des Gases entnommen.
 Es gilt mit der Verdampfungswärme $L$
 \begin{equation}
 \begin{aligned}
-\diff Q_2 = L \diff m & \leftrightarrows & \frac{\diff Q_2}{\diff t} \cdot \frac{1}{L} = \frac{\diff m}{\diff t}\text{,}\label{eq:diffmdifft}
+\diff Q_2 = L \diff m & \Leftrightarrow & \frac{\diff Q_2}{\diff t} \frac{1}{L} = \frac{\diff m}{\diff t}\text{,}\label{eq:diffmdifft}
 \end{aligned}
 \end{equation}
 wobei $\frac{\diff m}{\diff t}$ der momentane Massendurchsatz ist.
 
 \subsection{Die mechanische Kompressorleistung}
-Es wird die mechanische Kompressorleistung $N_\text{mech}$, des Kompressors aus der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
+Es wird die mechanische Kompressorleistung $N_\text{mech}$, des Kompressors aus der, in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
 
 Um ein Volumen $V_\text{a}$ auf ein Volumen $V_\text{b}$ zu komprimieren gilt für die benötigte Energie
 \begin{eqnarray}
- A= \int_{V_\text{a}}^{V_\text{b}} p dV\text{.}
+ A= -\int_{V_\text{a}}^{V_\text{b}} p \diff V\text{.}
 \end{eqnarray}
 Bei einer adiabatischen Kompression gilt die Poissonsche Gleichung und es ergibt sich
 \begin{equation}
