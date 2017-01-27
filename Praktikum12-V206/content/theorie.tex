@@ -43,30 +43,40 @@ Im folgendem wird die Güteziffer $v$, der in der späteren Messung verwendeten 
 
 Für die durchschnittlich im Reservoir 1 pro Zeiteinheit zugeführte Wärmemenge gilt, mit der Wärmekapazität des Wassers $m_1c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
 \begin{equation}
-  \frac{\Delta Q1}{\Delta t} = \left( m_1c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\Delta T_1}{\Delta t}\text{.}\label{eq:T1Q1}
+  \frac{\diff Q1}{\diff t} = \left( m_1c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_1}{\diff t}\text{.}\label{eq:T1Q1}
 \end{equation}
-Mit $\Delta t= t_1 -t_0$ folgt die Beziehung
+Mit $\diff t= t_1 -t_0$ folgt die Beziehung
 \begin{equation}
-	v = \frac{\Delta Q_1}{\Delta A} =\frac{\Delta Q_1}{\int_{t_0}^{t_1} N_\text{mech} \diff t} = \frac{\Delta Q_1}{\Delta t \overline{N}}\text{,}
+	v = \frac{\diff Q_1}{\diff A} = \frac{\diff Q_1}{\diff t N_\text{mech}}\text{,}\label{eq:v}
 \end{equation}
-wobei $N_\text{mech}$ die mechanische  Kompressorleistung und $\overline{N}=\frac{1}{\Delta t} \int_{t_0}^{t_1} N_\text{mech} \diff t$ die über den Zeitraum $\Delta t$ gemittelte Kompressorleistung ist.
+wobei $N_\text{mech}$ die momentane mechanische Kompressorleistung ist.
 
 \subsection{Der Massendurchsatz}
 Es wird der Massendurchsatz der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
 
 Analog zu Formel \eqref{eq:T1Q1} gilt für die durchschnittlich im Reservoir 2 pro Zeiteinheit entnommene Wärmemenge, mit der Wärmekapazität des Wassers $m_2c_\text{w}$ und des Kupferrohrs und Eimers $m_\text{k}c_\text{k}$
 \begin{equation}
-\frac{\Delta Q2}{\Delta t} = \left( m_2c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\Delta T_2}{\Delta t}\text{.}\label{eq:T2Q2}\text{.}
+\frac{\diff Q2}{\diff t} = \left( m_2c_\text{w} + m_\text{k}c_\text{k}\right) \frac{\diff T_2}{\diff t}\text{.}\label{eq:T2Q2}\text{.}
 \end{equation}
-Es wird die Wärmemenge $\Delta Q_2$ durch verdampfen der Masse $\Delta m$ des Gases entnommen.
+Es wird die Wärmemenge $\diff Q_2$ durch verdampfen der Masse $\diff m$ des Gases entnommen.
 Es gilt mit der Verdampfungswärme $L$
 \begin{equation}
 \begin{aligned}
-\Delta Q_2 = L \Delta m & \equiv & \frac{\Delta Q_2}{\Delta t} \cdot \frac{1}{L} = \frac{\Delta m}{\Delta t}\text{,}
+\diff Q_2 = L \diff m & \leftrightarrows & \frac{\diff Q_2}{\diff t} \cdot \frac{1}{L} = \frac{\diff m}{\diff t}\text{,}\label{eq:diffmdifft}
 \end{aligned}
 \end{equation}
-wobei $\frac{\Delta m}{\Delta t}$ der durchschnittliche Massendurchsatz in dem Zeitraum $\Delta t$ ist.
+wobei $\frac{\diff m}{\diff t}$ der momentane Massendurchsatz ist.
 
 \subsection{Die mechanische Kompressorleistung}
 Es wird die mechanische Kompressorleistung $N_\text{mech}$, des Kompressors aus der in der späteren Messung verwendeten Wärmepumpe, die in Abbildung \ref{fig:Aufbau2} dargestellt ist, betrachtet.
 
+Um ein Volumen $V_\text{a}$ auf ein Volumen $V_\text{b}$ zu komprimieren gilt für die benötigte Energie
+\begin{eqnarray}
+ A= \int_{V_\text{a}}^{V_\text{b}} p dV\text{.}
+\end{eqnarray}
+Bei einer adiabatischen Kompression gilt die Poissonsche Gleichung und es ergibt sich
+\begin{equation}
+N_\text{mech}=\frac{\diff A}{\diff t}= \frac{1}{\kappa -1}\left(p_\text{b} \sqrt[\kappa]{\frac{p_\text{a}}{p_\text{b}}} -p_\text{a}\right)\frac{1}{\rho} \frac{\diff m}{\diff t}\text{,}\label{eq:Nmech}
+\end{equation}
+wobei $\kappa$ das Verhältnis der Wärmekapazitäten $\frac{C_\text{p}}{C_\text{v}}$, mit der Wärmekapazität $C_\text{p}$ bei konstantem Druck und ${C_\text{v}}$ bei konstantem Volumen, bezeichnet.
+Die Dichte des Transportgases bei dem Druck $p_\text{a}$ wird mit $\rho$ bezeichnet.
