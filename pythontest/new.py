@@ -31,7 +31,7 @@ Pa = Pa+1
 Pb = Pb+1
 T1 += 273.15
 T2 += 273.15
-Zeitab = np.linspace(0,18,len(T1))
+Zeitab = np.linspace(0,1080,len(T1))
 plt.plot(Zeitab, T1)
 plt.plot(Zeitab, T2)
 
@@ -141,10 +141,10 @@ print('Ableitung',Ableitung(12*60,A2T1,PolynomBT1))
 def realGuete(Jim,m1,mkck,cw,N):
     return (m1*cw+mkck)*Jim/N
 
-print('GueteT1bei 2',realGuete(Ableitung(2,A2T1,PolynomBT1),3,660,cWasser,Leistung[2]))
-print('GueteT1bei 8',realGuete(Ableitung(8,A2T1,PolynomBT1),3,660,cWasser,Leistung[8]))
-print('GueteT1bei 12',realGuete(Ableitung(12,A2T1,PolynomBT1),3,660,cWasser,Leistung[12]))
-print('GueteT1bei 16',realGuete(Ableitung(16,A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))
+print('GueteT1bei 2',realGuete(Ableitung(Zeitab[2],A2T1,PolynomBT1),3,660,cWasser,Leistung[2]))
+print('GueteT1bei 8',realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8]))
+print('GueteT1bei 12',realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12]))
+print('GueteT1bei 16',realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))
 
 #ideal
 print(T1[16]/(T1[16]-T2[16]))
