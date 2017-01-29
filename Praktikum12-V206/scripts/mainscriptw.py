@@ -62,26 +62,33 @@ x_plot = np.linspace(-10, 1100)
 #Graphmit Temperaturen
 plt.plot(Zeitab, T1, 'rx', label ="Temperatur von Resservour 1")
 plt.plot(Zeitab, T2, 'gx', label = "Temperatur von Resservour 2")
-#plt.xlabel(r'$t/\si{\second}$')
-#plt.ylabel(r'$T / \si{\kelvin}$')
+plt.xlim(-10, 1100)
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
-plt.savefig("Temperaturen.png")
+plt.savefig("build/Temperaturen.png")
 
 plt.cla()
 plt.clf()
 #Fitgraph von T1
 plt.plot(Zeitab, T1, 'rx', label ="Temperatur von Resservour 1")
 plt.plot(x_plot, Polynom(x_plot, *paramsPolynomT1), 'b-', label='Fit durch Polynom 2. Grades', linewidth=1)
+plt.xlim(-10, 1100)
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
-plt.savefig("T1.png")
+plt.savefig("build/T1.png")
 
 plt.cla()
 plt.clf()
 #Graphtemparatur2
 plt.plot(Zeitab, T2, 'gx', label = "Temperatur von Resservour 2")
 plt.plot(x_plot, Polynom(x_plot, *paramsPolynomT2), 'b-', label='Fit durch Polynom 2. Grades', linewidth=1)
+plt.xlim(-10, 1100)
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
-plt.savefig("T2.png")
+plt.savefig("build/T2.png")
 
 
 #Güte bestimmen
@@ -139,3 +146,4 @@ print('Massendurchsatz8',Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,6
 print('Massendurchsatz12',Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-8.13*1000/18*Dampfdruck[0]))
 print('Massendurchsatz16',Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-8.13*1000/18*Dampfdruck[0]))
 #Kompressorleistung
+makeTable([T1-273.15, T2-273.15, Pa/10000, Pb/10000, Leistung], r'{'+r'$Temperatur 1 \si{\degreeCelsius}'+r'} & {'+r'Temperatur 2 \si{\degreeCelsius}'+r'} & {'+r'P_\text{a}\si{\bar}'+r'} & {'+r'P_\text{b}\si{\bar}'+r'} & {'+r'Leistung\si{\watt}'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
