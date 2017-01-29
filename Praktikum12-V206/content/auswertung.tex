@@ -2,7 +2,30 @@
 \label{sec:Auswertung}
 Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
  Fehlerrechnung wurde mithilfe von Uncertainties durchgeführt.
-
+ \begin{figure}
+ 	\centering
+ 	\caption{Die Temperaturverläufe des Wassers in den den Wärmereservoirs 1 und 2.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Temperaturen.pdf}
+ 	\label{fig:Graph1}
+ \end{figure}
+ \begin{figure}
+ 	\centering
+ 	\caption{Der Temperaturverlauf im ersten Reservoir und seine Approximation durch ein Polynom 2. Grades in Abhängigkeit der Zeit.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/T1.pdf}
+ 	\label{fig:Graph1}
+ \end{figure}
+ \begin{figure}
+ 	\centering
+ 	\caption{Der Temperaturverlauf im zweiten Reservoir und seine Approximation durch ein Polynom 2. Grades in Abhängigkeit der Zeit.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/T2.pdf}
+ 	\label{fig:Graph1}
+ \end{figure}
+ \begin{figure}
+ 	\centering
+ 	\caption{Der Verlauf der Dampfdruckkurve des Transportgases Dichluorfluormethan in Abhängigkeit der reziproken Temperatur.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Dampdruck.pdf}
+ 	\label{fig:Graph1}
+ \end{figure}
 
 
 
@@ -10,11 +33,33 @@ Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
  Zur Approximation des Temperaturverlaufes beim 1. Resservour wurde ein
  quadratischer Fit der Form $y = Ax+Bx+C$ verwendet. Eine nichtlineare
  Ausgleichsrechnung der Form $y = Ax+B+C$ liefert mit den im Minutentakt
- aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle JHJHJHJK folgende Parameter:
+ aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle \ref{tab:daten} folgende Parameter:
+ \begin{table}
+   \centering
+   \input{build/tabges.tex}\label{tab:daten}
+ \end{table}
 
+ \begin{table}
+   \centering
+   \input{build/tabv.tex}\label{tab:daten}
+ \end{table}
 $A = 7.17334$
 
 Mithilfe dieser folgen die Differentialquotienten $\text{d}T_1$ und $\text{d}T_2$
 %Tabelle
-Auf dieser Basis folgt die reale Güte mithilfe von Formel \cite{eq:Q1T1} und \cite{eq:v}:
+Auf dieser Basis folgt die reale Güte mithilfe von Formel \ref{eq:T1Q1} und \ref{eq:v}:
+
+\begin{table}
+  \centering
+  \input{build/tabv.tex}\label{tab:datv}
+\end{table}
+\begin{table}
+  \centering
+  \input{build/tabm.tex}\label{tab:datm}
+\end{table}
+
+\begin{table}
+  \centering
+  \input{build/tabn.tex}\label{tab:datn}
+\end{table}
 %nochne Tablle
