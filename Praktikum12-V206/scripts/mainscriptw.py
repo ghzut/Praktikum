@@ -130,7 +130,7 @@ plt.clf()
 Dampf_plot = np.linspace(273.15+20, 273.15+55, len(T1))
 plt.plot(T1, Pb, 'rx', label ="Druck gegen Temaratur")
 plt.plot(Dampf_plot, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit', linewidth=3)
-plt.savefig("Dampdruck.png")
+plt.savefig("build/Dampdruck.png")
 
 print('Dampdrucksteigung',Dampfdruck[0],'pm',errorsDampfdruck[0])
 print('Achsenabschnitt',Dampfdruck[1],'pm',errorsDampfdruck[1])
