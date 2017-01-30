@@ -9,15 +9,13 @@ import uncertainties.unumpy as unp
 #Temparaturgraphen
 Pa, Pb, T1, T2, Leistung = np.genfromtxt("scripts/Daten", unpack=True)
 Pa = Pa+1
-Pa = Pa *100000
+Pa = Pa *10000
 Pb = Pb+1
-Pb = Pb *100000
+Pb = Pb *10000
 T1 += 273.15
 T2 += 273.15
-Zeitab = np.linspace(0,1080,len(T1))
+Zeitab = np.linspace(0,1140,len(T1))
 #Konstanten
-p0 = 5.51*10**(-3)#T = o, P = 1 Bar
-k = 1.14
 cWasser = 4183#j/(kg*K)
 
 
@@ -25,11 +23,6 @@ cWasser = 4183#j/(kg*K)
 def Polynom(x, A, B, C):
     return A*x*x+B*x+C
 
-def Bruch1(x, A, B, C):
-    return A/(1+B*(x**0.005))
-
-def Bruch2(x, A, B, C, D):
-    return (A*x**C)/(1+B*x**C)+D
 
 def linear(x, A, B):
     return A*x+B
@@ -107,18 +100,38 @@ def Ableitung(x, A, B):
 def realGuete(Jim,m1,mkck,cw,N):
     return (m1*cw+mkck)*Jim/N
 
-print('GueteT1bei 2',realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2]))
-print('GueteT1bei 8',realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8]))
-print('GueteT1bei 12',realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12]))
-print('GueteT1bei 16',realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))
+print('GueteT1bei 2', realGuete(Ableitung(Zeitab[4], A2T1, PolynomBT1), 3, 660, cWasser, Leistung[2]))
+print('GueteT1bei 8', realGuete(Ableitung(Zeitab[8], A2T1, PolynomBT1), 3,660, cWasser, Leistung[8]))
+print('GueteT1bei 12', realGuete(Ableitung(Zeitab[12], A2T1, PolynomBT1),3,660,cWasser,Leistung[12]))
+print('GueteT1bei 16', realGuete(Ableitung(Zeitab[16], A2T1, PolynomBT1),3,660,cWasser,Leistung[16]))
 
-Ableitungen = [unp.nominal_values(Ableitung(Zeitab[4],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[8],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[12],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[16],A2T1,PolynomBT1))]
-Ableitungenfe =[unp.std_devs(Ableitung(Zeitab[4],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[8],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[12],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[16],A2T1,PolynomBT1))]
+Ableitungen = [unp.nominal_values(Ableitung(Zeitab[4],A2T1,PolynomBT1)),
+unp.nominal_values(Ableitung(Zeitab[8], A2T1, PolynomBT1)),
+unp.nominal_values(Ableitung(Zeitab[12], A2T1, PolynomBT1)),
+unp.nominal_values(Ableitung(Zeitab[16], A2T1, PolynomBT1))]
+
+
+Ableitungenfe =[unp.std_devs(Ableitung(Zeitab[4],A2T1,PolynomBT1)),
+unp.std_devs(Ableitung(Zeitab[8],A2T1,PolynomBT1)),
+unp.std_devs(Ableitung(Zeitab[12],A2T1,PolynomBT1)),
+unp.std_devs(Ableitung(Zeitab[16],A2T1,PolynomBT1))]
 Ableitungen =np.array(Ableitungen)
 Ableitungenfe =np.array(Ableitungenfe)
 
-guete = [unp.nominal_values(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),unp.nominal_values(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),unp.nominal_values(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),unp.nominal_values(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
-guetefehler = [unp.std_devs(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),unp.std_devs(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),unp.std_devs(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),unp.std_devs(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
+
+
+guete = [unp.nominal_values(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),
+unp.nominal_values(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),
+unp.nominal_values(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),
+unp.nominal_values(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
+
+
+guetefehler = [unp.std_devs(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),
+unp.std_devs(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),
+unp.std_devs(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),
+unp.std_devs(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
+
+
 idealguete = [T1[4]/(T1[4]-T2[4]),T1[8]/(T1[8]-T2[8]),T1[12]/(T1[12]-T2[12]),T1[16]/(T1[16]-T2[16])]
 #ideal
 print(T1[4]/(T1[4]-T2[4]))
@@ -138,6 +151,8 @@ plt.clf()
 Dampf_plot = 1/np.linspace(273.15+20, 273.15+55)
 plt.plot(1/T1, np.log(Pb), 'rx', label ="Druck gegen Temperatur")
 plt.plot(Dampf_plot, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit', linewidth=3)
+plt.xlim()
+plt.ylim
 plt.xlabel(r'$\frac{1}{T}/\si[per-mode=reciprocal]{\per\kelvin}$')
 plt.ylabel(r'$\ln\left(\frac{p}{p_0}\right) / \si{\pascal}$')
 plt.savefig("build/Dampdruck")
@@ -151,16 +166,27 @@ R = unp.uarray(8.3144598, 0.0000048)
 def Massendurch(Jim2,m2,cw,mkck,L):
     return (m2*cw+mkck)*Jim2/L
 
-print('Massendurchsatz4',Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))
-print('Massendurchsatz8',Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))
-print('Massendurchsatz12',Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))
-print('Massendurchsatz16',Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))
+UDampfdruck = unp.uarray(Dampfdruck[0],errorsDampfdruck[0])
 
-massen =[unp.nominal_values(Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.nominal_values(Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.nominal_values(Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.nominal_values(Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))]
-massenfehler =[unp.std_devs(Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.std_devs(Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.std_devs(Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0])),unp.std_devs(Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*Dampfdruck[0]))]
+print('Massendurchsatz4',Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
+print('Massendurchsatz8',Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
+print('Massendurchsatz12',Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
+print('Massendurchsatz16',Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
+
+massen =[unp.nominal_values(Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.nominal_values(Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.nominal_values(Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.nominal_values(Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))]
+
+
+massenfehler =[unp.std_devs(Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.std_devs(Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.std_devs(Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck)),
+unp.std_devs(Massendurch(Ableitung(16*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))]
+
 massen = np.array(massen)
 massenfehler = np.array(massenfehler)
-
+Umassen = unp.uarray(massen, massenfehler)
 zeiten = [4*60, 8*60, 12*60, 16*60]
 #
 makeTable([T1-273.15, T2-273.15, Pa/10000, Pb/10000, Leistung], r'{$T_1 \si{\degreeCelsius}$} & {$T_2 \si{\degreeCelsius}$} & {$p_\text{a}/\si{\bar}$} & {$p_\text{b}/\si{\bar}$} & {$N_\text{mech}/\si{\watt}$}', 'tabges', ['S[table-format=2.1]', 'S[table-format=2.1]', 'S[table-format=2.1]', 'S[table-format=3.1]', 'S[table-format=3.0]'], ["%2.1f", "%2.1f", "%2.1f", "%3.1f", "%3.0f"])
@@ -169,19 +195,21 @@ makeTable([zeiten, guete,guetefehler,idealguete], r'{'+r't\si{\second}'+r'} & \m
 
 makeTable([zeiten, massen*1000,massenfehler*1000], r'{'+r't\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}m}{\text{d}t}/\si[per-mode=reciprocal]{\gram\per\second}$'+r'}', 'tabm', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
 
+def dichte(Pa,T2):
+    return(Pa*5.51*273.15)/(10000*T2)
 
 #Leistung
 def Nmech(k, Pa,Pb,delm,roh):
-    (1/(k-1))*(delm/roh)*(Pb*((Pa/Pb)**(1/k))-Pa)
+    return (1/(k-1))*(delm/roh)*(Pb*((Pa/Pb)**(1/k))-Pa)
 
-N1 = unp.nominal_values(Nmech(1.14,Pa[4],Pb[4],massen[0],0.00551))
-N2 = unp.nominal_values(Nmech(1.14,Pa[8],Pb[8],massen[1],0.00551))
-N3 = unp.nominal_values(Nmech(1.14,Pa[12],Pb[12],massen[2],0.00551))
-N4 = unp.nominal_values(Nmech(1.14,Pa[16],Pb[16],massen[3],0.00551))
-N1fe = unp.std_devs(Nmech(1.14,Pa[4],Pb[4],massen[0],0.00551))
-N2fe = unp.std_devs(Nmech(1.14,Pa[8],Pb[8],massen[1],0.00551))
-N3fe = unp.std_devs(Nmech(1.14,Pa[12],Pb[12],massen[2],0.00551))
-N4fe = unp.std_devs(Nmech(1.14,Pa[16],Pb[16],massen[3],0.00551))
+N1 = unp.nominal_values(Nmech(1.14,Pa[4],Pb[4],Umassen[0],dichte(Pa[4],T2[4])))
+N2 = unp.nominal_values(Nmech(1.14,Pa[8],Pb[8],Umassen[1],dichte(Pa[8],T2[8])))
+N3 = unp.nominal_values(Nmech(1.14,Pa[12],Pb[12],Umassen[2],dichte(Pa[12],T2[12])))
+N4 = unp.nominal_values(Nmech(1.14,Pa[16],Pb[16],Umassen[3],dichte(Pa[16],T2[16])))
+N1fe = unp.std_devs(Nmech(1.14,Pa[4],Pb[4],Umassen[0],dichte(Pa[4],T2[4])))
+N2fe = unp.std_devs(Nmech(1.14,Pa[8],Pb[8],Umassen[1],dichte(Pa[8],T2[8])))
+N3fe = unp.std_devs(Nmech(1.14,Pa[12],Pb[12],Umassen[2],dichte(Pa[12],T2[12])))
+N4fe = unp.std_devs(Nmech(1.14,Pa[16],Pb[16],Umassen[3],dichte(Pa[16],T2[16])))
 
 
 Narray = [N1,N2,N3,N4]
@@ -191,3 +219,6 @@ Nfearray = np.array(Nfearray)
 print(Narray)
 print(Nfearray)
 makeTable([zeiten, Narray,Nfearray], r'{'+r't\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$N_\text{mech}\si{\watt}$'+r'}', 'tabn', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
+
+
+makeTable([zeiten, Ableitungen,Ableitungenfe], r'{'+r't\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$T\si{\kelvin\per\second}$'+r'}', 'taba', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
