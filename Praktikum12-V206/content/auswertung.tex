@@ -33,7 +33,9 @@ Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
  Zur Approximation des Temperaturverlaufes beim 1. Resservour wurde ein
  quadratischer Fit der Form $y = Ax+Bx+C$ verwendet. Eine nichtlineare
  Ausgleichsrechnung der Form $y = Ax+B+C$ liefert mit den im Minutentakt
- aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle \ref{tab:daten} folgende Parameter:
+ aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle \ref{tab:daten}
+ die Parameter:$A = $,$B = $,$C =$
+
  \begin{table}
    \centering
    \input{build/tabges.tex}\label{tab:daten}
@@ -45,14 +47,20 @@ Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
  \end{table}
 $A = 7.17334$
 
-Mithilfe dieser folgen die Differentialquotienten $\text{d}T_1$ und $\text{d}T_2$
+Durch Differentation folgen die Differenzenquotienten $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:dT}.
+
 %Tabelle
-Auf dieser Basis folgt die reale Güte mithilfe von Formel \ref{eq:T1Q1} und \ref{eq:v}:
+Mithilfe von Formel \ref{eq:T1Q1} und \ref{eq:v} folgt die reale Güte an den in Tabelle \ref{tab:datv}:
 
 \begin{table}
   \centering
   \input{build/tabv.tex}\label{tab:datv}
 \end{table}
+Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy folgt
+$L$ aus den Daten von $\frac{1}{T2}$ und $\ln(Pb)$ mithilfe von Formel \ref{eq:L}
+ \begin{equation}
+   L = R*\frac{\text{d}y}{\text{d}x}\label{eq:L}
+ \end{equation}
 \begin{table}
   \centering
   \input{build/tabm.tex}\label{tab:datm}

@@ -112,6 +112,11 @@ print('GueteT1bei 8',realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasse
 print('GueteT1bei 12',realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12]))
 print('GueteT1bei 16',realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))
 
+Ableitungen = [unp.nominal_values(Ableitung(Zeitab[4],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[8],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[12],A2T1,PolynomBT1)),unp.nominal_values(Ableitung(Zeitab[16],A2T1,PolynomBT1))]
+Ableitungenfe =[unp.std_devs(Ableitung(Zeitab[4],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[8],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[12],A2T1,PolynomBT1)),unp.std_devs(Ableitung(Zeitab[16],A2T1,PolynomBT1))]
+Ableitungen =np.array(Ableitungen)
+Ableitungenfe =np.array(Ableitungenfe)
+
 guete = [unp.nominal_values(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),unp.nominal_values(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),unp.nominal_values(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),unp.nominal_values(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
 guetefehler = [unp.std_devs(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),unp.std_devs(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),unp.std_devs(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),unp.std_devs(realGuete(Ableitung(Zeitab[16],A2T1,PolynomBT1),3,660,cWasser,Leistung[16]))]
 idealguete = [T1[4]/(T1[4]-T2[4]),T1[8]/(T1[8]-T2[8]),T1[12]/(T1[12]-T2[12]),T1[16]/(T1[16]-T2[16])]
@@ -131,8 +136,10 @@ DampfdruckB = unp.uarray(Dampfdruck[1], errorsDampfdruck[1])
 plt.cla()
 plt.clf()
 Dampf_plot = 1/np.linspace(273.15+20, 273.15+55)
-plt.plot(1/T1, np.log(Pb), 'rx', label ="Druck gegen Temaratur")
+plt.plot(1/T1, np.log(Pb), 'rx', label ="Druck gegen Temperatur")
 plt.plot(Dampf_plot, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit', linewidth=3)
+plt.xlabel(r'$\frac{1}{T}/\si[per-mode=reciprocal]{\per\kelvin}$')
+plt.ylabel(r'$\ln\left(\frac{p}{p_0}\right) / \si{\pascal}$')
 plt.savefig("build/Dampdruck")
 
 print('Dampdrucksteigung',Dampfdruck[0],'pm',errorsDampfdruck[0])
