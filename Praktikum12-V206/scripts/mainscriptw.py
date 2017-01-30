@@ -9,9 +9,9 @@ import uncertainties.unumpy as unp
 #Temparaturgraphen
 Pa, Pb, T1, T2, Leistung = np.genfromtxt("scripts/Daten", unpack=True)
 Pa = Pa+1
-Pa = Pa *10000
+Pa = Pa *100000
 Pb = Pb+1
-Pb = Pb *10000
+Pb = Pb *100000
 T1 += 273.15
 T2 += 273.15
 Zeitab = np.linspace(0,1140,len(T1))
@@ -123,6 +123,23 @@ Ableitungenfe =np.array(Ableitungenfe)
 
 
 
+Ableitungen2 = [unp.nominal_values(Ableitung(Zeitab[4],A2T2,PolynomBT2)),
+unp.nominal_values(Ableitung(Zeitab[8], A2T2, PolynomBT2)),
+unp.nominal_values(Ableitung(Zeitab[12], A2T2, PolynomBT2)),
+unp.nominal_values(Ableitung(Zeitab[16], A2T2, PolynomBT2))]
+
+
+Ableitungenfe2 =[unp.std_devs(Ableitung(Zeitab[4],A2T2,PolynomBT2)),
+unp.std_devs(Ableitung(Zeitab[8],A2T2,PolynomBT2)),
+unp.std_devs(Ableitung(Zeitab[12],A2T2,PolynomBT2)),
+unp.std_devs(Ableitung(Zeitab[16],A2T2,PolynomBT2))]
+Ableitungen2 =np.array(Ableitungen2)
+Ableitungenfe2 =np.array(Ableitungenfe2)
+
+
+
+
+
 guete = [unp.nominal_values(realGuete(Ableitung(Zeitab[4],A2T1,PolynomBT1),3,660,cWasser,Leistung[2])),
 unp.nominal_values(realGuete(Ableitung(Zeitab[8],A2T1,PolynomBT1),3,660,cWasser,Leistung[8])),
 unp.nominal_values(realGuete(Ableitung(Zeitab[12],A2T1,PolynomBT1),3,660,cWasser,Leistung[12])),
@@ -154,8 +171,7 @@ plt.clf()
 Dampf_plot = 1/np.linspace(273.15+20, 273.15+55)
 plt.plot(1/T1, np.log(Pb), 'rx', label ="Druck gegen Temperatur")
 plt.plot(Dampf_plot, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit', linewidth=3)
-#plt.xlim()
-#plt.ylim()
+plt.xlim(0.00305, 0.003405)
 plt.xlabel(r'$\frac{1}{T}/\si[per-mode=reciprocal]{\per\kelvin}$')
 plt.ylabel(r'$\ln\left(\frac{p}{\si{\pascal}}\right) / \si{\pascal}$')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
@@ -226,4 +242,4 @@ print(Nfearray)
 makeTable([zeiten, Narray,Nfearray], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$N_\text{mech}\si{\watt}$'+r'}', 'tabn', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
 
 
-makeTable([zeiten, Ableitungen,Ableitungenfe], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$T\si{\kelvin\per\second}$'+r'}', 'taba', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
+makeTable([zeiten, Ableitungen,Ableitungenfe, Ableitungen2, Ableitungenfe2], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_1}{\text{d}t}/\si{\kelvin\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_2}{\text{d}t}/\si{\kelvin\per\second}$'+r'}', 'taba', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]','S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])

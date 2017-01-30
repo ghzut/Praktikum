@@ -1,7 +1,15 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+
+
+
 Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{numpy} erstellt. Die
  Fehlerrechnung wurde mithilfe von Uncertainties\cite{uncertainties} durchgeführt.
+
+
+
+
+
  \begin{figure}
  	\centering
  	\caption{Die Temperaturverläufe des Wassers in den Wärmereservoirs 1 und 2 in Abhängigkeit der Zeit.}
@@ -27,13 +35,24 @@ Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{nu
  	\label{fig:Graph1}
  \end{figure}
 
+ \begin{table}
+   \centering
+   \caption{Die Daten, welche während der Versuchsdurchführung aufgenommen worden sind.}
+   \input{build/tabges.tex}\label{tab:daten}
+ \end{table}
 
 
 
+
+
+
+
+
+\subsection{Approximation der Temperaturverläufe mithilfe quadratischer Polynome}
  Zur Approximation des Temperaturverlaufes im 1. Resservour wurde ein
  quadratischer Fit der Form $y = At²+Bt+C$ verwendet. Eine nichtlineare
  Ausgleichsrechnung der Form $y = At²+Bt+C$ mittels scipy\cite{scipy} liefert mit den im Minutentakt
- aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle \ref{tab:daten}
+ aufgenommenenen Temparaturdaten vom ersten Resservour aus Tabelle \ref{tab:daten}
  die Parameter:
  \begin{displaymath}
 \begin{aligned}
@@ -51,38 +70,74 @@ Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{nu
  \end{aligned}
  \end{displaymath}
 
- \begin{table}
-   \centering
-   \input{build/tabges.tex}\label{tab:daten}
- \end{table}
-
- \begin{table}
-   \centering
-   \input{build/tabv.tex}\label{tab:Guete}
- \end{table}
-
- \begin{table}
-   \centering
-   \input{build/taba.tex}\label{tab:Ableitungen}
- \end{table}
-
-Durch Differentation folgen die Differenzenquotienten $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:dT}.
-
-%Tabelle
-Mithilfe von Formel \ref{eq:T1Q1} und \ref{eq:v} folgt die reale Güte an den in Tabelle \ref{tab:datv}:
 
 
-Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy folgt
-$L$ aus den Daten von $\frac{1}{T2}$ und $\ln(Pb)$ mithilfe von Formel \ref{eq:L}
- \begin{equation}
-   L = R*\frac{\text{d}y}{\text{d}x}\label{eq:L}
- \end{equation}
+\subsection{Approximationsparameter der zeitlichen Differenzenquotienten}
+
+Durch Differentation folgen die Differenzenquotienten
+$\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:taba}.
+
 \begin{table}
   \centering
-  \input{build/tabm.tex}\label{tab:massen}
+  \caption{Die Differenzenquotienten $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ zu 4 verschiedenen Zeiten.}
+  \input{build/taba.tex}\label{tab:Ableitungen}
 \end{table}
 
+\subsection{Bestimmung der realen Güte und Vergleich mit der idealen Güte}
+Die Güte einer Wärmepumpe beschreibt, wie bereits in der Theorie beschrieben,
+wie gut diese unter bestehenden Temperaturdifferenzen einen Wärmetransport zwischen
+beiden Reservoirs durchführen kann. Mit \ref{eq:vid} folgt die ideale Güte . Die
+reale Güte berechnet sich mit Formel \ref{eq:T1Q1} und \ref{eq:v}. Die Wärmekapazität des Wassers
+liegt bei $\SI{4183}{\joule\per\kilo\per\gram\per\kelvin}$ bei einem Wassermenge von $\SI{3}{\kilo\gram}$, den verwendeten
+Kupferröhren und sonstigen Einrichtungen wird dem Aufbau nach eine Wärmekapazität von $\SI{660}{\joule\per\kelvin}$ zugeschrieben.
+Zu den vier bereits zuvor Zeitpunkten folgen die Gütewerte nach Tabelle \ref{tab:Guete}.
+
 \begin{table}
   \centering
+  \caption{Die zu 4 Zeiten bestimmte, reale Güte und ihr zugehöriger, idealer Wert.}
+  \input{build/tabv.tex}\label{tab:Guete}
+\end{table}
+
+Es ist zu erkennen, dass die realen Gütewerte weit unterhalb der idealen Gütewerte liegen.
+Mögliche Ursachen hierfür werden in der Diskussion besprochen.
+
+\subsection{Bestimmung des Massendurchsatzes}
+Die Bestimmung des Massendurchsatzes erfolgt mit Formel \ref{eq:T2Q2} und \ref{eq:diffmdifft}.
+Hierzu wird die Verdampfungswärme $L$ des Dichlordifluormethans benötigt. Für diese folgt:
+\begin{equation}
+  L = -\ln(p)*R
+\end{equation}
+Daher wird $\ln(Pa)$ gegen die reziproke Temperatur $T_2$ aufgetragen. Das gesuchte $L$ ist proportional zur Steigung des Graphen.
+Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy
+berechnet sich nun die Steigung. Für $L$ folgt dann:
+\begin{equation}
+  L = -A*R\text{.}\label{eq:LausA}
+\end{equation}
+Unter Verwendung der bereits bei der Güte verwendeten Wärmekapazitäten und der gleichen
+ Menge Wasser, berechnet sich der Massendurchsatz daher wie in Tabelle \ref{tab:tabm} dargestellt.
+
+ \begin{table}
+   \centering
+   \caption{Der bestimmte Massendurchsatz zu 4 verschiedenen Zeitpunkten.}
+   \input{build/tabm.tex}\label{tab:massen}
+ \end{table}
+
+\subsection{Bestimmung der Leistung mithilfe des Massendurchsatzes}
+Zuletzt wird auch die bestehende Leistung aus den bereits errechneten Daten zu den 4 Zeitpunkten bestimmt.
+Dies geschieht mithilfe von Formel \ref{eq:Nmech}. Daher muss zunächst die Temperatur
+und Druckabhängige Dichtefunktion bestimmt werden. Diese folgt aus der allgemeinen Gasgleichung:
+\begin{equation}
+  p*V = n*R*T\text{.}
+\end{equation}
+Durch Umformung ergibt sich:
+\begin{equation}
+  \rho(p,T) = \frac{p*\rho_0*T_0}{p_0*T}
+\end{equation}
+Mit einem $\rho_0 = \SI{5.51}{\gram\per\litre}$ \cite{V206} bei einem Normaldruck $p_0 = \SI{1}{\bar}$
+und einer Normaltemperatur $T_0 = \SI{273.15}{\kelvin}$ sowie einem $\kappa = 1.44$ \cite{V206} ergeben sich die Leistungen in Tabelle \ref{tab:tabn}.
+
+\begin{table}
+  \centering
+  \caption{Die bestimmte Leistung zu 4 verschiedenen Zeitpunkten.}
   \input{build/tabn.tex}\label{tab:Leistung}
 \end{table}
