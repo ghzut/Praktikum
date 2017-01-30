@@ -50,7 +50,7 @@ pa *= 10**5
 pb *= 10**5
 T1 += 273.15
 T2 += 273.15
-t = np.linspace(0, 60*(len(T1-1)), len(T1))
+t = np.linspace(0, 60*(len(T1)-1), len(T1))
 
 # Rechnung
 def poly2(x, a, b, c):
