@@ -1,10 +1,10 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
- Fehlerrechnung wurde mithilfe von Uncertainties durchgeführt.
+Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{numpy} erstellt. Die
+ Fehlerrechnung wurde mithilfe von Uncertainties\cite{uncertainties} durchgeführt.
  \begin{figure}
  	\centering
- 	\caption{Die Temperaturverläufe des Wassers in den den Wärmereservoirs 1 und 2.}
+ 	\caption{Die Temperaturverläufe des Wassers in den Wärmereservoirs 1 und 2 in Abhängigkeit der Zeit.}
  	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Temperaturen.pdf}
  	\label{fig:Graph1}
  \end{figure}
@@ -30,11 +30,18 @@ Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
 
 
 
- Zur Approximation des Temperaturverlaufes beim 1. Resservour wurde ein
- quadratischer Fit der Form $y = Ax+Bx+C$ verwendet. Eine nichtlineare
- Ausgleichsrechnung der Form $y = Ax+B+C$ liefert mit den im Minutentakt
+ Zur Approximation des Temperaturverlaufes im 1. Resservour wurde ein
+ quadratischer Fit der Form $y = At²+Bt+C$ verwendet. Eine nichtlineare
+ Ausgleichsrechnung der Form $y = At²+Bt+C$ mittels scipy\cite{scipy} liefert mit den im Minutentakt
  aufgenommenenen Temparaturdaten von Resservour 1 aus Tabelle \ref{tab:daten}
- die Parameter:$A = $,$B = $,$C =$
+ die Parameter:
+ \begin{displaymath}
+\begin{aligned}
+ A = \\
+ B = \\
+ C =
+ \end{aligned}
+ \end{displaymath}
 
  \begin{table}
    \centering
@@ -43,19 +50,20 @@ Die Graphen wurden sowohl mit Matplotlib als auch Numpy erstellt. Die
 
  \begin{table}
    \centering
-   \input{build/tabv.tex}\label{tab:daten}
+   \input{build/tabv.tex}\label{tab:Guete}
  \end{table}
-$A = 7.17334$
+
+ \begin{table}
+   \centering
+   \input{build/taba.tex}\label{tab:Ableitungen}
+ \end{table}
 
 Durch Differentation folgen die Differenzenquotienten $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:dT}.
 
 %Tabelle
 Mithilfe von Formel \ref{eq:T1Q1} und \ref{eq:v} folgt die reale Güte an den in Tabelle \ref{tab:datv}:
 
-\begin{table}
-  \centering
-  \input{build/tabv.tex}\label{tab:datv}
-\end{table}
+
 Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy folgt
 $L$ aus den Daten von $\frac{1}{T2}$ und $\ln(Pb)$ mithilfe von Formel \ref{eq:L}
  \begin{equation}
@@ -63,11 +71,10 @@ $L$ aus den Daten von $\frac{1}{T2}$ und $\ln(Pb)$ mithilfe von Formel \ref{eq:L
  \end{equation}
 \begin{table}
   \centering
-  \input{build/tabm.tex}\label{tab:datm}
+  \input{build/tabm.tex}\label{tab:massen}
 \end{table}
 
 \begin{table}
   \centering
-  \input{build/tabn.tex}\label{tab:datn}
+  \input{build/tabn.tex}\label{tab:Leistung}
 \end{table}
-%nochne Tablle
