@@ -103,7 +103,7 @@ def Ableitung(x, A, B):
 def realGuete(Jim,m1,mkck,cw,N):
     return (m1*cw+mkck)*Jim/N
 
-print('GueteT1bei 2', realGuete(Ableitung(Zeitab[4], A2T1, PolynomBT1), 3, 660, cWasser, Leistung[4]))
+print('GueteT1bei 4', realGuete(Ableitung(Zeitab[4], A2T1, PolynomBT1), 3, 660, cWasser, Leistung[4]))
 print('GueteT1bei 8', realGuete(Ableitung(Zeitab[8], A2T1, PolynomBT1), 3,660, cWasser, Leistung[8]))
 print('GueteT1bei 12', realGuete(Ableitung(Zeitab[12], A2T1, PolynomBT1),3,660,cWasser,Leistung[12]))
 print('GueteT1bei 16', realGuete(Ableitung(Zeitab[16], A2T1, PolynomBT1),3,660,cWasser,Leistung[16]))
