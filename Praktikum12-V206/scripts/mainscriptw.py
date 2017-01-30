@@ -50,12 +50,12 @@ PolynomBT2 = unp.uarray(paramsPolynomT2[1], errorsPT1[1])
 
 plt.cla()
 plt.clf()
-x_plot = np.linspace(-10, 1100)
+x_plot = np.linspace(-10, 1150)
 #Graphenapproximation
 #Graphmit Temperaturen
 plt.plot(Zeitab, T1, 'rx', label ="Temperatur von Resservour 1")
 plt.plot(Zeitab, T2, 'gx', label = "Temperatur von Resservour 2")
-plt.xlim(-10, 1100)
+plt.xlim(-10, 1150)
 plt.xlabel(r'$t/\si{\second}$')
 plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
@@ -67,7 +67,7 @@ plt.clf()
 #Fitgraph von T1
 plt.plot(Zeitab, T1, 'rx', label ="Temperatur von Resservour 1")
 plt.plot(x_plot, Polynom(x_plot, *paramsPolynomT1), 'b-', label='Fit durch Polynom 2. Grades', linewidth=1)
-plt.xlim(-10, 1100)
+plt.xlim(-10, 1150)
 plt.xlabel(r'$t/\si{\second}$')
 plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
@@ -79,7 +79,7 @@ plt.clf()
 #Graphtemparatur2
 plt.plot(Zeitab, T2, 'gx', label = "Temperatur von Resservour 2")
 plt.plot(x_plot, Polynom(x_plot, *paramsPolynomT2), 'b-', label='Fit durch Polynom 2. Grades', linewidth=1)
-plt.xlim(-10, 1100)
+plt.xlim(-10, 1150)
 plt.xlabel(r'$t/\si{\second}$')
 plt.ylabel(r'$T / \si{\kelvin}$')
 plt.legend(loc="best")
@@ -217,7 +217,7 @@ makeTable([zeiten, guete,guetefehler,idealguete], r'{'+r't/\si{\second}'+r'} & \
 makeTable([zeiten, massen*1000,massenfehler*1000], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}m}{\text{d}t}/\si[per-mode=reciprocal]{\gram\per\second}$'+r'}', 'tabm', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
 
 def dichte(Pa,T2):
-    return(Pa*5.51*273.15)/(10000*T2)
+    return(Pa*5.51*273.15)/(100000*T2)
 
 #Leistung
 def Nmech(k, Pa,Pb,delm,roh):
