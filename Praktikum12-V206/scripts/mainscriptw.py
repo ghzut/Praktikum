@@ -169,11 +169,11 @@ DampfdruckB = unp.uarray(Dampfdruck[1], errorsDampfdruck[1])
 plt.cla()
 plt.clf()
 Dampf_plot = 1/np.linspace(273.15+20, 273.15+55)
-plt.plot(1/T1, np.log(Pb), 'rx', label ="Druck gegen Temperatur")
-plt.plot(Dampf_plot, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit')
-plt.xlim(0.00305, 0.003405)
-plt.xlabel(r'$\frac{1}{T}/\si[per-mode=reciprocal]{\per\kelvin}$')
-plt.ylabel(r'$\ln\left(\frac{p}{\si{\pascal}}\right) / \si{\pascal}$')
+plt.plot(1/T1*1000, np.log(Pb), 'rx', label ="Druck gegen Temperatur")
+plt.plot(Dampf_plot*1000, linear(Dampf_plot, *Dampfdruck), 'b-', label='linearer Fit')
+plt.xlim(0.00305*1000, 0.003405*1000)
+plt.xlabel(r'$T^{-1}/\si[per-mode=reciprocal]{\per\kilo\kelvin}$')
+plt.ylabel(r'$\ln\left(p/\si{\pascal}\right)$')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.legend(loc="best")
 plt.savefig("build/Dampdruck")
@@ -187,7 +187,7 @@ R = unp.uarray(8.3144598, 0.0000048)
 def Massendurch(Jim2,m2,cw,mkck,L):
     return (m2*cw+mkck)*Jim2/L
 
-UDampfdruck = unp.uarray(Dampfdruck[0],errorsDampfdruck[0])
+UDampfdruck = -unp.uarray(Dampfdruck[0],errorsDampfdruck[0])
 
 print('Massendurchsatz4',Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
 print('Massendurchsatz8',Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
@@ -210,11 +210,11 @@ massenfehler = np.array(massenfehler)
 Umassen = unp.uarray(massen, massenfehler)
 zeiten = [4*60, 8*60, 12*60, 16*60]
 #
-makeTable([T1-273.15, T2-273.15, Pa/10000, Pb/10000, Leistung], r'{$T_1 \si{\degreeCelsius}$} & {$T_2 \si{\degreeCelsius}$} & {$p_\text{a}/\si{\bar}$} & {$p_\text{b}/\si{\bar}$} & {$N_\text{mech}/\si{\watt}$}', 'tabges', ['S[table-format=2.1]', 'S[table-format=2.1]', 'S[table-format=2.1]', 'S[table-format=3.1]', 'S[table-format=3.0]'], ["%2.1f", "%2.1f", "%2.1f", "%3.1f", "%3.0f"])
+makeTable([T1-273.15, T2-273.15, Pa/10000, Pb/10000, Leistung], r'{$T_1 \si{\degreeCelsius}$} & {$T_2 \si{\degreeCelsius}$} & {$p_\text{a}/\si{\bar}$} & {$p_\text{b}/\si{\bar}$} & {$N_\text{mech}/\si{\watt}$}', 'tabges', ['S[table-format=2.1]', 'S[table-format=2.1]', 'S[table-format=1.2]', 'S[table-format=2.2]', 'S[table-format=3.0]'], ["%2.1f", "%2.1f", "%1.2f", "%2.2f", "%3.0f"])
 
-makeTable([zeiten, guete,guetefehler,idealguete], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$v_\text{real}$'+r'} & {'+r'$v_\text{ideal}$'+r'}', 'tabv', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f"])
+makeTable([zeiten, guete,guetefehler,idealguete], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$v_\text{real}$'+r'} & {'+r'$v_\text{ideal}$'+r'}', 'tabv', ['S[table-format=3.0]', 'S[table-format=1.1]', ' @{${}\pm{}$} S[table-format=1.1]', 'S[table-format=2.1]'], ["%3.0f", "%1.1f", "%1.1f", "%2.1f"])
 
-makeTable([zeiten, massen*1000,massenfehler*1000], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}m}{\text{d}t}/\si[per-mode=reciprocal]{\gram\per\second}$'+r'}', 'tabm', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
+makeTable([zeiten, massen*1000,massenfehler*1000], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}m}{\text{d}t}/\si[per-mode=reciprocal]{\gram\per\second}$'+r'}', 'tabm', ['S[table-format=3.0]', 'S[table-format=1.2]', ' @{${}\pm{}$} S[table-format=1.2]'], ["%3.0f", "%1.2f", "%1.2f"])
 
 def dichte(Pa,T2):
     return(Pa*5.51*273.15)/(100000*T2)
@@ -239,7 +239,7 @@ Nfearray = [N1fe,N2fe,N3fe,N4fe]
 Nfearray = np.array(Nfearray)
 print(Narray)
 print(Nfearray)
-makeTable([zeiten, Narray,Nfearray], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$N_\text{mech}\si{\watt}$'+r'}', 'tabn', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f"])
+makeTable([zeiten, Narray,Nfearray], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$N_\text{mech}\si{\watt}$'+r'}', 'tabn', ['S[table-format=3.0]', 'S[table-format=1.1]', ' @{${}\pm{}$} S[table-format=1.1]'], ["%3.0f", "%1.1f", "%1.1f"])
 
 
-makeTable([zeiten, Ableitungen,Ableitungenfe, Ableitungen2, Ableitungenfe2], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_1}{\text{d}t}/\si{\kelvin\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_2}{\text{d}t}/\si{\kelvin\per\second}$'+r'}', 'taba', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]','S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
+makeTable([zeiten, Ableitungen,Ableitungenfe, Ableitungen2, Ableitungenfe2], r'{'+r't/\si{\second}'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_1}{\text{d}t}/\si[per-mode=reciprocal]{\kelvin\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$\frac{\text{d}T_2}{\text{d}t}/\si[per-mode=reciprocal]{\kelvin\per\second}$'+r'}', 'taba', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]','S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
