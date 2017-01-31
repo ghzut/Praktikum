@@ -189,6 +189,8 @@ def Massendurch(Jim2,m2,cw,mkck,L):
 
 UDampfdruck = -unp.uarray(Dampfdruck[0],errorsDampfdruck[0])
 
+
+
 print('Massendurchsatz4',Massendurch(Ableitung(4*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
 print('Massendurchsatz8',Massendurch(Ableitung(8*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))
 print('Massendurchsatz12',Massendurch(Ableitung(12*60,A2T2,PolynomBT2),3,cWasser,660,-R*1000/18*UDampfdruck))

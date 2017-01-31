@@ -84,7 +84,7 @@ Die Güte einer Wärmepumpe beschreibt, wie bereits in der Theorie beschrieben,
 wie gut diese unter bestehenden Temperaturdifferenzen einen Wärmetransport zwischen
 beiden Reservoirs durchführen kann. Mit Formel \ref{eq:vid} folgt die ideale Güte . Die
 reale Güte berechnet sich mit den Formeln \ref{eq:T1Q1} und \ref{eq:v}. Die Wärmekapazität des Wassers
-liegt bei $\SI{4183}{\joule\per\kilo\per\gram\per\kelvin}$ bei einer Wassermenge von $\SI{3}{\kilo\gram}$, den verwendeten
+liegt bei $\SI{4183}{\joule\per\kilo\per\gram\per\kelvin}$ \cite{cw} bei einer Wassermenge von $\SI{3}{\kilo\gram}$, den verwendeten
 Kupferröhren und sonstigen Einrichtungen wird dem Aufbau \cite{V206} nach eine Wärmekapazität von $\SI{660}{\joule\per\kelvin}$ zugeschrieben.
 Zu den vier bereits verwendeten Zeitpunkten folgen die Gütewerte nach Tabelle \ref{tab:Guete}.
 
@@ -109,14 +109,15 @@ Hierzu wird die Verdampfungswärme $L$ des Dichlordifluormethans benötigt. Für
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Dampdruck.pdf}
  \label{fig:Graph1}
 \end{figure}
-Daher wird $\ln(Pa)$ gegen die reziproke Temperatur $T_2$ aufgetragen, wie in Abb. \ref{Graph1} dargestellt. Das gesuchte $L$ ist proportional zur Steigung des Graphen.
+Daher wird $\ln(Pa)$ gegen die reziproke Temperatur $T_2$ aufgetragen, wie in Abb. \ref{fig:Graph1} dargestellt. Das gesuchte $L$ ist proportional zur Steigung des Graphen.
 Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy
 berechnet sich nun die Steigung. Für $L$ folgt dann:
 \begin{equation}
   L = -A\cdot R\text{.}\label{eq:LausA}
 \end{equation}
+Mit einem $R = \num{8.3144598(48)}$ \cite{R} folgt eine Verdampfungswärme von $L = \SI{1.13(5)e6}{\joule\per\kilo\per\gram}$
 Unter Verwendung der bereits bei der Güte verwendeten Wärmekapazitäten und der gleichen
- Menge Wasser, berechnet sich der Massendurchsatz daher wie in Tabelle \ref{tab:tabm} dargestellt.
+ Menge Wasser sowie dem nun bestimmten $L$ berechnet sich der Massendurchsatz. Dieser ist in Tabelle \ref{tab:tabm} dargestellt.
 
  \begin{table}
    \centering
@@ -129,7 +130,7 @@ Zuletzt wird auch die bestehende Leistung aus den bereits errechneten Daten zu d
 Dies geschieht mithilfe von Formel \ref{eq:Nmech}. Daher muss zunächst die Temperatur
 und Druckabhängige Dichtefunktion bestimmt werden. Diese folgt aus der allgemeinen Gasgleichung:
 \begin{equation}
-  p\cot V = n\cot R\cot T\text{.}
+  p\cot V = n\cdot R\cdot T\text{.}
 \end{equation}
 Durch Umformung ergibt sich:
 \begin{equation}
