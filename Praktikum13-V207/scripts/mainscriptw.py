@@ -38,92 +38,45 @@ D1M = np.array([15.80, 15.81, 15.80])/1000
 D2M = np.array([15.63, 15.63, 15.63])/1000
 M1M = np.array([4.96, 4.95, 4.97])/1000
 M2M = np.array([4.45, 4.46, 4.45])/1000
-delt1, delt2 = np.genfromtxt('scripts/Daten1', unpack=True)
-Temp, deltTemp21, deltTemp22 = np.genfromtxt('scripts/Daten2', unpack=True)
+delt1M, delt2M = np.genfromtxt('scripts/Daten1', unpack=True)
+TempM, deltTemp21M, deltTemp22M = np.genfromtxt('scripts/Daten2', unpack=True)
+TempM += 273.15
+
 
 # Werte mit Fehler
 D1 = unp.uarray(np.mean(D1M), stats.sem(D1M))
 D2 = unp.uarray(np.mean(D2M), stats.sem(D2M))
 M1 = unp.uarray(np.mean(M1M), stats.sem(M1M))
 M2 = unp.uarray(np.mean(M2M), stats.sem(M2M))
-deltat1 = unp.uarray(np.mean(delt1), stats.sem(delt1))
-deltat2 = unp.uarray(np.mean(delt2), stats.sem(delt2))
-Temperatur = unp.uarray(np.mean(Temp), stats.sem(Temp))
+delt1 = unp.uarray(np.mean(delt1M), stats.sem(delt1M))
+delt2 = unp.uarray(np.mean(delt2M), stats.sem(delt2M))
+Temp = unp.uarray(np.mean(TempM), stats.sem(TempM))
 var = []
-for element in (deltTemp21, deltTemp22)
-	var = np.mean(element[0]), stats.sem(element[1])
-deltTemp2 = unp.uarray(var)
-print(var)
-print(deltTemp2)
-
-#plt.plot(1/Temp, ) 
-
+varerr = []
+for element in range(len(deltTemp21M)):
+	var += [np.mean(np.append(deltTemp21M[element], deltTemp22M[element]))]
+	varerr += [stats.sem(np.append(deltTemp21M[element], deltTemp22M[element]))]
+deltTemp2 = unp.uarray(np.array(var), np.array(varerr))
+deltTemp2M = unp.nominal_values(deltTemp2)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Graphen
-timeK = np.linspace(-10, 60*(len(T1)-1)+10)
-
+plt.cla()
 plt.clf()
-plt.plot(t, T1, 'rx')
-plt.plot(t, T2, 'b+')
-plt.xlim(-10, 60*(len(T1)-1)+10)
-plt.xlabel(r'$t/\si{\second}$')
-plt.ylabel(r'$T/\si{\kelvin}$')
+plt.plot(1/TempM, np.log(deltTemp2M), 'rx', label='KP')
+plt.xlabel(r'kp')
+plt.ylabel(r'kp')
+plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/T1T2')
+plt.savefig('build/'+'tT')
 
-plt.clf()
-plt.plot(t, T1, 'rx')
-plt.plot(timeK, poly2(timeK, unp.nominal_values(aVap), unp.nominal_values(bVap), unp.nominal_values(cVap)), 'b-')
-plt.xlim(-10, 60*(len(T1)-1)+10)
-plt.xlabel(r'$t/\si{\second}$')
-plt.ylabel(r'$T_1/\si{\kelvin}$')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/T1')
 
-plt.clf()
-plt.plot(t, T2, 'rx')
-plt.plot(timeK, poly2(timeK, unp.nominal_values(aKon), unp.nominal_values(bKon), unp.nominal_values(cKon)), 'b-')
-plt.xlim(-10, 60*(len(T1)-1)+10)
-plt.xlabel(r'$t/\si{\second}$')
-plt.ylabel(r'$T_2/\si{\kelvin}$')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/T2')
 
-durchT = np.linspace(1/T1[-1]-1/T1[0]*0.02, 1/T1[0]+1/T1[0]*0.02)
-plt.clf()
-plt.plot(1/T1, np.log(pb), 'rx')
-plt.plot(durchT, line(durchT, *params), 'b-')
-plt.xlim(1/T1[-1]-1/T1[0]*0.02, 1/T1[0]+1/T1[0]*0.02)
-plt.xlabel(r'$T^{-1}/\si[per-mode=reciprocal]{\per\kelvin}$')
-plt.ylabel(r'$\log(p_b/\si{\pascal})$')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/L')
+
+
+
+
+
+
+
 
 
