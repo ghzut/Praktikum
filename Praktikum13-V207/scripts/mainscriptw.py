@@ -41,6 +41,8 @@ M2M = np.array([4.45, 4.46, 4.45])/1000
 delt1M, delt2M = np.genfromtxt('scripts/Daten1', unpack=True)
 TempM, deltTemp21M, deltTemp22M = np.genfromtxt('scripts/Daten2', unpack=True)
 TempM += 273.15
+Kkl = 0.07640/1000
+DichteWasser = 998
 
 
 # Werte mit Fehler
@@ -59,10 +61,32 @@ for element in range(len(deltTemp21M)):
 deltTemp2 = unp.uarray(np.array(var), np.array(varerr))
 deltTemp2M = unp.nominal_values(deltTemp2)
 
+# Rechnung
+Dichte1 = M1/(4/3*np.pi*(D1/2)**3)
+Dichte2 = M2/(4/3*np.pi*(D2/2)**3)
+print('Dichte1', Dichte1)
+print('Dichte2', Dichte2)
 
+Kgr = (Kkl *(Dichte1-DichteWasser)*delt1)/((Dichte2-DichteWasser)*delt2)
+print('Kgr',Kgr)
+
+def line(x, a, b):
+	return a*x+b
+
+params, covar = curve_fit(line, 1/TempM, np.log(deltTemp2M))
+a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+b = unp.uarray(params[1], np.sqrt(covar[1][1]))
+B = a
+A = unp.exp(b)
+print('A:', A)
+print('B', B)
+
+t = np.linspace(1/TempM[-1] - 1/TempM[0]*0.02, 1/TempM[0] + 1/TempM[0]*0.02)
 plt.cla()
 plt.clf()
 plt.plot(1/TempM, np.log(deltTemp2M), 'rx', label='KP')
+plt.plot(t, line(t,*params), 'b-', label='KP')
+plt.xlim(1/TempM[-1] - 1/TempM[0]*0.02, 1/TempM[0] + 1/TempM[0]*0.02)
 plt.xlabel(r'kp')
 plt.ylabel(r'kp')
 plt.legend(loc='best')
