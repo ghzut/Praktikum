@@ -28,10 +28,10 @@ Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{nu
 
 \subsection{Approximation der Temperaturverläufe mithilfe quadratischer Polynome}
 Ein Graph der beiden Messreihen $(t,T_1)$ und $(t,T_2)$ ist in Abb. \ref{fig:Graph2} dargestellt.
- Zur Approximation der Temperaturverläufe in beiden Resservoirs wird ein
+ Zur Approximation der Temperaturverläufe in beiden Reservoirs wird ein
  quadratischer Fit der Form $y = At²+Bt+C$ verwendet, dargestellt in Abb. \ref{fig:Graph3} und \ref{fig:Graph4}. Eine nichtlineare
- Ausgleichsrechnung der Form $y = At²+Bt+C$ mittels scipy \cite{scipy} liefert mit den im Minutentakt
- aufgenommenenen Temperaturdaten vom ersten Resservour aus Tabelle \ref{tab:daten}
+ Ausgleichsrechnung der Form $y = At²+Bt+C$ mittels SciPy \cite{scipy} liefert mit den im Minutentakt
+ aufgenommenen Temperaturdaten vom ersten Reservoir aus Tabelle \ref{tab:daten}
  die Parameter:
  \begin{displaymath}
 \begin{aligned}
@@ -70,7 +70,7 @@ Ein Graph der beiden Messreihen $(t,T_1)$ und $(t,T_2)$ ist in Abb. \ref{fig:Gra
 
 \subsection{Approximationsparameter der zeitlichen Differenzenquotienten}
 
-Durch Differentation folgen die Differenzenquotienten
+Durch Differentiation folgen die Differenzenquotienten
 $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:taba}.
 
 \begin{table}
