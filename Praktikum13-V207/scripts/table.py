@@ -2,7 +2,7 @@ import numpy as np
 
 def makeTable(data, names, filename, formats=[], formats2=[]):
     TableFile = open('build/'+filename+'.tex', 'w+')
-    """TableFile.write( r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t')"""
+    # TableFile.write( r'\begin{table}'+'\n\t'+r'\centering'+'\n\t'+r'\caption{'+name+r'}'+'\n\t')
     TableFile.write( r'\label{tab:'+filename+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
         if formats:
@@ -33,4 +33,4 @@ def makeTable(data, names, filename, formats=[], formats2=[]):
 
     TableFile.write(r'\bottomrule'+'\n\t')
     TableFile.write(r'\end{tabular}'+'\n')
-    """TableFile.write(r'\end{table}')"""
+    # TableFile.write(r'\end{table}')

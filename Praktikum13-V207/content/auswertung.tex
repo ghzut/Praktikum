@@ -1,146 +1,102 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-
-
-Die Graphen wurden sowohl mit Matplotlib\cite{matplotlib} als auch Numpy\cite{numpy} erstellt. Die
- Fehlerrechnung wurde mithilfe von Uncertainties\cite{uncertainties} durchgeführt.
-
+Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
+ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 
 
 
+\subsection{Berechnung der Dichte der Glaskugeln}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Werte für den Durchmesser $D_\text{kl}$ und die Masse $M_\text{kl}$ der kleinen Glaskugel.}
+	\input{build/klKW.tex}
+\end{table}
+Mit den gemessenen Werten, für die Masse und den Durchmesser, der kleinen Glaskugel aus Tabelle \ref{tab:klKW} errechnet sich die Masse der kleinen Glaskugel zu
+\begin{displaymath}
+	m_\text{kl} = \SI{4.453(3)}{\gram}
+\end{displaymath}
+und der Durchmesser zu
+\begin{displaymath}
+	D_\text{kl} = \SI{15.63(0)}{\milli\meter}\text{.}
+\end{displaymath}
+Nun lässt sich die Dichte der kleinen Glaskugel bestimmen. Es ergibt sich
+\begin{displaymath}
+	\rho_\text{kl} = \frac{m_\text{kl}}{\frac{4}{3}\pi \left(\frac{D_\text{kl}}{2}\right)^3} = \SI{2228(2)}{\kilo\gram\per\meter\tothe{3}}\text{.}
+\end{displaymath}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Werte für den Durchmesser $D_\text{gr}$ und die Masse $M_\text{gr}$ der großen Glaskugel.}
+	\input{build/grKW.tex}
+\end{table}
+Mit den gemessenen Werten, für die Masse und den Durchmesser, der großen Glaskugel aus Tabelle \ref{tab:grKW} errechnet sich die Masse der großen Glaskugel zu
+\begin{displaymath}
+m_\text{gr} = \SI{4.960(6)}{\gram}
+\end{displaymath}
+und der Durchmesser zu
+\begin{displaymath}
+D_\text{gr} = \SI{15.803(3)}{\milli\meter}\text{.}
+\end{displaymath}
+Nun lässt sich die Dichte der großen Glaskugel bestimmen. Es ergibt sich
+\begin{displaymath}
+\rho_\text{gr} = \frac{m_\text{kl}}{\frac{4}{3}\pi \left(\frac{D_\text{kl}}{2}\right)^3} = \SI{2400(3)}{\kilo\gram\per\meter\tothe{3}}\text{.}
+\end{displaymath}
 
 
 
+\subsection{Berechnung der Apparatekonstante für die große Glaskugel}
+\begin{table}
+	\centering
+	\caption{Die bestimmte Viskosität $\eta$ bei verschiedenen Temperaturen $T$.}
+	\input{build/table1.tex}
+\end{table}
+Mit den Werten aus Tabelle \ref{tab:table1} berechnet sich die Fallzeit der kleinen Glaskugel zu
+\begin{displaymath}
+	t_\text{kl} = \SI{12.12(4)}{\second}
+\end{displaymath}
+und der großen Glaskugel zu
+\begin{displaymath}
+	t_\text{gr} = \SI{69.9(2)}{\second}\text{.}
+\end{displaymath}
+Da die Viskosität bei den beiden Messreihen mit verschieden Kugeln die gleiche ist, folgt aus der Formel \eqref{??}, mit dem Literaturwert für die Dichte des Wasser $\rho_\text{Wasser}$ unter Normalbedingungen von $\SI{998}{\kilo\gram\per\meter\tothe{3}}$ \cite{eta} und der gegebenen Apparatekonstante der kleinen Glaskugel $K_\text{kl}$ von $\SI{76.40e-9}{\pascal\meter\tothe{3}\per\kilo\gram}$
+\begin{displaymath}
+	K_\text{gr} = \frac{K_\text{kl} \left( \rho_\text{kl} - \rho_\text{Wasser}\right) t_\text{kl}}{\left( \rho_\text{gr} - \rho_\text{Wasser}\right) t_\text{gr}} = \SI{11.60(6)e-9}{\pascal\meter\tothe{3}\per\kilo\gram}\text{.}
+\end{displaymath}
 
- \begin{table}
-   \centering
-   \caption{Die Daten, welche während der Versuchsdurchführung aufgenommen worden sind.}
-   \input{build/tabges.tex}\label{tab:daten}
- \end{table}
+\subsection{Bestimmung der Parameter A und B der Andradeschen Gleichung}
 
-
-
-
-
-
-
-
-\subsection{Approximation der Temperaturverläufe mithilfe quadratischer Polynome}
-Ein Graph der beiden Messreihen $(t,T_1)$ und $(t,T_2)$ ist in Abb. \ref{fig:Graph2} dargestellt.
- Zur Approximation der Temperaturverläufe in beiden Reservoirs wird ein
- quadratischer Fit der Form $y = At²+Bt+C$ verwendet, dargestellt in Abb. \ref{fig:Graph3} und \ref{fig:Graph4}. Eine nichtlineare
- Ausgleichsrechnung der Form $y = At²+Bt+C$ mittels SciPy \cite{scipy} liefert mit den im Minutentakt
- aufgenommenen Temperaturdaten vom ersten Reservoir aus Tabelle \ref{tab:daten}
- die Parameter:
- \begin{displaymath}
-\begin{aligned}
- A = \num{-2(1)e-6}\\
- B = \num{3.0(1)e-2}\\
- C = \num{292.9(4)}
- \end{aligned}
- \end{displaymath}
- Für den Verlauf der Temperatur im zweiten Reservoir folgt dementsprechend:
- \begin{displaymath}
-\begin{aligned}
- A = \num{6(2)e-6}\\
- B = \num{-3.1(3)e-2}\\
- C = \num{297.4(7)}
- \end{aligned}
- \end{displaymath}
- \begin{figure}
- 	\centering
- 	\caption{Die Temperaturverläufe des Wassers in den Wärmereservoirs 1 und 2 in Abhängigkeit der Zeit.}
- 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Temperaturen.pdf}
- 	\label{fig:Graph2}
- \end{figure}
- \begin{figure}
- 	\centering
- 	\caption{Der Temperaturverlauf im ersten Reservoir und seine Approximation durch ein Polynom 2. Grades in Abhängigkeit der Zeit.}
- 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/T1.pdf}
- 	\label{fig:Graph3}
- \end{figure}
- \begin{figure}
- 	\centering
- 	\caption{Der Temperaturverlauf im zweiten Reservoir und seine Approximation durch ein Polynom 2. Grades in Abhängigkeit der Zeit.}
- 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/T2.pdf}
- 	\label{fig:Graph4}
- \end{figure}
-
-
-\subsection{Approximationsparameter der zeitlichen Differenzenquotienten}
-
-Durch Differentiation folgen die Differenzenquotienten
-$\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ der Form $y = Ax+B$ in Tabelle \ref{tab:taba}.
 
 \begin{table}
-  \centering
-  \caption{Die Differenzenquotienten $\frac{\text{d}T_1}{\text{d}t}$ und $\frac{\text{d}T_2}{\text{d}t}$ zu 4 verschiedenen Zeiten.}
-  \input{build/taba.tex}\label{tab:Ableitungen}
+	\centering
+	\caption{Die gemessene Fallzeit $t_1$ und $t_2$ der großen Glaskugel bei verschiedenen Temperaturen $T$ und die daraus berechnete Fallzeit $t$ und Viskosität $\eta$.}
+	\input{build/table2.tex}
 \end{table}
-
-\subsection{Bestimmung der realen Güte und Vergleich mit der idealen Güte}
-Die Güte einer Wärmepumpe beschreibt, wie bereits in der Theorie beschrieben,
-wie gut diese unter bestehenden Temperaturdifferenzen einen Wärmetransport zwischen
-beiden Reservoirs durchführen kann. Mit Formel \ref{eq:vid} folgt die ideale Güte . Die
-reale Güte berechnet sich mit den Formeln \ref{eq:T1Q1} und \ref{eq:v}. Die Wärmekapazität des Wassers
-liegt bei $\SI{4183}{\joule\per\kilo\per\gram\per\kelvin}$ \cite{cw} bei einer Wassermenge von $\SI{3}{\kilo\gram}$, den verwendeten
-Kupferröhren und sonstigen Einrichtungen wird dem Aufbau \cite{V206} nach eine Wärmekapazität von $\SI{660}{\joule\per\kelvin}$ zugeschrieben.
-Zu den vier bereits verwendeten Zeitpunkten folgen die Gütewerte nach Tabelle \ref{tab:Guete}.
-
-\begin{table}
-  \centering
-  \caption{Die zu 4 Zeiten bestimmte, reale Güte und ihr zugehöriger, idealer Wert.}
-  \input{build/tabv.tex}\label{tab:Guete}
-\end{table}
-
-Es ist zu erkennen, dass die realen Gütewerte weit unterhalb der idealen Gütewerte liegen.
-Mögliche Ursachen hierfür werden in der Diskussion besprochen.
-
-\subsection{Bestimmung des Massendurchsatzes}
-Die Bestimmung des Massendurchsatzes erfolgt mit Formel \ref{eq:T2Q2} und \ref{eq:diffmdifft}.
-Hierzu wird die Verdampfungswärme $L$ des Dichlordifluormethans benötigt. Für diese folgt:
-\begin{equation}
-  L = -\ln(p)\cdot R
-\end{equation}
 \begin{figure}
- \centering
- \caption{Der Verlauf der Dampfdruckkurve des Transportgases Dichlordifluormethan in Abhängigkeit der reziproken Temperatur.}
- \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Dampdruck.pdf}
- \label{fig:Graph1}
+	\centering
+	\caption{Der natürliche Logarithmus von der Viskosität $\eta$ gegen die reziproke Temperatur $1/T$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/tT.pdf}
+	\label{fig:Graph}
 \end{figure}
-Daher wird $\ln(Pa)$ gegen die reziproke Temperatur $T_2$ aufgetragen, wie in Abb. \ref{fig:Graph1} dargestellt. Das gesuchte $L$ ist proportional zur Steigung des Graphen.
-Mithilfe einer linearen Ausgleichsrechnung der Form $y=Ax+b$ mittels scipy
-berechnet sich nun die Steigung. Für $L$ folgt dann:
-\begin{equation}
-  L = -A\cdot R\text{.}\label{eq:LausA}
-\end{equation}
-Mit einem $R = \num{8.3144598(48)}$ \cite{R} folgt eine Verdampfungswärme von $L = \SI{1.13(5)e6}{\joule\per\kilo\per\gram}$
-Unter Verwendung der bereits bei der Güte verwendeten Wärmekapazitäten und der gleichen
- Menge Wasser sowie dem nun bestimmten $L$ berechnet sich der Massendurchsatz. Dieser ist in Tabelle \ref{tab:tabm} dargestellt.
+Mithilfe der zuvor bestimmten Werte (die Apparatekonstante $K_\text{gr}$ und die Dichte $\rho_\text{gr}$) berechnet sich mit dem Literaturwert für die Dichte des Wasser von $\SI{998}{\kilo\gram\per\meter\tothe{3}}$ \cite{eta} die Viskosität des Wassers $\eta$ in Tabelle \ref{tab:table2} sich nach Formel \eqref{??} aus den Werten für die Fallzeit $t$ aus Tabelle \ref{tab:table2}. In dem Graphen in Abbildung \ref{fig:Graph} ist der natürliche Logarithmus von der Viskosität gegen die reziproke Temperatur aufgetragen. 
+Der Fit in Abbildung \ref{fig:Graph2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ mittels SciPy \cite{scipy} liefert mit den Wertepaaren aus Tabelle \ref{tab:table2} nach Formel \eqref{??}
+\begin{displaymath}
+	B = a = \SI{166(3)e1}{\kelvin}
+\end{displaymath}
+und
+\begin{displaymath}
+	A = \exp(b) = \SI{3.8(4)}{\micro\pascal}\text{.}
+\end{displaymath}
 
- \begin{table}
-   \centering
-   \caption{Der bestimmte Massendurchsatz zu 4 verschiedenen Zeitpunkten.}
-   \input{build/tabm.tex}\label{tab:massen}
- \end{table}
-
-\subsection{Bestimmung der Leistung mithilfe des Massendurchsatzes}
-Zuletzt wird auch die bestehende Leistung aus den bereits errechneten Daten zu den 4 Zeitpunkten bestimmt.
-Dies geschieht mithilfe von Formel \ref{eq:Nmech}. Daher muss zunächst die Temperatur
-und Druckabhängige Dichtefunktion bestimmt werden. Diese folgt aus der allgemeinen Gasgleichung:
-\begin{equation}
-  p\cot V = n\cdot R\cdot T\text{.}
-\end{equation}
-Durch Umformung ergibt sich:
-\begin{equation}
-  \rho(p,T) = \frac{p\cdot \rho_0\cdot T_0}{p_0\cdot T}
-\end{equation}
-Mit einem $\rho_0 = \SI{5.51}{\gram\per\litre}$ \cite{V206} bei einem Normaldruck $p_0 = \SI{1}{\bar}$
-und einer Normaltemperatur $T_0 = \SI{273.15}{\kelvin}$ sowie einem $\kappa = 1.44$ \cite{V206} ergeben sich die Leistungen in Tabelle \ref{tab:tabn}.
-
-\begin{table}
-  \centering
-  \caption{Die bestimmte Leistung zu 4 verschiedenen Zeitpunkten.}
-  \input{build/tabn.tex}\label{tab:Leistung}
-\end{table}
+\subsection{Bestimmung von Reynoldschen Zahlen}
+Mithilfe der Formel \eqref{??} lässt sich nun die Reynoldsche Zahl $Re$ bei verschiedenen Temperaturen für die Glaskugeln bestimmen. Bei Raumtemperatur von ca. $\SI{20}{\degreeCelsius}$ berechnet sich die Reynoldsche Zahl bei der kleinen Kugel zu
+\begin{displaymath}
+	Re_1 = \num{253(2)}\text{,}
+\end{displaymath}
+ bei der großen Kugel zu
+\begin{displaymath}
+	Re_2 = \num{47.7(2)}
+\end{displaymath}
+und bei $\SI{20}{\degreeCelsius}$ bei der großen Kugel zu
+\begin{displaymath}
+Re_2 = \num{26(4)e1}
+\end{displaymath}

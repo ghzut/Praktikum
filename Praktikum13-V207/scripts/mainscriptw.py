@@ -34,17 +34,18 @@ import uncertainties.unumpy as unp
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 
 # Messwerte
-D1M = np.array([15.80, 15.81, 15.80])/1000 #m
-D2M = np.array([15.63, 15.63, 15.63])/1000 #m
-M1M = np.array([4.96, 4.95, 4.97])/1000 #kg
-M2M = np.array([4.45, 4.46, 4.45])/1000 #kg
+D1M = np.array([15.63, 15.63, 15.63])/1000 #m
+D2M = np.array([15.80, 15.81, 15.80])/1000 #m
+M1M = np.array([4.45, 4.46, 4.45])/1000 #kg
+M2M = np.array([4.96, 4.95, 4.97])/1000 #kg
 delt1M, delt2M = np.genfromtxt('scripts/Daten1', unpack=True) #s; s
 TempM, deltTemp21M, deltTemp22M = np.genfromtxt('scripts/Daten2', unpack=True) #°C; s; s
 TempM += 273.15 #K
-Kkl = 0.07640/1000 #m^4Pa/kg
-DichteWasser = 998 #kg/m^3
+Kkl = 0.07640*10**(-6) #m^3 Pa/kg
+DichteWasser = 1/1.0018*1000 #kg/m^3
+etaWasser = 1001*10**(-6) # Pa s
 FallTiefe = 0.1 #m
-
+# Kkl *= 0.88 # Testzwecke (passt besser mit Theorie-Werten)
 
 # Werte mit Fehler
 D1 = unp.uarray(np.mean(D1M), stats.sem(D1M))
@@ -66,18 +67,32 @@ deltTemp2M = unp.nominal_values(deltTemp2)
 #	Dichten
 Dichte1 = M1/(4/3*np.pi*(D1/2)**3)
 Dichte2 = M2/(4/3*np.pi*(D2/2)**3)
+print('Masse1', M1)
+print('D1', D1)
 print('Dichte1', Dichte1)
+print('Masse2', M2)
+print('D2', D2)
 print('Dichte2', Dichte2)
+print('FallzeitNormalKL', delt1)
+print('FallzeitNormalGR', delt2)
+print('Dichte des Wassers unter Normalbedingungen', DichteWasser)
 
 #	Komischer Faktor der großen Kugel
 Kgr = (Kkl *(Dichte1-DichteWasser)*delt1)/((Dichte2-DichteWasser)*delt2)
 print('Kgr',Kgr)
 
+#	eta bei verschiedenen Temperaturen
+eta1 = Kkl*(Dichte1-DichteWasser)*delt1
+eta2 = Kgr*(Dichte2-DichteWasser)*delt2
+print('eta 20 °C', eta1, eta2)
+eta = Kgr*(Dichte2-DichteWasser)*deltTemp2
+print('eta 27.5-70 °C', eta)
+
 #	A und B
 def line(x, a, b):
 	return a*x+b
 
-params, covar = curve_fit(line, 1/TempM, unp.nominal_values(unp.log(Kgr*(Dichte2-DichteWasser)*deltTemp2M)), sigma=unp.std_devs(unp.log(Kgr*(Dichte2-DichteWasser)*deltTemp2M)))
+params, covar = curve_fit(line, 1/TempM, unp.nominal_values(unp.log(eta)), sigma=unp.std_devs(unp.log(eta)))
 a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 b = unp.uarray(params[1], np.sqrt(covar[1][1]))
 B = a
@@ -98,10 +113,13 @@ v = FallTiefe/(deltTemp2[-1]) #m/s
 Re3 = Dichte2*v*D2/(A*unp.exp(B/TempM[-1]))
 print('Re3',Re3)
 
+#TEST
+print('FormelTest:',A*unp.exp(B/TempM))
+
 
 
 #Graphen
-#Graph zu Bestimmung von A und B
+#	Graph zu Bestimmung von A und B
 t = np.linspace(1/TempM[-1] - 1/TempM[0]*0.02, 1/TempM[0] + 1/TempM[0]*0.02)
 plt.cla()
 plt.clf()
@@ -109,12 +127,42 @@ plt.plot(1/TempM*1000, unp.nominal_values(unp.log(Kgr*(Dichte2-DichteWasser)*del
 plt.plot(t*1000, line(t,*params), 'b-', label='bestimmte Ausgleichsgerade')
 plt.xlim((1/TempM[-1] - 1/TempM[0]*0.02)*1000, (1/TempM[0] + 1/TempM[0]*0.02)*1000)
 plt.xlabel(r'$T^{-1}/\si[per-mode=reciprocal]{\per\kilo\kelvin}$')
-plt.ylabel(r'$\ln(\nu/\si[per-mode=reciprocal]{\newton\meter\squared\per\second})$')
+plt.ylabel(r'$\ln(\eta/\si[per-mode=reciprocal]{\newton\meter\squared\per\second})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'tT')
 
-
+#Tabellen
+#	Durchmesser und Masse Kugel 1
+makeTable([D1M*1000, M1M*1000],
+r'{$D_\text{kl}/\si[per-mode=reciprocal]{\milli\meter}$} & {$m_\text{kl}/\si[per-mode=reciprocal]{\gram}$}',
+'klKW',
+[r'S[table-format=2.2]', r'S[table-format=1.2]'],
+["%2.2f", "%1.2f"])
+#	Durchmesser und Masse Kugel 2
+makeTable([D2M*1000, M2M*1000],
+r'{$D_\text{gr}/\si[per-mode=reciprocal]{\milli\meter}$} & {$m_\text{gr}/\si[per-mode=reciprocal]{\gram}$}',
+'grKW',
+[r'S[table-format=2.2]', r'S[table-format=1.2]'],
+["%2.2f", "%1.2f"])
+#	Werte Messung1
+makeTable([delt1M, delt2M],
+r'{$t_\text{kl}/\si[per-mode=reciprocal]{\second}$} & {$t_\text{gr}/\si{\second}$}',
+'table1',
+[r'S[table-format=2.2]', r'S[table-format=2.2]'],
+["%2.2f", "%2.2f"])
+#	Werte Messung2
+makeTable([TempM-273.15,deltTemp21M, deltTemp22M, unp.nominal_values(deltTemp2), unp.std_devs(deltTemp2), unp.nominal_values(eta)*10**6, unp.std_devs(eta)*10**6],
+r'{$T$} & {$t_1/\si[per-mode=reciprocal]{\second}$} & {$t_1/\si{\second}$} & \multicolumn{2}{c}{$t/\si{\second}$} & \multicolumn{2}{c}{$\eta/\si[per-mode=reciprocal]{\micro\pascal\second}$}',
+'table2',
+[r'S[table-format=2.1]', r'S[table-format=2.2]', r'S[table-format=2.2]', r'S[table-format=2.2]@{${}\pm{}$}', r'S[table-format=1.2]', r'S[table-format=3.0]@{${}\pm{}$}', r'S[table-format=1.0]'],
+["%2.1f", "%2.2f", "%2.2f", "%2.2f", "%1.2f", "%3.0f", "%1.0f"])
+#	Viskosität bei verschiedenen Temperaturen
+makeTable([TempM-273.15, unp.nominal_values(eta)*10**6, unp.std_devs(eta)*10**6],
+r'{$T/\si[per-mode=reciprocal]{\celsius}$} & \multicolumn{2}{c}{$\eta/\si[per-mode=reciprocal]{\micro\pascal\second}$}',
+'Teta',
+[r'S[table-format=2.1]', r'S[table-format=3.0]@{${}\pm{}$}', r'S[table-format=1.0]'],
+["%2.1f", "%3.0f", "%3.0f"])
 
 
 
