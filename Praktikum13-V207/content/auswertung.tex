@@ -5,7 +5,6 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
  Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 
 
-
 \subsection{Berechnung der Dichte der Glaskugeln}
 \begin{table}
 	\centering
@@ -62,10 +61,13 @@ Da die Viskosität bei den beiden Messreihen mit verschieden Kugeln die gleiche 
 \begin{displaymath}
 	K_\text{gr} = \frac{K_\text{kl} \left( \rho_\text{kl} - \rho_\text{Wasser}\right) t_\text{kl}}{\left( \rho_\text{gr} - \rho_\text{Wasser}\right) t_\text{gr}} = \SI{11.60(6)e-9}{\pascal\meter\tothe{3}\per\kilo\gram}\text{.}
 \end{displaymath}
+Es berechnet sich die Viskosität von Wasser bei Raumtemperatur nach Formel \eqref{visko} zu
+\begin{displaymath}
+	\eta = \SI{1138(4)}{\micro\pascal\second}\text{.}
+\end{displaymath}
+
 
 \subsection{Bestimmung der Parameter A und B der Andradeschen Gleichung}
-
-
 \begin{table}
 	\centering
 	\caption{Die gemessene Fallzeit $t_1$ und $t_2$ der großen Glaskugel bei verschiedenen Temperaturen $T$ und die daraus berechnete Fallzeit $t$ und Viskosität $\eta$.}
@@ -84,11 +86,12 @@ Der Fit in Abbildung \ref{fig:Graph} besitzt die Form $y=a x + b$. Eine lineare 
 \end{displaymath}
 und
 \begin{displaymath}
-	A = \exp(b) = \SI{3.8(4)}{\micro\pascal}\text{.}
+	A = \exp(b) = \SI{3.8(4)}{\micro\pascal\second}\text{.}
 \end{displaymath}
 
+
 \subsection{Bestimmung von Reynoldschen Zahlen}
-Mithilfe der Formel \eqref{Re} lässt sich nun die Reynoldsche Zahl $Re$ bei verschiedenen Temperaturen für die Glaskugeln bestimmen. Bei Raumtemperatur von ca. $\SI{20}{\degreeCelsius}$ berechnet sich die Reynoldsche Zahl bei der kleinen Kugel zu
+Mithilfe der Formel \eqref{Re} und einer Falltiefe von $\SI{10}{\centi\meter}$ lässt sich nun die Reynoldsche Zahl $Re$ bei verschiedenen Temperaturen für die Glaskugeln bestimmen. Bei Raumtemperatur von ca. $\SI{20}{\degreeCelsius}$ berechnet sich die Reynoldsche Zahl bei der kleinen Kugel zu
 \begin{displaymath}
 	Re_1 = \num{253(2)}\text{,}
 \end{displaymath}
