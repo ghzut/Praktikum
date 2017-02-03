@@ -2,41 +2,41 @@
 \section{Theorie}
 \label{sec:Theorie}
 \subsection{Theorie}
-Wird ein körper durch eine Flüssigkeit bewegt, so kommt es zu einer Interaktion
+Wird ein Körper durch eine Flüssigkeit bewegt, so kommt es zu einer Interaktion
 der Körperoberfläche mit den umliegenden Teilchen der Flüssigkeit, kurz Reibung.
- Es wirkt daher eine Reibungskraft $\vec{F_R}$ auf diesen. Sie ist abhängig von
+ Es wirkt daher eine Reibungskraft $\vec{F_\text{R}}$ auf diesen. Sie ist abhängig von
 Geschwindigkeit und Berührungsfläche des Körpers. Liegen in der Flüssigkeit
-keine Wirbelströmungen vor ist die Strömung laminar und $\vec{F_R}$ lässt sich
-bei einer Kugelgeometrie mit der stokeschen Reibungskraft
+keine Wirbelströmungen vor, ist die Strömung laminar und $\vec{F_\text{R}}$ lässt sich
+bei einer Kugelgeometrie mit der stokesschen Reibungskraft
 \begin{equation}
-  \vec{F_R} = 6 \pi \eta \nu r\label{stokeR}
+  \vec{F_R} = -6 \pi \eta r \vec{v}\label{stokeR}
   \end{equation}
-  beschreiben. Hierbei bezeichnet $\eta$ die Viskosität des Stoffes. Sie ist
+  beschreiben. Hierbei bezeichnet $\eta$ die Viskosität des Stoffes und $\vec{v}$ den Geschwindigkeitsvektor des Körper gegenüber der Flüssigkeit. Die Viskosität ist
   stark Temperaturabhängig und lässt sich für Wasser durch die Andradesche
   Gleichung
   \begin{equation}
-    \eta(T) = A \exp(\frac{B}{T})\label{andra}
+    \eta(T) = A \exp\left(\frac{B}{T}\right)\label{andra}
     \end{equation}
-darstellen. Die Konstanten $A$ und $B$ sind materialspezifische.
+darstellen. Die Konstanten $A$ und $B$ sind materialspezifisch.
 Bei der Viskositätsbestimmung nach Höppler wird eine Kugel in die zu untersuchenden
-Flüssigkeit gesenkt. Es wirkt nun die Reibungskraft der Flüssigkeit gegen die
-Schwerkraft an. Nach einer kurzen Zeit stellt sich ein Kräftegleichgewicht ein und
+Flüssigkeit gesenkt. Es wirkt nun die Reibungskraft der Flüssigkeit $\vec{F_\text{R}}$ und der Auftrieb $\vec{F_\text{A}}$ gegen die
+Schwerkraft $\vec{F_\text{g}}$ an. Nach einer kurzen Zeit stellt sich ein Kräftegleichgewicht ein und
  die Kugel sinkt mit konstanter Geschwindigkeit. Mit der bestimmten Zeit $t$, welche
   die Kugel für die Fallstrecke benötigt folgt die Viskosität durch:
   \begin{equation}
-    \eta = K(\rho_K - \rho_{Fl})\cdot t\label{visko}
+    \eta = K(\rho_\text{K} - \rho_\text{Fl})\cdot t\label{visko}
     \end{equation}
-mit der Kugeldichte $\rho_K$, der Flüssigkeitsdichte $\rho_{Fl}$ und der
-Apparaturkonstante K, in welcher die Kugelgeometrie und die Fallstrecke enthalten sind.
+mit der Kugeldichte $\rho_\text{K}$, der Flüssigkeitsdichte $\rho_\text{Fl}$ und der
+Apparatekonstante $K$, in welcher die Kugelgeometrie und die Fallstrecke enthalten sind.
 Schlussendlich beschreibt die Reynoldsche Zahl $Re$ das Verhältnis zwischen
 zwischen Trägheits- und Viskositätskräften, welche auf einen Körper der
-characteristischen Länge $d$ wirken. Sie berechnet sich durch:
+charakteristischen Länge $d$ wirken. Sie berechnet sich durch:
 \begin{equation}
   Re = \frac{\rho v d}{\eta}\label{Re}
   \end{equation}
   Mithilfe der Reynoldszahl lässt sich bestimmen ob Strömungen in einer
   Flüssigkeit laminar sind. Liegt sie unterhalb eines kritischen Wertes $Re_{krit}$, ist
   sie laminar, liegt sie darüber ist sie turbulent. Für Wasser liegt dieser bei ca. $2300$ \cite{Rekrit}
-Es ist jedoch zu beachten, dass die bestimmte Reynoldszahl durch die characteristische Länge nicht eindeutig ist und auch
+Es ist jedoch zu beachten, dass die bestimmte Reynoldszahl durch die charakteristische Länge nicht eindeutig ist und auch
 $Re_{krit}$ nur empirisch bestimmt ist. Liegt der bestimmte Wert jedoch weit unterhalb
  von $Re_{krit}$, kann trotzdem von einer laminaren Strömung ausgegangen werden.
