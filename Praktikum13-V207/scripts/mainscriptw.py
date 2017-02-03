@@ -127,7 +127,7 @@ plt.plot(1/TempM*1000, unp.nominal_values(unp.log(Kgr*(Dichte2-DichteWasser)*del
 plt.plot(t*1000, line(t,*params), 'b-', label='bestimmte Ausgleichsgerade')
 plt.xlim((1/TempM[-1] - 1/TempM[0]*0.02)*1000, (1/TempM[0] + 1/TempM[0]*0.02)*1000)
 plt.xlabel(r'$T^{-1}/\si[per-mode=reciprocal]{\per\kilo\kelvin}$')
-plt.ylabel(r'$\ln(\eta/\si[per-mode=reciprocal]{\pascal\second}})$')
+plt.ylabel(r'$\ln(\eta/\si[per-mode=reciprocal]{\pascal\second})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'tT')
