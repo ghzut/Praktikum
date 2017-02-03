@@ -77,7 +77,7 @@ Da die Viskosität bei den beiden Messreihen mit verschieden Kugeln die gleiche 
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/tT.pdf}
 	\label{fig:Graph}
 \end{figure}
-Mithilfe der zuvor bestimmten Werte (die Apparatekonstante $K_\text{gr}$ und die Dichte $\rho_\text{gr}$) berechnet sich in Tabelle \ref{tab:table2}, mit dem Literaturwert für die Dichte des Wasser von $\SI{998}{\kilo\gram\per\meter\tothe{3}}$ \cite{eta}, die Viskosität des Wassers $\eta$ nach Formel \eqref{visko} aus den Werten für die Fallzeit $t$. In dem Graphen in Abbildung \ref{fig:Graph} ist der natürliche Logarithmus von der Viskosität gegen die reziproke Temperatur aufgetragen. 
+Mithilfe der zuvor bestimmten Werte (die Apparatekonstante $K_\text{gr}$ und die Dichte $\rho_\text{gr}$) berechnet sich in Tabelle \ref{tab:table2}, mit dem Literaturwert für die Dichte des Wasser von $\SI{998}{\kilo\gram\per\meter\tothe{3}}$ \cite{eta}, die Viskosität des Wassers $\eta$ nach Formel \eqref{visko} aus den Werten für die Fallzeit $t$. In dem Graphen in Abbildung \ref{fig:Graph} ist der natürliche Logarithmus von der Viskosität gegen die reziproke Temperatur aufgetragen.
 Der Fit in Abbildung \ref{fig:Graph} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ mittels SciPy \cite{scipy} liefert mit den Wertepaaren aus Tabelle \ref{tab:table2} nach Formel \eqref{andra}
 \begin{displaymath}
 	B = a = \SI{166(3)e1}{\kelvin}
@@ -100,4 +100,4 @@ und bei $\SI{70}{\degreeCelsius}$ bei der großen Kugel zu
 \begin{displaymath}
 Re_3 = \num{26(4)e1}\text{.}
 \end{displaymath}
-Da die Reynoldsche Zahl immer weit unter dem kritischem Wert $Re_\text{krit}$ von $2300$ \cite{Rekrit} liegt ist die Strömung in dem Versuch laminar. 
+Da die Reynoldsche Zahl immer weit unter dem kritischem Wert $Re_\text{krit}$ von $2300$ \cite{Rekrit} liegt, ist die Strömung in dem Versuch laminar. 
