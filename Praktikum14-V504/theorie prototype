@@ -2,4 +2,14 @@ Theorie
 
 Freie Elektronen in einem Leiter sind durch eine Potentialdifferenz zwischen dem Gebiet im Leiter und der Umgebung an diesem gebunden. um diesen Leiter verlassen zu können muss ein Elektron eine genügend hohe Energie besitzen um die Differenz in den Potentialen überwinden zu können. Eine Verteilung der Energieniveaus ist durch die FERMIDIRAKSCHE VERTEILUNG FORMEL gegeben. Diese ist in ABBILDUNG ???? skizziert. Es können nun alle Elektronen mit einer kinetischen Energie größer der GRUNDENERGIE + AUSTRITTSENERGIE mit einem Geschwindigkeitsvektor in Richtung der Oberflächennormalen den Leiter verlassen. Um den gesuchten aus dem Leiter austretendem Elektronenstrom zu ermitteln wird die betrachtete Oberfläche mal die Geschwindigkeit der Elektronen in Richtung der Oberflächennormalen des Leiters mal die Zahl der Elektronen pro Volumen über alle Elektronen, welche den Leiter verlassen können, summiert. Dieses ist besonders gut im Phasenraum möglich und schließlich ergibt sich für den Sättigungsstrom $I_S$ die Richardson-Gleichung: \begin{equation}I_S = 4 pi A e_0 m_0 \frac{k^2}{h^3} T^2 \exp(-e_0 \frac{phi}{k T})\text{.}\end{equation}
 
+Diode
+Damit annähernd der Sättigungsstrom gemessen werden kann, dürfen die Elektronen nicht mit dem "äußerem" Medium wechselwirken und müssen zusäzlich nach dem Austritt abgesaugt werden. Dies wird bei einer Hochvakuum-Diode dadurch erreicht, indem als äußeres Medium ein Vakuum gewählt wird und zusätzlich zwischem der Kathode, dem Glühdraht und der Anode eine Saugspannung angelegt wird.
+
+Jedoch können die Elektronen auch ohne eine anliegenden Saugspannung zwischen Kathode und Anode von der Kathode zur Anode wandern. Dies liegt daran, dass es Elektronen gibt, die eine größere Geschwindigkeit in Richtung der Oberflächennormalen besitzen, als zum Verlassen des Leiters notwendig wäre und sie somit nach dem Austreten noch eine Geschwindigkeit in Richtung Anode besitzen. Diese Geschwindigkeit entscheidet bis zu welcher Gegenspannung das Elektron an der Anode ankommt. Offensichtlich nimmt der Strom mit wachsener Gegenspannung ab. Diese Anlaufstromstärke ist durch \beginn{equation} I = I_0 \exp(-\frac{e_0 (V +phi_A)}{k T}) \end{equation}
+
+Langmuir-Schottkysche Raumladungsgleichung
+
+Da die Elektronen eine Beschleunigung in Richtung der Anode erfahren, der Strom jedoch überall konstant ist folgt aus Formel, dass die Lagungsverteilung zur Anode hin geringer werden muss. Diese Ladungshäufung vor der Kathode fürt dazu, dass bei geringen Saugspannungen, die Stromstärke $I$ unter dem Sättigungsstrom $I_S$ liegt und im Raumladungsgebiet annähernd durch die Langmuir-Schottkysche Raumladungsgleichung \begin{equation} I = \frac{4}{9} A \epsilon_0 \sqrt(2 e_0/m_0) \frac{V^\frac{3}{2}}{a^2} \end{equation} beschrieben wird.
+
+
 
