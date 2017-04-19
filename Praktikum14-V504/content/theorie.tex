@@ -1,43 +1,35 @@
 
 \section{Theorie}
 \label{sec:Theorie}
-Wird ein Körper durch eine Flüssigkeit bewegt, stößt seine Oberfläche auf die
-umliegenden Teilchen der Flüssigkeit und es wirkt eine Reibungskraft $\vec{F_\text{R}}$ entgegengesetzt
-seiner Bewegungsrichtung.
- Sie ist abhängig von
-Geschwindigkeit und Berührungsfläche des Körpers. Liegen in der Flüssigkeit
-keine Wirbelströmungen vor, ist die Strömung laminar und $\vec{F_\text{R}}$ lässt sich
-bei einer Kugelgeometrie mit der stokesschen Reibungskraft
-\begin{equation}
-  \vec{F_R} = -6 \pi \eta r \vec{v}\label{stokeR}
-  \end{equation}
-  beschreiben. Hierbei bezeichnet $\eta$ die Viskosität des Stoffes und $\vec{v}$ den Geschwindigkeitsvektor des Körper gegenüber der Flüssigkeit. Die Viskosität ist
-  stark Temperaturabhängig und lässt sich für Wasser durch die Andradesche
-  Gleichung
-  \begin{equation}
-    \eta(T) = A \exp\left(\frac{B}{T}\right)\label{andra}
-    \end{equation}
-darstellen. Die Konstanten $A$ und $B$ sind materialspezifisch.
-Bei der Viskositätsbestimmung nach Höppler wird eine Kugel in die zu untersuchenden
-Flüssigkeit gesenkt. Es wirkt nun die Reibungskraft der Flüssigkeit $\vec{F_\text{R}}$ und der Auftrieb $\vec{F_\text{A}}$ gegen die
-Schwerkraft $\vec{F_\text{g}}$ an. Nach einer kurzen Zeit stellt sich ein Kräftegleichgewicht ein und
- die Kugel sinkt mit konstanter Geschwindigkeit. Wenn die Fallzeit $t$, welche
-  die Kugel für die Fallstrecke benötigt, bekannt ist, folgt die Viskosität mit:
-  \begin{equation}
-    \eta = K(\rho_\text{K} - \rho_\text{Fl})\cdot t\label{visko}
-    \end{equation}
-mit der Kugeldichte $\rho_\text{K}$, der Flüssigkeitsdichte $\rho_\text{Fl}$ und der
-Apparatekonstante $K$, in welcher die Kugelgeometrie und die Fallstrecke enthalten sind.
 
-Schlussendlich beschreibt die Reynoldsche Zahl $Re$ das Verhältnis zwischen
-zwischen Trägheits- und Viskositätskräften, welche auf einen Körper der
-charakteristischen Länge $d$ wirken. Sie berechnet sich durch:
+Freie Elektronen in einem Leiter sind durch eine Potentialdifferenz $\phi$ zwischen dem Gebiet im Leiter und der Umgebung an diesem gebunden. Um diesen Leiter verlassen zu können muss ein Elektron eine genügend hohe Energie besitzen um die Differenz in den Potentialen überwinden zu können. Eine Verteilung der Energieniveaus ist durch die Fermi-Diracsche Verteilungs-Funktion 
 \begin{equation}
-  Re = \frac{\rho v d}{\eta}\label{Re}
-  \end{equation}
-  Mithilfe der Reynoldszahl lässt sich bestimmen ob Strömungen in einer
-  Flüssigkeit laminar sind. Liegt sie unterhalb eines kritischen Wertes $Re_\text{krit}$, ist
-  sie laminar, liegt sie darüber ist sie turbulent. Für Wasser liegt dieser bei ca. $2300$ \cite{Rekrit}.
-Es ist jedoch zu beachten, dass die bestimmte Reynoldszahl aufgrund der Wahl der charakteristischen Länge nicht eindeutig ist und auch
-$Re_\text{krit}$ nur empirisch bestimmt ist. Liegt der bestimmte Wert jedoch weit unterhalb
- von $Re_\text{krit}$, kann trotzdem von einer laminaren Strömung ausgegangen werden.
+	f(E) = \frac{1}{\exp\left(\frac{E-\zeta}{k T}\right)+1}
+\end{equation} 
+gegeben, wobei $\zeta$ die Fermische Grenzenergie, $T$ die Temperatur und $k$ die Boltzmann-Konstante ist. Diese Funktion ist in ABBILDUNG ???? skizziert. Es können nun alle Elektronen mit einer Energie größer der $\zeta + e_0 \phi$ mit einem Geschwindigkeitsvektor in Richtung der Oberflächennormalen den Leiter verlassen. Um den gesuchten aus dem Leiter austretenden Elektronenstrom zu ermitteln, wird die betrachtete Oberfläche $A$ mal die Geschwindigkeit der Elektronen $v$ in Richtung der Oberflächennormalen des Leiters mal die Zahl der Elektronen pro Volumen über alle Elektronen, welche den Leiter verlassen können, summiert. Dieses ist besonders gut im Phasenraum möglich und schließlich ergibt sich für den Sättigungsstrom $I_\text{S}$ die Richardson-Gleichung: 
+\begin{equation}
+	I_\text{S} = 4 \pi A e_0 m_0 \frac{k^2}{h^3} T^2 \exp\left(-e_0 \frac{\phi}{k T}\right)\text{.}
+\end{equation}
+
+\subsection{Hochvakuum-Diode}
+Damit annähernd der Sättigungsstrom gemessen werden kann, dürfen die Elektronen nicht mit dem "äußerem" Medium wechselwirken und müssen zusätzlich nach dem Austritt abgesaugt werden. Dies wird bei einer Hochvakuum-Diode dadurch erreicht, indem als äußeres Medium ein Vakuum gewählt wird und zusätzlich zwischen der Kathode, dem Glühdraht und der Anode eine Spannung angelegt wird. Die Diode ist in ABBILDUNG ??? schematisch dargestellt.
+
+\subsection{Langmuir-Schottkysche Raumladungsgleichung}
+Da die Elektronen jedoch eine Beschleunigung in Richtung der Anode erfahren und der Strom überall konstant ist, folgt aus $I = -\rho v A $, dass die Ladungsverteilung zur Anode hin geringer werden muss. Diese Ladungshäufung vor der Kathode führt dazu, dass bei geringen Spannungen $V$, die Stromstärke $I$ unter dem Sättigungsstrom $I_\text{S}$ liegt und im Raumladungsgebiet annähernd durch die Langmuir-Schottkysche Raumladungsgleichung 
+\begin{equation}
+	I = \frac{4}{9} A e_0 \sqrt{2 e_0/m_0} \frac{V^\frac{3}{2}}{a^2} 
+\end{equation} 
+beschrieben wird.
+
+\subsection{Anlaufstrom bei einer anliegenden Gegenspannung an der Hochvakuums-Diode}
+Die Elektronen können auch ohne eine anliegenden Spannung zwischen Kathode und Anode von der Kathode zur Anode wandern. Dies liegt daran, dass es Elektronen gibt, die eine größere Geschwindigkeit in Richtung der Oberflächennormalen besitzen, als zum Verlassen des Leiters notwendig wäre und sie somit nach dem Austreten noch eine Geschwindigkeit in Richtung Anode besitzen. Diese Geschwindigkeit entscheidet bis zu welcher Gegenspannung das Elektron noch an der Anode ankommt. Offensichtlich nimmt der Anlaufstrom mit wachsender Gegenspannung ab. Diese Anlaufstromstärke im Anlaufstromgebiet ist durch 
+\begin{equation} 
+	I = I_0 \exp(-\frac{e_0 (-V +\phi_A)}{k T})
+\end{equation}
+gegeben. Hierbei ist $V\le0$ die Gegenspannung und $\phi_A e_0$ ist die Austrittsarbeit an der Kathode.
+
+
+
+\subsection{Kennlinie der Hochvakuum-Diode}
+Eine Kennlinie einer Hochvakuums-Diode ist abhängig von der Temperatur an der Kathode. Bei größeren Temperaturen ist auch die Stromstärke bei der selben Saugspannung größer. Bei allen Kennlinien steigt die Stromstärke bei größer werdenden Saugspannungen. Die Kennlinie wird in drei Bereiche unterteilt. Der Bereich in welchem eine Gegenspannung ($V\le0$) anliegt wird Anlaufstromgebiet genannt und zeichnet sich durch den exponentiellen Anstieg aus. Das anschließende Gebiet nennt sich Raumladungsgebiet und zeichnet sich durch die Proportionalität zu $V^\frac{3}{2}$ aus. Das Sättigungsstromgebiet schließt sich daran an und zeichnet sich nun nicht mehr durch eine Proportionalität zu $V^\frac{3}{2}$ sondern durch eine asymptotische Annäherung an die Sättigungsstromstärke aus. Eine solche Kennlinie ist in ABBILDUNG ??? zu sehen.
+
