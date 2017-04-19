@@ -1,0 +1,43 @@
+
+\section{Theorie}
+\label{sec:Theorie}
+Wird ein Körper durch eine Flüssigkeit bewegt, stößt seine Oberfläche auf die
+umliegenden Teilchen der Flüssigkeit und es wirkt eine Reibungskraft $\vec{F_\text{R}}$ entgegengesetzt
+seiner Bewegungsrichtung.
+ Sie ist abhängig von
+Geschwindigkeit und Berührungsfläche des Körpers. Liegen in der Flüssigkeit
+keine Wirbelströmungen vor, ist die Strömung laminar und $\vec{F_\text{R}}$ lässt sich
+bei einer Kugelgeometrie mit der stokesschen Reibungskraft
+\begin{equation}
+  \vec{F_R} = -6 \pi \eta r \vec{v}\label{stokeR}
+  \end{equation}
+  beschreiben. Hierbei bezeichnet $\eta$ die Viskosität des Stoffes und $\vec{v}$ den Geschwindigkeitsvektor des Körper gegenüber der Flüssigkeit. Die Viskosität ist
+  stark Temperaturabhängig und lässt sich für Wasser durch die Andradesche
+  Gleichung
+  \begin{equation}
+    \eta(T) = A \exp\left(\frac{B}{T}\right)\label{andra}
+    \end{equation}
+darstellen. Die Konstanten $A$ und $B$ sind materialspezifisch.
+Bei der Viskositätsbestimmung nach Höppler wird eine Kugel in die zu untersuchenden
+Flüssigkeit gesenkt. Es wirkt nun die Reibungskraft der Flüssigkeit $\vec{F_\text{R}}$ und der Auftrieb $\vec{F_\text{A}}$ gegen die
+Schwerkraft $\vec{F_\text{g}}$ an. Nach einer kurzen Zeit stellt sich ein Kräftegleichgewicht ein und
+ die Kugel sinkt mit konstanter Geschwindigkeit. Wenn die Fallzeit $t$, welche
+  die Kugel für die Fallstrecke benötigt, bekannt ist, folgt die Viskosität mit:
+  \begin{equation}
+    \eta = K(\rho_\text{K} - \rho_\text{Fl})\cdot t\label{visko}
+    \end{equation}
+mit der Kugeldichte $\rho_\text{K}$, der Flüssigkeitsdichte $\rho_\text{Fl}$ und der
+Apparatekonstante $K$, in welcher die Kugelgeometrie und die Fallstrecke enthalten sind.
+
+Schlussendlich beschreibt die Reynoldsche Zahl $Re$ das Verhältnis zwischen
+zwischen Trägheits- und Viskositätskräften, welche auf einen Körper der
+charakteristischen Länge $d$ wirken. Sie berechnet sich durch:
+\begin{equation}
+  Re = \frac{\rho v d}{\eta}\label{Re}
+  \end{equation}
+  Mithilfe der Reynoldszahl lässt sich bestimmen ob Strömungen in einer
+  Flüssigkeit laminar sind. Liegt sie unterhalb eines kritischen Wertes $Re_\text{krit}$, ist
+  sie laminar, liegt sie darüber ist sie turbulent. Für Wasser liegt dieser bei ca. $2300$ \cite{Rekrit}.
+Es ist jedoch zu beachten, dass die bestimmte Reynoldszahl aufgrund der Wahl der charakteristischen Länge nicht eindeutig ist und auch
+$Re_\text{krit}$ nur empirisch bestimmt ist. Liegt der bestimmte Wert jedoch weit unterhalb
+ von $Re_\text{krit}$, kann trotzdem von einer laminaren Strömung ausgegangen werden.
