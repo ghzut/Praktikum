@@ -17,6 +17,9 @@ import scipy.constants as const
 
 # makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
 
+
+#makeTable([Array mit den einzelnen Datenarrays], r'{'+r'Überschrift'+r'} & ' ,'tabges' , ['S[table-format=2.0]' & ] ,  ["%2.0f", ])
+
 # unp.uarray(np.mean(), stats.sem())
 
 # plt.cla()
@@ -45,6 +48,7 @@ print(V1ol2_5)
 print("Der zweite Versuch")
 V2 = np.genfromtxt("scripts/DatenV2",unpack=True)
 print(V2)
+V3=V2
 
 
 #8a:
@@ -113,18 +117,6 @@ plt.savefig('build/'+'KennlinielogV2')
 plt.cla()
 plt.clf()
 
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-print ("Steva")
-
 linV2 = curve_fit(linfunc,logV2[0],logV2[1])
 print("hi")
 linV2 = [linV2[0],np.sqrt(np.diag(linV2[1]))]
@@ -142,8 +134,6 @@ andereAngabenW = andereAngabenW - 1
 andereheiztemp = andereAngabenW/(5.7*10**(-12)*0.32*0.28)
 andereheiztemp = andereheiztemp**(0.25)
 print(andereheiztemp)
-
-
 #8e:
 Heiztemp = np.array([andereheiztemp[0:-1]])
 letzterkram = np.array([V1wo2_5[1][25],V1wo2_5[2][25],V1wo2_5[3][25],1500,3000])
@@ -154,13 +144,16 @@ letz = np.array([-np.log(meh*letzterkram/(4*np.pi*(Heiztemp**2)))])
 print(letz)
 letz = letz *const.value("Boltzmann constant")*Heiztemp/const.value("electron volt")
 print(letzterkram)
-print("steva")
-print("steva")
-print("steva")
-print("steva")
-print("steva")
-print("steva")
 print(letz)
 
 
- makeTable([V1wo2_5[0],V1wo2_5[1], V1wo2_5[2], V1wo2_5[3], V1wo2_5[4]], r'{'+r'$U_\text{s}/si{\volt}$'+r'} & {'+r'$I_Si{2.0}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.1}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.2}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.3}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.4}{\ampere}/si{\ampere}$'+r'}', 'tabges', ['S[table-format=4.0]', 'S[table-format=4.0]', ' S[table-format=4.0]', 'S[table-format=4.0]', ' S[table-format=4.3]'], ["%4.0f", "%4.0f", "%4.0f", "%4.0f", "%4.0f"])
+#1. Datentabelle
+makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4]], r'{'+r'$U$'+r'} & {'+r'$I_1$'+r'} & {'+r'$I_2$'+r'} & {'+r'$I_3$'+r'} & {'+r'$I_4$'+r'}' ,'tabges' , ['S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f"])
+
+#2.datentabelle
+makeTable([V1ol2_5[0] [0:len(V1ol2_5[0])//2],V1ol2_5[1] [0:len(V1ol2_5[0])//2] ], r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabges' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
+
+makeTable([V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))-1] ,V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))-1]] , r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabges' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
+
+#3.datentabelle
+makeTable([V3[0],V3[1]], r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabges' , ['S[table-format=1.2]' , 'S[table-format=2.3]'] ,  ["%1.2f", "%2.3f"])
