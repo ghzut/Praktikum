@@ -98,8 +98,8 @@ print(V2)
 
 
 print("yeah")
-logV2 = np.array([np.log(V2[0]),V2[1]])
-print(logV1)
+logV2 = [np.log(V2[0]),V2[1]]
+print(logV2)
 
 #einfachlogarithmischI=2.5
 plt.plot(logV2[0], logV2[1], 'yx', label ="logarithmische Darstellung der höchsten Kennlinie V2")
@@ -124,10 +124,43 @@ print ("Steva")
 print ("Steva")
 print ("Steva")
 print ("Steva")
+
 linV2 = curve_fit(linfunc,logV2[0],logV2[1])
 print("hi")
 linV2 = [linV2[0],np.sqrt(np.diag(linV2[1]))]
 linV2 = unp.uarray(linV2[0],linV2[1])
 print(linV2)
 Heiztemp = - const.value("electron volt")/(linV2[0]*const.value("Boltzmann constant"))
+print ("Stevae")
 print(Heiztemp)
+print ("Stevae")
+#8d:
+andereAngabenU = np.linspace(4.0,5.75,6)
+andereAngabenI = [2.0,2.1,2.2,2.3,2.4,2.5]
+andereAngabenW = andereAngabenI*andereAngabenU
+andereAngabenW = andereAngabenW - 1
+andereheiztemp = andereAngabenW/(5.7*10**(-12)*0.32*0.28)
+andereheiztemp = andereheiztemp**(0.25)
+print(andereheiztemp)
+
+
+#8e:
+Heiztemp = np.array([andereheiztemp[0:-1]])
+letzterkram = np.array([V1wo2_5[1][25],V1wo2_5[2][25],V1wo2_5[3][25],1500,3000])
+meh = (const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("electron volt"))/(0.000032*const.value("electron mass"))
+print("meh")
+print(meh)
+letz = np.array([-np.log(meh*letzterkram/(4*np.pi*(Heiztemp**2)))])
+print(letz)
+letz = letz *const.value("Boltzmann constant")*Heiztemp/const.value("electron volt")
+print(letzterkram)
+print("steva")
+print("steva")
+print("steva")
+print("steva")
+print("steva")
+print("steva")
+print(letz)
+
+
+ makeTable([V1wo2_5[0],V1wo2_5[1], V1wo2_5[2], V1wo2_5[3], V1wo2_5[4]], r'{'+r'$U_\text{s}/si{\volt}$'+r'} & {'+r'$I_Si{2.0}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.1}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.2}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.3}{\ampere}/si{\ampere}$'+r'} & {'+r'$I_Si{2.4}{\ampere}/si{\ampere}$'+r'}', 'tabges', ['S[table-format=4.0]', 'S[table-format=4.0]', ' S[table-format=4.0]', 'S[table-format=4.0]', ' S[table-format=4.3]'], ["%4.0f", "%4.0f", "%4.0f", "%4.0f", "%4.0f"])
