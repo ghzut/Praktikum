@@ -95,7 +95,7 @@ print(lin)
 lin = [lin[0],np.sqrt(np.diag(lin[1]))]
 lin = unp.uarray(lin[0],lin[1])
 print(lin)
-
+print()
 #8c:
 V2 = np.array([V2[0]+V2[1]*0.001,V2[1]])
 print(V2)
@@ -145,17 +145,22 @@ print(letz)
 letz = letz *const.value("Boltzmann constant")*Heiztemp/const.value("electron volt")
 print(letzterkram)
 print(letz)
-
-
+tdletz = np.mean(letz)
+stderrletz = np.std(letz)
+print("nochmehrkram")
+print(tdletz)
+print(stderrletz)
 #1. Datentabelle
 makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4]], r'{'+r'$U$'+r'} & {'+r'$I_1$'+r'} & {'+r'$I_2$'+r'} & {'+r'$I_3$'+r'} & {'+r'$I_4$'+r'}' ,'tabV1wo' , ['S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f"])
 
 #2.datentabelle
-makeTable([V1ol2_5[0] [0:len(V1ol2_5[0])//2],V1ol2_5[1] [0:len(V1ol2_5[0])//2] ], r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabV1ol1' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
+makeTable([V1ol2_5[0] [1:len(V1ol2_5[0])//2],V1ol2_5[1] [1:len(V1ol2_5[0])//2] ], r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabV1ol1' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
 
 makeTable([V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))-1] ,V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))-1]] , r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabV1ol2' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
 
 #3.datentabelle
 makeTable([V3[0],V3[1]], r'{'+r'$U$'+r'} & {'+r'$I$'+r'}' ,'tabV2' , ['S[table-format=1.2]' , 'S[table-format=2.3]'] ,  ["%1.2f", "%2.3f"])
 
-makeTable([andereAngabenI,andereAngabenW,letzterkram], r'{'+r'$I_\text{f}$'+r'} & {'+r'$W_\text{f}$'+r'} &{'+r'$I_\text{S}$'+r'}' ,'IS' , ['S[table-format=3.0]', 'S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f","%3.0f", "%4.0f"])
+makeTable([andereAngabenI[0:5],andereAngabenW[0:5],letzterkram], r'{'+r'$I_\text{f}$'+r'} & {'+r'$W_\text{f}$'+r'} &{'+r'$I_\text{S}$'+r'}' ,'IS' , ['S[table-format=3.0]', 'S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f","%3.0f", "%4.0f"])
+
+makeTable([andereAngabenI[0:5],andereAngabenW[0:5],andereheiztemp], r'{'+r'$I_\text{f}$'+r'} & {'+r'$W_\text{f}$'+r'} &{'+r'$T_\text{S}$'+r'}' ,'tabheiz' , ['S[table-format=3.2]', 'S[table-format=3.2]' , 'S[table-format=4.0]'] ,  ["%3.0f","%3.0f", "%4.0f"])
