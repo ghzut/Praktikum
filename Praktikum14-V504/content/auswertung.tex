@@ -5,9 +5,76 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
  Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 
 
+ \subsection{Bestimmung des Sättigungsstroms einer Hochvakkumdiode mithilfe von Kennlinien}
+Zunächst werden die Sättigungsströme als Grenzwerte der Kennlinien bestimmt. Auf Basis der Graphen werden die
+Sättigungsströme zu den drei untersten Graphen über die letzen Messwerte hinreichend
+gut beschrieben. Die Sättigungsströme zu den Heizströmen $I_\text{f} = \SI{2.3}{\ampere}$ und $I_\text{f} = \SI{2.4}{\ampere}$
+sind Schätzungen basierend auf den bekannten Graphenverläufen. Aus der Kennlinie
+des maximalen Heizstromes ist kein Sättigungsstrom zu folgern.
+
+ \begin{table}
+ 	\centering
+ 	\caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung unter Heiströmen zwischen $\SI{2,0}{\ampere}$ und $\SI{2,4}{\ampere}$ .}
+ 	\input{build/tabV1wo.tex}
+ \end{table}
+
+ \begin{table}
+  \centering
+  \caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung bei einem Heizstrom von $\SI{2,5}{\ampere}$.}
+  \input{build/tabV1ol1.tex}
+  \input{build/tabV1ol2.tex}
+ \end{table}
+
+ \begin{figure}
+ 	\centering
+ 	\caption{Die Kennlinien der Hochvakuumdiode unter verschiedenen Heizleistungen.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Kennlinien.pdf}
+ 	\label{fig:Graph}
+ \end{figure}
+
+ \begin{table}
+  \centering
+  \caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung bei einem Heizstrom von $\SI{2,5}{\ampere}$.}
+  \input{build/IS.tex}
+ \end{table}
+
+
+
+
+\subsection{Bestimmung des Exponenten der Strom-Spannungs-Beziehung im Geltungsbereich des Langmuir-Schottkyschen Geseztes}
+\begin{figure}
+ \centering
+ \caption{Die Kennlinien der Hochvakuumdiode unter verschiedenen Heizleistungen.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Kennlinielog.pdf}
+ \label{fig:Graph}
+\end{figure}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Bestimmung der Kathodentemperatur über das Anlaufstromgebiet}
+ \begin{table}
+  \centering
+  \caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung bei einem Heizstrom von $\SI{2,5}{\ampere}$.}
+  \input{build/tabV2.tex}
+ \end{table}
