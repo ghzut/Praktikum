@@ -68,12 +68,28 @@ plt.savefig('build/'+'Kennlinien')
 plt.cla()
 plt.clf()
 
+
 print("yeah")
 logV1 = [[np.log(x) for x in V1ol2_5[0]],[np.log(x*10**-6) for x in V1ol2_5[1]]]
 print(logV1)
+#intressanterBereich
+x42 = np.linspace(logV1[0][1],logV1[0][-2],1000)
+def linfunc(x,a,b):
+    return a*x+b
+#m = logV2[0][6]
+#vermuteter Gültigkeitsbereich
+lin = curve_fit(linfunc,logV1[0][6:18],logV1[1][6:18])
+print(lin)
+linspast=lin
+lin = [lin[0],np.sqrt(np.diag(lin[1]))]
+lin = unp.uarray(lin[0],lin[1])
+print(x42)
+
+
 #richtige göße gefixt ^^
 #doppeltlogarithmischI=2.5
 plt.plot(logV1[0], logV1[1], 'yx', label ="logarithmische Darstellung der höchsten Kennlinie")
+plt.plot(x42,x42*linspast[0][0]+linspast[0][1],label = "gefittete Ausgleichsgerade")
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
 plt.xlabel(r'$\log (U/\si{\volt})$')
@@ -84,18 +100,6 @@ plt.savefig('build/'+'Kennlinielog')
 plt.cla()
 plt.clf()
 
-#intressanterBereich
-
-def linfunc(x,a,b):
-    return a*x+b
-#m = logV2[0][6]
-#vermuteter Gültigkeitsbereich
-lin = curve_fit(linfunc,logV1[0][6:18],logV1[1][6:18])
-print(lin)
-lin = [lin[0],np.sqrt(np.diag(lin[1]))]
-lin = unp.uarray(lin[0],lin[1])
-print(lin)
-print()
 #8c:
 V2 = np.array([V2[0]+V2[1]*0.001,V2[1]])
 print(V2)
@@ -105,8 +109,24 @@ print("yeah")
 logV2 = [np.log(V2[0]),V2[1]]
 print(logV2)
 
+
+
+linV2 = curve_fit(linfunc,logV2[0],logV2[1])
+linV3 = linV2
+print("hi")
+linV2 = [linV2[0],np.sqrt(np.diag(linV2[1]))]
+linV2 = unp.uarray(linV2[0],linV2[1])
+print(linV2)
+Heiztemp = - const.value("electron volt")/(linV2[0]*const.value("Boltzmann constant"))
+print ("Stevae")
+print(Heiztemp)
+print ("Stevae")
+
+x2 = np.linspace(logV2[0][0],logV2[0][-1],1000)
+
 #einfachlogarithmischI=2.5
 plt.plot(logV2[0], logV2[1], 'yx', label ="halblogarithmische Darstellung des Anlaufstromgebietes")
+plt.plot(x2,linV3[0][0]*x2+linV3[0][1],label = "gefittete Ausgleichsgerade")
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
 plt.xlabel(r'$U/\si{\volt}$')
@@ -117,15 +137,6 @@ plt.savefig('build/'+'KennlinielogV2')
 plt.cla()
 plt.clf()
 
-linV2 = curve_fit(linfunc,logV2[0],logV2[1])
-print("hi")
-linV2 = [linV2[0],np.sqrt(np.diag(linV2[1]))]
-linV2 = unp.uarray(linV2[0],linV2[1])
-print(linV2)
-Heiztemp = - const.value("electron volt")/(linV2[0]*const.value("Boltzmann constant"))
-print ("Stevae")
-print(Heiztemp)
-print ("Stevae")
 #8d:
 andereAngabenU = np.linspace(4.0,5.75,6)
 andereAngabenI = [2.0,2.1,2.2,2.3,2.4,2.5]
