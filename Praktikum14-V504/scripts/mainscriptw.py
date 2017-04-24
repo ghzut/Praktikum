@@ -79,7 +79,7 @@ def linfunc(x,a,b):
 #m = logV2[0][6]
 #vermuteter Gültigkeitsbereich
 lin = curve_fit(linfunc,logV1[0][6:18],logV1[1][6:18])
-print(lin)
+
 linspast=lin
 lin = [lin[0],np.sqrt(np.diag(lin[1]))]
 lin = unp.uarray(lin[0],lin[1])
@@ -161,6 +161,7 @@ stderrletz = stats.sem(letz)
 print("nochmehrkram")
 print(tdletz)
 print(stderrletz)
+print(lin)
 #1. Datentabelle
 makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,1}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,2}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,3}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,4}/\si{\micro\ampere}$'+r'}' ,'tabV1wo' , ['S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f"])
 
