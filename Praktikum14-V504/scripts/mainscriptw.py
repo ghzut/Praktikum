@@ -121,7 +121,7 @@ Heiztemp = - const.value("electron volt")/(linV2[0]*const.value("Boltzmann const
 print ("Stevae")
 print(Heiztemp)
 print ("Stevae")
-
+Heiztemp45 = Heiztemp
 x2 = np.linspace(logV2[0][0],logV2[0][-1],1000)
 
 #einfachlogarithmischI=2.5
@@ -161,7 +161,11 @@ stderrletz = stats.sem(letz)
 print("nochmehrkram")
 print(tdletz)
 print(stderrletz)
+lin = lin[0]
 print(lin)
+dtrez = unp.uarray(tdletz,stderrletz)
+print(dtrez)
+print(Heiztemp45)
 #1. Datentabelle
 makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,1}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,2}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,3}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,4}/\si{\micro\ampere}$'+r'}' ,'tabV1wo' , ['S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f"])
 
@@ -176,3 +180,5 @@ makeTable([V3[0],V3[1]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I/\si{\nano\ampere}$
 makeTable([andereAngabenI[0:5],andereAngabenW[0:5],letzterkram], r'{'+r'$I_\text{f}/\si{\ampere}$'+r'} & {'+r'$W_\text{f}/\si{\watt}$'+r'} &{'+r'$I_\text{S}/\si{\micro\ampere}$'+r'}' ,'IS' , ['S[table-format=3.1]', 'S[table-format=3.1]' , 'S[table-format=4.0]'] ,  ["%3.1f","%3.1f", "%4.0f"])
 
 makeTable([andereAngabenI[0:5],andereAngabenW[0:5],andereheiztemp], r'{'+r'$I_\text{f}/\si{\ampere}$'+r'} & {'+r'$W_\text{f}/\si{\watt}$'+r'} &{'+r'$T_\text{S}$'+r'}' ,'tabheiz' , ['S[table-format=3.1]', 'S[table-format=3.2]' , 'S[table-format=4.0]'] ,  ["%3.1f","%3.2f", "%4.0f"])
+
+makeTable([[unp.nominal_values(lin)],[unp.std_devs(lin)],[unp.nominal_values(Heiztemp45)],[unp.std_devs(Heiztemp45)],[unp.nominal_values(dtrez)],[unp.std_devs(dtrez)]], r'\multicolumn{2}{c}{$a_\text{\SI{2.5}{\ampere}}$} & \multicolumn{2}{c}{$T_\text{\SI{2.5}{\ampere}}$} & \multicolumn{2}{c}{$E/\si{\electronvolt}$}', 'tabs',[r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]',r'S[table-format=4.0]', r'@{${}\pm{}$} S[table-format=4.0]', r' S[table-format=1.2]', r'@{${}\pm{}$} S[table-format=1.2]'], ["%1.3f", "%1.3f", "%4.0f", "%4.0f", "%1.2f", "%1.2f"])
