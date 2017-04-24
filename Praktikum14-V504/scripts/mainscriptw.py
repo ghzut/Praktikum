@@ -147,7 +147,7 @@ andereheiztemp = andereheiztemp**(0.25)
 print(andereheiztemp)
 #8e:
 Heiztemp = np.array(andereheiztemp[0:-1])
-letzterkram = np.array([V1wo2_5[1][25],V1wo2_5[2][25],V1wo2_5[3][25],1500,3000])
+letzterkram = np.array([V1wo2_5[1][25],V1wo2_5[2][25],V1wo2_5[3][25],1500,3000])*10**(-6)
 meh = (const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("electron volt"))/(0.000032*const.value("electron mass"))
 print("meh")
 print(meh)
