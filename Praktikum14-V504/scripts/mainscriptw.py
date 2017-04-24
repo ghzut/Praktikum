@@ -101,12 +101,12 @@ plt.cla()
 plt.clf()
 
 #8c:
-V2 = np.array([V2[0]+V2[1]*0.001,V2[1]])
+V2 = np.array([V2[0]+V2[1]*0.001,V2[1]*10**(-9)])
 print(V2)
 
 
 print("yeah")
-logV2 = [np.log(V2[0]),V2[1]]
+logV2 = [V2[0],np.log(V2[1])]
 print(logV2)
 
 
