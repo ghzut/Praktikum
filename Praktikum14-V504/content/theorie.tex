@@ -7,9 +7,9 @@ Freie Elektronen in einem Leiter sind durch eine Potentialdifferenz $\phi$ zwisc
 \begin{equation}
 	f(E) = \frac{1}{\exp\left(\frac{E-\zeta}{k T}\right)+1}\label{eq:Fermi-Diracsche_Verteilungsfunktion}
 \end{equation} 
-gegeben, wobei $\zeta$ die Fermische Grenzenergie, $T$ die Temperatur und $k$ die Boltzmann-Konstante ist. Diese Funktion ist in Abbildung \ref{fig:Fermi-Diracsche} skizziert. Es können nun alle Elektronen mit einer Energie größer als $\zeta + e_0 \phi$ mit einem Geschwindigkeitsvektor in Richtung der Oberflächennormalen den Leiter verlassen. Um den gesuchten aus dem Leiter austretenden Elektronenstrom $I_\text{S}$ zu ermitteln, wird $A \vec{v}\cdot \vec{n} \rho_\text{E} e_0$ über alle Elektronen, welche den Leiter verlassen können, summiert. Die betrachtete Oberfläche wird hier mit $A$ bezeichnet, die Geschwindigkeit der Elektronen mit $\vec{v}$, die Oberflächennormale des Leiters mit $\vec{n}$ , die Zahl der Elektronen pro Volumen mit $\rho_\text{E}$ und deren Ladung mit $e_0$. Die Addition ist besonders einfach im Impulsraum und schließlich ergibt sich für den Sättigungsstrom $I_\text{S}$ die Richardson-Gleichung: 
+gegeben, wobei $\zeta$ die Fermische Grenzenergie, $T$ die Temperatur und $k$ die Boltzmann-Konstante ist. Diese Funktion ist in Abbildung \ref{fig:Fermi-Diracsche} skizziert. Es können nun alle Elektronen mit einer Energie größer als $\zeta + e_0 \phi$ mit einem Geschwindigkeitsvektor in Richtung der Oberflächennormalen den Leiter verlassen. Um den gesuchten aus dem Leiter austretenden Elektronenstrom $I_\text{S}$ zu ermitteln, wird $f \vec{v}\cdot \vec{n} \rho_\text{E} e_0$ über alle Elektronen, welche den Leiter verlassen können, summiert. Die betrachtete Oberfläche wird hier mit $f$ bezeichnet, die Geschwindigkeit der Elektronen mit $\vec{v}$, die Oberflächennormale des Leiters mit $\vec{n}$ , die Zahl der Elektronen pro Volumen mit $\rho_\text{E}$ und deren Ladung mit $e_0$. Die Addition ist besonders einfach im Impulsraum und schließlich ergibt sich für den Sättigungsstrom $I_\text{S}$ die Richardson-Gleichung: 
 \begin{equation}
-	I_\text{S} = 4 \pi A e_0 m_0 \frac{k^2}{h^3} T^2 \exp\left(-e_0 \frac{\phi}{k T}\right)\text{.} \label{eq:Richardson-Gleichung}
+	I_\text{S} = 4 \pi f e_0 m_0 \frac{k^2}{h^3} T^2 \exp\left(-e_0 \frac{\phi}{k T}\right)\text{.} \label{eq:Richardson-Gleichung}
 \end{equation}
 \begin{figure}
 	\centering
@@ -19,7 +19,7 @@ gegeben, wobei $\zeta$ die Fermische Grenzenergie, $T$ die Temperatur und $k$ di
 \end{figure}
 
 \subsection{Hochvakuum-Diode}
-Damit annähernd der Sättigungsstrom gemessen werden kann, dürfen die Elektronen nicht mit dem äußerem Medium wechselwirken und müssen zusätzlich nach dem Austritt abgesaugt werden. Dies wird bei einer Hochvakuum-Diode erreicht, indem zwischen der Kathode (dem Glühdraht) und der Anode eine Spannung angelegt wird und zudem der Bereich dazwischen evakuiert wird. Die Diode ist in Abbildung \ref{fig:Hochvakuum-Diode} schematisch dargestellt.
+Damit annähernd der Sättigungsstrom gemessen werden kann, dürfen die Elektronen nicht mit dem äußerem Medium wechselwirken und müssen zusätzlich nach dem Austritt abgesaugt werden. Dies wird bei einer Hochvakuum-Diode dadurch erreicht, indem zwischen der Kathode (dem Glühdraht) und der Anode eine Spannung angelegt wird und auch der Bereich dazwischen evakuiert wird. Die Diode ist in Abbildung \ref{fig:Hochvakuum-Diode} schematisch dargestellt.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{content/Bilder/Hochvakuum-Diode.png}
@@ -28,13 +28,13 @@ Damit annähernd der Sättigungsstrom gemessen werden kann, dürfen die Elektron
 \end{figure}
 
 \subsection{Langmuir-Schottkysche Raumladungsgleichung}
-Da die Elektronen jedoch eine Beschleunigung in Richtung der Anode erfahren und der Strom überall konstant ist, folgt aus $I = -\rho v A $, dass die Ladungsverteilung zur Anode hin geringer werden muss. Diese Ladungshäufung vor der Kathode führt dazu, dass bei geringen Saugspannungen $V$, die Stromstärke $I$ unter dem Sättigungsstrom $I_\text{S}$ liegt und im Raumladungsgebiet annähernd durch die Langmuir-Schottkysche Raumladungsgleichung 
+Da die Elektronen jedoch eine Beschleunigung in Richtung der Anode erfahren und der Strom überall konstant ist, folgt aus $I = -\rho v f $, dass die Ladungsverteilung zur Anode hin geringer werden muss. Diese Ladungshäufung vor der Kathode führt dazu, dass bei geringen Saugspannungen $V$, die Stromstärke $I$ unter dem Sättigungsstrom $I_\text{S}$ liegt und im Raumladungsgebiet annähernd durch die Langmuir-Schottkysche Raumladungsgleichung 
 \begin{equation}
-	I = \frac{4}{9} A \sqrt{\frac{2 e_0^3 V^3}{a^4 m_0} } \label{eq:Langmuir-Schottkysche_Raumladungsgleichung}
+	I = \frac{4}{9} f \sqrt{\frac{2 e_0^3 V^3}{a^4 m_0} } \label{eq:Langmuir-Schottkysche_Raumladungsgleichung}
 \end{equation} 
 beschrieben wird. Der Abstand zwischen der Anode und der Kathode wird hier mit $a$ bezeichnet.
 
-\subsection{Anlaufstrom bei einer anliegenden Gegenspannung an der Hochvakuum-Diode}
+\subsection{Anlaufstrom bei einer anliegenden Gegenspannung an der Hochvakuums-Diode}
 Die Elektronen können auch ohne eine anliegenden Spannung zwischen Kathode und Anode von der Kathode zur Anode wandern. Dies liegt daran, dass es Elektronen gibt, die eine größere Geschwindigkeit in Richtung der Oberflächennormalen besitzen, als zum Verlassen des Leiters notwendig wäre und sie somit nach dem Austreten noch eine Geschwindigkeit in Richtung Anode besitzen. Diese Geschwindigkeit entscheidet bis zu welcher Gegenspannung das Elektron noch an der Anode ankommt. Offensichtlich nimmt der Anlaufstrom mit wachsender Gegenspannung ab. Diese Anlaufstromstärke im Anlaufstromgebiet ist durch 
 \begin{equation} 
 	I = I_0 \exp\left(-\frac{e_0 (-V +\phi_A)}{k T}\right) \label{eq:Anlaufstromstärke}
@@ -48,7 +48,7 @@ Eine Kennlinie einer Hochvakuums-Diode ist abhängig von der Temperatur an der K
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{content/Bilder/Kennlinie.png}
-	\caption{Mögliche Kennlinie einer Hochvakuum-Diode \cite{V504}.}
+	\caption{Mögliche Kennlinie einer Hochvakuums-Diode \cite{V504}.}
 	\label{fig:Kennlinie}
 \end{figure}
 

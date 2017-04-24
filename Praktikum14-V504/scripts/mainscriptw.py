@@ -18,7 +18,7 @@ import scipy.constants as const
 # makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
 
 
-#makeTable([Array mit den einzelnen Datenarrays], r'{'+r'Überschrift'+r'} & ' ,'tabges' , ['S[table-format=2.0]' & ] ,  ["%2.0f", ])
+#makeTable([Array mit den einzelnen Datenarrays], r'{'+r'Überschrift'+r'} & ' ,'tabges' , ['S[table-format=2.0]', ] ,  ["%2.0f", ])
 
 # unp.uarray(np.mean(), stats.sem())
 
@@ -146,18 +146,18 @@ andereheiztemp = andereAngabenW/(5.7*10**(-12)*0.32*0.28)
 andereheiztemp = andereheiztemp**(0.25)
 print(andereheiztemp)
 #8e:
-Heiztemp = np.array([andereheiztemp[0:-1]])
+Heiztemp = np.array(andereheiztemp[0:-1])
 letzterkram = np.array([V1wo2_5[1][25],V1wo2_5[2][25],V1wo2_5[3][25],1500,3000])
 meh = (const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("Boltzmann constant"))*(const.value("Planck constant")/const.value("electron volt"))/(0.000032*const.value("electron mass"))
 print("meh")
 print(meh)
-letz = np.array([-np.log(meh*letzterkram/(4*np.pi*(Heiztemp**2)))])
+letz = -np.log(meh*letzterkram/(4*np.pi*(Heiztemp**2)))
 print(letz)
 letz = letz *const.value("Boltzmann constant")*Heiztemp/const.value("electron volt")
 print(letzterkram)
 print(letz)
 tdletz = np.mean(letz)
-stderrletz = np.std(letz)
+stderrletz = stats.sem(letz)
 print("nochmehrkram")
 print(tdletz)
 print(stderrletz)
