@@ -1,0 +1,19 @@
+#gruen, neg ist saugspannung, positiv gegenspannung
+#Uin miliVolt || I in pikoampere
+-33 100
+-1 78
+1 80
+18 70
+35 76
+60 74
+85 70
+132 65
+137 60
+161 55
+190 50
+223 40
+229 30
+373 20
+416 10
+500 0
+

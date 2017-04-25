@@ -1,0 +1,129 @@
+\section{Auswertung}
+\label{sec:Auswertung}
+
+Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
+ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
+
+
+ \subsection{Bestimmung des Sättigungsstroms einer Hochvakuum-Diode mithilfe von Kennlinien}
+Zunächst werden die Sättigungsströme als Grenzwerte der Kennlinien bestimmt. Den Graphen nach werden die
+Sättigungsströme zu den drei untersten Graphen durch ihre letzten Messwerte hinreichend
+gut beschrieben. Die Sättigungsströme zu den Heizströmen $I_\text{f} = \SI{2.3}{\ampere}$ und $I_\text{f} = \SI{2.4}{\ampere}$
+sind Schätzungen, basierend auf den bekannten Graphenverläufen. Aus der Kennlinie
+zu $I_\text{f} = \SI{2.5}{\ampere}$ lässt sich kein Sättigungsstrom folgern.
+
+ \begin{table}
+ 	\centering
+ 	\caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung unter Heizströmen zwischen $\SI{2,0}{\ampere}$ und $\SI{2,4}{\ampere}$ .}
+ 	\input{build/tabV1wo.tex}
+ \end{table}
+
+ \begin{table}
+  \centering
+  \caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung bei einem Heizstrom von $\SI{2,5}{\ampere}$.}
+  \input{build/tabV1ol1.tex}
+  \input{build/tabV1ol2.tex}
+ \end{table}
+
+ \begin{figure}
+ 	\centering
+ 	\caption{Die Kennlinien der Hochvakuumdiode unter verschiedenen Heizleistungen.}
+ 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Kennlinien.pdf}
+ 	\label{fig:Graph}
+ \end{figure}
+
+ \begin{table}
+  \centering
+  \caption{Die geschätzten Sättigungsströme unter Variation der Heizleistung.}
+  \input{build/IS.tex}
+ \end{table}
+
+
+
+
+\subsection{Bestimmung des Exponenten der Strom-Spannungs-Beziehung im Geltungsbereich des Langmuir-Schottkyschen Gesetzes}
+\begin{figure}
+ \centering
+ \caption{Die doppellogarithmische Darstellung Kennlinie des mit $I_\text{f} = \SI{2.5}{\ampere}$.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Kennlinielog.pdf}
+ \label{fig:Graphlog2}
+\end{figure}
+Mithilfe einer doppellogarithmischen Darstellung der Kennlinie bei einem Heizstrom von $\SI{2.5}{\ampere}$
+ wird die Strom-Spannungsbeziehung im Geltungsbereich des Langmuir-Schottkyschen Gesetzes untersucht.
+ Es wird nach Formel \ref{eq:Langmuir-Schottkysche_Raumladungsgleichung} ein linearer Zusammenhang vermutet.
+Daher werden die Messwerte mit einer Saugspannung zwischen $\SI{70}{\volt}$
+und $\SI{180}{\volt}$ verwendet. Ein linearer Fit der Form $y = a x+b$ liefert
+eine Steigung von $a = \num{1.576(8)}$.
+%wie macht man das mit dem plusminus richtig
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Bestimmung der Kathodentemperatur über das Anlaufstromgebiet}
+Es folgt eine Untersuchung des Anlaufstromgebietes mithilfe der Messwerte aus \ref{tab:tabV2}.
+Da die Temperatur nach Formel \ref{eq:Anlaufstromstärke} logarithmisch bezüglich
+der Stromstärke skaliert, wird eine halblogarithmische Darstellung in
+\ref{fig:Graphlog3} verwendet. Mithilfe einer linearen Ausgleichsrechnung der Form
+$y = a x+b$ und der Formel
+\begin{equation}
+  T = \frac{-e_0 V}{k a}
+  \end{equation}
+  folgt eine Temperatur von $\SI{2.61(9)e3}{\kelvin}$. Es 
+werden alle Messwerte gewichtet.
+
+
+ \begin{table}
+  \centering
+  \caption{Die gemessenen Stromstärken in Abhängigkeit der Saugspannung bei einem Heizstrom von $\SI{2,5}{\ampere}$.}
+  \input{build/tabV2.tex}
+  \label{tab:tabV2}
+ \end{table}
+
+ \begin{figure}
+  \centering
+  \caption{Die halblogarithmische Darstellung der maximalen Kennlinie in Abhängigkeit der Gegenspannung.}
+  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/KennlinielogV2.pdf}
+  \label{fig:Graphlog3}
+ \end{figure}
+
+\subsection{Bestimmung der Kathodentemperatur mithilfe der Heizleistung}
+Zum Vergleich werden die Kathodentemperaturen zu den anderen Heizströmen über die Heizleistung bestimmt.
+Mithilfe von \ref{eq:TausLeistung} folgen die Temperaturen in \ref{tab:tabheit2}. Es wird ein Leistungsverlust durch Wärmeleitung $N_\text{WL}$ von $\SI{1}{\watt}$ angenommen.
+Die Fläche $f$ beträgt $\SI{0.32}{\centi\meter\squared}$.
+Auffällig ist, dass die hier bestimmten Temperaturen signifikant kleiner sind,
+als die über die Anlaufstrommethode. Nach \ref{eq:TausLeistung} ist ein solcher Anstieg auch nicht zu erwarten.
+
+\begin{table}
+ \centering
+ \caption{Die Kathodentemperatur in Abhängigkeit der Heizleistung.}
+ \input{build/tabheiz.tex}
+ \label{tab:tabheit2}
+\end{table}
+
+\subsection{Bestimmung der Austrittsarbeit des verwendeten Kathodenmaterials}
+Durch Umstellung der Richardson-Gleichung in \ref{eq:Richardson-Gleichung} nach
+$\phi$ folgt:
+\begin{equation}
+  \phi = -\ln\left(\frac{I_\text{S} h^3}{4\pi e_0 m_0 f k^2 T^2}\right) \frac{k T}{e_0} \text{.}
+\end{equation}
+Diese liefert die Austrittsarbeit in $\si{\electronvolt}$. Die aus den Heizleistungen
+bestimmten Temperaturen ergeben eine Austrittsarbeit von $\SI{4.64(3)}{\electronvolt}$
