@@ -167,17 +167,17 @@ dtrez = unp.uarray(tdletz,stderrletz)
 print(dtrez)
 print(Heiztemp45)
 #1. Datentabelle
-makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,1}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,2}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,3}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,4}/\si{\micro\ampere}$'+r'}' ,'tabV1wo' , ['S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]' , 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f"])
+makeTable([V1wo2_5[0],V1wo2_5[1],V1wo2_5[2],V1wo2_5[3],V1wo2_5[4], V1wo2_5[5]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,0}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,1}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,2}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,3}/\si{\micro\ampere}$'+r'} & {'+r'$I_\text{2,4}/\si{\micro\ampere}$}' ,'tabV1wo' , ['S[table-format=3.0]' , 'S[table-format=3.0]' , 'S[table-format=3.0]' , 'S[table-format=3.0]' , 'S[table-format=4.0]', 'S[table-format=4.0]'] , ["%4.0f", "%4.0f","%4.0f","%4.0f","%4.0f","%4.0f"])
 
 #2.datentabelle
 makeTable([V1ol2_5[0] [0:len(V1ol2_5[0])//2],V1ol2_5[1] [0:len(V1ol2_5[0])//2] ], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,5}/\si{\micro\ampere}$'+r'}' ,'tabV1ol1' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
 
-makeTable([V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))] ,V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))]] , r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,5}/\si{\micro\ampere}$'+r'}' ,'tabV1ol2' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
+makeTable([V1ol2_5[0][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))] ,V1ol2_5[1][(len(V1ol2_5[0]))//2+1:(len(V1ol2_5[0]))]] , r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I_\text{2,5}/\si{\micro\ampere}$'+r'}' ,'tabV1ol2' , ['S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%4.0f"])
 
 #3.datentabelle
 makeTable([V3[0],V3[1]], r'{'+r'$U/\si{\volt}$'+r'} & {'+r'$I/\si{\nano\ampere}$'+r'}' ,'tabV2' , ['S[table-format=1.2]' , 'S[table-format=2.2]'] ,  ["%1.2f", "%2.2f"])
 
-makeTable([andereAngabenI[0:5],andereAngabenW[0:5],letzterkram], r'{'+r'$I_\text{f}/\si{\ampere}$'+r'} & {'+r'$W_\text{f}/\si{\watt}$'+r'} &{'+r'$I_\text{S}/\si{\micro\ampere}$'+r'}' ,'IS' , ['S[table-format=3.1]', 'S[table-format=3.1]' , 'S[table-format=4.0]'] ,  ["%3.1f","%3.1f", "%4.0f"])
+makeTable([andereAngabenI[0:5],andereAngabenW[0:5],letzterkram*10**6], r'{'+r'$I_\text{f}/\si{\ampere}$'+r'} & {'+r'$W_\text{f}/\si{\watt}$'+r'} &{'+r'$I_\text{S}/\si{\micro\ampere}$'+r'}' ,'IS' , ['S[table-format=3.1]', 'S[table-format=3.1]' , 'S[table-format=4.0]'] ,  ["%3.1f","%3.1f", "%4.0f"])
 
 makeTable([andereAngabenI[0:5],andereAngabenW[0:5],andereheiztemp], r'{'+r'$I_\text{f}/\si{\ampere}$'+r'} & {'+r'$W_\text{f}/\si{\watt}$'+r'} &{'+r'$T_\text{S}$'+r'}' ,'tabheiz' , ['S[table-format=3.1]', 'S[table-format=3.2]' , 'S[table-format=4.0]'] ,  ["%3.1f","%3.2f", "%4.0f"])
 
