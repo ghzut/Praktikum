@@ -5,45 +5,93 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
  Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt. 
 
 
- \subsection{Bestimmung des Sättigungsstroms einer Hochvakuum-Diode mithilfe von Kennlinien}
-
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Saug- bzw. Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabgelb.tex}
- \end{table}
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Saug- bzw. Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabgruen.tex}
- \end{table}
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabblaugruen.tex}
- \end{table}
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabviolett.tex}
- \end{table}
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabultraV1.tex}
- \end{table}
- \begin{table}
- 	\centering
- 	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
- 	\input{build/tabultraV2.tex}
- \end{table}
+\subsection{Bestimmung des Sättigungsstroms einer Hochvakuum-Diode mithilfe von Kennlinien}
+\begin{center}
+	\begin{table}
+		\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Saug- bzw. Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+		
+			\centering
+			\input{build/tabgelb1.tex}
+		
+		
+			\input{build/tabgelb2.tex}
+		
+	\end{table}
+\end{center}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Saug- bzw. Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+	\input{build/tabgruen.tex}
+\end{table}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+	\input{build/tabblaugruen.tex}
+\end{table}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+	\input{build/tabviolett.tex}
+\end{table}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+	\input{build/tabultraV1.tex}
+\end{table}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Gegenspannung $U$ bei einer Wellenlänge von $\SI{5}{\nano\meter}$.}
+	\input{build/tabultraV2.tex}
+\end{table}
+\begin{table}
+	\centering
+	\caption{???.}
+  	\input{build/tabZwischenErgebnisse.tex}
+\end{table}
 
  
- \begin{figure}
- 	\centering
- 	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
- 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUgelb.pdf}
- 	\label{fig:Graphgelb}
- \end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUgelb.pdf}
+	\label{fig:Graphgelb1}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Saug- bzw. Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUgelb2.pdf}
+	\label{fig:Graphgelb2}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUgruen.pdf}
+	\label{fig:Graphgruen}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUblaugruen.pdf}
+	\label{fig:Graphblaugruen}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUviolett.pdf}
+	\label{fig:Graphviolett}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUultraV1.pdf}
+	\label{fig:GraphultraV1}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Wurzel der Stromstärke $I$ gegen die Gegenspannung $U$ bei einer Wellenlänge von  $\SI{5}{\nano\meter}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUultraV2.pdf}
+	\label{fig:GraphultraV2}
+\end{figure}
+ 
 
  
