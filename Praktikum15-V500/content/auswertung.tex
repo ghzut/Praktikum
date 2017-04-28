@@ -4,7 +4,7 @@
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
  Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt. 
 
-\subsection{a)}
+\subsection{Bestimmung der Grenzspannungen für die verschiedenen Wellenlängen}
 \begin{center}
 	\begin{table}
 		\caption{Die gemessenen Stromstärken $I$ in Abhängigkeit der Saug- bzw. Gegenspannung $U$ bei den Wellenlängen von $\SI{577}{\nano\meter}$ und $ \SI{579}{\nano\meter}$.}
@@ -80,27 +80,45 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
 	\label{fig:GraphultraV2}
 \end{figure}
 
-\subsection{b)}
+
+Die Fits in den Abbildungen \ref{fig:Graphgelb1}, \ref{fig:Graphgruen}, \ref{fig:Graphblaugruen}, \ref{fig:Graphviolett}, \ref{fig:GraphultraV1} und \ref{fig:GraphultraV2} besitzen die Form $y_i=a_i x + b_i$. Eine lineare Ausgleichsrechnung der Form $y_i=a_i x+b_i$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tabgelb1}, \ref{tab:tabgruen}, \ref{tab:tabblaugruen}, \ref{tab:tabviolett}, \ref{tab:tabultraV1} und \ref{fig:GraphultraV2} für die Grenzspannungen:
+\begin{align}
+	U_{\text{g}1} = -\frac{b_1}{a_1} &= \SI{0.59(4)}{\volt}\\
+	U_{\text{g}2} = -\frac{b_2}{a_2} &= \SI{0.68(5)}{\volt}\\
+	U_{\text{g}3} = -\frac{b_3}{a_3} &= \SI{0.95(4)}{\volt}\\
+	U_{\text{g}4} = -\frac{b_4}{a_4} &= \SI{1.22(6)}{\volt}\\
+	U_{\text{g}5} = -\frac{b_5}{a_5} &= \SI{1.39(7)}{\volt}\\
+	U_{\text{g}6} = -\frac{b_6}{a_6} &= \SI{1.81(13)}{\volt}\text{.}
+\end{align}
+Hierbei wurde der jeweils letzte Wert nicht berücksichtigt, da dieser anscheinend nicht im Bereich $I\propto U^2$ liegt.
+
+\subsection{Näherung der Austrittsenergie aus der Kathode und des Verhältnisses vom Planckschem Wirkungsquantum zur Elementarladung}
 \begin{table}
 	\centering
-	\caption{???.}
+	\caption{Die berechnete Grenzspannung $U_\text{g}$ und Frequenz $f$ bei den verschiedenen Wellenlängen $\lambda$.}
   	\input{build/tabZwischenErgebnisse.tex}
 \end{table}
 \begin{figure}
 	\centering
-	\caption{Die berechnete Grenzspannung $U_\text{g}$ bei den verschiedenen Wellenlängen gegen die Frequenz $f$ aufgetragen.}
+	\caption{Die berechnete Grenzspannung $U_\text{g}$ bei den verschiedenen Wellenlängen $\lambda$ gegen die Frequenz $f$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Ugegennu.pdf}
 	\label{fig:GraphUgegennu}
 \end{figure}
+Der Fit in Abbildung \ref{fig:GraphUgegennu} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x + b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:tabZwischenErgebnisse} nach Formel \eqref{eq:STEVE0ne:---3}:
+\begin{align}
+	\frac{h}{e_0}=\frac{1}{a} &= \SI{3.95(1)e-14}{\volt\second}\\
+	A_\text{k}=-\frac{b}{e_0} &= \SI{1.5(1)}{\electronvolt}\text{.}
+\end{align}
  
 
-\subsection{c)}
+\subsection{Untersuchung des Photostromes in Abhängigkeit der angelegten Spannung für die gelbe Spektrallinie}
 \begin{figure}
 	\centering
-	\caption{Die Wurzel der Stromstärke $I$ gegen die Saug- bzw. Gegenspannung $U$ bei den Wellenlängen von $\SI{577}{\nano\meter}$ und $ \SI{579}{\nano\meter}$ aufgetragen.}
+	\caption{Die Stromstärke $I$ gegen die Saug- bzw. Gegenspannung $U$ bei den Wellenlängen von $\SI{577}{\nano\meter}$ und $ \SI{579}{\nano\meter}$ aufgetragen.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/sqrtIgegenUgelb2.pdf}
 	\label{fig:Graphgelb2}
 \end{figure}
+In Abbildung \ref{fig:Graphgelb2} ist der Photonenstrom $I$ bei den Wellenlängen von $\SI{577}{\nano\meter}$ und $\SI{579}{\nano\meter}$ gegen die Spannung aufgetragen. Die Kurve nähert sich bei betragsmäßig großen Saugspannungen asymptotisch  einem Sättigungswert an. Dies liegt daran, dass nicht alle Elektronen, welche die Photokathode verlassen, auch die Anode erreichen. So erzeugen die Elektronen beim Verlassen der Kathode ein Gegenfeld, dass diese zurück in die Kathode saugen kann. Auch die geringe Oberfläche der Anode kann dazu führen, dass die Elektronen erst bei größeren Saugspannungen diese erreichen. Der Sättigungswert wird dann erreicht, wenn alle austretenden Elektronen die Anode erreichen. Dieser Sättigungswert ist abhängig von der Anzahl der austretenden Elektronen und diese von der Intensität des einfallenden Lichtes. Damit der Sättigungswert schon bei endlichen Spannungen erreicht werden kann muss sichergestellt werden, dass alle Elektronen bei genügend großen Saugspannungen die Anode erreichen. Diese könnte durch eine Anode, welche die Kathode komplett umgibt erreicht werden. Der Photostrom sinkt schon bevor $U_\text{g}$ erreicht wird, da die Elektronen nach dem Austritt keine einheitliche kinetische Energie besitzen und dadurch bei steigenden Gegenspannungen weniger Elektronen die Anode erreichen können. Dies kommt durch die Energieverteilung der Elektronen in der Kathode zustande. Bei großen Gegenspannungen kann sogar ein negativer Strom auftreten, da auch an der Anode ein Photo-Effekt auftreten kann. Da die Kathode schon bei $\SI{20}{\degreeCelsius}$ \cite{V500} merklich verdampft, kann sich an der Anode Material von der Kathode ablagern. Dieses hat vermutlich eine sehr niedrige Austrittsarbeit und somit kann es an der Anode schon bei niedrigen Frequenzen zum Photo-Effekt kommen. Allerdings treten auf Grund der niedrigen Lichtintensität und Oberfläche nur wenige Elektronen aus. Aus diesem Grund und Aufgrund der großen Oberfläche der Kathode kann der Sättigungsstrom schon bei betragsmäßig kleinen Spannungen erreicht werden.
 
 
 

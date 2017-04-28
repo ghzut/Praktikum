@@ -76,7 +76,7 @@ ultraV2[1] *= 10**(-12)
 
 #a)
 Nullstellen = []
-params, covar = linregress(gelb[0][gelb[0]>=0], np.sqrt(gelb[1][gelb[0]>=0]))
+params, covar = linregress(gelb[0][gelb[0]>=0][0:-1], np.sqrt(gelb[1][gelb[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -94,7 +94,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'sqrtIgegenUgelb')
 
-params, covar = linregress(gruen[0][gruen[0]>=0], np.sqrt(gruen[1][gruen[0]>=0]))
+params, covar = linregress(gruen[0][gruen[0]>=0][0:-1], np.sqrt(gruen[1][gruen[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -112,7 +112,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'sqrtIgegenUgruen')
 
-params, covar = linregress(blaugruen[0][blaugruen[0]>=0], np.sqrt(blaugruen[1][blaugruen[0]>=0]))
+params, covar = linregress(blaugruen[0][blaugruen[0]>=0][0:-1], np.sqrt(blaugruen[1][blaugruen[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -130,7 +130,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'sqrtIgegenUblaugruen')
 
-params, covar = linregress(violett[0][violett[0]>=0], np.sqrt(violett[1][violett[0]>=0]))
+params, covar = linregress(violett[0][violett[0]>=0][0:-1], np.sqrt(violett[1][violett[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -148,7 +148,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'sqrtIgegenUviolett')
 
-params, covar = linregress(ultraV1[0][ultraV1[0]>=0], np.sqrt(ultraV1[1][ultraV1[0]>=0]))
+params, covar = linregress(ultraV1[0][ultraV1[0]>=0][0:-1], np.sqrt(ultraV1[1][ultraV1[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -166,7 +166,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'sqrtIgegenUultraV1')
 
-params, covar = linregress(ultraV2[0][ultraV2[0]>=0], np.sqrt(ultraV2[1][ultraV2[0]>=0]))
+params, covar = linregress(ultraV2[0][ultraV2[0]>=0][0:-1], np.sqrt(ultraV2[1][ultraV2[0]>=0][0:-1]))
 params = unp.uarray(params, covar[0:-1])
 Nullstelle = -params[1]/params[0]
 Nullstellen += [Nullstelle]
@@ -187,8 +187,8 @@ plt.savefig('build/'+'sqrtIgegenUultraV2')
 # b)
 params, covar = linregress(Frequenzen, nom(Nullstellen))
 params = unp.uarray(params, covar[0:-1])
-print('e0/h berechnet: ', params[0])
-print('e0/h lit: ', const.value('Planck constant')/const.value('elementary charge'))
+print('h/e0 berechnet: ', params[0])
+print('h/e0 lit: ', (const.value('Planck constant')/const.value('elementary charge')))
 print('Austrittsarbeit in eV: ', -params[1])
 plt.cla()
 plt.clf()
@@ -206,7 +206,7 @@ plt.savefig('build/'+'Ugegennu')
 # c)
 plt.cla()
 plt.clf()
-plt.plot(gelb[0], np.sqrt(gelb[1]*10**(9)), 'yx', label='Messwerte')
+plt.plot(gelb[0], gelb[1]*10**(9), 'yx', label='Messwerte')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(x[0], x[-1])
 plt.xlabel(r'$U/\si{\volt}$')
