@@ -43,7 +43,7 @@ C6O12Pr2 = np.genfromtxt('scripts/C6O12Pr2', unpack=True)
 Dy2O3 = np.genfromtxt('scripts/Dy2O3', unpack=True)
 Gd2O3 = np.genfromtxt('scripts/Gd2O3', unpack=True)
 Nd2O3 = np.genfromtxt('scripts/Nd2O3', unpack=True)
-Basisdaten = np.genfromtxt('scripts/Basisdatenstoffe', unpack=True)
+Basisdaten = np.genfromtxt('scripts/Basisdatenstoffe')
 #y = 900*np.exp(-1*a*abs((x-35.17)**1))+b
 #(ln((y-b)/900)/-a)+35.17 = (x-35.17)
 
