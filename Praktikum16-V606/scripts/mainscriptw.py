@@ -165,8 +165,37 @@ uB = 0.5 * (const.value("electron volt")/const.value("electron mass"))*const.val
 def Gj(J,L,S):
 	return (3*J*(J+1)+S*(S+1)-L*(L+1))/(2*J*(J*1))
 
-def Sustheoretisch(Gj,N,J):
-	return const.value("mu_0")*(Ub**2)*(Gj**2)*N*J*(J+1)/(3*const.value("Boltzmann constant")*(const.value("zero_Celsius")+20))
+def N(m,M,l,Q):
+    return const.value("Avogadro constant")*m/(M*l*Q)
+
+#https://pubchem.ncbi.nlm.nih.gov/compound/159373#section=Top
+
+NNd2O3 = N(Basisdaten[2][2],0.336481,Basisdaten[2][1],querschnitt(Basisdaten[2][1],Basisdaten[2][3],Basisdaten[2][2]))
+#https://pubchem.ncbi.nlm.nih.gov/compound/159427
+NGd2O3 = N(Basisdaten[3][2],0.362497,Basisdaten[3][1],querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]))
+#https://pubchem.ncbi.nlm.nih.gov/compound/159370
+NDy2O3 = N(Basisdaten[1][2],0.372997,Basisdaten[1][1],querschnitt(Basisdaten[1][1],Basisdaten[1][3],Basisdaten[1][2]))
+
+
+
+
+def Sus(Gj,N,J):
+	return const.value("mag. constant")*(uB**2)*(Gj**2)*N*J*(J+1)/(3*const.value("Boltzmann constant")*(293.15))
+
+GjNd2O3 = Gj(4.5,6,1.5)
+GjGd2O3 = Gj(-3.5,0,3.5)
+GjDy2O3 = Gj(7.5,5,2.5)
+
+
+
+SusDy2O3T = np.array([Sus(GjDy2O3,NDy2O3,7.5), Sus(GjNd2O3,NNd2O3,4.5), Sus(GjGd2O3,NGd2O3,-3.5)])
+print("theorie",SusDy2O3T)
+#SusNd2O3T = np.array(Sus(GjNd2O3,NNd2O3,4.5),0)
+#SusGd2O3T = np.array(Sus(GjGd2O3,NGd2O3,-3.5),0)
+
+#makeTable([SusDy2O3T[0], SusDy2O3T[1], SusDy2O3T[2]], r'{'+r'$\chi_\text{Nd_2O_3}$'+r'} & {'+r'$\chi_text{Gd_2O_3}$'+r'} & {'+r'$\chi_text{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
+
+
 
 
 #Tabellen
