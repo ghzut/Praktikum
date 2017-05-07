@@ -2,12 +2,105 @@
 \label{sec:Auswertung}
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
- Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt. 
+ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 
-\subsection{Bestimmung der Grenzspannungen für die verschiedenen Wellenlängen}
+\subsection{Untersuchung der Filterkurve des Selektiv-Verstärkers}
+
+\begin{table}
+ \centering
+ \caption{Die an der Brückenschaltung gemessenen Spannungen in Abhängigkeit der Wechselspannungsfrequenz.}
+ \input{build/tabKurvenergebnisse1.tex}
+ \input{build/tabKurvenergebnisse2.tex}
+\end{table}
+
+
+\begin{figure}
+ \centering
+ \caption{Die Filterkurve des Selektiv-Verstärkers.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Resonanzkurve.pdf}
+ \label{fig:GraphSelektiv}
+\end{figure}
+
+Zunächst wird der Spannungsverlauf des Selektiv-Verstärkers betrachtet. Hierbei
+zeigt der Graph in Abb. \ref{fig:GraphSelektiv} einen deutlichen , symmetrischen
+Peak bei ca. $\SI{35.17}{\kilo\hertz}$. Mithilfe eines exponentiellen Fits der Form:
+
+\begin{equation}
+  y = a \cdot \exp(-b|x-c|)+d
+  \end{equation}
+
+lässt sich der interessante Bereich um das Maximum geeignet betrachten. Hierbei
+wurden der Streckungsfaktor $a = 900$ und das Maximum des Verlaufes $c = 35.17$ manuell gesetzt. Die Parameter $b$
+und $d$ wurden mithilfe von Curvefit bestimmt und liegen bei $b = 2.29$ und $d = 65.26$.
+Über den Fit lässt sich die Güte experimentell zu ca. $Q = 107$ bestimmen. Diese
+liegt in unmittelbarer Nähe zur eingestellten Güte von $Q = 100$. Der Unterschied
+ist auf die Natur des Fittes zurückzuführen. Die Eingangsfrequenz der
+Wechselspannungsquelle wird daher für die folgenden Versuche auf ca. $\SI{35.17}{\kilo\hertz}$
+gestellt. Aufgrund der groben Frequenzeinstellungsmöglichkeiten der Quelle und der hohen Güte
+ist jedoch mit einer stark abgeschwächten Effektivität des Selektiv-Verstärkers zu rechnen.
+\subsection{Die aufgenommenen Daten für die Suszeptibilitätsbestimmung}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Werte für $Nd_2O_3$.}
+ \input{build/tabNd2O3.tex}
+ \label{tab:Nd2O3}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Werte für $Gd_2O_3$.}
+ \input{build/tabGd2O3.tex}
+ \label{tab:Gd2O3}
+\end{table}
+
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Werte für $Dy_2O_3$.}
+ \input{build/tabDy2O3.tex}
+ \label{tab:Dy2O3}
+\end{table}
+
+\subsection{experimentelle Bestimmung der Suszeptibilität über die Spannungsdifferenz}
+
+\begin{table}
+ \centering
+ \caption{Die mit der Spannungsdifferenz bestimmten Suszeptibilitäten.}
+ \input{build/SusU.tex}
+ \label{tab:SusU}
+\end{table}
+
+Da die eingestellte Wechselspannungsfrequenz hinreichend groß ist folgt die
+Suszibilität mit Formel \ref{eq:SusU}. Es wird eine Querschnittsfläche $F$
+der Messspule von $\SI{86.6}{\milli\square\meter}$ angenommen. Der reale Probenquerschnitt $Q_\text{real}$,
+unterscheidet sich von dem eines Einkristalls, da das Probenmaterial staubförmig ist. Für ihn gilt:
+\begin{equation}
+  Q_\text{real} = \frac{M}{L \rho}\text{.}
+\end{equation}
+Hierbei bezeichnet $M$ die Masse, $L$ die Länge und $\rho$ die Einkristalldichte der Probe.
+Mithilfer oben genannter Überlegegungen und den Spannungsdaten der Tabellen \ref{tab:Nd2O3},\ref{tab:Gd2O3},\ref{tab:Dy2O3}
+ergeben sich die Suszeptibilitäten in Tabelle \ref{tab:SusU}.
 
 
 
- 
+\subsection{experimentelle Bestimmung der Suszeptibilität über die Widerstandsdifferenz}
 
- 
+
+\begin{table}
+ \centering
+ \caption{Die mit der Widerstandsdifferenz bestimmten Suszeptibilitäten.}
+ \input{build/SusR.tex}
+ \label{tab:SusR}
+\end{table}
+
+
+Ähnlich folgen sich die Suszeptibilitäten über die Widerstandsdifferenz. Diese ergeben sich mit Formel
+\ref{eq:SusR}. Hierzu werden die bekannten $F$ und $Q_\text{real}$ sowie die Widerstandsmesswerte
+der Tabellen \ref{tab:Nd2O3},\ref{tab:Gd2O3},\ref{tab:Dy2O3} verwendet.
+Bei den Messwerten von $R_3$ muss zusätzlich beachtet werden, dass es sich nur
+um Schrittzahlen handelt und eine Schrittweite $\SI{0.005}{\ohm}$ beträgt.
+Zusätzlich besteht $R_3$ auch noch aus einem weiteren, bereits integriertem Widerstand
+der Größe $\SI{998}{\ohm}$, welcher addiert werden muss. Mit diesen Angaben folgen die Suszeptibilitäten in Tabelle \ref{tab:SusR}
+
+\subsection{Bestimmung der theoretischen Suszeptibilitäten}
