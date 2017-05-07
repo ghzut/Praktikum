@@ -18,7 +18,7 @@ mit der Suszeptibilität $\chi$. Diese ist materialspezifisch und hängt insbeso
 \begin{equation}
 	\vec{u}_\text{S}=-g_\text{S} \frac{\mu_0\text{B}}{\hslash} \vec{S}\text{,}
 \end{equation}
-wobei $\mu_0\text{B}=\frac{e_0}{2 m_0} \hslash$ das Bohrsche Magneton und $g_\text{S}$ das gyromagnetische Verhältnis des freien Elektrons ist. Die Drehimpulse sind gequantelt und es gilt für jeden der Drehimpulse $|\vec{A}|= \sqrt{A(A+1)} \hslash$. Durch einsetzen, umformen mithilfe der in Abbildung \ref{label} dargestellten Relationen und der Näherung $g_\text{S}\approx 2$ ergibt sich schließlich für den Betrag des gesamten Drehmomentes:
+wobei $\mu_0\text{B}=\frac{e_0}{2 m_0} \hslash$ das Bohrsche Magneton und $g_\text{S}$ das gyromagnetische Verhältnis des freien Elektrons ist. Die Drehimpulse sind gequantelt und es gilt für jeden der Drehimpulse $|\vec{A}|= \sqrt{A(A+1)} \hslash$. Durch Einsetzen, Umformen mithilfe der in Abbildung \ref{label} dargestellten Relationen und der Näherung $g_\text{S}\approx 2$ ergibt sich schließlich für den Betrag des gesamten Drehmomentes:
 \begin{equation}
 	|\vec{u}_\text{J}|\approx \mu_\text{B} g_\text{J} \sqrt{J(J+1)} \text{.}
 \end{equation}
@@ -28,11 +28,11 @@ Der Landé-Faktor $g_\text{J}$ lässt sich folgendermaßen berechnen:
 \end{equation}
 Nun ist auch die Richtung des magnetischen Momentes gequantelt. Es gibt $2 J +1$ verschiedene Winkel zwischen dem magnetischem Moment und dem anliegenden magnetischen Flusses, welche die jeweilige potentielle Energie bestimmen. Nun kann die Besetzungshäufigkeit eines Energieniveaus in Abhängigkeit von der Temperatur durch die Boltzmann-Verteilung beschrieben werden. Dadurch kann das mittlere magnetische Moment bestimmt werden:
 \begin{equation}
-	\bar{u}=-\mu_\text{B} g_\text{J} \frac{\sum\limits_{m=-J}^{J} m \exp\left(\frac{-\mu_\text{B} g_\text{J} m B}{k T}\right)}{\sum\limits_{m=-J}^{J} \exp\left(\frac{-\mu_\text{B} g_\text{J} m B}{k T}\right)}\text{.}
+	\bar{u}\approx -\mu_\text{B} g_\text{J} \frac{\sum\limits_{m=-J}^{J} m \exp\left(\frac{-\mu_\text{B} g_\text{J} m B}{k T}\right)}{\sum\limits_{m=-J}^{J} \exp\left(\frac{-\mu_\text{B} g_\text{J} m B}{k T}\right)}\text{.}
 \end{equation}
 Hierin bezeichnet $B$ den Betrag des magnetischen Flusses, $k$ die Boltzmann-Konstante und $T$ die Temperatur.  Durch eine Näherung für Zimmertemperatur und Feldern unter $\SI{1}{\tesla}$ folgt für die gesuchte paramagnetische Suszeptibilität
 \begin{equation}
-	\chi = \frac{\mu_0 \mu_\text{B}^2 g_\text{J}^2 N J(J+1)}{3 k T}\text{.}
+	\chi \approx \frac{\mu_0 \mu_\text{B}^2 g_\text{J}^2 N J(J+1)}{3 k T}\text{.}
 \end{equation}
 
 
@@ -40,7 +40,7 @@ Hierin bezeichnet $B$ den Betrag des magnetischen Flusses, $k$ die Boltzmann-Kon
 Um nun für verschiedene Materialien die magnetische Suszeptibilität berechnen zu können sind Kenntnisse über die Bahnimpulsquantenzahl $L$, die Spinquantenzahl $S$ und die Gesamtdrehimpulsquantenzahl $J$ des Materials notwendig. Bei seltenen Erden tragen nur die Elektronen in der $4f$-Unterschale zu diesen bei. Es ist also notwendig die Anzahl der Elektronen in dieser Unterschale zu kennen. Die Anordnung der Elektronen und der daraus resultierenden Drehimpulse können mit den folgenden Hundschen Regeln bestimmt werden:
 \begin{enumerate}
 	\item Der Gesamtspin $S=\sum_{i} s_i$ ist maximal unter Berücksichtigung des Pauli-Prinzips. \label{Regel1}
-	\item Der Gesamtdrehimpuls $L=\sum_i l_i$ ist unter Berücksichtigung von Regel \ref{Regel1} und dem Pauli-Prinzip maximal. \label{Regel2}
+	\item Der Gesamtbahndrehimpuls $L=\sum_i l_i$ ist unter Berücksichtigung von Regel \ref{Regel1} und dem Pauli-Prinzip maximal. \label{Regel2}
 	\item Der Gesamtdrehimpuls ist $J=L+S$ falls die Anzahl der Elektronen in der Schale großer als die Hälfte der maximal möglichen Anzahl ist, ansonsten $J=L-S$. \label{Regel3}
 \end{enumerate}
 In einer $4f$-Schale ist ein maximaler Bahndrehimpuls $l$ von 3 und ein Spin $s$ von $\pm \frac{1}{2}$ möglich. Da nach dem Pauli-Prinzip nur jeweils ein Elektron die gleiche Kombination von Bahndrehimpuls und Spin haben kann, können in der $4f$-Unterschale bei Seltenen-Erd-Atomen maximal 14 Elektronen vorkommen.
