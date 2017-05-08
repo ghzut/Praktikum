@@ -73,7 +73,7 @@ plt.plot(Kurvenmesswerte[0], Kurvenmesswerte[1], 'gx', label='Darstellung der Me
 plt.plot(Kurvenfitpunkte,Resonanzkurve2(Kurvenfitpunkte,Kurvenfit[0][0],Kurvenfit[0][1]),label='exponentieller Fit')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
-plt.xlabel(r'$f/\si{\hertz}$')
+plt.xlabel(r'$f/\si{\kilo\hertz}$')
 plt.ylabel(r'$U/\si{\milli\volt}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
@@ -225,4 +225,14 @@ makeTable([C6O12Pr2[0], C6O12Pr2[2], C6O12Pr2[3], C6O12Pr2[1], C6O12Pr2[4], C6O1
 #tabelle mit spindaten:
 spindaten = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[1.5,3.5,2.5],[6,0,5],[4.5,-3.5,7.5]]
 print("spindaten",spindaten)
-makeTable([spindaten[0], spindaten[1], spindaten[2], spindaten[3]], r'{'+r'$Probenstoff$'+r'} & {'+r'$S$'+r'} & {'+r'$L$'+r'} & {'+r'$J$'+r'}','tabspins' , ['c' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]'] ,  ["%s", "%1.2f", "%1.2f", "%3.0f"])
+makeTable([spindaten[0], spindaten[1], spindaten[2], spindaten[3]], r'{'+r'$Probenstoff$'+r'} & {'+r'$S$'+r'} & {'+r'$L$'+r'} & {'+r'$J$'+r'}','tabspins' , ['c' , 'S[table-format=1.1]',  'S[table-format=1.1]',  'S[table-format=1.1]'] ,  ["%s", "%1.1f", "%1.1f", "%1.1f"])
+
+#molaren Massen der Proben liegen bei $M ( Nd_2 O_3 ) = \SI{0.336481}{\kilogram\per\mole} $ \cite{MNd2O3},
+#$M ( Gd_2 O_3 ) = \SI{0.362497}{\kilogram\per\mole} $ \cite{MGd2O3} und
+#$M ( Dy_2 O_3 ) = \SI{0.372997}{\kilogram\per\mole} $ \cite{MDy2O3}.
+
+
+
+Basisdatentransp = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[0.162,0.165,0.17],[0.009,0.01408,0.0186],[7240,7400,7800],[0.336,0.362,0.373]]
+print("Basisdaten",Basisdatentransp)
+makeTable([Basisdatentransp[0], Basisdatentransp[1], Basisdatentransp[2], Basisdatentransp[3],Basisdatentransp[4]], r'{'+r'$Probenstoff$'+r'} & {'+r'$l/\si{\meter}$'+r'} & {'+r'$m/\si{\kilogram}$'+r'} & {'+r'$\rho/\si[per-mode=reciprocal]{\kilogram\per\meter\tothe{3}}$'+r'} & {'+r'$M/\si[per-mode=reciprocal]{\kilogram\per\mole}$'+r'}','tabbasis' , ['c' , 'S[table-format=1.3]',  'S[table-format=1.5]',  'S[table-format=4.0]',  'S[table-format=1.3]'] ,  ["%s", "%1.3f", "%1.5f", "%4.0f", "%1.3f"])
