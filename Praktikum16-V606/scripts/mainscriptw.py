@@ -134,6 +134,7 @@ makeTable([[unp.nominal_values(SusNd2O3M)],[unp.std_devs(SusNd2O3M)],[unp.nomina
 def suszintibilitaetU(Q,Ubr):
 	return 4*(0.0000866/Q)*(Ubr/0.8)
 
+
 SusGd2O3U = suszintibilitaetU(querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]),0.001*Gd2O3[3])
 print("SusGd2O3U",SusGd2O3U)
 
@@ -183,7 +184,7 @@ GjNd2O3 = Gj(4.5,6,1.5)
 GjGd2O3 = Gj(-3.5,0,3.5)
 GjDy2O3 = Gj(7.5,5,2.5)
 
-
+print(GjNd2O3,GjGd2O3,GjDy2O3)
 
 SusDy2O3T = np.array([Sus(GjDy2O3,NDy2O3,7.5), Sus(GjNd2O3,NNd2O3,4.5), Sus(GjGd2O3,NGd2O3,-3.5)])
 print("theorie",SusDy2O3T)
