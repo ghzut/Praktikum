@@ -121,9 +121,9 @@ SusC6O12Pr2 = Suszeptibilitaet(C6O12Pr2[5],C6O12Pr2[1],0.0000866)
 print("SusC6O12Pr2",SusC6O12Pr2)
 
 
-SusGd2O3M = unp.uarray(np.mean(SusGd2O3),np.std(SusGd2O3))
-SusNd2O3M = unp.uarray(np.mean(SusNd2O3),np.std(SusNd2O3))
-SusDy2O3M = unp.uarray(np.mean(SusDy2O3),np.std(SusDy2O3))
+SusGd2O3M = unp.uarray(np.mean(SusGd2O3),stats.sem(SusGd2O3))
+SusNd2O3M = unp.uarray(np.mean(SusNd2O3),stats.sem(SusNd2O3))
+SusDy2O3M = unp.uarray(np.mean(SusDy2O3),stats.sem(SusDy2O3))
 
 makeTable([[unp.nominal_values(SusNd2O3M)],[unp.std_devs(SusNd2O3M)],[unp.nominal_values(SusGd2O3M)],[unp.std_devs(SusGd2O3M)],[unp.nominal_values(SusDy2O3M)],[unp.std_devs(SusDy2O3M)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusR',[r'S[table-format=1.5]',  r'@{${}\pm{}$} S[table-format=1.5]',r'S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]', r' S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]'], ["%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f"])
 
@@ -147,9 +147,9 @@ print("SusDy2O3U",SusDy2O3U)
 SusC6O12Pr2U = suszintibilitaetU(0.0000866,0.001*C6O12Pr2[3])
 print("SusC6O12Pr2U",SusC6O12Pr2U)
 
-SusGd2O3UM = unp.uarray(np.mean(SusGd2O3U),np.std(SusGd2O3U))
-SusNd2O3UM = unp.uarray(np.mean(SusNd2O3U),np.std(SusNd2O3U))
-SusDy2O3UM = unp.uarray(np.mean(SusDy2O3U),np.std(SusDy2O3U))
+SusGd2O3UM = unp.uarray(np.mean(SusGd2O3U),stats.sem(SusGd2O3U))
+SusNd2O3UM = unp.uarray(np.mean(SusNd2O3U),stats.sem(SusNd2O3U))
+SusDy2O3UM = unp.uarray(np.mean(SusDy2O3U),stats.sem(SusDy2O3U))
 
 
 makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nominal_values(SusGd2O3UM)],[unp.std_devs(SusGd2O3UM)],[unp.nominal_values(SusDy2O3UM)],[unp.std_devs(SusDy2O3UM)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusU',[r'S[table-format=1.5]',  r'@{${}\pm{}$} S[table-format=1.5]',r'S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]', r' S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]'], ["%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f"])
@@ -161,13 +161,12 @@ makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nomi
 uB = 0.5 * (const.value("electron volt")/const.value("electron mass"))*const.value("Planck constant")
 
 def Gj(J,L,S):
-	return (3*J*(J+1)+S*(S+1)-L*(L+1))/(2*J*(J*1))
+	return (3*J*(J+1)+S*(S+1)-L*(L+1))/(2*J*(J+1))
 
 def N(m,M,l,Q):
-    return const.value("Avogadro constant")*m/(M*l*Q)
+    return 2*const.value("Avogadro constant")*m/(M*l*Q)
 
 #https://pubchem.ncbi.nlm.nih.gov/compound/159373#section=Top
-
 NNd2O3 = N(Basisdaten[2][2],0.336481,Basisdaten[2][1],querschnitt(Basisdaten[2][1],Basisdaten[2][3],Basisdaten[2][2]))
 #https://pubchem.ncbi.nlm.nih.gov/compound/159427
 NGd2O3 = N(Basisdaten[3][2],0.362497,Basisdaten[3][1],querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]))
@@ -178,7 +177,7 @@ NDy2O3 = N(Basisdaten[1][2],0.372997,Basisdaten[1][1],querschnitt(Basisdaten[1][
 
 
 def Sus(Gj,N,J):
-	return const.value("mag. constant")*(uB**2)*(Gj**2)*N*J*(J+1)/(3*const.value("Boltzmann constant")*(293.15))
+	return (const.value("mag. constant")*(uB**2)*(Gj**2)*N*J*(J+1))/(3*const.value("Boltzmann constant")*(293.15))
 
 GjNd2O3 = Gj(4.5,6,1.5)
 GjGd2O3 = Gj(-3.5,0,3.5)
@@ -200,7 +199,7 @@ makeTable([[SusDy2O3T[1]], [SusDy2O3T[2]], [SusDy2O3T[0]]], r'{'+r'$\chi_{Nd_2O_
     #Tabelle der Messwerte der Resonanzkurve
     #1.Teil
 
-makeTable([Kurvenmesswerte[0] [0:len(Kurvenmesswerte[0])//2],Kurvenmesswerte[1] [0:len(Kurvenmesswerte[0])//2] ], r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
+makeTable([Kurvenmesswerte[0] [0:len(Kurvenmesswerte[0])//2+1],Kurvenmesswerte[1] [0:len(Kurvenmesswerte[0])//2+1] ], r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
    #2.Teil
 makeTable([Kurvenmesswerte[0][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))] ,Kurvenmesswerte[1][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))]] , r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse2' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
 
