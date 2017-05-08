@@ -158,9 +158,6 @@ makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nomi
 #Suszeptibilität theoretische Berechnung
 
 uB = 0.5 * (const.value("electron volt")/const.value("electron mass"))*const.value("Planck constant")
-#J:Nd3+ = 4.5
-#J:Gd3+ = -4.5
-#J:Dy3+ = 9.5
 
 def Gj(J,L,S):
 	return (3*J*(J+1)+S*(S+1)-L*(L+1))/(2*J*(J*1))
