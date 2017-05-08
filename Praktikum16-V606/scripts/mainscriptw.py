@@ -193,7 +193,7 @@ print("theorie",SusDy2O3T)
 #SusNd2O3T = np.array(Sus(GjNd2O3,NNd2O3,4.5),0)
 #SusGd2O3T = np.array(Sus(GjGd2O3,NGd2O3,-3.5),0)
 
-makeTable([[SusDy2O3T[0]], [SusDy2O3T[1]], [SusDy2O3T[2]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
+makeTable([[SusDy2O3T[1]], [SusDy2O3T[2]], [SusDy2O3T[0]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
 
 
 
