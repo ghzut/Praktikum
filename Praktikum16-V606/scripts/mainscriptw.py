@@ -193,7 +193,7 @@ print("theorie",SusDy2O3T)
 #SusNd2O3T = np.array(Sus(GjNd2O3,NNd2O3,4.5),0)
 #SusGd2O3T = np.array(Sus(GjGd2O3,NGd2O3,-3.5),0)
 
-#makeTable([SusDy2O3T[0], SusDy2O3T[1], SusDy2O3T[2]], r'{'+r'$\chi_\text{Nd_2O_3}$'+r'} & {'+r'$\chi_text{Gd_2O_3}$'+r'} & {'+r'$\chi_text{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
+makeTable([[SusDy2O3T[0]], [SusDy2O3T[1]], [SusDy2O3T[2]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
 
 
 
@@ -220,3 +220,9 @@ makeTable([Dy2O3[0], Dy2O3[2], Dy2O3[3], Dy2O3[1], Dy2O3[4], Dy2O3[5]], r'{'+r'$
 makeTable([Gd2O3[0], Gd2O3[2], Gd2O3[3], Gd2O3[1], Gd2O3[4], Gd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabGd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
 #C6O12Pr2
 makeTable([C6O12Pr2[0], C6O12Pr2[2], C6O12Pr2[3], C6O12Pr2[1], C6O12Pr2[4], C6O12Pr2[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
+
+
+#tabelle mit spindaten:
+spindaten = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[1.5,3.5,2.5],[6,0,5],[4.5,-3.5,7.5]]
+print("spindaten",spindaten)
+makeTable([spindaten[0], spindaten[1], spindaten[2], spindaten[3]], r'{'+r'$Probenstoff$'+r'} & {'+r'$S$'+r'} & {'+r'$L$'+r'} & {'+r'$J$'+r'}','tabspins' , ['c' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]'] ,  ["%s", "%1.2f", "%1.2f", "%3.0f"])
