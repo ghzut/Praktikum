@@ -3,12 +3,12 @@
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
  Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
-
+Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
 \subsection{Untersuchung der Filterkurve des Selektiv-Verstärkers}
 
 \begin{table}
  \centering
- \caption{Die an der Brückenschaltung gemessenen Spannungen in Abhängigkeit der Wechselspannungsfrequenz.}
+ \caption{Die an dem Selektiv-Verstärker gemessenen Spannungen in Abhängigkeit der Eingangsspannungsfrequenz.}
  \input{build/tabKurvenergebnisse1.tex}
  \input{build/tabKurvenergebnisse2.tex}
 \end{table}
@@ -22,7 +22,7 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
 \end{figure}
 
 Zunächst wird der Spannungsverlauf des Selektiv-Verstärkers betrachtet. Hierbei
-zeigt der Graph in Abb. \ref{fig:GraphSelektiv} einen deutlichen , symmetrischen
+zeigt der Graph in Abb. \ref{fig:GraphSelektiv} einen deutlichen, symmetrischen
 Peak bei ca. $\SI{35.17}{\kilo\hertz}$. Mithilfe eines exponentiellen Fits der Form:
 
 \begin{equation}
@@ -32,12 +32,16 @@ Peak bei ca. $\SI{35.17}{\kilo\hertz}$. Mithilfe eines exponentiellen Fits der F
 lässt sich der interessante Bereich um das Maximum geeignet betrachten. Hierbei
 wurden der Streckungsfaktor $a = 900$ und das Maximum des Verlaufes $c = 35.17$ manuell gesetzt. Die Parameter $b$
 und $d$ wurden mithilfe von Curvefit bestimmt und liegen bei $b = 2.29$ und $d = 65.26$.
+Die Eingangsfrequenz der
+Wechselspannungsquelle wird daher für die folgenden Versuche auf ca. $\SI{35.17}{\kilo\hertz}$
+gestellt. Bei einer Eingangsspannung von $\SI{0.95}{\volt}$ entsteht außerdem ein
+Verstärkungsfaktor von ca. 1.02.
 Über den Fit lässt sich die Güte experimentell zu ca. $Q = 107$ bestimmen. Diese
 liegt in unmittelbarer Nähe zur eingestellten Güte von $Q = 100$. Der Unterschied
-ist auf die Natur des Fittes zurückzuführen. Die Eingangsfrequenz der
-Wechselspannungsquelle wird daher für die folgenden Versuche auf ca. $\SI{35.17}{\kilo\hertz}$
-gestellt. Aufgrund der groben Frequenzeinstellungsmöglichkeiten der Quelle und der hohen Güte
-ist jedoch mit einer stark abgeschwächten Effektivität des Selektiv-Verstärkers zu rechnen.
+ist auf die Form des Fittes zurückzuführen. Aufgrund der groben Frequenzeinstellungsmöglichkeiten der Quelle und der hohen Güte
+ist jedoch nicht die volle Verstärkung zu erwarten,
+ weshalb der Verstärkungsfaktor nicht mit in die Rechnung einbezogen wird.
+
 \subsection{Die aufgenommenen Daten für die Suszeptibilitätsbestimmung}
 
 \begin{table}
@@ -127,10 +131,10 @@ der Größe $\SI{998}{\ohm}$, welcher addiert werden muss. Mit diesen Angaben fo
 
 Auf Basis der in der Theorie dargestellten Hundschen Regeln ergeben sich die
 benötigten Parameter Spin $S$, Gesamtbahndrehimpuls $L$ und Gesamtdrehimpuls $J$. Über Formel
-HGGJH reultiert zusätzlich der Landefaktor . Die äußere Elektronenhülle von $Nd^+ $
-besitzt 3 4f-Elektronen , die von $Gd^+ $  7 und die von
+\ref{eq:g_J} reultiert zusätzlich der Landefaktor. Die äußere Elektronenhülle von $Nd^+ $
+besitzt 3 4f-Elektronen, die von $Gd^+ 7$ und die von
 $Dy^+ 9$. Damit ergeben sich die Parameter in Tabelle \ref{tab:spins}.
-Die Anzahl der magnetischen Momente pro Volumen $N$ ist gleich der Ionen pro
+Die Anzahl der magnetischen Momente pro Volumen $N$ ist gleich der Ionenzahl pro
 Volumen und berechnet sich über:
 \begin{equation}
   N = N_\text{A}\frac{m}{M l Q_\text{real}}\text{,}

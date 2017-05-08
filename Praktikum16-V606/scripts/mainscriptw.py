@@ -202,9 +202,9 @@ makeTable([[SusDy2O3T[0]], [SusDy2O3T[1]], [SusDy2O3T[2]]], r'{'+r'$\chi_{Nd_2O_
     #Tabelle der Messwerte der Resonanzkurve
     #1.Teil
 
-makeTable([Kurvenmesswerte[0] [0:len(Kurvenmesswerte[0])//2],Kurvenmesswerte[1] [0:len(Kurvenmesswerte[0])//2] ], r'{'+r'$f/\si{\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
+makeTable([Kurvenmesswerte[0] [0:len(Kurvenmesswerte[0])//2],Kurvenmesswerte[1] [0:len(Kurvenmesswerte[0])//2] ], r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
    #2.Teil
-makeTable([Kurvenmesswerte[0][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))] ,Kurvenmesswerte[1][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))]] , r'{'+r'$f/\si{\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse2' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
+makeTable([Kurvenmesswerte[0][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))] ,Kurvenmesswerte[1][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))]] , r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse2' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
 
 
 #Tabelle der basisdatenstoffe
