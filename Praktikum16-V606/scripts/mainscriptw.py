@@ -125,7 +125,7 @@ SusGd2O3M = unp.uarray(np.mean(SusGd2O3),stats.sem(SusGd2O3))
 SusNd2O3M = unp.uarray(np.mean(SusNd2O3),stats.sem(SusNd2O3))
 SusDy2O3M = unp.uarray(np.mean(SusDy2O3),stats.sem(SusDy2O3))
 
-makeTable([[unp.nominal_values(SusNd2O3M)],[unp.std_devs(SusNd2O3M)],[unp.nominal_values(SusGd2O3M)],[unp.std_devs(SusGd2O3M)],[unp.nominal_values(SusDy2O3M)],[unp.std_devs(SusDy2O3M)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusR',[r'S[table-format=1.5]',  r'@{${}\pm{}$} S[table-format=1.5]',r'S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]', r' S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]'], ["%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f"])
+makeTable([[unp.nominal_values(SusNd2O3M)],[unp.std_devs(SusNd2O3M)],[unp.nominal_values(SusGd2O3M)],[unp.std_devs(SusGd2O3M)],[unp.nominal_values(SusDy2O3M)],[unp.std_devs(SusDy2O3M)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusR',[r'S[table-format=1.4]',  r'@{${}\pm{}$} S[table-format=1.4]',r'S[table-format=1.3]', r'@{${}\pm{}$} S[table-format=1.3]', r' S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]'], ["%1.4f", "%1.4f", "%1.3f", "%1.3f", "%1.4f", "%1.4f"])
 
 
 #Über die Spannungsdifferenz
@@ -152,7 +152,7 @@ SusNd2O3UM = unp.uarray(np.mean(SusNd2O3U),stats.sem(SusNd2O3U))
 SusDy2O3UM = unp.uarray(np.mean(SusDy2O3U),stats.sem(SusDy2O3U))
 
 
-makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nominal_values(SusGd2O3UM)],[unp.std_devs(SusGd2O3UM)],[unp.nominal_values(SusDy2O3UM)],[unp.std_devs(SusDy2O3UM)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusU',[r'S[table-format=1.5]',  r'@{${}\pm{}$} S[table-format=1.5]',r'S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]', r' S[table-format=1.5]', r'@{${}\pm{}$} S[table-format=1.5]'], ["%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f", "%1.5f"])
+makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nominal_values(SusGd2O3UM)],[unp.std_devs(SusGd2O3UM)],[unp.nominal_values(SusDy2O3UM)],[unp.std_devs(SusDy2O3UM)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusU',[r'S[table-format=1.4]',  r'@{${}\pm{}$} S[table-format=1.4]',r'S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]', r' S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]'], ["%1.4f", "%1.4f", "%1.4f", "%1.4f", "%1.4f", "%1.4f"])
 
 
 
@@ -190,7 +190,7 @@ print("theorie",SusDy2O3T)
 #SusNd2O3T = np.array(Sus(GjNd2O3,NNd2O3,4.5),0)
 #SusGd2O3T = np.array(Sus(GjGd2O3,NGd2O3,-3.5),0)
 
-makeTable([[SusDy2O3T[1]], [SusDy2O3T[2]], [SusDy2O3T[0]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.5]' , 'S[table-format=0.5]', 'S[table-format=0.5]' ] ,  ["%0.5f", "%0.5f" , "%0.5f"])
+makeTable([[SusDy2O3T[1]], [SusDy2O3T[2]], [SusDy2O3T[0]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.3]' , 'S[table-format=0.3]', 'S[table-format=0.3]' ] ,  ["%0.3f", "%0.3f" , "%0.3f"])
 
 
 
@@ -210,11 +210,11 @@ makeTable([Kurvenmesswerte[0][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswert
 
 #Stofftabellenmesswerte
 #Nd2O3
-makeTable([Nd2O3[0], Nd2O3[2], Nd2O3[3], Nd2O3[1], Nd2O3[4], Nd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
+makeTable([Nd2O3[0], Nd2O3[2], Nd2O3[3], Nd2O3[1], Nd2O3[4], Nd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
 #Dy2O3
-makeTable([Dy2O3[0], Dy2O3[2], Dy2O3[3], Dy2O3[1], Dy2O3[4], Dy2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabDy2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
+makeTable([Dy2O3[0], Dy2O3[2], Dy2O3[3], Dy2O3[1], Dy2O3[4], Dy2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabDy2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
 #Gd2O3
-makeTable([Gd2O3[0], Gd2O3[2], Gd2O3[3], Gd2O3[1], Gd2O3[4], Gd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabGd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
+makeTable([Gd2O3[0], Gd2O3[2], Gd2O3[3], Gd2O3[1], Gd2O3[4], Gd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabGd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
 #C6O12Pr2
 makeTable([C6O12Pr2[0], C6O12Pr2[2], C6O12Pr2[3], C6O12Pr2[1], C6O12Pr2[4], C6O12Pr2[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
 
@@ -232,4 +232,4 @@ makeTable([spindaten[0], spindaten[1], spindaten[2], spindaten[3]], r'{'+r'$Prob
 
 Basisdatentransp = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[0.162,0.165,0.17],[0.009,0.01408,0.0186],[7240,7400,7800],[0.336,0.362,0.373]]
 print("Basisdaten",Basisdatentransp)
-makeTable([Basisdatentransp[0], Basisdatentransp[1], Basisdatentransp[2], Basisdatentransp[3],Basisdatentransp[4]], r'{'+r'$Probenstoff$'+r'} & {'+r'$l/\si{\meter}$'+r'} & {'+r'$m/\si{\kilogram}$'+r'} & {'+r'$\rho/\si[per-mode=reciprocal]{\kilogram\per\meter\tothe{3}}$'+r'} & {'+r'$M/\si[per-mode=reciprocal]{\kilogram\per\mole}$'+r'}','tabbasis' , ['c' , 'S[table-format=1.3]',  'S[table-format=1.5]',  'S[table-format=4.0]',  'S[table-format=1.3]'] ,  ["%s", "%1.3f", "%1.5f", "%4.0f", "%1.3f"])
+makeTable([Basisdatentransp[0], Basisdatentransp[1], Basisdatentransp[2], Basisdatentransp[3],Basisdatentransp[4]], r'{'+r'$Probenstoff$'+r'} & {'+r'$l/\si{\meter}$'+r'} & {'+r'$m/\si{\kilogram}$'+r'} & {'+r'$\rho/\si[per-mode=reciprocal]{\kilogram\per\meter\tothe{3}}$'+r'} & {'+r'$M/\si[per-mode=reciprocal]{\kilogram\per\mole}$'+r'}','tabbasis' , ['c' , 'S[table-format=1.3]',  'S[table-format=1.3]',  'S[table-format=4.0]',  'S[table-format=1.3]'] ,  ["%s", "%1.3f", "%1.3f", "%4.0f", "%1.3f"])
