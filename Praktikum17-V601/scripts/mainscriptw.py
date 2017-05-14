@@ -119,6 +119,8 @@ print('a1w in cm:', a1w)
 print('a/a1w', a/a1w)
 print('a2w in cm:', a2w)
 print('a/a2w', a/a2w)
+print('a1xAchsenfaktor:', a1xAchseFaktor)
+print('a2xAchsenfaktor:', a2xAchseFaktor)
 #print('bDiff:', bDiff)
 #print('bDiff in cm:', bDiff/bxAchseFaktor)
 #print('bxAchsenfaktor:', bxAchseFaktor)
@@ -133,13 +135,14 @@ print('cNullstelle:', cNullstelle)
 print('cIonisierungsenergie:', cNullstelle-aK)
 print('cw in cm:', cw)
 print('a/cw', a/cw)
+print('cxAchsenfaktor:', cxAchseFaktor)
 
 
 #5.  Plots
 #   a1neu
 plt.cla()
 plt.clf()
-plt.plot(unp.nominal_values(a1Grad[0]), np.tan(a1Grad[1]/360*2*np.pi), 'rx', label='a1Ableitung')
+plt.plot(unp.nominal_values(a1Grad[0]), np.tan(a1Grad[1]/360*2*np.pi), 'rx', label='Steigung an der ensprechenden Stelle')
 #plt.plot(x, line(x, *unp.nominal_values(a2params)), 'b-', label='a2fit')
 #plt.ylim(0, line(x[-1], *unp.nominal_values(a2params))+0.1)
 #plt.xlim(0, x[-1])
@@ -153,7 +156,7 @@ plt.savefig('build/'+'a1neu')
 #   a2neu
 plt.cla()
 plt.clf()
-plt.plot(unp.nominal_values(a2Grad[0]), np.tan(a2Grad[1]/360*2*np.pi), 'rx', label='a1Ableitung')
+plt.plot(unp.nominal_values(a2Grad[0]), np.tan(a2Grad[1]/360*2*np.pi), 'rx', label='Steigung an der ensprechenden Stelle')
 #plt.ylim(0, line(x[-1], *unp.nominal_values(a2params))+0.1)
 #plt.xlim(0, x[-1])
 plt.xlabel(r'$U_\text{A}/\si{\volt}$')
@@ -163,13 +166,13 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'a2neu')
 
 #   c
-x = np.linspace(unp.nominal_values(cKoordinaten)[0][0],unp.nominal_values(cKoordinaten)[0][-1])
+x = np.linspace(unp.nominal_values(cKoordinaten)[0][0]-0.2,unp.nominal_values(cKoordinaten)[0][-1]+0.2)
 plt.cla()
 plt.clf()
-plt.plot(*unp.nominal_values(cKoordinaten), 'rx', label='c')
-plt.plot(x, line(x, *unp.nominal_values(cparams)), 'b-', label='cfit')
+plt.plot(*unp.nominal_values(cKoordinaten), 'rx', label='Messpunkte')
+plt.plot(x, line(x, *unp.nominal_values(cparams)), 'b-', label='linearer Fit')
 #plt.ylim(0, line(x[-1], *unp.nominal_values(a2params))+0.1)
-#plt.xlim(0, x[-1])
+plt.xlim(x[0], x[-1])
 plt.ylabel(r'$\overline{I}$')
 plt.xlabel(r'$U_\text{B} / \si{\volt}$')
 plt.legend(loc='best')
@@ -183,14 +186,14 @@ makeTable([a2xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\mete
 makeTable([bneuxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuAbstaende', ['S[table-format=1.1]'], ["%1.1f"])
 makeTable([cxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'cAbstaende', ['S[table-format=1.1]'], ["%1.1f"])
 #	Steigung a1
-makeTable([*unp.nominal_values(a1Grad), np.tan(a1Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {Gef\"alle / \si{\degree}}  & {Gef\"alle / \si[per-mode=reciprocal]{\per\volt}}', 'a1Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.3]'], ["%1.2f", "%2.1f", "%2.3f"])
+makeTable([*unp.nominal_values(a1Grad), np.tan(a1Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\overline{I}$ / \si{\degree}}  & {$\overline{I}$ / \si[per-mode=reciprocal]{\per\volt}}', 'a1Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.2]'], ["%1.2f", "%2.1f", "%2.2f"])
 #	Steigung a2
-makeTable([*unp.nominal_values(a2Grad), np.tan(a2Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {Gef\"alle / \si{\degree}}  & {Gef\"alle / \si[per-mode=reciprocal]{\per\volt}}', 'a2Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.3]'], ["%1.2f", "%2.1f", "%2.3f"])
+makeTable([*unp.nominal_values(a2Grad), np.tan(a2Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\overline{I}$ / \si{\degree}}  & {$\overline{I}$ / \si[per-mode=reciprocal]{\per\volt}}', 'a2Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.2]'], ["%1.2f", "%2.1f", "%2.2f"])
 #	Abstände b
 makeTable([unp.nominal_values(bneuDiffOriginal)], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuDiff', ['S[table-format=1.2]'], ["%1.2f"])
 #	koordinaten c
 makeTable([*unp.nominal_values(cKoordinaten)], r'{$U_\text{B} / \si[per-mode=reciprocal]{\volt}$} & {$\overline{I}$} ', 'cKoordinaten', ['S[table-format=2.2]', 'S[table-format=1.2]'], ["%2.2f", "%1.2f"])
 #   Ergebnisse
-makeNewTable([[r'$K_\text{a}$', r'$K_\text{b}$', r'$U_1$', r'$\lambda$', r'$U_\text{ion}$'], [unpFormat(aK, r'\volt'),unpFormat(bneuK, r'\volt'),unpFormat(bneuDiff, r'\electronvolt'),unpFormat(lambdaber*10**9, r'\nano\meter'),unpFormat(cNullstelle-aK, r'\electronvolt')] , [strFormat('-'), strFormat('-'),floatFormat(UanLit, r'\electronvolt'),floatFormat(lambdaLit*10**9, r'\nano\meter',0),floatFormat(UionLit, r'\electronvolt')], [strFormat('-'), strFormat('-'), unpFormat((-bneuDiff+UanLit)/UanLit, r'\percent'),unpFormat((lambdaber-lambdaLit)/lambdaLit, r'\percent'),unpFormat((cNullstelle-aK-UionLit)/UionLit, r'\percent')] ], r'{ } & {gemessen/berechnet} & {Literaturwert} & {Abweichung}', 'Ergebnisse', ['c', ' c', ' c', 'c'])
+makeNewTable([[r'$K_\text{a}$', r'$K_\text{b}$', r'$E_1$', r'$\lambda$', r'$U_\text{ion}$'], [unpFormat(aK, r'\volt'),unpFormat(bneuK, r'\volt'),unpFormat(bneuDiff, r'\electronvolt'),unpFormat(lambdaber*10**9, r'\nano\meter'),unpFormat(cNullstelle-aK, r'\volt')] , [strFormat('-'), strFormat('-'),floatFormat(UanLit, r'\electronvolt'),floatFormat(lambdaLit*10**9, r'\nano\meter',0),floatFormat(UionLit, r'\volt')], [strFormat('-'), strFormat('-'), unpFormat((-bneuDiff+UanLit)/UanLit, r'\percent'),unpFormat((lambdaber-lambdaLit)/lambdaLit, r'\percent'),unpFormat((cNullstelle-aK-UionLit)/UionLit, r'\percent')] ], r'{ } & {gemessen/berechnet} & {Literaturwert} & {Abweichung}', 'Ergebnisse', ['c', ' c', ' c', 'c'])
 
 

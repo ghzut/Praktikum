@@ -58,7 +58,14 @@ ergibt sich schließlich bei einer Temperatur $T=\SI{180(20)}{\degreeCelsius}$ m
 		\end{minipage}
 	\end{table}
 \end{center}
-Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab:a1Abstaende}, \ref{tab:a2Abstaende}, \ref{tab:bneuAbstaende} und \ref{tab:cAbstaende} lassen sich die Umrechnungsfaktoren $f_i$ bestimmen.
+Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab:a1Abstaende}, \ref{tab:a2Abstaende}, \ref{tab:bneuAbstaende} und \ref{tab:cAbstaende} lassen sich die Umrechnungsfaktoren $f$ bestimmen.
+Es ergibt sich für die mittleren Spannungen pro Zentimeter entlang der x-Achse der Graphen \ref{label}:
+\begin{gather*}
+	f_\text{a1}=\SI{0.44(1)}{\volt\per\centi\meter}\\
+	f_\text{a2}=\SI{0.46(1)}{\volt\per\centi\meter}\\
+	f_\text{b}=\SI{2.25(10)}{\volt\per\centi\meter}\\
+	f_\text{c}=\SI{1.18(7)}{\volt\per\centi\meter}\text{.}
+\end{gather*}
 
 
 \subsection{a}
@@ -84,19 +91,33 @@ Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab
 	\centering
 	\input{build/a2Grad.tex}
 \end{table}
-
+Die in den Abbildungen \ref{zzz} und \ref{label} dargestellten Graphen FEHLENDER TEXT
+Das Peak in dem Graphen bei $T=\SI{25}{\degreeCelsius}$ würde ohne Kontaktpotential bei der Beschleunigungsspannung $U_\text{B}=\SI{8.5}{\volt}$ erwartet werden. Jedoch ist das Peak offenbar um das Kontaktpotential verschoben.
+Es kann abgelesen werden
+\begin{displaymath}
+K_\text{a}=\SI{1.77(18)}{\volt}\text{.}
+\end{displaymath}
 \subsection{b}
 \begin{table}
 	\caption{Siebte}
 	\centering
 	\input{build/bneuDiff.tex}
 \end{table}
+Aus den mittleren Abstand zwischen den Peaks in Tabelle \ref{tab:bneuDiff} und dem zuvor bestimmten Umrechnungsfaktor $f_\text{b}$ berechnet sich die 1. Anregungsenergie zu
+\begin{displaymath}
+	E_1=\SI{4.82(9)}{\electronvolt}\text{.}
+\end{displaymath}
+Mit dieser lässt sich die Wellenlänge $\lambda$ der emittierten Strahlung nach ??? berechnen.
+Es ergibt sich
+\begin{displaymath}
+\lambda=\SI{257(5)}{\nano\meter}\text{.}
+\end{displaymath}
 
 
 \subsection{c}
 \begin{figure}
 	\centering
-	\caption{Die Filterkurve des Selektiv-Verstärkers.}
+	\caption{HI.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/c.pdf}
 	\label{fig:GraphSelektiv}
 \end{figure}
@@ -105,6 +126,14 @@ Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab
 	\centering
 	\input{build/cKoordinaten.tex}
 \end{table}
+Die lineare Fit in der Abbildungen \ref{fig:GraphultraV2} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x+b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:cKoordinaten} für die Summe von der Ionisierungsspannung $U_\text{ion}$ und dem Kontaktpotential $K$
+\begin{displaymath}
+	U_\text{ion}+K=\SI{12.2(5)}{\volt}\text{.}
+\end{displaymath}
+Daraus lässt sich nun mit dem zuvor entnommenen Kontaktpotential $K_\text{a}=\SI{1.77(18)}{\volt}$ die Ionisierungsspannung $U_\text{ion}$ berechnen. Es folgt
+\begin{displaymath}
+U_\text{ion}=\SI{10.5(6)}{\volt}\text{.}
+\end{displaymath}
 
 \begin{table}
 	\caption{Neunte}
