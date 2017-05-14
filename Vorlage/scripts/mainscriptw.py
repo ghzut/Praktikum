@@ -1,12 +1,13 @@
 ﻿from table import makeTable
 from bereich import bereich
+from weightedavgandsem import weighted_avg_and_sem
+from weightedavgandsem import avg_and_sem
 import numpy as np
 from scipy import stats
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 import uncertainties.unumpy as unp
 import scipy.constants as const
-
 # BackwardsVNominal = []
 # BackwardsVStd = []
 # for value in BackwardsV:
@@ -15,12 +16,18 @@ import scipy.constants as const
 # BackwardsVNominal = np.array(BackwardsVNominal)
 # BackwardsVStd = np.array(BackwardsVStd)
 
-# makeTable([Gaenge, ForwardsVNominal*100, ForwardsVStd*100, BackwardsVNominal*100, BackwardsVStd*100], r'{'+r'Gang'+r'} & \multicolumn{2}{c}{'+r'$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'} & \multicolumn{2}{c}{'+r'$v_\text{r}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}', 'tabges', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]'], ["%2.0f", "%2.3f", "%2.3f", "%2.3f", "%2.3f"])
+# einfacher:
+# BackwardsVNominal = unp.nominal_values(BackwardsV)
+# BackwardsVStd = unp.std_devs(BackwardsV)
+
+# makeTable([Gaenge, ForwardsVNominal, ForwardsVStd, ], r'{Gang} & \multicolumn{2}{c}{$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$} & ', 'name', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', ], ["%2.0f", "%2.3f", "%2.3f",])
 
 
 #makeTable([Array mit den einzelnen Datenarrays], r'{'+r'Überschrift'+r'} & ' ,'tabges' , ['S[table-format=2.0]', ] ,  ["%2.0f", ])
 
 # unp.uarray(np.mean(), stats.sem())
+# unp.uarray(*avg_and_sem(values)))
+# unp.uarray(*weighted_avg_and_sem(unp.nominal_values(bneuDiff), 1/unp.std_devs(bneuDiff)))
 
 # plt.cla()
 # plt.clf()
@@ -35,6 +42,7 @@ import scipy.constants as const
 # plt.savefig('build/'+'VgegenDeltaV')
 
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
+# params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
 
 #1. Messwerte einlesen

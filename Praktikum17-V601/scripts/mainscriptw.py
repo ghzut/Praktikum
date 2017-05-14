@@ -41,7 +41,13 @@ import scipy.constants as const
 
 #0. Konstanten
 a2Asymtote = 1.3
-cAsymtote = -0.2
+bneuStelleErstesPeak = 3 #in cm
+cAsymtote = -0.25
+a1T=25+273.15#sicher
+a2T=unp.uarray(150,10)+273.15#vieleicht
+bneuT=unp.uarray(180,20)+273.15#vielleichtca.
+cT=unp.uarray(105,5)+273.15#vielleicht
+a=1#in cm
 
 
 #1. Messwerte einlesen
@@ -56,14 +62,11 @@ bneuxAchseAbstände = np.genfromtxt('scripts/bneu', unpack=True) #Abstand in cm 
 bneuxAchseFaktor = 5/unp.uarray(*avg_and_sem(bneuxAchseAbstände)) # Anzahl der Volt pro cm
 cxAchseAbstände = np.genfromtxt('scripts/c', unpack=True) #Abstand in cm zwischen 5 Volt Abständen
 cxAchseFaktor = 5/unp.uarray(*avg_and_sem(cxAchseAbstände)) # Anzahl der Volt pro cm
-
 #   Differenzen der Maxima in b
 bDiff = np.genfromtxt('scripts/bDiff', unpack=True)*bxAchseFaktor
 bDiff = unp.uarray(*weighted_avg_and_sem(unp.nominal_values(bDiff), 1/unp.std_devs(bDiff)))
 bneuDiff = np.genfromtxt('scripts/bneuDiff', unpack=True)*bneuxAchseFaktor
 bneuDiff = unp.uarray(*weighted_avg_and_sem(unp.nominal_values(bneuDiff), 1/unp.std_devs(bneuDiff)))
-
-
 #	x/y-Koordinaten; x-Achse in 1Volt
 a1Koordinaten = np.genfromtxt('scripts/a1Punkte', unpack=True)
 a1Koordinaten = [a1Koordinaten[0]*a1xAchseFaktor, a1Koordinaten[1]]
@@ -75,7 +78,6 @@ a1Grad = np.genfromtxt('scripts/a1Grad', unpack=True)
 a1Grad = [a1Grad[0]*a1xAchseFaktor, a1Grad[1]]
 a2Grad = np.genfromtxt('scripts/a2Grad', unpack=True)
 a2Grad = [a2Grad[0]*a2xAchseFaktor, a2Grad[1]]
-
 #   Steigungen berechnen von a1
 AbleitungVona1 = []
 for i in range(len(a1Koordinaten[0][0:-1])):
@@ -86,7 +88,6 @@ AbleitungVona2 = []
 for i in range(len(a2Koordinaten[0][0:-1])):
     AbleitungVona2.append([(a2Koordinaten[0][i]+a2Koordinaten[0][i+1])/2, (a2Koordinaten[1][i+1]-a2Koordinaten[1][i])/(a2Koordinaten[0][i+1]-a2Koordinaten[0][i])])
 AbleitungVona2 = np.array(AbleitungVona2).T
-
 #2. Fits fitten
 def line(x, a, b):
     return a*x+b
@@ -94,20 +95,41 @@ def line(x, a, b):
 params, covar = curve_fit(line, *unp.nominal_values(cKoordinaten))
 cparams = unp.uarray(params, np.sqrt(np.diag(covar)))
 cNullstelle = (cAsymtote-cparams[1])/cparams[0]
+#3. Berechnungen
+def wmittel(T):
+    return 0.0029/(5.5*10**7*unp.exp(-6876/T))#in cm
 
-#3. Ausgabe
-print('a Position des Peaks:', a1Grad[0][np.tan(a1Grad[1]/360*2*np.pi)==np.max(np.tan(a1Grad[1]/360*2*np.pi))])
-print('aK:', 8.5-a1Grad[0][np.tan(a1Grad[1]/360*2*np.pi)==np.max(np.tan(a1Grad[1]/360*2*np.pi))])
-print('bDiff:', bDiff)
-print('bDiff in cm:', bDiff/bxAchseFaktor)
-print('bxAchsenfaktor:', bxAchseFaktor)
+a1w = wmittel(a1T)
+a2w = wmittel(a2T)
+aP = a1Grad[0][np.tan(a1Grad[1]/360*2*np.pi)==np.max(np.tan(a1Grad[1]/360*2*np.pi))]
+aK = 8.5-aP
+bneuw = wmittel(bneuT)
+bneuK = bneuStelleErstesPeak*bneuxAchseFaktor-bneuDiff
+cw = wmittel(cT)
+#4. Ausgabe
+print('a Position des Peaks:', aP)
+print('aK:', aK)
+print('a1w in cm:', a1w)
+print('a/a1w', a/a1w)
+print('a2w in cm:', a2w)
+print('a/a2w', a/a2w)
+#print('bDiff:', bDiff)
+#print('bDiff in cm:', bDiff/bxAchseFaktor)
+#print('bxAchsenfaktor:', bxAchseFaktor)
 print('bneuDiff:', bneuDiff)
-print('Wellenlänge des emitierten Lichtes:', const.h *const.c/(bneuDiff*const.e))
+print('bneu Wellenlänge des emitierten Lichtes:', const.h *const.c/(bneuDiff*const.e))
+print('bneuK:', bneuK)
+print('bneuw in cm:', bneuw)
+print('a/bneuw', a/bneuw)
 print('bneuDiff in cm:', bneuDiff/bneuxAchseFaktor)
 print('bneuxAchsenfaktor:', bneuxAchseFaktor)
 print('cNullstelle:', cNullstelle)
+print('cIonisierungsenergie:', cNullstelle-aK)
+print('cw in cm:', cw)
+print('a/cw', a/cw)
 
-#4.  Plots
+
+#5.  Plots
 #   a1
 plt.cla()
 plt.clf()
@@ -173,3 +195,5 @@ plt.ylabel(r'$U / \si{\volt}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'c')
+
+#6. Tabellen
