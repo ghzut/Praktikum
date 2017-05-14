@@ -4,4 +4,77 @@
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
-Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+Die Konstanten $k$, $\hbar$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+
+\subsection{Berechnung der mittleren freien Weglänge und Vergleich mit dem Abstand zwischen der BESCH und GITTER}
+
+\subsection{Berechnung des Skalierungsfaktors}
+
+\begin{center}
+	\begin{table}
+		\begin{minipage}[t]{0.5\textwidth}
+			\caption{Erste}
+			\centering
+			\input{build/a1Abstände.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\caption{Zweite}
+			\centering
+			\input{build/a2Abstände.tex}
+		\end{minipage}
+	\end{table}
+\end{center}
+\begin{center}
+	\begin{table}
+		\begin{minipage}[t]{0.5\textwidth}
+			\caption{Dritte}
+			\centering
+			\input{build/bneuAbstände.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\caption{Vierte}
+			\centering
+			\input{build/cAbstände.tex}
+		\end{minipage}
+	\end{table}
+\end{center}
+
+\subsection{a}
+\begin{figure}
+	\centering
+	\caption{Die Filterkurve des Selektiv-Verstärkers.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/a1neu.pdf}
+	\label{fig:GraphSelektiv}
+\end{figure}
+\begin{figure}
+	\centering
+	\caption{Die Filterkurve des Selektiv-Verstärkers.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/a2neu.pdf}
+	\label{fig:GraphSelektiv}
+\end{figure}
+\begin{table}
+	\caption{Fünfte}
+	\centering
+	\input{build/a1Grad.tex}
+\end{table}
+\begin{table}
+	\caption{Sechste}
+	\centering
+	\input{build/a2Grad.tex}
+\end{table}
+
+\subsection{b}
+\begin{table}
+	\caption{Siebte}
+	\centering
+	\input{build/bneuDiff.tex}
+\end{table}
+
+
+\subsection{c}
+\begin{table}
+	\caption{Siebte}
+	\centering
+	\input{build/cKoordinaten.tex}
+\end{table}
+

@@ -66,6 +66,7 @@ cxAchseFaktor = 5/unp.uarray(*avg_and_sem(cxAchseAbstände)) # Anzahl der Volt p
 bDiff = np.genfromtxt('scripts/bDiff', unpack=True)*bxAchseFaktor
 bDiff = unp.uarray(*weighted_avg_and_sem(unp.nominal_values(bDiff), 1/unp.std_devs(bDiff)))
 bneuDiff = np.genfromtxt('scripts/bneuDiff', unpack=True)*bneuxAchseFaktor
+bneuDiffOriginal= bneuDiff
 bneuDiff = unp.uarray(*weighted_avg_and_sem(unp.nominal_values(bneuDiff), 1/unp.std_devs(bneuDiff)))
 #	x/y-Koordinaten; x-Achse in 1Volt
 a1Koordinaten = np.genfromtxt('scripts/a1Punkte', unpack=True)
@@ -197,3 +198,17 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'c')
 
 #6. Tabellen
+#	Achsen
+makeTable([a1xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a1Abstände', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([a2xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a2Abstände', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([bneuxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuAbstände', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([cxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'cAbstände', ['S[table-format=1.1]'], ["%1.1f"])
+#	Steigung a1
+makeTable([*unp.nominal_values(a1Grad), np.tan(a1Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\text{Gefälle} / \si{\degree}$}  & {$\text{Gefälle} / \si[per-mode=reciprocal]{\per\volt}$}', 'a1Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.3]'], ["%1.2f", "%2.1f", "%2.3f"])
+#	Steigung a2
+makeTable([*unp.nominal_values(a2Grad), np.tan(a2Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\text{Gefälle} / \si{\degree}$}  & {$\text{Gefälle} / \si[per-mode=reciprocal]{\per\volt}$}', 'a2Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.3]'], ["%1.2f", "%2.1f", "%2.3f"])
+#	Abstände b
+makeTable([unp.nominal_values(bneuDiffOriginal)], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuDiff', ['S[table-format=1.2]'], ["%1.2f"])
+#	koordinaten c
+makeTable([*unp.nominal_values(cKoordinaten)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\overline{I}$} ', 'cKoordinaten', ['S[table-format=2.2]', 'S[table-format=1.2]'], ["%2.2f", "%1.2f"])
+
