@@ -199,10 +199,10 @@ plt.savefig('build/'+'c')
 
 #6. Tabellen
 #	Achsen
-makeTable([a1xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a1Abstände', ['S[table-format=1.1]'], ["%1.1f"])
-makeTable([a2xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a2Abstände', ['S[table-format=1.1]'], ["%1.1f"])
-makeTable([bneuxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuAbstände', ['S[table-format=1.1]'], ["%1.1f"])
-makeTable([cxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'cAbstände', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([a1xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a1Abstaende', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([a2xAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'a2Abstaende', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([bneuxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuAbstaende', ['S[table-format=1.1]'], ["%1.1f"])
+makeTable([cxAchseAbstände], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'cAbstaende', ['S[table-format=1.1]'], ["%1.1f"])
 #	Steigung a1
 makeTable([*unp.nominal_values(a1Grad), np.tan(a1Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\text{Gefälle} / \si{\degree}$}  & {$\text{Gefälle} / \si[per-mode=reciprocal]{\per\volt}$}', 'a1Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.3]'], ["%1.2f", "%2.1f", "%2.3f"])
 #	Steigung a2
