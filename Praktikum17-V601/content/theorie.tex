@@ -22,3 +22,52 @@ Elektrode beschleunigt. Die Elektronen haben danach die Energie
   \end{equation}
    Anschließend werden die Elektronen mit einer Auffängerelektrode
 gefangen und der daraus resultierende Strom gemessen.
+
+
+
+
+
+
+
+Der in Abb. \ref{fig:fddjklj} dargestellte idealisierte Kurvenverlauf wird jedoch
+aufgrund mehrerer Faktoren nicht erreicht.
+\begin{itemize}
+  \item \subesection{Die Auswirkungen des Kontaktpotentials}
+  Wenn die Materialien der Glühkathode und der Beschleunigungselektrode unterschiedliche
+  Austrittsarbeiten besitzen verschiebt sich das effektive $U_\text{B}$ bezüglich
+  eingestellten. Um jedoch bereits bei niedrigen Temperaturen hohe Emissionsrate
+  zu erreichen, besitzt die Glühkathode ein Material mit geringer Austrittsarbeit $\Phi_\text{G}$.
+  Damit es jedoch zu keiner Verfälschung der Daten durch austretende Elektronen an
+  der Beschleunigungselektrode besitzt dessen Material eine weitaus größere Austrittsarbeit
+  $\Phi_\text{B}$. Daher ergibt sich eine effektives Beschleunigungspotential durch
+  \begin{equation}
+    U_\text{B,eff} = U_\text{B} - K \text{ mit dem Kontaktpotential }K\text{,} K = \frac{1}{e_0}\left(\Phi_\text{B} - \Phi _\text{G} \right)\text{, }
+  \end{equation}
+was sich in einer Verschiebung der Kurve um $K$ widerspiegelt.
+
+\item \subsection{Das Energiespektrum der Elektronen}
+Des weiteren besitzen die Elektronen im Kathodenmaterial keine feste Energie, sondern
+verteilen sich gemäß der Fermi-Dirac-Verteilung. Daher treten die Elektronen mit
+unterschiedlichen Anfangsgeschwindigkeiten aus. Die zu beobachteten unelastischen Stöße treten
+daher nicht mehr an einer fest definierten Stelle auf, sondern auf einem Bereich.
+Infolgedessen fallen die Extrema geringer aus und der Graph fällt nach einem
+Maximum nicht mehr unstetig auf 0, sondern nähert sich dieser nur noch an. Zusätzlich
+ist der Einfluss der elastischen Stöße zu berücksichtigen. Da der gemessene
+Strom auschließlich von der Geschwindigkeitskomponente in Normalrichtung bezüglich
+der Anode abhängt, wird die Kurve durch elastische Stöße im Auffangbereich verändert,
+da weniger Elektronen das Gegenfeld durchlaufen. Die Frank-Hertz-Kurve wird daher flacher und breiter.
+
+
+\item\subsection{Die Auswirkungen des Dampfdruckes}
+Damit es zu einer geeigneten Anzahl von Zusammenstößen zwischen Elektronen und Hg-Atomen
+kommt muss die mittlere freie Weglänge $\overline{w}$ der Hg-Atome klein gegenüber
+der Beschleunigungsstrecke sein. Diese hängt vom vorherrschenden , temperaturabhängigen
+Sättigungsdampfdruck $p_\text{sät}$ ab. Damit folgt mit der Dampfdruckkurve in Abb. HJHJKH die Näherung:
+\begin{equation}
+  \overline{w} [cm] = \frac{0.0029}{5.5 \cdot 10⁷} \exp \left(\frac{-6876}{T}\right)\text{,}
+  \end{equation}
+  mit der Temperatur $T$ in Kelvin. Ist $\overline{w}$ zu groß, wächst die Wahrscheinlichkeit,
+  dass Elektronen den Beschleunigungsbereich ohne Wechselwirkung durchlaufen. Ist
+  $p_\text{sät}$ zu groß, treten zu viele elastische Stöße auf, welche das Ergebnis
+  wie bereits beschrieben, verfälschen.
+\end{itemize}
