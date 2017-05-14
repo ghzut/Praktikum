@@ -1,4 +1,6 @@
 ﻿from table import makeTable
+from table import makeNewTable
+from customFormatting import *
 from bereich import bereich
 from weightedavgandsem import weighted_avg_and_sem
 from weightedavgandsem import avg_and_sem
@@ -8,6 +10,7 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 import uncertainties.unumpy as unp
 import scipy.constants as const
+
 # BackwardsVNominal = []
 # BackwardsVStd = []
 # for value in BackwardsV:

@@ -4,11 +4,31 @@
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
-Die Konstanten $k$, $\hbar$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+Die Konstanten $\hbar$, $e_0$ und $c$ sind vom NIST \cite{nistgov}.
 
 \subsection{Berechnung der mittleren freien Weglänge und Vergleich mit dem Abstand zwischen der BESCH und GITTER}
+Die mittlere Weglänge $\overline{w}$ lässt sich bei bekannter Temperatur $T$ mit Formel \ref{eq:w} berechnen.
+Bei der ersten Messung bei $T=\SI{25}{\degreeCelsius}$ ergibt sich
+\begin{displaymath}
+	\overline{w}=\SI{ 0.55}{\centi\meter}\text{.}
+\end{displaymath}
+Also ist der Abstand zwischen der BESCH und GITTER $a=\SI{1}{\centi\meter}$ ca. $1.8$ mal so groß wie die mittlere Weglänge.
+Bei der zweiten Messung bei $T=\SI{150(10)}{\degreeCelsius}$ liegt sie bei
+\begin{displaymath}
+\overline{w}=\SI{6(2)e-4}{\centi\meter}\text{.}
+\end{displaymath}
+Dies entspricht einem Faktor von $frac{a}{\overline{w}}=\num{1.7(6)e3}$. In der dritten Messung bei $T=\SI{105(5)}{\degreeCelsius}$ ergibt sich
+\begin{displaymath}
+\overline{w}=\SI{4(1)e-3}{\centi\meter}
+\end{displaymath}
+mit dem Verhältnis $\frac{a}{\overline{w}}=\num{2(1)e2}$. Eine mittlere Weglänge
+\begin{displaymath}
+\overline{w}=\SI{2(1)e-4}{\centi\meter}
+\end{displaymath}
+ergibt sich schließlich bei einer Temperatur $T=\SI{180(20)}{\degreeCelsius}$ mit dem Verhältnis $\frac{a}{\overline{w}}=\num{5(3)e3}$. Da der Faktor $\frac{a}{\overline{w}}$ nur bei den Temperaturen $T=\SI{150(10)}{\degreeCelsius}$ und $T=\SI{180(20)}{\degreeCelsius}$ in dem Bereich von 1000-4000 liegt, sind nur bei diesen die Beobachtung des Franck-Hertz-Effektes zu erwarten \cite{V601}.
 
-\subsection{Berechnung des Skalierungsfaktor}
+
+\subsection{Bestimmung der Umrechnungsfaktoren}
 
 \begin{center}
 	\begin{table}
@@ -38,6 +58,8 @@ Die Konstanten $k$, $\hbar$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST 
 		\end{minipage}
 	\end{table}
 \end{center}
+Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab:a1Abstaende}, \ref{tab:a2Abstaende}, \ref{tab:bneuAbstaende} und \ref{tab:cAbstaende} lassen sich die Umrechnungsfaktoren $f_i$ bestimmen.
+
 
 \subsection{a}
 \begin{figure}
@@ -72,9 +94,22 @@ Die Konstanten $k$, $\hbar$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST 
 
 
 \subsection{c}
+\begin{figure}
+	\centering
+	\caption{Die Filterkurve des Selektiv-Verstärkers.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/c.pdf}
+	\label{fig:GraphSelektiv}
+\end{figure}
 \begin{table}
-	\caption{Siebte}
+	\caption{Achte}
 	\centering
 	\input{build/cKoordinaten.tex}
 \end{table}
+
+\begin{table}
+	\caption{Neunte}
+	\centering
+	\input{build/Ergebnisse.tex}
+\end{table}
+
 
