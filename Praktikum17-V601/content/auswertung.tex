@@ -76,13 +76,13 @@ f_\text{c}=\SI{1.18(7)}{\volt\per\centi\meter}\text{.}
 \subsection{Bestimmung des Kontaktpotentials}
 \begin{figure}
 	\centering
-	\caption{Die bei einer Temperatur von $\SI{25}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung dargestellt ist.}
+	\caption{Die bei einer Temperatur von $\SI{25}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung der Elektronen zuerkennen ist.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph1.jpg}
 	\label{fig:a1}
 \end{figure}
 \begin{figure}
 	\centering
-	\caption{Die bei einer Temperatur von $\SI{150(10)}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung dargestellt ist.}
+	\caption{Die bei einer Temperatur von $\SI{150(10)}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung der Elektronen zuerkennen ist.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph2.jpg}
 	\label{fig:a2}
 \end{figure}
@@ -135,7 +135,7 @@ In der Abbildung \ref{fig:a2A} ist das Peak stark abgeflacht und nach links vers
 	\centering
 	\input{build/bneuDiff.tex}
 \end{table}
-Aus den mittleren Abstand zwischen den Peaks in Tabelle \ref{tab:bneuDiff} und dem zuvor bestimmten Umrechnungsfaktor $f_\text{b}$ berechnet sich die 1. Anregungsenergie zu
+Aus dem mittleren Wert für die Abstände zwischen den Peaks aus Tabelle \ref{tab:bneuDiff} und dem zuvor bestimmten Umrechnungsfaktor $f_\text{b}$ berechnet sich die 1. Anregungsenergie zu
 \begin{displaymath}
 	E_1=\SI{4.82(9)}{\electronvolt}\text{.}
 \end{displaymath}
@@ -148,7 +148,7 @@ Es ergibt sich
 \begin{displaymath}
 \lambda=\SI{257(5)}{\nano\meter}\text{.}
 \end{displaymath}
-Die Energieverluste der Elektronen bei den zentralen elastischen Stößen müssen hier nicht berücksichtigt werden, da durch diese zwar die Peaks in dem Graphen in Abbildung \ref{fig:b} zerfließen, jedoch die Abstände zwischen diesen nicht merklich beeinflusst werden. Für die Lage der Peaks gilt weiterhin, dass diese um das Kontaktpotential verschoben sind. Hieraus lässt sich das Kontaktpotential bestimmen, indem von der Lage des ersten Peaks die mittlere Spannungsdifferenz zu $U_1$ abgezogen wird. Es folgt
+Die Energieverluste der Elektronen bei den zentralen elastischen Stößen müssen hier nicht berücksichtigt werden, da durch diese zwar die Peaks in dem Graphen in Abbildung \ref{fig:b} zerfließen, jedoch die Abstände zwischen diesen nicht merklich beeinflusst werden. Für die Lage der Peaks gilt weiterhin, dass diese um das Kontaktpotential verschoben sind. Hieraus lässt sich das Kontaktpotential bestimmen, indem von der Lage des ersten Peaks die mittlere Spannungsdifferenz zwischen den Peaks $U_1$ abgezogen wird. Es folgt
 \begin{displaymath}
 K_\text{b}=\SI{1.94(32)}{\volt}\text{.}
 \end{displaymath}
@@ -163,19 +163,20 @@ K_\text{b}=\SI{1.94(32)}{\volt}\text{.}
 \end{figure}
 \begin{figure}
 	\centering
-	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommene Wertepaare angenähert durch einen linearen Fit.}
+	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommene Wertepaare angenähert durch einen linearen Fit, wobei die Konstante $C$ die Einheit Ampere besitzt.}
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/c.pdf}
 	\label{fig:cion}
 \end{figure}
 \begin{table}
-	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommenen Wertepaare.}
+	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommenen Wertepaare, wobei die Konstante $C$ die Einheit Ampere besitzt.}
 	\centering
 	\input{build/cKoordinaten.tex}
 \end{table}
 Der lineare Fit in der Abbildung \ref{fig:cion} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x+b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:cKoordinaten} für die Summe von der Ionisierungsspannung $U_\text{ion}$ und dem Kontaktpotential $K$
 \begin{displaymath}
-	U_\text{ion}+K=\SI{12.2(5)}{\volt}\text{.}
+	U_\text{ion}+K=-\frac{0.25-b}{a}=\SI{12.2(5)}{\volt}\text{.}
 \end{displaymath}
+Hierbei wurde die $\num{0.25}$ ergänzt, da der Graph in Abbildung \ref{fig:c} zu Beginn $\SI{0.25}{\centi\meter}$ unter der x-Achse des Graphen liegt.
 Daraus lässt sich nun mit dem zuvor entnommenen Kontaktpotential $K_\text{a}=\SI{1.77(18)}{\volt}$ die Ionisierungsspannung $U_\text{ion}$ berechnen. Es folgt
 \begin{displaymath}
 U_\text{ion}=\SI{10.5(6)}{\volt}\text{.}
