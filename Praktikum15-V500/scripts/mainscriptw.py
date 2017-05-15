@@ -235,26 +235,6 @@ makeTable([ultraV2[0]*10**3, ultraV2[1]*10**12], r'{ $U/\si{\milli\volt}$ } & { 
 makeTable([Wellenlaengen*10**9, Frequenzen*10**(-12), nom(Nullstellen), std(Nullstellen)], r'{ $\lambda/\si{\nano\meter}$ } & { $f/\si[per-mode=reciprocal]{\per\pico\second}$ } & \multicolumn{2}{c}{ $U_\text{g}/\si{\volt}$ }' ,'tabZwischenErgebnisse' , ['S[table-format=3.1]', 'S[table-format=3.0]', 'S[table-format=1.2]', '@{${}\pm{}$}S[table-format=1.2]'] ,  ["%3.1f", "%3.0f", "%1.2f", "%1.2f"])
 
 # Ergebnis-Tabelle (Es gibt keine!!!(unnötig meiner Ansicht nach!))
+#Ergebnistabelle
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+makeTable([[unp.nominal_values(params[0])*10**(16)],[unp.std_devs(params[0])*10**(16)],[unp.nominal_values(params[1])],[unp.std_devs(params[1])]], r'\multicolumn{2}{c}{$\frac{h}{e_0}/\si{\femto\volt\second}$} & \multicolumn{2}{c}{$A_\text{k}/\si{\electronvolt}$}', 'ergebnisse',[r'S[table-format=2.0]',  r'@{${}\pm{}$} S[table-format=1.0]',r'S[table-format=3.1]', r'@{${}\pm{}$} S[table-format=1.1]'], ["%2.0f", "%1.0f", "%3.1f", "%1.1f"])
