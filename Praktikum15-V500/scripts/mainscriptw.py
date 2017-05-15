@@ -237,4 +237,4 @@ makeTable([Wellenlaengen*10**9, Frequenzen*10**(-12), nom(Nullstellen), std(Null
 # Ergebnis-Tabelle (Es gibt keine!!!(unnötig meiner Ansicht nach!))
 #Ergebnistabelle
 
-makeTable([[unp.nominal_values(params[0])*10**(16)],[unp.std_devs(params[0])*10**(16)],[unp.nominal_values(params[1])],[unp.std_devs(params[1])]], r'\multicolumn{2}{c}{$\frac{h}{e_0}/\si{\femto\volt\second}$} & \multicolumn{2}{c}{$A_\text{k}/\si{\electronvolt}$}', 'ergebnisse',[r'S[table-format=2.0]',  r'@{${}\pm{}$} S[table-format=1.0]',r'S[table-format=3.1]', r'@{${}\pm{}$} S[table-format=1.1]'], ["%2.0f", "%1.0f", "%3.1f", "%1.1f"])
+makeTable([[unp.nominal_values(params[0])*10**(15)],[unp.std_devs(params[0])*10**(15)],[unp.nominal_values(params[1])],[unp.std_devs(params[1])]], r'\multicolumn{2}{c}{$\frac{h}{e_0}/\si{\femto\volt\second}$} & \multicolumn{2}{c}{$A_\text{k}/\si{\electronvolt}$}', 'ergebnisse',[r'S[table-format=2.1]',  r'@{${}\pm{}$} S[table-format=1.1]',r'S[table-format=3.1]', r'@{${}\pm{}$} S[table-format=1.1]'], ["%2.1f", "%1.1f", "%3.1f", "%1.1f"])
