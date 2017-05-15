@@ -12,12 +12,12 @@ Bei der ersten Messung bei $T=\SI{25}{\degreeCelsius}$ ergibt sich
 \begin{displaymath}
 	\overline{w}=\SI{ 0.55}{\centi\meter}\text{.}
 \end{displaymath}
-Also ist der Abstand zwischen Kathode und Beschleunigungselektrode $a=\SI{1}{\centi\meter}$ ca. $1.8$ mal so groß wie die mittlere Weglänge.
+Also ist der Abstand zwischen Kathode und Beschleunigungselektrode $a=\SI{1}{\centi\meter}$ ca. $1.8$ mal größer als die mittlere Weglänge.
 Bei der zweiten Messung bei $T=\SI{150(10)}{\degreeCelsius}$ liegt sie bei
 \begin{displaymath}
 \overline{w}=\SI{6(2)e-4}{\centi\meter}\text{.}
 \end{displaymath}
-Dies entspricht einem Faktor von $frac{a}{\overline{w}}=\num{1.7(6)e3}$. In der dritten Messung bei $T=\SI{105(5)}{\degreeCelsius}$ ergibt sich
+Dies entspricht einem Faktor von $\frac{a}{\overline{w}}=\num{1.7(6)e3}$. Für die dritte Messung bei $T=\SI{105(5)}{\degreeCelsius}$ ergibt sich
 \begin{displaymath}
 \overline{w}=\SI{4(1)e-3}{\centi\meter}
 \end{displaymath}
@@ -29,15 +29,25 @@ ergibt sich schließlich bei einer Temperatur $T=\SI{180(20)}{\degreeCelsius}$ m
 
 
 \subsection{Bestimmung der Skalierungsfaktoren}
-
+In den Graphen in den Abbildungen \ref{fig:a1}, \ref{fig:a2}, \ref{fig:b} und \ref{fig:c} sind Markierungen in jeweils $\SI{1}{\volt}$ bzw. $\SI{5}{\volt}$ Abständen eingezeichnet.
+Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab:a1Abstaende}, \ref{tab:a2Abstaende}, \ref{tab:bneuAbstaende} und \ref{tab:cAbstaende} lassen sich daraus die Skalierungsfaktoren $f$ bestimmen.
+Es ergibt sich für die mittleren Spannungen pro Zentimeter entlang der x-Achse der Graphen in den Abbildungen \ref{fig:a1}, \ref{fig:a2}, \ref{fig:b} und \ref{fig:c}:
+\begin{gather*}
+f_\text{a1}=\SI{0.44(1)}{\volt\per\centi\meter}\\
+f_\text{a2}=\SI{0.46(1)}{\volt\per\centi\meter}\\
+f_\text{b}=\SI{2.25(10)}{\volt\per\centi\meter}\\
+f_\text{c}=\SI{1.18(7)}{\volt\per\centi\meter}\text{.}
+\end{gather*}
 \begin{center}
 	\begin{table}
 		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
 			\caption{Die gemessenen Abstände zwischen den Markierungen in Abbildung \ref{fig:a1}.}
 			\centering
 			\input{build/a1Abstaende.tex}
 		\end{minipage}
 		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
 			\caption{Die gemessenen Abstände zwischen den Markierungen in Abbildung \ref{fig:a2}.}
 			\centering
 			\input{build/a2Abstaende.tex}
@@ -47,38 +57,33 @@ ergibt sich schließlich bei einer Temperatur $T=\SI{180(20)}{\degreeCelsius}$ m
 \begin{center}
 	\begin{table}
 		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
 			\caption{Die gemessenen Abstände zwischen den Markierungen in Abbildung \ref{fig:b}.}
 			\centering
 			\input{build/bneuAbstaende.tex}
 		\end{minipage}
 		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
 			\caption{Die gemessenen Abstände zwischen den Markierungen in Abbildung \ref{fig:c}.}
 			\centering
 			\input{build/cAbstaende.tex}
 		\end{minipage}
 	\end{table}
 \end{center}
-Mit den gemessenen Abständen zwischen den Markierungen in den Tabellen \ref{tab:a1Abstaende}, \ref{tab:a2Abstaende}, \ref{tab:bneuAbstaende} und \ref{tab:cAbstaende} lassen sich die Skalierungsfaktoren $f$ bestimmen.
-Es ergibt sich für die mittleren Spannungen pro Zentimeter entlang der x-Achse der Graphen in den Abbildungen \ref{fig:a1}, \ref{fig:a2}, \ref{fig:b} und \ref{fig:c}:
-\begin{gather*}
-	f_\text{a1}=\SI{0.44(1)}{\volt\per\centi\meter}\\
-	f_\text{a2}=\SI{0.46(1)}{\volt\per\centi\meter}\\
-	f_\text{b}=\SI{2.25(10)}{\volt\per\centi\meter}\\
-	f_\text{c}=\SI{1.18(7)}{\volt\per\centi\meter}\text{.}
-\end{gather*}
+
 
 
 \subsection{Bestimmung des Kontaktpotentials}
 \begin{figure}
 	\centering
 	\caption{Die bei einer Temperatur von $\SI{25}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung dargestellt ist.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/a1neu.pdf}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph1.jpg}
 	\label{fig:a1}
 \end{figure}
 \begin{figure}
 	\centering
 	\caption{Die bei einer Temperatur von $\SI{150(10)}{\degreeCelsius}$ aufgenommene Kurve in der die integrale Energieverteilung dargestellt ist.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/a2neu.pdf}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph2.jpg}
 	\label{fig:a2}
 \end{figure}
 \begin{figure}
@@ -93,28 +98,40 @@ Es ergibt sich für die mittleren Spannungen pro Zentimeter entlang der x-Achse 
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/a2neu.pdf}
 	\label{fig:a2A}
 \end{figure}
-\begin{table}
-	\caption{Das bei den verschieden Gegenspannungen $U_\text{A}$ gemessene Gefälle $\overline{I}$ des Graphen in Abbildung \ref{fig:a1}.}
-	\centering
-	\input{build/a1Grad.tex}
-\end{table}
-\begin{table}
-	\caption{Das bei den verschieden Gegenspannungen $U_\text{A}$ gemessene Gefälle $\overline{I}$ des Graphen in Abbildung \ref{fig:a2}.}
-	\centering
-	\input{build/a2Grad.tex}
-\end{table}
-Die in den Abbildungen \ref{fig:a1A} und \ref{fig:a2A} dargestellten Messwertepaare aus der Tabelle \ref{tab:a1Grad} und \ref{tab:a2Grad} deuten die nicht normierten Energieverteilungen der an der Auffängerelektrode ankommenden Elektronen bei verschiedenen Temperaturen an. Diese Werte basieren auf den Steigungen der Graphen in den Abbildungen \ref{fig:a1} und \ref{fig:a2}
+\begin{center}
+	\begin{table}
+		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
+			\caption{Das bei den verschieden Gegenspannungen $U_\text{A}$ gemessene Gefälle $\overline{I}$ des Graphen in Abbildung \ref{fig:a1}.}
+			\centering
+			\input{build/a1Grad.tex}
+		\end{minipage}
+		\begin{minipage}[t]{0.5\textwidth}
+			\setcapwidth[c]{\textwidth}%
+			\caption{Das bei den verschieden Gegenspannungen $U_\text{A}$ gemessene Gefälle $\overline{I}$ des Graphen in Abbildung \ref{fig:a2}.}
+			\centering
+			\input{build/a2Grad.tex}
+		\end{minipage}
+	\end{table}
+\end{center}
+Die in den Abbildungen \ref{fig:a1A} und \ref{fig:a2A} dargestellten Messwertepaare aus der Tabelle \ref{tab:a1Grad} und \ref{tab:a2Grad} deuten die nicht normierten Energieverteilungen der an der Auffängerelektrode ankommenden Elektronen bei den verschiedenen Temperaturen an. Diese Werte basieren auf den Steigungen der Graphen in den Abbildungen \ref{fig:a1} und \ref{fig:a2}.
 Das Peak der Messwerte in Abbildung \ref{fig:a1A} würde ohne Kontaktpotential bei der Beschleunigungsspannung $U_\text{B}=\SI{8.5}{\volt}$ erwartet werden. Jedoch ist das Peak offenbar um das Kontaktpotential verschoben.
 Es kann abgelesen werden
 \begin{displaymath}
 K_\text{a}=\SI{1.77(18)}{\volt}\text{.}
 \end{displaymath}
-Das Peak ist in der Abbildung \ref{fig:a2A} stark abgeflacht und nach links verschoben. Dies lässt sich durch die erhöhte Anzahl von Stoßprozesse aufgrund der höheren Temperatur und dem daraus folgendem höheren Druck erklären. Durch diese elastischen Stoßprozesse geben die Elektronen Teile ihrer Energie an die Quecksilberatome ab. Folglich verschiebt sich die Energie der Elektronen kontinuierlich nach unten.
+In der Abbildung \ref{fig:a2A} ist das Peak stark abgeflacht und nach links verschoben. Dies lässt sich durch die erhöhte Anzahl von Stoßprozesse aufgrund der höheren Temperatur und dem daraus folgendem höheren Druck erklären. Durch diese elastischen Stoßprozesse geben die Elektronen Teile ihrer Energie an die Quecksilberatome ab. Folglich verschiebt sich die Energie der Elektronen größtenteils um einen kontinuierlichen Betrag nach unten.
 
 
 \subsection{Bestimmung der 1. Anregungsenergie von Quecksilber}
+\begin{figure}
+	\centering
+	\caption{Die bei einer Temperatur von $\SI{180(20)}{\degreeCelsius}$ aufgenommene Kurve in welcher der Auffängerstrom $I_\text{A}$ gegen die Beschleunigungsspannung $U_\text{B}$ aufgetragen ist.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph3.jpg}
+	\label{fig:b}
+\end{figure}
 \begin{table}
-	\caption{Siebte}
+	\caption{Die aus dem Graphen in Abbildung \ref{fig:b} entnommenen Abstände zwischen den Peaks.}
 	\centering
 	\input{build/bneuDiff.tex}
 \end{table}
@@ -131,22 +148,31 @@ Es ergibt sich
 \begin{displaymath}
 \lambda=\SI{257(5)}{\nano\meter}\text{.}
 \end{displaymath}
-Die Energieverluste der Elektronen bei den zentralen elastischen Stößen müssen hier nicht berücksichtigt werden, da durch diese zwar die Peaks in dem Graphen in Abbildung \ref{fig:b} zerfließen, jedoch die Abstände zwischen diese nicht beeinflusst werden.
+Die Energieverluste der Elektronen bei den zentralen elastischen Stößen müssen hier nicht berücksichtigt werden, da durch diese zwar die Peaks in dem Graphen in Abbildung \ref{fig:b} zerfließen, jedoch die Abstände zwischen diesen nicht merklich beeinflusst werden. Für die Lage der Peaks gilt weiterhin, dass diese um das Kontaktpotential verschoben sind. Hieraus lässt sich das Kontaktpotential bestimmen, indem von der Lage des ersten Peaks die mittlere Spannungsdifferenz zu $U_1$ abgezogen wird. Es folgt
+\begin{displaymath}
+K_\text{b}=\SI{1.94(32)}{\volt}\text{.}
+\end{displaymath}
 
 
 \subsection{Bestimmung der 1. Ionisierungsspannung von Quecksilber}
 \begin{figure}
 	\centering
-	\caption{HI.}
-	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/c.pdf}
+	\caption{Der gemessene Auffängerstrom $I_\text{A}$ gegen die Beschleunigungsspannung $U_\text{B}$ bei einer Gegenspannung von $\SI{-30}{\volt}$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio,angle=-90]{content/images/Graph4.jpg}
 	\label{fig:c}
 \end{figure}
+\begin{figure}
+	\centering
+	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommene Wertepaare angenähert durch einen linearen Fit.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/c.pdf}
+	\label{fig:cion}
+\end{figure}
 \begin{table}
-	\caption{Achte}
+	\caption{Die aus dem Graphen in Abbildung \ref{fig:c} entnommenen Wertepaare.}
 	\centering
 	\input{build/cKoordinaten.tex}
 \end{table}
-Die lineare Fit in der Abbildung \ref{fig:c} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x+b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:cKoordinaten} für die Summe von der Ionisierungsspannung $U_\text{ion}$ und dem Kontaktpotential $K$
+Der lineare Fit in der Abbildung \ref{fig:cion} besitzt die Form $y=a x + b$. Eine lineare Ausgleichsrechnung der Form $y=a x+b$ liefert mit den Wertepaaren aus Tabelle \ref{tab:cKoordinaten} für die Summe von der Ionisierungsspannung $U_\text{ion}$ und dem Kontaktpotential $K$
 \begin{displaymath}
 	U_\text{ion}+K=\SI{12.2(5)}{\volt}\text{.}
 \end{displaymath}
