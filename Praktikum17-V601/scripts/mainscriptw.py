@@ -189,7 +189,7 @@ makeTable([*unp.nominal_values(a1Grad), np.tan(a1Grad[1]/360*2*np.pi)], r'{$U_\t
 #	Steigung a2
 makeTable([*unp.nominal_values(a2Grad), np.tan(a2Grad[1]/360*2*np.pi)], r'{$U_\text{A} / \si[per-mode=reciprocal]{\volt}$} & {$\overline{I}$ / \si{\degree}}  & {$\overline{I}$ }', 'a2Grad', ['S[table-format=1.2]', 'S[table-format=2.1]', 'S[table-format=2.2]'], ["%1.2f", "%2.1f", "%2.2f"])
 #	Abstände b
-makeTable([unp.nominal_values(bneuDiffOriginal)], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuDiff', ['S[table-format=1.2]'], ["%1.2f"])
+makeTable([unp.nominal_values(bneuDiffOriginal/bneuxAchseFaktor)], r'{Abstand / \si[per-mode=reciprocal]{\centi\meter}} ', 'bneuDiff', ['S[table-format=1.2]'], ["%1.2f"])
 #	koordinaten c
 makeTable([*unp.nominal_values(cKoordinaten)], r'{$U_\text{B} / \si[per-mode=reciprocal]{\volt}$} & {$I_\text{A}/C$} ', 'cKoordinaten', ['S[table-format=2.2]', 'S[table-format=1.2]'], ["%2.2f", "%1.2f"])
 #   Ergebnisse
