@@ -49,198 +49,71 @@ import scipy.constants as const
 
 
 #1. Messwerte einlesen
-Kurvenmesswerte = np.genfromtxt('scripts/Kurvendaten', unpack=True)
-C6O12Pr2 = np.genfromtxt('scripts/C6O12Pr2', unpack=True)
-Dy2O3 = np.genfromtxt('scripts/Dy2O3', unpack=True)
-Gd2O3 = np.genfromtxt('scripts/Gd2O3', unpack=True)
-Nd2O3 = np.genfromtxt('scripts/Nd2O3', unpack=True)
-Basisdaten = np.genfromtxt('scripts/Basisdatenstoffe')
-#y = 900*np.exp(-1*a*abs((x-35.17)**1))+b
-#(ln((y-b)/900)/-a)+35.17 = (x-35.17)
+winkel = np.array([60,15,-30])
+dopplerwinkel = 90-180/np.pi*(np.arcsin(np.sin(winkel*2*(np.pi)/360)*1800/2700))
+print("dopplerwinkel",dopplerwinkel)
+kleinrohr = np.array(np.genfromtxt('scripts/klein', unpack=True))
+mittelrohr = np.array(np.genfromtxt('scripts/mittel', unpack = True))
+grossrohr = np.array(np.genfromtxt('scripts/gross', unpack=True))#leistung,45,60,30
+tiefm45 = np.array(np.genfromtxt('scripts/tiefenmessung45', unpack=True))
+tiefm70 = np.array(np.genfromtxt('scripts/tiefenmessung70', unpack=True))
+messtiefe = np.array(np.linspace(30,41,16))
+intens = np.array([tiefm45[2],tiefm70[2]])
 
-#ln
+def vFluss(deltaf, dopplerwinkel):
+    return deltaf*1800/(2*2*10**6*np.cos(dopplerwinkel*2*np.pi/360))
 
-#Fitfunktion der Resonanzkurve
-#def Resonanzkurve1(x, a, b):
-#	return 1/np.sqrt((1-(2*np.pi*x*a)**2)**2+(b*2*np.pi*x)**2)
-def Resonanzkurve2(x,a,b):
-    return 900*np.exp(-1*a*abs((x-35.17)**1))+b
-#alt 900
-#gefittete Kurve
-Kurvenfitpunkte = np.linspace(Kurvenmesswerte[0][0],Kurvenmesswerte[0][-1],1000)
-Kurvenfit = curve_fit(Resonanzkurve2,Kurvenmesswerte[0],Kurvenmesswerte[1])
-Kurvenfit = [Kurvenfit[0],np.sqrt(np.diag(Kurvenfit[1]))]
+def linfit(a,x,b):
+    return a*x+b
 
-print("gefittete Parameter")
-print("Vorfaktor = 900")
-print("Symmetrieachse der Funktion bei 35.17")
-print("a =",Kurvenfit[0][0])
-print("b =",Kurvenfit[0][1])
+Vkleinrohr = np.array([vFluss(kleinrohr[1],dopplerwinkel[0]),vFluss(kleinrohr[2],dopplerwinkel[1]),vFluss(kleinrohr[3],dopplerwinkel[2])])
+print("Vkleinrohr",Vkleinrohr)
+Vmittelrohr = np.array([vFluss(mittelrohr[1],dopplerwinkel[0]),vFluss(mittelrohr[2],dopplerwinkel[1]),vFluss(mittelrohr[3],dopplerwinkel[2])])
+print("Vmittelrohr",Vmittelrohr)
+Vgrossrohr = np.array([vFluss(grossrohr[1],dopplerwinkel[0]),vFluss(grossrohr[2],dopplerwinkel[1]),vFluss(grossrohr[3],dopplerwinkel[2])])
+print("Vgrossrohr",Vgrossrohr)
 
+#Graphen erstellen:
+#Vkleinrohr
+i=0
+while i<3:
+    lin = curve_fit(linfit,Vkleinrohr[i]*100,kleinrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360))
+    linfits = [lin[0],np.sqrt(np.diag(lin[1]))]
+    print("lineare Fits Daten von"+str(winkel[i])+":",linfits)
+    plt.cla()
+    plt.clf()
+    punkte = np.linspace(0,Vkleinrohr[i][-1]*1.1*100,1000)
+    plt.plot(Vkleinrohr[i]*100, kleinrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='kleines Rohr und '+str(winkel[i])+' grad')
+    plt.plot(punkte,linfit(linfits[0][0],punkte,linfits[0][1]),label = 'linearer Fit')
+#plt.plot(Vkleinrohr[1]*100, kleinrohr[2]/np.cos(dopplerwinkel[1]),'rx', label='kleines rohr und 15(60) grad')
 
-plt.plot(Kurvenmesswerte[0], Kurvenmesswerte[1], 'gx', label='Darstellung der Messergebnisse')
-#plt.plot(Kurvenfitpunkte,Resonanzkurve2(Kurvenfitpunkte,1.2,-35.15,25,900))
-#plt.plot(Kurvenfitpunkte,Resonanzkurve2(Kurvenfitpunkte,Kurvenfit[0][0],Kurvenfit[0][1],Kurvenfit[0][2],Kurvenfit[0][3]))
-plt.plot(Kurvenfitpunkte,Resonanzkurve2(Kurvenfitpunkte,Kurvenfit[0][0],Kurvenfit[0][1]),label='exponentieller Fit')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
-plt.xlabel(r'$f/\si{\kilo\hertz}$')
-plt.ylabel(r'$U/\si{\milli\volt}$')
-plt.legend(loc='best')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'Resonanzkurve')
-plt.cla()
-plt.clf()
+    plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
+    plt.ylabel(r'$V/cos(alpha)$')
+    plt.legend(loc='best')
+    plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+    plt.savefig('build/'+'deltacosperV'+str(winkel[i]))
+    i = i+1
+print("lineareFits",linfits)
+#Tiefenmessungen,doppler60
+messtiefen = np.array(tiefm45[0])
+Vtiefen = np.array([vFluss(tiefm45[1],dopplerwinkel[0]),vFluss(tiefm70[1],dopplerwinkel[0])])
+print("Vtiefen:",Vtiefen)
+P = np.array([45,70])
+i=0
+while i<2:
+    plt.cla()
+    plt.clf()
+    plt.plot(messtiefen, Vtiefen[i]*100,'gx', label='die Momentangeschwindigkeit bei einer Leistung von '+str(P[i])+'%')
+    plt.plot(messtiefen, intens[i]/100,'rx', label='die Streuintensität bei einer Leistung von '+str(P[i])+'%')
+#plt.plot(Vkleinrohr[1]*100, kleinrohr[2]/np.cos(dopplerwinkel[1]),'rx', label='kleines rohr und 15(60) grad')
 
-#Bestimmung der Güte
-Hochpunkt = Resonanzkurve2(35.17,Kurvenfit[0][0],Kurvenfit[0][1])
-Vplus = -np.log(((1/np.sqrt(2))*Hochpunkt-Kurvenfit[0][1])/900)/Kurvenfit[0][0]+35.17
-print("Hochpunkt",Hochpunkt)
-print("Vplus",Vplus)
-Guete = 35.17/(2* abs(Vplus-35.17))
-print("Güte",Guete)
-
-
-C6O12Pr2 = np.array(C6O12Pr2)
-Nd2O3 = np.array(Nd2O3)
-Gd2O3 = np.array(Gd2O3)
-Dy2O3 = np.array(Dy2O3)
-
-
-
-#Suszeptibilität praktische Auswertung
-#def deltaR(R3,delL,L):
-#	return delL*R3/(2*L)
- #über deltaR
-def querschnitt(Laenge,normaldichte,masse):
-	return masse/(Laenge*normaldichte)
-
-def Suszeptibilitaet(delR,R3,Q):
-	return 2*(0.005*delR)/(998+0.005*R3)*(0.0000866/Q)
-
-SusGd2O3 = Suszeptibilitaet(Gd2O3[5],Gd2O3[1],querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]))
-print("SusGd2O3",SusGd2O3)
-
-SusNd2O3 = Suszeptibilitaet(Nd2O3[5],Nd2O3[1],querschnitt(Basisdaten[2][1],Basisdaten[2][3],Basisdaten[2][2]))
-print("SusNd2O3",SusNd2O3)
-
-SusDy2O3 = Suszeptibilitaet(Dy2O3[5],Dy2O3[1],querschnitt(Basisdaten[1][1],Basisdaten[1][3],Basisdaten[1][2]))
-print("SusDy2O3",SusDy2O3)
-
-#Für die querschnittsfläche der probe wird die fläche der probe verwendet
-SusC6O12Pr2 = Suszeptibilitaet(C6O12Pr2[5],C6O12Pr2[1],0.0000866)
-print("SusC6O12Pr2",SusC6O12Pr2)
-
-
-SusGd2O3M = unp.uarray(np.mean(SusGd2O3),stats.sem(SusGd2O3))
-SusNd2O3M = unp.uarray(np.mean(SusNd2O3),stats.sem(SusNd2O3))
-SusDy2O3M = unp.uarray(np.mean(SusDy2O3),stats.sem(SusDy2O3))
-
-makeTable([[unp.nominal_values(SusNd2O3M)],[unp.std_devs(SusNd2O3M)],[unp.nominal_values(SusGd2O3M)],[unp.std_devs(SusGd2O3M)],[unp.nominal_values(SusDy2O3M)],[unp.std_devs(SusDy2O3M)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusR',[r'S[table-format=1.4]',  r'@{${}\pm{}$} S[table-format=1.4]',r'S[table-format=1.3]', r'@{${}\pm{}$} S[table-format=1.3]', r' S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]'], ["%1.4f", "%1.4f", "%1.3f", "%1.3f", "%1.4f", "%1.4f"])
-
-
-#Über die Spannungsdifferenz
-
-#eingangsspannung der brückenspannung 0.8V
-def suszintibilitaetU(Q,Ubr):
-	return 4*(0.0000866/Q)*(Ubr/0.8)
-
-
-SusGd2O3U = suszintibilitaetU(querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]),0.001*Gd2O3[3])
-print("SusGd2O3U",SusGd2O3U)
-
-SusNd2O3U = suszintibilitaetU(querschnitt(Basisdaten[2][1],Basisdaten[2][3],Basisdaten[2][2]),0.001*Nd2O3[3])
-print("SusNd2O3U",SusNd2O3U)
-
-SusDy2O3U = suszintibilitaetU(querschnitt(Basisdaten[1][1],Basisdaten[1][3],Basisdaten[1][2]),0.001*Dy2O3[3])
-print("SusDy2O3U",SusDy2O3U)
-
-SusC6O12Pr2U = suszintibilitaetU(0.0000866,0.001*C6O12Pr2[3])
-print("SusC6O12Pr2U",SusC6O12Pr2U)
-
-SusGd2O3UM = unp.uarray(np.mean(SusGd2O3U),stats.sem(SusGd2O3U))
-SusNd2O3UM = unp.uarray(np.mean(SusNd2O3U),stats.sem(SusNd2O3U))
-SusDy2O3UM = unp.uarray(np.mean(SusDy2O3U),stats.sem(SusDy2O3U))
-
-
-makeTable([[unp.nominal_values(SusNd2O3UM)],[unp.std_devs(SusNd2O3UM)],[unp.nominal_values(SusGd2O3UM)],[unp.std_devs(SusGd2O3UM)],[unp.nominal_values(SusDy2O3UM)],[unp.std_devs(SusDy2O3UM)]], r'\multicolumn{2}{c}{$\chi_{Nd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Gd_2O_3}$} & \multicolumn{2}{c}{$\chi_{Dy_2O_3}$}', 'SusU',[r'S[table-format=1.4]',  r'@{${}\pm{}$} S[table-format=1.4]',r'S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]', r' S[table-format=1.4]', r'@{${}\pm{}$} S[table-format=1.4]'], ["%1.4f", "%1.4f", "%1.4f", "%1.4f", "%1.4f", "%1.4f"])
-
-
-
-#Suszeptibilität theoretische Berechnung
-
-uB = 0.5 * (const.value("electron volt")/const.value("electron mass"))*const.value("Planck constant")/(2*np.pi)
-
-def Gj(J,L,S):
-	return (3*J*(J+1)+S*(S+1)-L*(L+1))/(2*J*(J+1))
-
-def N(m,M,l,Q):
-    return 2*const.value("Avogadro constant")*m/(M*l*Q)
-
-#https://pubchem.ncbi.nlm.nih.gov/compound/159373#section=Top
-NNd2O3 = N(Basisdaten[2][2],0.336481,Basisdaten[2][1],querschnitt(Basisdaten[2][1],Basisdaten[2][3],Basisdaten[2][2]))
-#https://pubchem.ncbi.nlm.nih.gov/compound/159427
-NGd2O3 = N(Basisdaten[3][2],0.362497,Basisdaten[3][1],querschnitt(Basisdaten[3][1],Basisdaten[3][3],Basisdaten[3][2]))
-#https://pubchem.ncbi.nlm.nih.gov/compound/159370
-NDy2O3 = N(Basisdaten[1][2],0.372997,Basisdaten[1][1],querschnitt(Basisdaten[1][1],Basisdaten[1][3],Basisdaten[1][2]))
-
-
-
-
-def Sus(Gj,N,J):
-	return (const.value("mag. constant")*(uB**2)*(Gj**2)*N*J*(J+1))/(3*const.value("Boltzmann constant")*(293.15))
-
-GjNd2O3 = Gj(4.5,6,1.5)
-GjGd2O3 = Gj(-3.5,0,3.5)
-GjDy2O3 = Gj(7.5,5,2.5)
-
-print(GjNd2O3,GjGd2O3,GjDy2O3)
-
-SusDy2O3T = np.array([Sus(GjDy2O3,NDy2O3,7.5), Sus(GjNd2O3,NNd2O3,4.5), Sus(GjGd2O3,NGd2O3,-3.5)])
-print("theorie",SusDy2O3T)
-#SusNd2O3T = np.array(Sus(GjNd2O3,NNd2O3,4.5),0)
-#SusGd2O3T = np.array(Sus(GjGd2O3,NGd2O3,-3.5),0)
-
-makeTable([[SusDy2O3T[1]], [SusDy2O3T[2]], [SusDy2O3T[0]]], r'{'+r'$\chi_{Nd_2O_3}$'+r'} & {'+r'$\chi_{Gd_2O_3}$'+r'} & {'+r'$\chi_{Dy_2O_3}$'+r'}' ,'SusT' , ['S[table-format=0.3]' , 'S[table-format=0.3]', 'S[table-format=0.3]' ] ,  ["%0.3f", "%0.3f" , "%0.3f"])
-
-
-
-
-#Tabellen
-    #Tabelle der Messwerte der Resonanzkurve
-    #1.Teil
-
-makeTable([Kurvenmesswerte[0] [0:len(Kurvenmesswerte[0])//2+1],Kurvenmesswerte[1] [0:len(Kurvenmesswerte[0])//2+1] ], r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
-   #2.Teil
-makeTable([Kurvenmesswerte[0][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))] ,Kurvenmesswerte[1][(len(Kurvenmesswerte[0]))//2+1:(len(Kurvenmesswerte[0]))]] , r'{'+r'$f/\si{\kilo\hertz}$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse2' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
-
-
-#Tabelle der basisdatenstoffe
-#makeTable(Basisdaten[0], Basisdaten[1], Basisdaten[2], Basisdaten[3], r'{'+r'$$'+r'} & {'+r'$U/\si{\milli\volt}$'+r'}' ,'tabKurvenergebnisse1' , ['S[table-format=2.1]' , 'S[table-format=3.0]'] ,  ["%2.1f", "%3.0f"])
-
-
-#Stofftabellenmesswerte
-#Nd2O3
-makeTable([Nd2O3[0], Nd2O3[2], Nd2O3[3], Nd2O3[1], Nd2O3[4], Nd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
-#Dy2O3
-makeTable([Dy2O3[0], Dy2O3[2], Dy2O3[3], Dy2O3[1], Dy2O3[4], Dy2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabDy2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
-#Gd2O3
-makeTable([Gd2O3[0], Gd2O3[2], Gd2O3[3], Gd2O3[1], Gd2O3[4], Gd2O3[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_\text{3-Einstellung:alt}$'+r'} & {'+r'$R_\text{3-Einstellung:neu}$'+r'}& {'+r'$\Delta R_\text{3-Einstellung}$'+r'}' ,'tabGd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
-#C6O12Pr2
-makeTable([C6O12Pr2[0], C6O12Pr2[2], C6O12Pr2[3], C6O12Pr2[1], C6O12Pr2[4], C6O12Pr2[5]], r'{'+r'$U_\text{alt}/\si{\milli\volt}$'+r'} & {'+r'$U_\text{neu}/\si{\milli\volt}$'+r'} & {'+r'$\Delta U/\si{\milli\volt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{alt}$'+r'} & {'+r'$R_3 \text{Einstellung}_\text{neu}$'+r'}& {'+r'$\Delta R_3 \text{Einstellung}$'+r'}' ,'tabNd2O3' , ['S[table-format=1.2]' , 'S[table-format=1.2]',  'S[table-format=1.2]',  'S[table-format=3.0]',  'S[table-format=3.0]',  'S[table-format=3.0]'] ,  ["%1.2f", "%1.2f", "%1.2f", "%3.0f", "%3.0f", "%3.0f"])
-
-
-#tabelle mit spindaten:
-spindaten = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[1.5,3.5,2.5],[6,0,5],[4.5,-3.5,7.5]]
-print("spindaten",spindaten)
-makeTable([spindaten[0], spindaten[1], spindaten[2], spindaten[3]], r'{'+r'$Probenstoff$'+r'} & {'+r'$S$'+r'} & {'+r'$L$'+r'} & {'+r'$J$'+r'}','tabspins' , ['c' , 'S[table-format=1.1]',  'S[table-format=1.1]',  'S[table-format=1.1]'] ,  ["%s", "%1.1f", "%1.1f", "%1.1f"])
-
-#molaren Massen der Proben liegen bei $M ( Nd_2 O_3 ) = \SI{0.336481}{\kilogram\per\mole} $ \cite{MNd2O3},
-#$M ( Gd_2 O_3 ) = \SI{0.362497}{\kilogram\per\mole} $ \cite{MGd2O3} und
-#$M ( Dy_2 O_3 ) = \SI{0.372997}{\kilogram\per\mole} $ \cite{MDy2O3}.
-
-
-
-Basisdatentransp = [["$Nd_2O_3$","$Gd_2O_3$","$Dy_2O_3$"],[0.162,0.165,0.17],[0.009,0.01408,0.0186],[7240,7400,7800],[0.336,0.362,0.373]]
-print("Basisdaten",Basisdatentransp)
-makeTable([Basisdatentransp[0], Basisdatentransp[1], Basisdatentransp[2], Basisdatentransp[3],Basisdatentransp[4]], r'{'+r'$Probenstoff$'+r'} & {'+r'$l/\si{\meter}$'+r'} & {'+r'$m/\si{\kilogram}$'+r'} & {'+r'$\rho/\si[per-mode=reciprocal]{\kilogram\per\meter\tothe{3}}$'+r'} & {'+r'$M/\si[per-mode=reciprocal]{\kilogram\per\mole}$'+r'}','tabbasis' , ['c' , 'S[table-format=1.3]',  'S[table-format=1.3]',  'S[table-format=4.0]',  'S[table-format=1.3]'] ,  ["%s", "%1.3f", "%1.3f", "%4.0f", "%1.3f"])
+#plt.ylim(0, line(t[-1], *params)+0.1)
+#plt.xlim(0, t[-1]*100)
+    plt.xlabel(r'$z/\si{\milli\meter}$')
+    plt.ylabel(r'$v_\text{m}/\si{\centi\meter\per\second}$')
+    plt.legend(loc='best')
+    plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+    plt.savefig('build/'+'messtiefe'+str(P[i]))
+    i = i+1
