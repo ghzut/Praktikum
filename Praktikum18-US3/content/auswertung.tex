@@ -28,8 +28,21 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
  \label{tab:b}
 \end{table}
 
+\begin{table}
+ \centering
+ \caption{Die bestimmten Dopplerwinkel}
+ \input{build/tabdopplerwinkel.tex}
+ \label{tab:dopplerwinkel}
+\end{table}
+
 \subsection{Betrachtung der winkelabhängigen Frequenzverschiebung in Abhängigkeit der Strömungsgeschwindigkeit}
 
+\begin{table}
+ \centering
+ \caption{Die bestimmten Steigungen der Graphen}
+ \input{build/tabsteigungen.tex}
+ \label{tab:steigungen}
+\end{table}
 
 \begin{figure}
  \centering
@@ -96,16 +109,63 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
 
 Zunächst wird das Verhältnis $\frac{\Delta f}{\cos(\alpha)}$ als Funktion der
 Strömungsgeschwindigkeit des Rohres betrachtet. Für letztere wird aufgrund der Geräteangaben eine eine maximale
-Pumpleistung von $\SI{10}{\litre\per\minute}$ angenommen. Mithilfe der Rohrinnendurchmesser aus Tab. \ref{tab:HJKH} und
-Formel \ref{eq:HHH} folgen die auf den X-Achsen aufgetragenen Geschwindigkeiten der Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b}.
-Zusammen mit den anderen Angaben der Y-Achse aus den Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b} folgen die Graphen
+Pumpleistung von $\SI{10}{\litre\per\minute}$ angenommen. Die Rohrdurchmesser betragen
+$\SI{7}{\milli\meter}$ für das dünne, $\SI{10}{\milli\meter}$ für das mittlere und
+$\SI{16}{\milli\meter}$ für das breite Rohr. Mithilfe von
+Formel \ref{eq:vmittel} folgen die auf den X-Achsen aufgetragenen Geschwindigkeiten der Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b}.
+Die zu den Winkeln zugehörigen Dopplerwinkel ergeben sich aus Formel \ref{eq:dopplerwinkel}.
+Zusammen mit den anderen Angaben der Y-Achse aus den Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b} und \ref{tab:dopplerwinkel} folgen die Graphen
 \ref{fig:k15},\ref{fig:k60},\ref{fig:k30},\ref{fig:m15},\ref{fig:m60},\ref{fig:m30},\ref{fig:g15},\ref{fig:g60},\ref{fig:g30}.
 Es ist zu erkennen, dass die Strömungsgeschwindigkeit vom Rohrdurchmesser abhängig
 ist und steigt, wenn der Durchmesser kleiner wird. Mithilfe einer Ausgleichsrechnung
-der Form $y=ax+b$ folgen die Parameter in Tabelle \ref{tab:jhhjkh}. Diese
+der Form $y=ax+b$ folgen die Parameter in Tabelle \ref{tab:steigungen}. Diese
 sind trotz unterschiedlicher Winkel und Rohrdurchmesser alle ca. gleich groß und
 liegen im Mittel bei $\SI{21.6(8)}{}$. Ein Vergleich mit der theoretischen
 Konstante $\frac{2*f_0}{c}$, welche sich aus der Formel der theoretischen
 Frequenzverschiebung \ref{eq:deltaf} ergibt, zeigt deutliche Übereinstimmungen, wenn für $c$
 die Schallgeschwindigkeit $c = \SI{1800}{\meter\per\second}$ der Dopplerphantomflüssigkeit
 eingesetzt wird.
+
+
+
+\subsection{Betrachtung der Geschwindigkeit und der Streuintensität in Abhängigkeit der Messtiefe}
+
+\begin{figure}
+ \centering
+ \caption{Das Strömungsprofil bei $P = \SI{45}{\percent}$.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/messtiefe45.pdf}
+ \label{fig:P45}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Das Strömungsprofil bei $P = \SI{70}{\percent}$.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/messtiefe70.pdf}
+ \label{fig:P70}
+\end{figure}
+
+\begin{table}
+ \centering
+ \caption{Die gemessen Daten zum Messprofil bei $P = \SI{45}{\percent}$.}
+ \input{build/tabmtief45.tex}
+ \label{tab:mtief45}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessen Daten zum Messprofil bei $P = \SI{70}{\percent}$.}
+ \input{build/tabmtief70.tex}
+ \label{tab:mtief70}
+\end{table}
+
+Nun wird nun das Strömungsprofil der Dopplerflüssigkeit am Schlauch mit mittlerem
+Durchmesser unter einem Winkel von $\SI{15}{\degree}$ untersucht. Da die Streuintensitäten ungleich größer als die Geschwindigkeiten
+sind,wird nur $\SI{0.2}{\percent}$ der Wertehöhe in den Graphen \ref{fig:P45} und \ref{fig:70} dargestellt. Die
+dargestellten Geschwindigkeiten in den Tabellen \ref{tab:mtief45} und \ref{tab:mtief70} folgen aus Umstellung von Formel \ref{eq:deltaf}.
+ In beiden Graphen lässt sich das Strömungsprofil in Form des Hochpunktes erkennen. Dieses
+ entsteht, da die Geschwindigkeit in Richtung Rohrzentrum ansteigt. Den Graphen nach liegt
+ der breiteste Querschnitt des Rohres bei einer Messtiefe von ca. $\SI{35}{\milli\meter}$.
+ Anschließend zeigen die Graphen die darauf folgende Verengung des Rohrquerschnitts
+ und den somit resultierenden Abfall der Kurve. Da die Viskosität der Flüssigkeit so
+ gewählt ist, dass sich laminare Strömungen bilden, sind die Muster der Streuintensität
+ bei beiden Leistungen sehr gleichförmig.
