@@ -5,30 +5,107 @@
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 
-\subsection{gemessene Daten}
+\subsection{Die gemessenen Daten}
 
-\subsection{Betrachtung der Strömungsgeschwindigkeiten unter verschiedenen Dopplerwinkeln}
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am dünnen Rohr und die zugehörigen Geschwindigkeiten, berechnet aus der Leistung.}
+ \input{build/tabkleinrohr.tex}
+ \label{tab:k}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am mittleren Rohr und die zugehörigen Geschwindigkeiten, berechnet aus der Leistung.}
+ \input{build/tabmittelrohr.tex}
+ \label{tab:m}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am breiten Rohr und die zugehörigen Geschwindigkeiten, berechnet aus der Leistung.}
+ \input{build/tabgrossrohr.tex}
+ \label{tab:b}
+\end{table}
+
+\subsection{Betrachtung der winkelabhängigen Frequenzverschiebung in Abhängigkeit der Strömungsgeschwindigkeit}
 
 
 \begin{figure}
  \centering
- \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{15}{\degree}$.}
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{15}{\degree}$ in einem dünnen Rohr.}
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperV15.pdf}
- \label{fig:Graph}
+ \label{fig:k15}
 \end{figure}
 
 \begin{figure}
  \centering
- \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{60}{\degree}$.}
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{60}{\degree}$ in einem dünnen Rohr.}
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperV60.pdf}
- \label{fig:Graph}
+ \label{fig:k60}
 \end{figure}
 
 \begin{figure}
  \centering
- \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{30}{\degree}$.}
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{30}{\degree}$ in einem dünnen Rohr.}
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperV-30.pdf}
- \label{fig:Graph}
+ \label{fig:k30}
 \end{figure}
 
-Zunächst werden
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{15}{\degree}$ in einem mittleren Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVmittel15.pdf}
+ \label{fig:m15}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{60}{\degree}$ in einem mittleren Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVmittel60.pdf}
+ \label{fig:m60}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{30}{\degree}$ in einem mittleren Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVmittel-30.pdf}
+ \label{fig:m30}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{15}{\degree}$ in einem breiten Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVgross15.pdf}
+ \label{fig:g15}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{60}{\degree}$ in einem breiten Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVgross60.pdf}
+ \label{fig:g60}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die Dopplerverschiebung bei einem Winkel von $\SI{30}{\degree}$ in einem breiten Rohr.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/deltacosperVgross-30.pdf}
+ \label{fig:g30}
+\end{figure}
+
+Zunächst wird das Verhältnis $\frac{\Delta f}{\cos(\alpha)}$ als Funktion der
+Strömungsgeschwindigkeit des Rohres betrachtet. Für letztere wird aufgrund der Geräteangaben eine eine maximale
+Pumpleistung von $\SI{10}{\litre\per\minute}$ angenommen. Mithilfe der Rohrinnendurchmesser aus Tab. \ref{tab:HJKH} und
+Formel \ref{eq:HHH} folgen die auf den X-Achsen aufgetragenen Geschwindigkeiten der Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b}.
+Zusammen mit den anderen Angaben der Y-Achse aus den Tabellen \ref{tab:k},\ref{tab:m},\ref{tab:b} folgen die Graphen
+\ref{fig:k15},\ref{fig:k60},\ref{fig:k30},\ref{fig:m15},\ref{fig:m60},\ref{fig:m30},\ref{fig:g15},\ref{fig:g60},\ref{fig:g30}.
+Es ist zu erkennen, dass die Strömungsgeschwindigkeit vom Rohrdurchmesser abhängig
+ist und steigt, wenn der Durchmesser kleiner wird. Mithilfe einer Ausgleichsrechnung
+der Form $y=ax+b$ folgen die Parameter in Tabelle \ref{tab:jhhjkh}. Diese
+sind trotz unterschiedlicher Winkel und Rohrdurchmesser alle ca. gleich groß und
+liegen im Mittel bei $\SI{21.6(8)}{}$. Ein Vergleich mit der theoretischen
+Konstante $\frac{2*f_0}{c}$, welche sich aus der Formel der theoretischen
+Frequenzverschiebung \ref{eq:deltaf} ergibt, zeigt deutliche Übereinstimmungen, wenn für $c$
+die Schallgeschwindigkeit $c = \SI{1800}{\meter\per\second}$ der Dopplerphantomflüssigkeit
+eingesetzt wird.

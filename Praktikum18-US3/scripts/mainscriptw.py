@@ -84,15 +84,18 @@ print("VmittelrohrP",Vmittelrohr)
 VgrossrohrP = np.array(vFlussP(rohrdurchmesser[2],grossrohr[0]))
 print("VgrossrohrP",Vgrossrohr)
 
-
-
+steigung = np.array([0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0])
+fehler = np.array([0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0])
 #Graphen erstellen:
 #Vkleinrohr
+j=0
 i=0
 while i<3:
     lin = curve_fit(linfit,VkleinrohrP*100,kleinrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360))
     linfits = [lin[0],np.sqrt(np.diag(lin[1]))]
     print("lineare Fits Daten von"+str(winkel[i])+":",linfits)
+    steigung[j] = linfits[0][0]
+    fehler[j] = linfits[1][0]
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VkleinrohrP[-1]*1.1*100,1000)
@@ -104,13 +107,15 @@ while i<3:
     plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
     plt.savefig('build/'+'deltacosperV'+str(winkel[i]))
     i = i+1
-
+    j = j+1
 #Vmittelrohr
 i=0
 while i<3:
     lin = curve_fit(linfit,VmittelrohrP*100,mittelrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360))
     linfits = [lin[0],np.sqrt(np.diag(lin[1]))]
     print("lineare Fits Daten von"+str(winkel[i])+":",linfits)
+    steigung[j] = linfits[0][0]
+    fehler[j] = linfits[1][0]
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VmittelrohrP[-1]*1.1*100,1000)
@@ -122,12 +127,14 @@ while i<3:
     plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
     plt.savefig('build/'+'deltacosperVmittel'+str(winkel[i]))
     i = i+1
-
+    j = j+1
 i=0
 while i<3:
     lin = curve_fit(linfit,VgrossrohrP*100,grossrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360))
     linfits = [lin[0],np.sqrt(np.diag(lin[1]))]
     print("lineare Fits Daten von"+str(winkel[i])+":",linfits)
+    steigung[j] = linfits[0][0]
+    fehler[j] = linfits[1][0]
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VgrossrohrP[-1]*1.1*100,1000)
@@ -139,8 +146,13 @@ while i<3:
     plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
     plt.savefig('build/'+'deltacosperVgross'+str(winkel[i]))
     i = i+1
+    j = j+1
 
-#print("lineareFits",linfits)
+Steigungen = unp.uarray(steigung,fehler)
+print("lineareFits",Steigungen)
+Steigungm = unp.uarray(np.mean(unp.nominal_values(Steigungen)), stats.sem(unp.nominal_values(Steigungen)))
+print("steigungm:",Steigungm)
+
 #Tiefenmessungen,doppler60
 messtiefen = np.array(tiefm45[0])
 Vtiefen = np.array([vFluss(tiefm45[1],dopplerwinkel[0]),vFluss(tiefm70[1],dopplerwinkel[0])])
@@ -150,8 +162,8 @@ i=0
 while i<2:
     plt.cla()
     plt.clf()
-    plt.plot(messtiefen, Vtiefen[i]*100,'gx', label='die Momentangeschwindigkeit bei einer Leistung von '+str(P[i])+'%')
-    plt.plot(messtiefen, intens[i]/100,'rx', label='die Streuintensität bei einer Leistung von '+str(P[i])+'%')
+    plt.plot(messtiefen, Vtiefen[i]*100,'gx', label=r'$v_\text{mom}$ mit $P$ = '+str(P[i])+'%')
+    plt.plot(messtiefen, intens[i]/100,'rx', label=r'$\SI{1}{\percent}$ von $I_\text{Streu}$ mit $P$ = '+str(P[i])+'%')
 #plt.plot(Vkleinrohr[1]*100, kleinrohr[2]/np.cos(dopplerwinkel[1]),'rx', label='kleines rohr und 15(60) grad')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
@@ -164,9 +176,9 @@ while i<2:
 
 
 #tabellen:daten
-makeTable([kleinrohr[0],kleinrohr[1],kleinrohr[2],kleinrohr[3]], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'}' ,'tabkleinrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f"])
-makeTable([mittelrohr[0],mittelrohr[1],mittelrohr[2],mittelrohr[3]], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'}' ,'tabmittelrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f"])
-makeTable([grossrohr[0],grossrohr[1],grossrohr[2],grossrohr[3]], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'}' ,'tabgrossrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f"])
+makeTable([kleinrohr[0],kleinrohr[1],kleinrohr[2],kleinrohr[3],VkleinrohrP], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'} & {'+r'$v/\si{\centi\meter\per\second}$'+r'}' ,'tabkleinrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
+makeTable([mittelrohr[0],mittelrohr[1],mittelrohr[2],mittelrohr[3],VmittelrohrP], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'} & {'+r'$v/\si{\centi\meter\per\second}$'+r'}' ,'tabmittelrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
+makeTable([grossrohr[0],grossrohr[1],grossrohr[2],grossrohr[3],VgrossrohrP], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'} & {'+r'$v/\si{\centi\meter\per\second}$'+r'}' ,'tabgrossrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
 
 #tabellen:Winkel
 makeTable([[dopplerwinkel[0]],[dopplerwinkel[1]],[dopplerwinkel[2]]], r'{'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'}' ,'tabdopplerwinkel' , ['S[table-format=2.2]' , 'S[table-format=2.2]' , 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f", "%2.2f"])
