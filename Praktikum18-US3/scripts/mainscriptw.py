@@ -99,7 +99,7 @@ while i<3:
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VkleinrohrP[-1]*1.1*100,1000)
-    plt.plot(VkleinrohrP*100, kleinrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='kleines Rohr und '+str(winkel[i])+r'$\si{\degree}$')
+    plt.plot(VkleinrohrP*100, kleinrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='kleines Rohr und '+str(abs(winkel[i]))+r'$\si{\degree}$')
     plt.plot(punkte,linfit(linfits[0][0],punkte,linfits[0][1]),label = 'linearer Fit')
     plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
     plt.ylabel(r'$\Delta f/cos(\alpha)$')
@@ -119,7 +119,7 @@ while i<3:
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VmittelrohrP[-1]*1.1*100,1000)
-    plt.plot(VmittelrohrP*100, mittelrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='mittleres Rohr und '+str(winkel[i])+r'$\si{\degree}$')
+    plt.plot(VmittelrohrP*100, mittelrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='mittleres Rohr und '+str(abs(winkel[i]))+r'$\si{\degree}$')
     plt.plot(punkte,linfit(linfits[0][0],punkte,linfits[0][1]),label = 'linearer Fit')
     plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
     plt.ylabel(r'$\Delta f/cos(\alpha)$')
@@ -138,7 +138,7 @@ while i<3:
     plt.cla()
     plt.clf()
     punkte = np.linspace(0,VgrossrohrP[-1]*1.1*100,1000)
-    plt.plot(VgrossrohrP*100, grossrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='großes Rohr und '+str(winkel[i])+r'$\si{\degree}$')
+    plt.plot(VgrossrohrP*100, grossrohr[i+1]/np.cos(dopplerwinkel[i]*2*np.pi/360),'gx', label='großes Rohr und '+str(abs(winkel[i]))+r'$\si{\degree}$')
     plt.plot(punkte,linfit(linfits[0][0],punkte,linfits[0][1]),label = 'linearer Fit')
     plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
     plt.ylabel(r'$\Delta f/cos(\alpha)$')
@@ -176,9 +176,9 @@ while i<2:
 
 
 #tabellen:daten
-makeTable([kleinrohr[0],kleinrohr[1],kleinrohr[2],kleinrohr[3],VkleinrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{-30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabkleinrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
-makeTable([mittelrohr[0],mittelrohr[1],mittelrohr[2],mittelrohr[3],VmittelrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{-30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabmittelrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
-makeTable([grossrohr[0],grossrohr[1],grossrohr[2],grossrohr[3],VgrossrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{-30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabgrossrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
+makeTable([kleinrohr[0],kleinrohr[1],kleinrohr[2],kleinrohr[3],VkleinrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabkleinrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
+makeTable([mittelrohr[0],mittelrohr[1],mittelrohr[2],mittelrohr[3],VmittelrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabmittelrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
+makeTable([grossrohr[0],grossrohr[1],grossrohr[2],grossrohr[3],VgrossrohrP*100], r'{'+r'$P/\si{\percent}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{60}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{15}{\degree}}$'+r'} & {'+r'$\Delta f_{\text{Winkel:}\SI{30}{\degree}}$'+r'} & {'+r'$v/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabgrossrohr' , ['S[table-format=2.1]' , 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=4.0]', 'S[table-format=3.0]'] ,  ["%1.2f", "%4.0f", "%4.0f", "%4.0f", "%3.0f"])
 
 #tabellen:Winkel
 makeTable([[dopplerwinkel[0]],[dopplerwinkel[1]],[dopplerwinkel[2]]], r'{'+r'$\text{Winkel:}\SI{60}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{15}{\degree}$'+r'} & {'+r'$\text{Winkel:}\SI{-30}{\degree}$'+r'}' ,'tabdopplerwinkel' , ['S[table-format=2.2]' , 'S[table-format=2.2]' , 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f", "%2.2f"])
@@ -188,4 +188,4 @@ makeTable([tiefm45[0],tiefm45[1],tiefm45[2],Vtiefen[0]*100], r'{'+r'$\text{Messt
 makeTable([tiefm70[0],tiefm70[1],tiefm70[2],Vtiefen[1]*100], r'{'+r'$\text{Messtiefe}/\si{\milli\meter}$'+r'} & {'+r'$\Delta f/\si{\hertz}$'+r'} & {'+r'$I_\text{Streu}$'+r'} & {'+r'$v_\text{mom}/\si[per-mode=reciprocal]{\centi\meter\per\second}$'+r'}' ,'tabmtief70' , ['S[table-format=2.2]' , 'S[table-format=4.0]' , 'S[table-format=5.0]' , 'S[table-format=3.0]'] ,  ["%2.2f", "%4.0f", "%5.0f", "%3.0f"])
 
 graphen = ["dünn:$\SI{15}{\degree}$","dünn:$\SI{60}{\degree}$","dünn:$\SI{30}{\degree}$","mittel:$\SI{15}{\degree}$","mittel:$\SI{60}{\degree}$","mittel:$\SI{30}{\degree}$","breit:$\SI{15}{\degree}$","breit:$\SI{60}{\degree}$","breit:$\SI{30}{\degree}$"]
-makeTable([[r'dünn:$\SI{15}{\degree}$',r'dünn:$\SI{60}{\degree}$',r'dünn:$\SI{30}{\degree}$',r'mittel:$\SI{15}{\degree}$',r'mittel:$\SI{60}{\degree}$',r'mittel:$\SI{30}{\degree}$',r'breit:$\SI{15}{\degree}$',r'breit:$\SI{60}{\degree}$',r'breit:$\SI{30}{\degree}$'],steigung,fehler], r'{'+r'$Graph$'+r'} & \multicolumn{2}{c} {'+r'$Steigung$'+r'}','tabsteigungen' , ['c' , 'S[table-format=2.1]' , '@{${}\pm{}$} S[table-format=2.1]'] ,  ["%s", "%2.1f", "%1.1f"])
+makeTable([[r'dünn:$\SI{15}{\degree}$',r'dünn:$\SI{60}{\degree}$',r'dünn:$\SI{30}{\degree}$',r'mittel:$\SI{15}{\degree}$',r'mittel:$\SI{60}{\degree}$',r'mittel:$\SI{30}{\degree}$',r'breit:$\SI{15}{\degree}$',r'breit:$\SI{60}{\degree}$',r'breit:$\SI{30}{\degree}$'],steigung,fehler], r'{'+r'$Graph$'+r'} & \multicolumn{2}{c} {'+r'$Steigung$'+r'}','tabsteigungen' , ['c' , 'S[table-format=2.1]' , '@{${}\pm{}$} S[table-format=1.1]'] ,  ["%s", "%2.1f", "%1.1f"])
