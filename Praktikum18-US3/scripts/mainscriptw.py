@@ -155,7 +155,7 @@ print("steigungm:",Steigungm)
 
 #Tiefenmessungen,doppler60
 messtiefen = np.array(tiefm45[0])
-Vtiefen = np.array([vFluss(tiefm45[1],dopplerwinkel[0]),vFluss(tiefm70[1],dopplerwinkel[0])])
+Vtiefen = np.array([vFluss(tiefm45[1],dopplerwinkel[1]),vFluss(tiefm70[1],dopplerwinkel[1])])
 print("Vtiefen:",Vtiefen)
 P = np.array([45,70])
 i=0
@@ -163,7 +163,7 @@ while i<2:
     plt.cla()
     plt.clf()
     plt.plot(messtiefen, Vtiefen[i]*100,'gx', label=r'$v_\text{mom}$ mit $P$ = '+str(P[i])+'%')
-    plt.plot(messtiefen, intens[i]/500,'rx', label=r'$\SI{0.2}{\percent}$ von $I_\text{Streu}$ mit $P$ = '+str(P[i])+'%')
+    plt.plot(messtiefen, intens[i]/125,'rx', label=r'$\SI{0.8}{\percent}$ von $I_\text{Streu}$ mit $P$ = '+str(P[i])+'%')
 #plt.plot(Vkleinrohr[1]*100, kleinrohr[2]/np.cos(dopplerwinkel[1]),'rx', label='kleines rohr und 15(60) grad')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
