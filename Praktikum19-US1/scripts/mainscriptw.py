@@ -46,3 +46,5 @@ import scipy.constants as const
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
+Abmessungen=np.genfromtxt('scripts/zylinderdaten.txt',unpack=True)
+np.genfromtxt('scripts/a.txt',unpack=True)

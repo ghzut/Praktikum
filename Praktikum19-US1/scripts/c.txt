@@ -1,0 +1,5 @@
+# tiefe in us -26.96 us| Cepstrum| TGC in dB|| gain 10 dB |||| Spectrum Peak bei 1.78 mhz und 10.83 fft 
+ 0,00 82.39 11.55
+ 4.48  6.31 11.97
+11.74 13.02 14.30
+23.33  3.00 17.96
