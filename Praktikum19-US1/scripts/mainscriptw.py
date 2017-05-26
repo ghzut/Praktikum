@@ -48,7 +48,7 @@ import scipy.constants as const
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
 
-#print(sum([1,2,3]))
+# print('{}{}{}'.format(*convert(unp.uarray([1,2,3],[1,3,2]), unpFormat)))
 
 Abmessungen=np.genfromtxt('scripts/zylinderdaten.txt')
 ErsteMessung=np.genfromtxt('scripts/a.txt',unpack=True)
@@ -57,34 +57,70 @@ DritteMessung=np.genfromtxt('scripts/c.txt',unpack=True)
 VierteMessung=np.genfromtxt('scripts/d.txt')
 
 #Umrechnen
-ErsteMessung=[ErsteMessung[0]/10**6, ErsteMessung[1], 10**(ErsteMessung[2]/20)]
+ErsteMessung=[ErsteMessung[0]/10**6, ErsteMessung[1], 10**((ErsteMessung[2])/20)]
 ZweiteMessung=ZweiteMessung/10**6
-DritteMessung=[(DritteMessung[0]+26.96)/10**6, DritteMessung[1], 10**(DritteMessung[2]/20)]
+DritteMessung=[(DritteMessung[0]+26.96)/10**6, DritteMessung[1], 10**((DritteMessung[2])/20)]
 
+#berechnungen
 
-#berechnung der Schallgeschwindigkeiten
+#   berechnung der Schallgeschwindigkeiten
 params=linregress(ErsteMessung[0],Abmessungen[0:-2]*2)
+Ges1Std=params[-1]
 paramsGes1=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Impuls-Echo-Verfahren\n',paramsGes1)
+print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Impuls-Echo-Verfahren\n',paramsGes1, Ges1Std)
 params=linregress(ZweiteMessung,Abmessungen[0:-2])
+Ges2Std=params[-1]
 paramsGes2=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Durchschallungs-Verfahren\n',paramsGes2)
+print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Durchschallungs-Verfahren\n',paramsGes2, Ges2Std)
 
-#berechnung der Daempfungskonstanten
-x=np.linspace(0.05,0.25)
+#   berechnung der Daempfungskonstanten
 params=linregress(Abmessungen[0:-2]*2,unp.log(ErsteMessung[1]/ErsteMessung[2]))
 paramsDaempfung=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren\n',paramsDaempfung)
+print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren(Es sollte ca. 500 dB/m rauskommen)\n',paramsDaempfung*40/np.log(10))
+
+#plots
+
+#   plot von x gegen T1
+x=np.linspace(0,ErsteMessung[0][-1]*1.02)
+plt.cla()
 plt.cla()
 plt.clf()
-plt.plot(x, np.exp(unp.nominal_values(paramsDaempfung[1]))*np.exp(unp.nominal_values(paramsDaempfung[0]) *x), 'b-', label='Augleichsfunktion')
-plt.plot(Abmessungen[0:-2]*2, (ErsteMessung[1]/ErsteMessung[2]), 'rx', label='Messwerte')
-# plt.ylim(0, line(t[-1], *params)+0.1)
-# plt.xlim(0, t[-1]*100)
-# plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
-# plt.ylabel(r'$\Delta f / \si{\hertz}$')
+plt.plot(x*10**6, unp.nominal_values(paramsGes1[1])+x*unp.nominal_values(paramsGes1[0]), 'b-', label='linearer Fit')
+plt.plot(ErsteMessung[0]*10**6,Abmessungen[0:-2]*2, 'rx', label='Messwerte')
+plt.xlim(x[0]*10**6, x[-1]*10**6)
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$x/\si{\meter}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'test')
+plt.savefig('build/'+'XgegenT1')
+
+#   plot von x gegen T2
+x=np.linspace(0,ZweiteMessung[-1]*1.02)
+plt.cla()
+plt.cla()
+plt.clf()
+plt.plot(x*10**6, unp.nominal_values(paramsGes2[1])+x*unp.nominal_values(paramsGes2[0]), 'b-', label='linearer Fit')
+plt.plot(ZweiteMessung*10**6,Abmessungen[0:-2], 'rx', label='Messwerte')
+plt.xlim(x[0]*10**6, x[-1]*10**6)
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$x/\si{\meter}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'XgegenT2')
+
+
+#   plot von U gegen X
+x=np.linspace(0.05,0.25)
+plt.cla()
+plt.clf()
+plt.plot(x, unp.nominal_values(paramsDaempfung[1])+unp.nominal_values(paramsDaempfung[0]) *x, 'b-', label='linearer Fit')
+plt.plot(Abmessungen[0:-2]*2, np.log(ErsteMessung[1]/ErsteMessung[2]), 'rx', label='Messwerte')
+plt.xlim(x[0], x[-1])
+plt.xlabel(r'$x/\si{\meter}$')
+plt.ylabel(r'$\log(U/\si{\volt})$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'UgegenX')
+
 
 

@@ -15,8 +15,7 @@ class floatFormat(object):
         if(self.p<0):
             temp = (r'{:'+format+r'}').format(float(self.u))
         else:
-            #print((r'{:3.'+(r'{:1.0}'.format(float(self.p)))+r'}'))
-            temp = (r'{:3.'+(r'{:1.0f}'.format(float(self.p)))+r'f}').format(float(self.u))
+            temp = (r'{:0.'+(r'{:1.0f}'.format(float(self.p)))+r'f}').format(float(self.u))
         return r'\SI{'+temp+r'}{'+self.SI+r'}'
 
 class unpFormat(object):
@@ -39,8 +38,8 @@ class unpFormat(object):
                 p=0
         else:
             p=self.p
-        temp1 = (r'{:3.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.nominal_values(self.u)))
-        temp2 = (r'\pm{:3.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.std_devs(self.u)))
+        temp1 = (r'{:0.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.nominal_values(self.u)))
+        temp2 = (r'\pm{:0.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.std_devs(self.u)))
         return r'\SI{'+temp1+temp2+r'}{'+self.SI+r'}'
       
 
@@ -53,15 +52,15 @@ class strFormat(object):
 
 
 def convert(data, format1=floatFormat, arguments=[], arguments2=[]):
-        convertedData=[]
-        i=0
-        for x in data:
-            if arguments:
-                convertedData.append(format1(x,*arguments))
+    convertedData=[]
+    i=0
+    for x in data:
+        if arguments:
+            convertedData.append(format1(x,*arguments))
+        else:
+            if arguments2:
+                convertedData.append(format1(x,*arguments2[i]))
             else:
-                if arguments2:
-                    convertedData.append(format1(x,*arguments2[i]))
-                else:
-                    convertedData.append(format1(x))
-            i=i+1
-        return convertedData
+                convertedData.append(format1(x))
+        i=i+1
+    return convertedData
