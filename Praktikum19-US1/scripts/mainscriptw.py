@@ -59,7 +59,7 @@ VierteMessung=np.genfromtxt('scripts/d.txt')
 #Umrechnen
 ErsteMessung=[ErsteMessung[0]/10**6, ErsteMessung[1], 10**((ErsteMessung[2])/20)]
 ZweiteMessung=ZweiteMessung/10**6
-DritteMessung=[(DritteMessung[0]+26.96)/10**6, DritteMessung[1], 10**((DritteMessung[2])/20)]
+DritteMessung=[(DritteMessung[0])/10**6, DritteMessung[1], 10**((DritteMessung[2])/20)]
 
 #berechnungen
 
@@ -123,7 +123,10 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'UgegenX')
 
 #tabellen
+#makeNewTable([Abmessungen], r'{$l/\si[per-mode=reciprocal]{\meter}$}','Abmessungen')
+makeNewTable([convert(Abmessungen[0:-2], floatFormat, ['', '1.2E']),convert(ErsteMessung[0], floatFormat, ['', '1.2E']), convert(ErsteMessung[1], floatFormat, ['', '1.2E']), convert(ErsteMessung[2], floatFormat, ['', '1.2E'])], r'{$l/\si[per-mode=reciprocal]{\meter}$} & {$T/\si[per-mode=reciprocal]{\second}$} & {$U/\si[per-mode=reciprocal]{\volt}$} & {$U_\text{A}/U$}','a')
+makeNewTable([convert(Abmessungen[0:-2], floatFormat, ['', '1.2E']),convert(ZweiteMessung, floatFormat, ['', '1.2E'])], r'{$l/\si[per-mode=reciprocal]{\meter}$} & {$T/\si[per-mode=reciprocal]{\second}$}','b')
+makeNewTable([convert(DritteMessung[0], floatFormat, ['', '1.2E'])], r'{$\Delta T/\si[per-mode=reciprocal]{\second}$}','c')
+makeNewTable([convert(VierteMessung, floatFormat, ['', '1.2E'])], r'{$T/\si[per-mode=reciprocal]{\second}$}','d')
 
-makeNewTable(ErsteMessung, r'{$T/\si[per-mode=reciprocal]{\second}$} & {$U/\si[per-mode=reciprocal]{\volt}$} & {$\text{TGC}/\si[per-mode=reciprocal]{\decibel}$}','a')
-makeNewTable([ZweiteMessung], r'{$T/\si[per-mode=reciprocal]{\second}$}','b')
 
