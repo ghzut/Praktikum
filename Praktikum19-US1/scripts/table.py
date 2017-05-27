@@ -35,7 +35,7 @@ def makeTable(data, names, filename, formats=[], formats2=[]):
     TableFile.write(r'\end{tabular}'+'\n')
     # TableFile.write(r'\end{table}')
 
-def makeNewTable(data, names, filename, formats=[], formats2=[], formats3=[]):
+def makeNewTable(data, names, filename='test', formats=[], formats2=[], formats3=[]):
     TableFile = open('build/'+filename+'.tex', 'w+')
     TableFile.write( r'\label{tab:'+filename+'}\n\t'+r'\sisetup{table-format=1.2}'+'\n\t'+r'\begin{tabular}{')
     for i in range(len(data)):
