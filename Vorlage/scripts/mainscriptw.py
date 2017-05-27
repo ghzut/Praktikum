@@ -25,7 +25,7 @@ import scipy.constants as const
 
 # makeTable([Gaenge, ForwardsVNominal, ForwardsVStd, ], r'{Gang} & \multicolumn{2}{c}{$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$} & ', 'name', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', ], ["%2.0f", "%2.3f", "%2.3f",])
 
-
+#[per-mode=reciprocal],[table-format=2.3,table-figures-uncertainty=1]
 
 # unp.uarray(np.mean(), stats.sem())
 # unp.uarray(*avg_and_sem(values)))

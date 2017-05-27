@@ -1,31 +1,45 @@
 ﻿import uncertainties.unumpy as unp
 import numpy as np
+from test_dim import test_dim
 
 
         
 
 
 class floatFormat(object):
-    def __init__(self, Number, SI='', format=''):
+    def __init__(self, Number, SI="", format="", SI2=False):
         self.u=Number
         self.SI = SI
         self.p = format
+        self.SI2 = SI2
 
     def __format__(self, format):
-        if(self.p==''):
+        temp3 = ''
+        temp4 = ''
+        temp5 = ''
+        if(self.p==""):
             temp = (r'{:'+format+r'}').format(float(self.u))
         else:
             temp = (r'{:'+self.p+r'}').format(float(self.u))
-        return r'\SI{'+temp+r'}{'+self.SI+r'}'
+        if self.SI!='':
+            temp3 = r'\,\si{'+self.SI+r'}'
+        if self.SI2:
+            temp4 = r'\SI{'
+            temp5 = r'}'
+        return temp4+temp+temp5+temp3
 
 class unpFormat(object):
-    def __init__(self, unpNumber, SI='', format=''):
+    def __init__(self, unpNumber, SI="", format="", SI2=False):
         self.u=unpNumber
         self.SI = SI
         self.p = format
+        self.SI2 = SI2
 
     def __format__(self, format):
-        if(self.p==''):
+        temp3 = ''
+        temp4 = ''
+        temp5 = ''
+        if(self.p==""):
             e=0
             if(unp.std_devs(self.u)==0):
                 e=0
@@ -40,9 +54,13 @@ class unpFormat(object):
             temp2 = (r'\pm{:0.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.std_devs(self.u)))
         else:
             temp1 = (r'{:'+self.p+r'}').format(float(unp.nominal_values(self.u)))
-            temp2 = (r'\pm{:'+self.p+r'}').format(float(unp.std_devs(self.u)))
-
-        return r'\SI{'+temp1+temp2+r'}{'+self.SI+r'}'
+            temp2 = (r'+-{:'+self.p+r'}').format(float(unp.std_devs(self.u)))
+        if self.SI!="":
+            temp3 = r'\,\si{'+self.SI+r'}'
+        if self.SI2:
+            temp4 = r'\SI{'
+            temp5 = r'}'
+        return temp4+temp1+temp2+temp5+temp3
       
 
 class strFormat(object):
@@ -53,16 +71,21 @@ class strFormat(object):
         return (r'{}').format(self.s)
 
 
-def convert(data, format1=floatFormat, arguments=[], arguments2=[]):
+def convert(data, format1=floatFormat, arguments=[]):
     convertedData=[]
     i=0
-    for x in data:
-        if arguments:
-            convertedData.append(format1(x,*arguments))
-        else:
-            if arguments2:
-                convertedData.append(format1(x,*arguments2[i]))
+    if(test_dim(data)>=1):
+        for x in data:
+            convertedData.append(convert(x, format1, arguments))
+        return convertedData
+    else:
+        for x in data:
+            if test_dim(arguments)==1:
+                convertedData.append(format1(x,*arguments))
             else:
-                convertedData.append(format1(x))
-        i=i+1
-    return convertedData
+                if test_dim(arguments)==2:
+                    convertedData.append(format1(x,*arguments[i]))
+                else:
+                    convertedData.append(format1(x))
+            i=i+1
+        return convertedData

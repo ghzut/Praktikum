@@ -26,7 +26,7 @@ import scipy.constants as const
 
 # makeTable([Gaenge, ForwardsVNominal, ForwardsVStd, ], r'{Gang} & \multicolumn{2}{c}{$v_\text{v}/\si[per-mode=reciprocal]{\centi\meter\per\second}$} & ', 'name', ['S[table-format=2.0]', 'S[table-format=2.3]', ' @{${}\pm{}$} S[table-format=1.3]', ], ["%2.0f", "%2.3f", "%2.3f",])
 
-
+#[per-mode=reciprocal],[table-format=2.3,table-figures-uncertainty=1]
 
 # unp.uarray(np.mean(), stats.sem())
 # unp.uarray(*avg_and_sem(values)))
@@ -60,23 +60,26 @@ VierteMessung=np.genfromtxt('scripts/d.txt')
 ErsteMessung=[ErsteMessung[0]/10**6, ErsteMessung[1], 10**((ErsteMessung[2])/20)]
 ZweiteMessung=ZweiteMessung/10**6
 DritteMessung=[(DritteMessung[0])/10**6, DritteMessung[1], 10**((DritteMessung[2])/20)]
-
 #berechnungen
 
 #   berechnung der Schallgeschwindigkeiten
 params=linregress(ErsteMessung[0],Abmessungen[0:-2]*2)
 Ges1Std=params[-1]
 paramsGes1=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Impuls-Echo-Verfahren\n',paramsGes1, Ges1Std)
+deltat1 = -paramsGes1[1]/paramsGes1[0]
+print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Impuls-Echo-Verfahren\n',paramsGes1, deltat1, Ges1Std)
 params=linregress(ZweiteMessung,Abmessungen[0:-2])
 Ges2Std=params[-1]
 paramsGes2=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Durchschallungs-Verfahren\n',paramsGes2, Ges2Std)
+deltat2 = -paramsGes2[1]/paramsGes2[0]
+print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Durchschallungs-Verfahren\n',paramsGes2, deltat2, Ges2Std)
 
 #   berechnung der Daempfungskonstanten
 params=linregress(Abmessungen[0:-2]*2,unp.log(ErsteMessung[1]/ErsteMessung[2]))
 paramsDaempfung=unp.uarray(*params[0:-1])
 print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren(Es sollte ca. 500 dB/m rauskommen)\n',paramsDaempfung*40/np.log(10))
+
+
 
 #plots
 
@@ -124,9 +127,9 @@ plt.savefig('build/'+'UgegenX')
 
 #tabellen
 #makeNewTable([Abmessungen], r'{$l/\si[per-mode=reciprocal]{\meter}$}','Abmessungen')
-makeNewTable([convert(Abmessungen[0:-2], floatFormat, ['', '1.2E']),convert(ErsteMessung[0], floatFormat, ['', '1.2E']), convert(ErsteMessung[1], floatFormat, ['', '1.2E']), convert(ErsteMessung[2], floatFormat, ['', '1.2E'])], r'{$l/\si[per-mode=reciprocal]{\meter}$} & {$T/\si[per-mode=reciprocal]{\second}$} & {$U/\si[per-mode=reciprocal]{\volt}$} & {$U_\text{A}/U$}','a')
-makeNewTable([convert(Abmessungen[0:-2], floatFormat, ['', '1.2E']),convert(ZweiteMessung, floatFormat, ['', '1.2E'])], r'{$l/\si[per-mode=reciprocal]{\meter}$} & {$T/\si[per-mode=reciprocal]{\second}$}','b')
-makeNewTable([convert(DritteMessung[0], floatFormat, ['', '1.2E'])], r'{$\Delta T/\si[per-mode=reciprocal]{\second}$}','c')
-makeNewTable([convert(VierteMessung, floatFormat, ['', '1.2E'])], r'{$T/\si[per-mode=reciprocal]{\second}$}','d')
+makeNewTable([convert(100*Abmessungen[0:-2], floatFormat),convert(10**6*ErsteMessung[0], floatFormat), convert(ErsteMessung[1], floatFormat), convert(np.log10(ErsteMessung[2]) *20, floatFormat)], r'{$l/\si[per-mode=reciprocal]{\centi\meter}$} & {$T/\si[per-mode=reciprocal]{\micro\second}$} & {$U/\si[per-mode=reciprocal]{\volt}$} & {$\text{TGC}/\si{\decibel}$}','a', [r'S[table-format=2.3]',r' S[table-format=2.2]',r' S[table-format=1.3]',r' S[table-format=2.2]'],[r'{:2.3f}',r'{:2.2f}',r'{:1.3f}',r'{:2.2f}'])
+makeNewTable([convert(100*Abmessungen[0:-2], floatFormat),convert(10**6*ZweiteMessung, floatFormat)], r'{$l/\si[per-mode=reciprocal]{\centi\meter}$} & {$T/\si[per-mode=reciprocal]{\micro\second}$}','b',[r'S[table-format=2.3]',r' S[table-format=2.2]'],[r'{:2.3f}',r'{:2.2f}'])
+makeNewTable([convert(10**6*DritteMessung[0], floatFormat)], r'{$\Delta T/\si[per-mode=reciprocal]{\micro\second}$}','c',[r'S[table-format=2.3]'])# r'{:1.2e}')
+#makeNewTable([convert(VierteMessung, floatFormat)], r'{$T/\si[per-mode=reciprocal]{\second}$}','d',['S'], [r'{:1.2e}'])
 
 
