@@ -80,7 +80,17 @@ DaempfungStd=params[-1]
 paramsDaempfung=unp.uarray(*params[0:-1])
 print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren(Es sollte ca. 500 dB/m rauskommen)\n',paramsDaempfung*2,paramsDaempfung*40/np.log(10),DaempfungStd)
 
+#   berechnung Dicken
+print('Dicken der Platten')
+print(4.44*10**-6 *paramsGes1[0]/2)
+print(7.26*10**-6 *paramsGes1[0]/2)
 
+#   berechnung Augenmodell
+print('Abstände im Augenmodell:')
+print((VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2)
+print((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2)
+print((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2)
+print((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2)
 
 #plots
 
@@ -130,12 +140,8 @@ plt.savefig('build/'+'UgegenX')
 #makeNewTable([Abmessungen], r'{$l/\si[per-mode=reciprocal]{\meter}$}','Abmessungen')
 makeNewTable([convert(100*Abmessungen[0:-2], floatFormat),convert(10**6*ErsteMessung[0], floatFormat), convert(ErsteMessung[1], floatFormat), convert(np.log10(ErsteMessung[2]) *20-10, floatFormat), convert(ErsteMessung[1]/ErsteMessung[2], floatFormat)], r'{$l/\si[per-mode=reciprocal]{\centi\meter}$} & {$T/\si[per-mode=reciprocal]{\micro\second}$} & {$U/\si[per-mode=reciprocal]{\volt}$} & {$\text{TGC}/\si{\decibel}$} & {$U_\text{n}/\si[per-mode=reciprocal]{\volt}$}','a', [r'S[table-format=2.3]',r' S[table-format=2.2]',r' S[table-format=1.3]',r' S[table-format=2.2]',r' S[table-format=1.2e1]'],[r'{:2.3f}',r'{:2.2f}',r'{:1.3f}',r'{:2.2f}',r'{:1.2E}'])
 makeNewTable([convert(100*Abmessungen[0:-2], floatFormat),convert(10**6*ZweiteMessung, floatFormat)], r'{$l/\si[per-mode=reciprocal]{\centi\meter}$} & {$T/\si[per-mode=reciprocal]{\micro\second}$}','b',[r'S[table-format=2.3]',r' S[table-format=2.2]'],[r'{:2.3f}',r'{:2.2f}'])
-makeNewTable([convert(10**6*DritteMessung[0], floatFormat)], r'{$\Delta T/\si[per-mode=reciprocal]{\micro\second}$}','c',[r'S[table-format=2.2]'])# r'{:1.2e}')
+makeNewTable([convert(10**6*DritteMessung[0], floatFormat), convert(np.array([10**6*(DritteMessung[0][0]-DritteMessung[0][0]),10**6*(DritteMessung[0][1]-DritteMessung[0][0]),10**6*(DritteMessung[0][2]-DritteMessung[0][1]),10**6*(DritteMessung[0][3]-DritteMessung[0][2])]), floatFormat)], r'{$T/\si[per-mode=reciprocal]{\micro\second}$} & {$\Delta T/\si[per-mode=reciprocal]{\micro\second}$}','c',[r'S[table-format=2.2]',r'S[table-format=2.2]'], [r'{:1.2f}',r'{:1.2f}'])
 makeNewTable([convert(VierteMessung, floatFormat),convert(VierteMessung-2*deltat2*10**6, unpFormat)], r'{$T/\si[per-mode=reciprocal]{\micro\second}$} & {$T_\text{I}/\si[per-mode=reciprocal]{\micro\second}$}','d',['S[table-format=2.2]',r'S[table-format=2.1,table-figures-uncertainty=1]'], [r'{:1.2f}',r'{:1.2f}'])
 
-print('Abstände im Augenmodell:')
-print((VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2)
-print((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2)
-print((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2)
-print((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2)
+makeNewTable([convert((r'$c_\text{1}$',r'$c_\text{2}$'),strFormat),convert(np.array([paramsGes1[0],paramsGes2[0]]),unpFormat),convert(np.array([1,2]),floatFormat)],r'{}&{Aus Messwerten}&{Literaturwert/direkt gemessen}&{Abweichung}','Ergebnisse', ['c ','S[table-format=2.2,table-figures-uncertainty=1]',r'S[table-format=2.1,table-figures-uncertainty=1]'])
 

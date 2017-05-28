@@ -47,7 +47,7 @@ Es folgt für die Schallgeschwindigkeit im Zylinder
 \begin{equation}
 	c_2=a=\SI{2722(19)}{\meter\per\second}\text{.}
 \end{equation}
-Nun lässt sich in dem Graphen in Abbildung \ref{fig:XgegenT1} erkennen, dass der Schall sich erst ab einer bestimmten Laufzeit überhaupt durch einen möglichen Zylinder bewegen kann. Dies ist durch die Strecke die der Schalls vor Eintritt in und nach Austritt aus dem Zylinder zurücklegen muss zu erklären. Für die mittlere benötigte Zeit $T_{\text{A}1}$ um eine dieser Strecken zurückzulegen gilt 
+Nun lässt sich in dem Graphen in Abbildung \ref{fig:XgegenT1} erkennen, dass der Schall sich erst ab einer bestimmten Laufzeit überhaupt durch einen möglichen Zylinder bewegen kann. Dies ist durch die Strecke die der Schalls vor Eintritt in und nach Austritt aus dem Zylinder zurücklegen muss zu erklären. Für die mittlere benötigte Zeit $T_{\text{A}2}$ um eine dieser Strecken zurückzulegen gilt 
 \begin{equation}
 	T_{\text{A}2}=-\frac{1}{2} \cdot \frac{b}{a}=\SI{0.5(2)}{\micro\second}\text{.}
 \end{equation}
@@ -67,11 +67,22 @@ In der Abbildung \ref{fig:UgegenX} ist der Logarithmus von der ursprünglichen S
 
 
 \subsection{Untersuchung des Cepstrums/Spektrums}
+Im Spektrum wurde ein Peak bei $\SI{1.78}{\mega\hertz}$ aufgenommen.
 \begin{table}
 	\centering
-	\caption{Die gemessenen Daten am dünnen Rohr und die zugehörigen Geschwindigkeiten, berechnet aus der Leistung.}
+	\caption{Die gemessenen zeitliche Differenz $T$ zu dem ersten Peak im Cepstrum der gemessenen Peaks und die daraus berechneten zeitlichen Abstände $\Delta T$ zwischen diesen und dem jeweils vorherigem.}
 	\input{build/c.tex}
 \end{table}
+In Tabelle \ref{tab:c} fällt auf, das sich die Werte für die gemessenen und bestimmten zeitlichen Differenzen durch die Kombination der zeitlichen Differenzen von $T'_1=\SI{4.48}{\micro\second}$ und von $T'_2=\SI{7.26}{\micro\second}$ darstellen lassen. Da es sich hierbei um die Laufzeiten der Reflexe handelt lässt dies vermuten, dass diese die Laufzeiten des Schalls in den jeweiligen Acrylplatten sind.
+Mit der bekannten Schallgeschwindigkeit in Acryl $c_2=a=\SI{2722(19)}{\meter\per\second}$ ergeben sich somit für die Dicken der Platten
+\begin{equation}
+D_1=\frac{T'_1}{2} c_2=\SI{6.04(4)}{\milli\meter}
+\end{equation}
+und
+\begin{equation}
+D_2=\frac{T'_2}{2} c_2=\SI{9.88(7)}{\milli\meter}\text{.}
+\end{equation}
+
 
 \subsection{Untersuchung der Abstände in einem Augenmodell}
 \begin{table}
