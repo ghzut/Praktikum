@@ -18,17 +18,52 @@ Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIS
 	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/XgegenT2.pdf}
 	\label{fig:XgegenT2}
 \end{figure}
-In der Abbildung \ref{fig:XgegenT2} sind die Messwertepaare aus Tabelle \ref{tab:b} aufgetragen und durch einen linearen Fit der Form $x=a t + b$ genähert worden. 
+In der Abbildung \ref{fig:XgegenT2} sind die Messwertepaare aus Tabelle \ref{tab:b} aufgetragen und durch einen linearen Fit der Form $x=a t + b$ genähert worden.
+Es folgt für die Schallgeschwindigkeit im Zylinder
+\begin{equation}
+	c_1=a=\SI{2714(21)}{\meter\per\second}\text{.}
+\end{equation}
+Nun lässt sich in dem Graphen in Abbildung \ref{fig:XgegenT2} erkennen, dass der Schall sich erst ab einer bestimmten Laufzeit überhaupt durch einen möglichen Zylinder bewegen kann. Dies ist durch die Strecke die der Schalls vor Eintritt in und nach Austritt aus dem Zylinder zurücklegen muss zu erklären. Für die mittlere benötigte Zeit $T_{\text{A}1}$ um eine dieser Strecken zurückzulegen gilt 
+\begin{equation}
+	T_{\text{A}1}=-\frac{1}{2} \cdot \frac{b}{a}=\SI{0.5(1)}{\micro\second}\text{.}
+\end{equation}
+
 
 
 \subsection{Bestimmung der Schallgeschwindigkeit mit Impuls-Echo-Verfahren}
 \begin{table}
 	\centering
-	\caption{Die gemessenen Laufzeiten $T$, Spannungen $U$ und TGC-Werte für die Acryl-Zylinder der Länge $l$.}
+	\caption{Die gemessenen Laufzeiten $T$, Spannungen $U$, TGC-Werte und die daraus berechneten ursprünglichen Spannungen $U_\text{n}$ für die Acryl-Zylinder der Länge $l$ bei einem Gain von $\SI{10}{\decibel}$.}
 	\input{build/a.tex}
 \end{table}
+\begin{figure}
+	\centering
+	\caption{Die nach der Zeit $t$ zurückgelegte Strecke $x$ des Schalls im Zylinder gegen die Zeit $t$ aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/XgegenT1.pdf}
+	\label{fig:XgegenT1}
+\end{figure}
+In der Abbildung \ref{fig:XgegenT1} sind die Messwertepaare aus Tabelle \ref{tab:a} aufgetragen und durch einen linearen Fit der Form $x=a t + b$ genähert worden.
+Es folgt für die Schallgeschwindigkeit im Zylinder
+\begin{equation}
+	c_2=a=\SI{2722(19)}{\meter\per\second}\text{.}
+\end{equation}
+Nun lässt sich in dem Graphen in Abbildung \ref{fig:XgegenT1} erkennen, dass der Schall sich erst ab einer bestimmten Laufzeit überhaupt durch einen möglichen Zylinder bewegen kann. Dies ist durch die Strecke die der Schalls vor Eintritt in und nach Austritt aus dem Zylinder zurücklegen muss zu erklären. Für die mittlere benötigte Zeit $T_{\text{A}1}$ um eine dieser Strecken zurückzulegen gilt 
+\begin{equation}
+	T_{\text{A}2}=-\frac{1}{2} \cdot \frac{b}{a}=\SI{0.5(2)}{\micro\second}\text{.}
+\end{equation}
 
 \subsection{Bestimmung der Dämpfungskonstanten mit Impuls-Echo-Verfahren}
+\begin{figure}
+	\centering
+	\caption{Der Logarithmus von der ursprünglichen Spannungen $U_\text{n}$ gegen die nach der Zeit $t$ zurückgelegten Strecke $x$ des Schalls im Zylinder aufgetragen.}
+	\includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/UgegenX.pdf}
+	\label{fig:UgegenX}
+\end{figure}
+In der Abbildung \ref{fig:UgegenX} ist der Logarithmus von der ursprünglichen Spannung $U_\text{n}$ gegen die zurückgelegte Strecke $x$ des Schalls im Zylinder mit den Werten aus Tabelle \ref{tab:a} aufgetragen und durch einen linearen Fit der Form $x=a t + b$ genähert worden. Für den Dämpfungsfaktor $\alpha$ gilt, da die Intensität $I$ proportional zu $U_\text{n}^2$ ist, nach Formel \eqref{I}
+\begin{equation}
+	\alpha=-2 a = \SI{58(3)}{\per\meter}=\SI{5.1(3)}{\decibel\per\centi\meter}\text{.}
+\end{equation}
+
 
 
 \subsection{Untersuchung des Cepstrums/Spektrums}
@@ -37,3 +72,29 @@ In der Abbildung \ref{fig:XgegenT2} sind die Messwertepaare aus Tabelle \ref{tab
 	\caption{Die gemessenen Daten am dünnen Rohr und die zugehörigen Geschwindigkeiten, berechnet aus der Leistung.}
 	\input{build/c.tex}
 \end{table}
+
+\subsection{Untersuchung der Abstände in einem Augenmodell}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Werte für die Laufzeiten $T$ des Schalls und die unter Einbeziehung der Laufzeiten außerhalb des Augenmodells $T_{\text{A}1}$ berechneten Werte für die Laufzeit des Schalls $T_\text{I}$ im Augenmodell.}
+	\input{build/d.tex}
+\end{table}
+Mit den Werten für die Laufzeiten des Schalls im Auge aus Tabelle \ref{tab:d} lässt sich mit den bekannten Schallgeschwindigkeiten von $c_\text{GK}=\SI{1410}{\meter\per\second}$ außerhalb der Linse und von $c_\text{L}=\SI{2500}{\meter\per\second}$ in der Linse die Abstände im Augenmodell berechnen. Für den Abstand zwischen der Hornhaut und der Iris ergibt sich
+\begin{equation}
+A_1=\frac{T_{\text{I}1}}{2 } c_\text{GK}=\SI{7(2)}{\milli\meter}\text{,}
+\end{equation}
+für den Abstand zwischen Iris und Linse
+\begin{equation}
+A_2=\frac{T_{\text{I}2}-T_{\text{I}1}}{2 }c_\text{GK}=\SI{4.413}{\milli\meter}\text{,}
+\end{equation}
+für die Dicke der Linse
+\begin{equation}
+A_3=\frac{T_{\text{I}3}-T_{\text{I}2}}{2 }c_\text{L}=\SI{9.125}{\milli\meter}
+\end{equation}
+und für den Abstand zwischen Linse und Retina 
+\begin{equation}
+A_4=\frac{T_{\text{I}4}-T_{\text{I}3}}{2} c_\text{GK}=\SI{32.96}{\milli\meter}\text{.}
+\end{equation}
+
+
+
