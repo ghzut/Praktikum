@@ -78,11 +78,11 @@ print('Parameter bei der Berechnung der Schallgeschwindigkeit mit Durchschallung
 params=linregress(Abmessungen[0:-2]*2,unp.log(ErsteMessung[1]/ErsteMessung[2]))
 DaempfungStd=params[-1]
 paramsDaempfung=unp.uarray(*params[0:-1])
-print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren(Es sollte ca. 500 dB/m rauskommen)\n',paramsDaempfung*2,paramsDaempfung*40/np.log(10),DaempfungStd)
+print('Parameter bei der Berechnung der Daempfung mit Impuls-Echo-Verfahren(Es sollte ca. 500 dB/m rauskommen)\n',paramsDaempfung*2,paramsDaempfung*20/np.log(10),DaempfungStd)
 
 #   berechnung Dicken
 print('Dicken der Platten')
-print(4.44*10**-6 *paramsGes1[0]/2)
+print(4.48*10**-6 *paramsGes1[0]/2)
 print(7.26*10**-6 *paramsGes1[0]/2)
 
 #   berechnung Augenmodell
@@ -91,7 +91,6 @@ print((VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2)
 print((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2)
 print((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2)
 print((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2)
-
 #plots
 
 #   plot von x gegen T1
@@ -143,5 +142,5 @@ makeNewTable([convert(100*Abmessungen[0:-2], floatFormat),convert(10**6*ZweiteMe
 makeNewTable([convert(10**6*DritteMessung[0], floatFormat), convert(np.array([10**6*(DritteMessung[0][0]-DritteMessung[0][0]),10**6*(DritteMessung[0][1]-DritteMessung[0][0]),10**6*(DritteMessung[0][2]-DritteMessung[0][1]),10**6*(DritteMessung[0][3]-DritteMessung[0][2])]), floatFormat)], r'{$T/\si[per-mode=reciprocal]{\micro\second}$} & {$\Delta T/\si[per-mode=reciprocal]{\micro\second}$}','c',[r'S[table-format=2.2]',r'S[table-format=2.2]'], [r'{:1.2f}',r'{:1.2f}'])
 makeNewTable([convert(VierteMessung, floatFormat),convert(VierteMessung-2*deltat2*10**6, unpFormat)], r'{$T/\si[per-mode=reciprocal]{\micro\second}$} & {$T_\text{I}/\si[per-mode=reciprocal]{\micro\second}$}','d',['S[table-format=2.2]',r'S[table-format=2.1,table-figures-uncertainty=1]'], [r'{:1.2f}',r'{:1.2f}'])
 
-makeNewTable([convert((r'$c_\text{1}$',r'$c_\text{2}$'),strFormat),convert(np.array([paramsGes1[0],paramsGes2[0]]),unpFormat),convert(np.array([1,2]),floatFormat)],r'{}&{Aus Messwerten}&{Literaturwert/direkt gemessen}&{Abweichung}','Ergebnisse', ['c ','S[table-format=2.2,table-figures-uncertainty=1]',r'S[table-format=2.1,table-figures-uncertainty=1]'])
+makeNewTable([convert((r'$c_\text{1}$',r'$c_\text{2}$',r'$T_{\text{A}1}$',r'$T_{\text{A}2}$',r'$\alpha$',r'$D_1$',r'$D_2$',r'$A_1$',r'$A_2$',r'$A_3$',r'$A_4$'),strFormat),convert(np.array([paramsGes1[0],paramsGes2[0],deltat1*10**6,deltat2*10**6,-paramsDaempfung[0]*2,4.48*10**-6 *paramsGes1[0]/2*10**3, 7.26*10**-6 *paramsGes1[0]/2*10**3, (VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2*10**3, unp.uarray((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2*10**3, 0), unp.uarray((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2*10**3, 0),unp.uarray((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2*10**3, 0)]),unpFormat,[[r'\meter\per\second',"",True],[r'\meter\per\second',"",True],[r'\micro\second',"",True],[r'\micro\second',"",True],[r'\per\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'2.2f',True]]),convert(np.array([2730,2730]),floatFormat,[r'\meter\per\second','1.0f',True])+convert((r'-',r'-'),strFormat)+convert(unp.uarray([57,6.05,9.9],[2.5,0,0]),unpFormat,[[r'\per\meter',"",True],[r'\milli\meter',r'1.2f',True],[r'\milli\meter',r'1.2f',True]])+convert((r'-',r'-',r'-',r'-'),strFormat),convert(np.array([(2730-paramsGes1[0])/2730*100,(2730-paramsGes2[0])/2730*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-'),strFormat)+convert(np.array([(-paramsDaempfung[0]*2-unp.uarray(57,2.5))/unp.uarray(57,2.5)*100,(4.48*10**-6 *paramsGes1[0]/2*10**3-6.05)/6.05*100, (-7.26*10**-6 *paramsGes1[0]/2*10**3+9.90)/9.90*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-',r'-',r'-'),strFormat)],r'{Wert}&{gemessen}&{Literaturwert\cite{cAcryl},\cite{alphaAcryl}}&{Abweichung}','Ergebnisse', ['c ','c',r'c','c'])
 

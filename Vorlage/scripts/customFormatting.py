@@ -54,7 +54,9 @@ class unpFormat(object):
             temp2 = (r'\pm{:0.'+(r'{:1.0f}'.format(float(p)))+r'f}').format(float(unp.std_devs(self.u)))
         else:
             temp1 = (r'{:'+self.p+r'}').format(float(unp.nominal_values(self.u)))
-            temp2 = (r'+-{:'+self.p+r'}').format(float(unp.std_devs(self.u)))
+            temp2 = (r'\pm{:'+self.p+r'}').format(float(unp.std_devs(self.u)))
+        if(unp.std_devs(self.u)==0):
+            temp2=''
         if self.SI!="":
             temp3 = r'\,\si{'+self.SI+r'}'
         if self.SI2:
