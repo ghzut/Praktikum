@@ -1,5 +1,6 @@
 ﻿from table import makeTable
 from table import makeNewTable
+from linregress import *
 from customFormatting import *
 from bereich import bereich
 from weightedavgandsem import weighted_avg_and_sem
@@ -46,3 +47,41 @@ import scipy.constants as const
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
+
+# print('{}{}{}'.format(*convert(unp.uarray([1,2,3],[1,3,2]), unpFormat)))
+
+Kupfer= np.array(np.genfromtxt('scripts/Kupfer.txt',unpack=True))
+Eisen = np.array(np.genfromtxt('scripts/Eisen.txt',unpack=True))
+Nullabfall = (968+1034)/2000
+def linear(a,x,b):
+    return a*x+b
+
+#Ausgleichsgeraden
+punkte = np.linspace(0,Kupfer[0][-1]*1.1,1000)
+lin = curve_fit(linear,Kupfer[0],np.log((Kupfer[2]/Kupfer[1])-Nullabfall),sigma = np.log(np.sqrt((Kupfer[2]/Kupfer[1])-Nullabfall)))
+linfitsk = [lin[0],np.sqrt(np.diag(lin[1]))]
+print("linearerFit,Kupfer:",linfitsk)
+plt.cla()
+plt.clf()
+plt.plot(Kupfer[0],np.log((Kupfer[2]/Kupfer[1])-Nullabfall), 'gx', label='gemessene Werte')
+plt.plot(punkte,linear(linfitsk[0][0],punkte,linfitsk[0][1]),label = 'linearer Fit')
+plt.xlabel(r'$d/\si{\milli\meter}$')
+plt.ylabel(r'$N/t\si{\per\second}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'Kupfer')
+
+punkte = np.linspace(0,Eisen[0][-1]*1.1,1000)
+lin = curve_fit(linear,Eisen[0],np.log((Eisen[2]/Eisen[1])-Nullabfall),sigma = np.log(np.sqrt(Eisen[2])/Eisen[1]))
+linfitse = [lin[0],np.sqrt(np.diag(lin[1]))]
+print("linearerFit,Eisen:",linfitse)
+
+plt.cla()
+plt.clf()
+plt.plot(Eisen[0],np.log((Eisen[2]/Eisen[1])-Nullabfall), 'gx', label='gemessene Werte')
+plt.plot(punkte,linear(linfitse[0][0],punkte,linfitse[0][1]),label = 'linearer Fit')
+plt.xlabel(r'$d/\si{\milli\meter}$')
+plt.ylabel(r'$N/t\si{\per\second}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'Eisen')
