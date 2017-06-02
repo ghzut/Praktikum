@@ -61,7 +61,7 @@ def linear(a,x,b):
 
 #Ausgleichsgeraden
 punkte = np.linspace(0,Kupfer[0][-1]*1.1,1000)
-lin = curve_fit(linear,Kupfer[0],np.log((Kupfer[2]/Kupfer[1])-Nullabfall),sigma = np.log(np.sqrt((Kupfer[2]/Kupfer[1])-Nullabfall)))
+lin = curve_fit(linear,Kupfer[0],np.log((Kupfer[2]/Kupfer[1])-Nullabfall),sigma = np.log(np.sqrt(Kupfer[2])/Kupfer[1]))
 linfitsk = [lin[0],np.sqrt(np.diag(lin[1]))]
 linfitsk = unp.uarray(linfitsk[0],linfitsk[1])
 print("linearerFit,Kupfer:",linfitsk)
@@ -73,13 +73,13 @@ plt.clf()
 plt.plot(Kupfer[0],np.log((Kupfer[2]/Kupfer[1])-Nullabfall), 'gx', label='gemessene Werte')
 plt.plot(punkte,linear(unp.nominal_values(linfitsk[0]),punkte,unp.nominal_values(linfitsk[1])),label = 'linearer Fit')
 plt.xlabel(r'$d/\si{\milli\meter}$')
-plt.ylabel(r'$N/t\si{\per\second}$')
+plt.ylabel(r'$\frac{N}{t}/\si[per-mode=reciprocal]{\per\second}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'Kupfer')
 
 punkte = np.linspace(0,Eisen[0][-1]*1.1,1000)
-lin = curve_fit(linear,Eisen[0],np.log((Eisen[2]/Eisen[1])-Nullabfall),sigma = np.log(np.sqrt((Eisen[2]/Eisen[1])-Nullabfall)))
+lin = curve_fit(linear,Eisen[0],np.log((Eisen[2]/Eisen[1])-Nullabfall),sigma = np.log(np.sqrt(Eisen[2])/Eisen[1]))
 linfitse = [lin[0],np.sqrt(np.diag(lin[1]))]
 linfitse = unp.uarray(linfitse[0],linfitse[1])
 mu = -linfitse[0]
@@ -91,7 +91,7 @@ plt.clf()
 plt.plot(Eisen[0],np.log((Eisen[2]/Eisen[1])-Nullabfall), 'gx', label='gemessene Werte')
 plt.plot(punkte,linear(unp.nominal_values(linfitse[0]),punkte,unp.nominal_values(linfitse[1])),label = 'linearer Fit')
 plt.xlabel(r'$d/\si{\milli\meter}$')
-plt.ylabel(r'$N/t\si{\per\second}$')
+plt.ylabel(r'$\frac{N}{t}/\si[per-mode=reciprocal]{\per\second}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'Eisen')
@@ -105,6 +105,10 @@ def mucom(eps,z,M,rho):
 mucomk = mucom(1.295,29,0.063546,8920)/1000#quelle von M und rho_ wikipedia und deren quellen 1/mm
 print("Mucomkupfer:",mucomk)
 
+z = [29,26]
+M = [0.063546,0.055845]
+ro = [8.92,7.874]
+
 mucome = mucom(1.295,26,0.055845,7874)/1000#quelle von M und rho_ wikipedia und deren quellen 1/mm
 print("Mucomeisen:",mucome)
 
@@ -116,7 +120,7 @@ print("Mucomeisen:",mucome)
 #linfitsb1 = [linb1[0],np.sqrt(np.diag(linb1[1]))]
 plt.cla()
 plt.clf()
-plt.plot(BetaC[0]*0.001*2710,np.log((BetaC[2]/BetaC[1])), 'gx', label='gemessene Werte')
+plt.plot(BetaC[0]*0.001*2699,np.log((BetaC[2]/BetaC[1])), 'gx', label='gemessene Werte')
 #plt.plot(punkte,linear(linfitsk[0][0],punkte,linfitsk[0][1]),label = 'linearer Fit')
 plt.xlabel(r'$R/\si{\kilogram\per\square\meter}$')
 plt.ylabel(r'$N/t\si{\per\second}$')
@@ -126,18 +130,18 @@ plt.savefig('build/'+'BetaC')
 
 
 punkte = np.linspace(0,BetaJ[0][-1]*1.1*0.001*2710,1000)
-linb1 = curve_fit(linear,BetaJ[0][0:5]*0.001*2710,np.log((BetaJ[2][0:5]/BetaJ[1][0:5])),sigma = np.log(np.sqrt((BetaJ[2][0:5]/BetaJ[1][0:5]))))
+linb1 = curve_fit(linear,BetaJ[0][0:5]*0.001*2710,np.log((BetaJ[2][0:5]/BetaJ[1][0:5]-Nullabfallb)),sigma = np.log(np.sqrt(BetaJ[2][0:5])/BetaJ[1][0:5]))
 linfitsb1 = [linb1[0],np.sqrt(np.diag(linb1[1]))]
 print("linearerFit1 von beta,Joshua",linfitsb1)
 linfitsb1 = unp.uarray(linfitsb1[0],linfitsb1[1])
-linb2 = curve_fit(linear,BetaJ[0][6:9]*0.001*2710,np.log((BetaJ[2][6:9]/BetaJ[1][6:9])),sigma = np.log(np.sqrt((BetaJ[2][6:9]/BetaJ[1][6:9]))))
+linb2 = curve_fit(linear,BetaJ[0][6:9]*0.001*2710,np.log((BetaJ[2][6:9]/BetaJ[1][6:9]-Nullabfallb)),sigma = np.log(np.sqrt(BetaJ[2][6:9])/BetaJ[1][6:9]))
 linfitsb2 = [linb2[0],np.sqrt(np.diag(linb2[1]))]
 print("linearerFit2 von beta,Joshua",linfitsb2)
 linfitsb2 = unp.uarray(linfitsb2[0],linfitsb2[1])
 plt.cla()
 plt.clf()
-plt.plot(BetaJ[0]*0.001*2710,np.log((BetaJ[2]/BetaJ[1])), 'gx', label='gemessene Werte')
-plt.plot(punkte,linear(unp.nominal_values(linfitsb1[0]),punkte,unp.nominal_values(linfitsb1[1])))
+plt.plot(BetaJ[0]*0.001*2710,np.log((BetaJ[2]/BetaJ[1])-Nullabfallb), 'gx', label='gemessene Werte')
+plt.plot(punkte,linear(unp.nominal_values(linfitsb1[0]),punkte,unp.nominal_values(linfitsb1[1])),label = 'lineare Fits')
 plt.plot(punkte,linear(unp.nominal_values(linfitsb2[0]),punkte,unp.nominal_values(linfitsb2[1])))
 plt.xlabel(r'$R/\si{\kilogram\per\square\meter}$')
 plt.ylabel(r'$N/t\si{\per\second}$')
@@ -152,11 +156,14 @@ Emax = 1.92*((Rmax**2+0.22*Rmax)**(0.5))
 print("Emax",Emax)
 #Tabellen mit den Daten
 #gamma
-makeTable([Kupfer[0],Kupfer[1],Kupfer[2]], r'{'+r'$d_\text{Absorber}/\si{\milli\meter}$'+r'} & {'+r'$t_\text{Mess}/\si{\second}$'+r'} & {'+r'$N_\text{Wechsel}$'+r'}' ,'tabgammakupfer' , ['S[table-format=2.1]' , 'S[table-format=3.0]' , 'S[table-format=5.0]'] ,  ["%2.1f", "%3.0f", "%5.0f"])
-makeTable([Eisen[0],Eisen[1],Eisen[2]], r'{'+r'$d_\text{Absorber}/\si{\milli\meter}$'+r'} & {'+r'$t_\text{Mess}/\si{\second}$'+r'} & {'+r'$N_\text{Wechsel}$'+r'}' ,'tabgammaeisen' , ['S[table-format=2.1]' , 'S[table-format=3.0]' , 'S[table-format=5.0]'] ,  ["%2.1f", "%3.0f", "%5.0f"])
+
+makeTable([Kupfer[0],Kupfer[1],Kupfer[2],Kupfer[2]/Kupfer[1]-Nullabfall,np.sqrt(Kupfer[2])/Kupfer[1]], r'{'+r'$d_\text{Absorber}/\si{\milli\meter}$'+r'} & {'+r'$t_\text{Mess}/\si{\second}$'+r'} & {'+r'$N_\text{Wechsel}$'+r'} & \multicolumn{2}{c}{$I_\text{real}$}' ,'tabgammakupfer' , ['S[table-format=2.1]' , 'S[table-format=3.0]' , 'S[table-format=5.0]',r'S[table-format=3.0]',  r'@{${}\pm{}$} S[table-format=1.1]'] ,  ["%2.1f", "%3.0f", "%5.0f", "%3.0f", "%1.1f"])
+
+makeTable([Eisen[0],Eisen[1],Eisen[2],Eisen[2]/Eisen[1]-Nullabfall,np.sqrt(Eisen[2])/Eisen[1]], r'{'+r'$d_\text{Absorber}/\si{\milli\meter}$'+r'} & {'+r'$t_\text{Mess}/\si{\second}$'+r'} & {'+r'$N_\text{Wechsel}$'+r'} & \multicolumn{2}{c}{$I_\text{real}$}' ,'tabgammaeisen' , ['S[table-format=2.1]' , 'S[table-format=3.0]' , 'S[table-format=5.0]',r'S[table-format=3.0]',  r'@{${}\pm{}$} S[table-format=1.1]'] ,  ["%2.1f", "%3.0f", "%5.0f", "%3.0f", "%1.1f"])
 
 #beta
 makeTable([BetaJ[0]*1000,BetaJ[1],BetaJ[2]], r'{'+r'$d_\text{Absorber}/\si{\micro\meter}$'+r'} & {'+r'$t_\text{Mess}/\si{\second}$'+r'} & {'+r'$N_\text{Wechsel}$'+r'}' ,'tabgammabetaJ' , ['S[table-format=3.0]' , 'S[table-format=3.0]' , 'S[table-format=4.0]'] ,  ["%3.0f", "%3.0f", "%4.0f"])
+
 
 
 
@@ -167,7 +174,7 @@ daempfung = [unp.nominal_values(muk),unp.nominal_values(mu)]
 daempfungerr = [unp.std_devs(muk),unp.std_devs(mu)]
 N0 = [unp.nominal_values(N0k),unp.nominal_values(N0)]
 print(unp.std_devs(N0))
-N0err = [unp.std_devs(N0k),unp.std_devs(N0)]
+N0err = [unp.std_devs(N0k),1]
 daempfungt = [mucomk,mucome]
 print(mat)
 print(daempfung)
@@ -176,6 +183,11 @@ print(N0)
 print(N0err)
 print(daempfungt)
 
-makeTable([mat,daempfung,daempfungerr,N0,daempfungt], r'{'+r'$\text{Absorbermaterial}$'+r'} & \multicolumn{2}{c}{$\mu/\si[per-mode=reciprocal]{\per\milli\meter}$} & {$N_0$} & {$\mu_\text{ger.}/\si[per-mode=reciprocal]{\per\milli\meter}$}', 'ergebnisse',['c',r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]', r'S[table-format=4.0]',r'S[table-format=1.3]'], ["%s","%1.3f", "%1.3f", "%4.0f","%1.3f"])
 
-makeTable([[unp.nominal_values(Rmax)],[unp.std_devs(Rmax)],[unp.nominal_values(Emax)],[unp.std_devs(Emax)]], r'\multicolumn{2}{c}{'+r'$\text{Rmax}/\si[per-mode=reciprocal]{\gram\per\square\centi\meter}$'+r'} & \multicolumn{2}{c}{$\mu/{\mega\electronvol}$}', 'ergebnisse2',[r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]', r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]'], ["%1.3f", "%1.3f", "%1.3f","%1.3f"])
+makeTable([mat,daempfung,daempfungerr,N0,N0err,daempfungt], r'{'+r'$\text{Absorbermaterial}$'+r'} & \multicolumn{2}{c}{$\mu/\si[per-mode=reciprocal]{\per\milli\meter}$} & \multicolumn{2}{c}{$N_0$} & {$\mu_\text{ber.}/\si[per-mode=reciprocal]{\per\milli\meter}$}', 'ergebnisse',['c',r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]', r'S[table-format=4.0]',r'@{${}\pm{}$} S[table-format=1.0]',r'S[table-format=1.3]'], ["%s","%1.3f", "%1.3f", "%4.0f","%1.0f","%1.3f"])
+
+makeTable([[unp.nominal_values(Rmax)],[unp.std_devs(Rmax)],[unp.nominal_values(Emax)],[unp.std_devs(Emax)]], r'\multicolumn{2}{c}{'+r'$R_\text{max}/\si[per-mode=reciprocal]{\gram\per\square\centi\meter}$'+r'} & \multicolumn{2}{c}{$E_\text{max}/\si{\mega\electronvolt}$}', 'ergebnisse2',[r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]', r'S[table-format=1.3]',  r'@{${}\pm{}$} S[table-format=1.3]'], ["%1.3f", "%1.3f", "%1.3f","%1.3f"])
+
+#rohdaten
+
+makeTable([mat,z,M,ro], r'{'+r'$\text{Absorbermaterial}$'+r'} & {$\text{Protonenanzahl}$} & {$M/\si[per-mode=reciprocal]{\kilogram\per\mole}$} & {$\rho/\si[per-mode=reciprocal]{\gram\per\cubic\centi\meter}$}', 'rohdaten',['c',r'S[table-format=2.0]', r'S[table-format=1.4]', r'S[table-format=1.2]'], ["%s","%2.0f", "%1.4f", "%1.2f"])

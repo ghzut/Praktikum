@@ -4,4 +4,115 @@
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
-Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+
+\subsection{Die gemessenen Daten}
+Es ist zu beachten, dass die gemessenen Aufschläge ein statistisches Verhalten
+aufweisen und daher mit einem Fehler von
+\begin{equation}
+\sigma = \sqrt{N}
+\end{equation}
+behaftet sind. Daraus wird die Intensität mit
+\begin{equation}
+  I = frac{N}{t} \pm \frac{\sigma}{t}
+\end{equation}
+ berechnet. Zusätzlich müssen die Treffer des Nulleffektes abgezogen werden,
+welcher aufgrund von kosmischer Strahlung auftreten. Da die daraus folgenden
+durchgehenden Intensitäten jedoch ungleich kleiner sind, werden die zugehörigen
+ Fehler nicht berücksichtigt. Für die Gammastrahlung ergibt sich ein
+ Nulleffekt von $\SI{1.001}{\per\second}$, für die Betastrahlung $\SI{0.514}{\per\second}$.
+
+ \begin{table}
+  \centering
+  \caption{Die Materialeigenschaften der verwendeten Absorber.}
+  \input{build/rohdaten.tex}
+  \label{tab:rohdaten}
+ \end{table}
+
+\begin{table}
+ \centering
+ \caption{Die Absorptionsdaten der Gammastrahlung mit Kupfer als Absorber }
+ \input{build/tabgammakupfer.tex}
+ \label{tab:k}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die Absorptionsdaten der Gammastrahlung mit Kupfer als Absorber }
+ \input{build/tabgammaeisen.tex}
+ \label{tab:e}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die Absorptionsdaten der Betastrahlung mit Kupfer als Absorber }
+ \input{build/tabgammabetaJ.tex}
+ \label{tab:betaJ}
+\end{table}
+
+\subsection{Bestimmung der Absorptionskoeffizienten und der Ausgangsstrahlung mithilfe von Gamma-Absorptionskurven.}
+
+\begin{figure}
+ \centering
+ \caption{Die halblogarithmische Darstellung der durchgehenden Gammastrahlintensität gegenüber der Schichtdicke des Kupferabsorbers.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Kupfer.pdf}
+ \label{fig:kupfer}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Die halblogarithmische Darstellung der durchgehenden Gammastrahlintensität gegnüber der Schichtdicke des Eisenabsorbers.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/Eisen.pdf}
+ \label{fig:eisen}
+\end{figure}
+
+\begin{table}
+ \centering
+ \caption{Die Absorptionsdaten der Betastrahlung mit Aluminium als Absorber }
+ \input{build/tabgammabetaJ.tex}
+ \label{tab:betaJ}
+\end{table}
+
+Zuerst wird das Absorptionsverhalten von Kupfer und Eisen unter der Gammastrahlung einer $^{137}$Cs-Quelle untersucht. Hierzu werden die Koeffizienten $\mu$ und $N(0)$ des Absorptionsgestzes für beide Metalle bestimmt. Mithilfe einer halblogarithmischen Darstellung der zeitlich normierten Treffer gegenüber der Metalldicke ergeben sich die Graphen in  den Abb. \ref{fig:kupfer} und \ref{fig:kupfer}. Damit folgen $\mu$ und $N(0)$ über eine Ausgleichsrechnung der Form
+\begin{equation}
+y = a x+ b \text{ mit } \mu = a \text{ und } N(0) = \exp(b)
+\end{equation} Damit ergeben sich die experimentellen Ergebnisse in Tabelle \ref{tab:ergebnisse}.
+
+\begin{table}
+ \centering
+ \caption{Die Ergebnisse der Gammastrahlungsabsorption.}
+ \input{build/ergebnisse.tex}
+ \label{tab:erg1}
+\end{table}
+
+\subsection{Vergleich mit den theoretischen Absorptionskoeffizienten}
+Mithilfe der Formeln \ref{eq:HJHJ} und \ref{eq:HJHKJ} ergeben sich die theoretischen
+Absorptionskoeffizienten. Auf Basis der Daten aus Tabelle \ref{tab:rohdaten} und einem
+ $\epsilon$ von 1.295 \cite{V704} folgen die berechneten Koeffizienten in Tabelle \ref{fig:erg1}.
+ Die Daten stammen für Kupfer von \cite{Kupfer}, für eisen von \cite{Eisen}.
+Es ist zu erkennen das die berechnete Absorption der beiden Metalle in beiden
+Fällen größer ausfällt, als die experimentell gemessene. Daher ist davon auszugehen,
+dass der Compton-Effekt bei beiden Absorptionen die einzige messbar auftretende Wechselwirkung.
+Zusätzlich ist bei der Eisenmessung von einem systematischen Fehler auszugehen,
+da dieser weitaus stärker nach unten abweicht. Die Ursachen sind in der Diskussion zu erörtern.
+\subsection{Bestimmung der Maximalenergie von $^{99}$Tc }
+
+
+\begin{figure}
+ \centering
+ \caption{Die halblogarithmische Darstellung der Treffer pro Sekunde gegnüber der Schichtdicke des Aluminiumabsorbers bei Betastrahlung}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/BetaJ.pdf}
+ \label{fig:betaj}
+\end{figure}
+
+Zuletzt wird die Maximalenergie der Gammaquanten von $^{99}$Tc über deren Absorption von Aluminium bestimmt. Hierzu werden
+die durchgehende Strahlintensität halblogarithmisch gegen die Massenbelegung aufgetragen.
+Mit den Daten aus Tabelle \ref{tab:betaJ} und einer Dichte von $\SI{2.699}{\gram\per\cubic\centi\meter}$ folgt der Graph in Abb. \ref{fig:betaj}.Anschließend werden
+die beiden großteils linearen Bereiche der Kurve durch linearen Funktionen approximiert. Der
+ Schnittpunkt beider Geraden bildet das gesuchte $R_\text{max}$. Mithilfe von Formel \ref{eq:HJKH}
+ ergibt sich schließlich die Maximalenergie $E_\text{max}$. Mit den bestimmten Daten folgen daher die Parameter in Tabelle \ref{tab:erg2}.
+\begin{table}
+ \centering
+ \caption{Die Ergebnisse der Betastrahlungsabsorption.}
+ \input{build/ergebnisse2.tex}
+ \label{tab:erg2}
+\end{table}
