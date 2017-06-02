@@ -151,6 +151,7 @@ plt.plot(punkte,linear(unp.nominal_values(linfitsb1[0]),punkte,unp.nominal_value
 plt.plot(punkte,linear(unp.nominal_values(linfitsb2[0]),punkte,unp.nominal_values(linfitsb2[1])))
 plt.xlabel(r'$R/\si{\kilogram\per\square\meter}$')
 plt.ylabel(r'$N/t\si{\per\second}$')
+plt.xlim(0, punkte[-1])
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'BetaJ')
