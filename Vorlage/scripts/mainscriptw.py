@@ -1,5 +1,6 @@
 ﻿from table import makeTable
 from table import makeNewTable
+from linregress import linregress
 from customFormatting import *
 from bereich import bereich
 from weightedavgandsem import weighted_avg_and_sem
