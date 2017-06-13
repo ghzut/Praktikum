@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import uncertainties.unumpy as unp
 import scipy.constants as const
 
+
 # BackwardsVNominal = []
 # BackwardsVStd = []
 # for value in BackwardsV:
@@ -47,8 +48,8 @@ import scipy.constants as const
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
-def customExp(x, a, b):
-	return a*np.exp(b*x)
+def customExp(x, a, b, c):
+	return a*np.exp(b/3600*x)+c #ACHTUNG!!!!!!!!! b/3600=-lambda
 
 Nullmessung1 = 202/900
 Nullmessung2 = 213/900
@@ -59,10 +60,27 @@ Indium = [Indium[0], unp.uarray(Indium[1]/240, np.sqrt(Indium[1])/240)]
 Rhodium = [Rhodium[0], unp.uarray(Rhodium[1]/15, np.sqrt(Rhodium[1])/15)]
 
 
-print(unp.log(Indium[1]))
-IndiumErgebnisse = curve_fit(customExp, Indium[0], unp.nominal_values(Indium[1]), sigma=unp.std_devs(Indium[1]))
-print("Hi", Indium)
 
+IndiumErgebnisse = curve_fit(customExp, Indium[0], unp.nominal_values(Indium[1]), sigma=unp.std_devs(Indium[1]))
+print(IndiumErgebnisse)
+
+print(Indium[1])
+print(unp.exp(unp.log(Indium[1])))
+
+x = np.linspace(0, Indium[0][-1]*1.02, 10000)
+y = x 
+plt.cla()
+plt.clf()
+plt.errorbar(Indium[0],unp.nominal_values(Indium[1]),yerr=unp.std_devs(Indium[1]), fmt='r', label='Messwerte', visible=False)
+plt.plot(x, customExp(x, *IndiumErgebnisse[0]))
+plt.yscale('log')
+#plt.ylim(0, line(t[-1], *params)+0.1)
+#plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
+plt.ylabel(r'$\Delta f / \si{\hertz}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'VgegenDeltaV')
 
 
 
