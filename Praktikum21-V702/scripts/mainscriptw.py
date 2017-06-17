@@ -48,8 +48,6 @@ import scipy.constants as const
 # a = unp.uarray(params[0], np.sqrt(covar[0][0]))
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 
-def customExp(x, a, b, c):
-	return a*np.exp(b/3600*x)+c #ACHTUNG!!!!!!!!! b/3600=-lambda
 
 Nullmessung1 = 202/900
 Nullmessung2 = 213/900
@@ -63,8 +61,10 @@ Rhodium = [Rhodium[0], [Rhodium[1]/15-Nullmessung2, np.sqrt(Rhodium[1]-Nullmessu
 
 IndiumErgebnisse = linregress(Indium[0], np.log(Indium[1][0]))
 print('Ergebnisse Indium',IndiumErgebnisse)
+s = unp.uarray(IndiumErgebnisse[0][0],IndiumErgebnisse[1][0])
+print('Halbwertszeit Indium',-np.log(2)/s)
 
-makeNewTable([Indium[0],Indium[1][0],Indium[1][1],np.log(Indium[1][0]),abs(np.log(Indium[1][0]+Indium[1][1])-np.log(Indium[1][0])),abs(np.log(Indium[1][0]-Indium[1][1])-np.log(Indium[1][0]))], r'{$t/\si{\second}$}&{$N$}&{$\sigma=\sqrt(N)$}&{$\ln(N)$}&{$\ln(N+\sigma)-\ln(N)$}&{$\ln(N)-\ln(N-\sigma)$}', 'Indium', [r'S[table-format=4.0]',r'S[table-format=1.1]',r'S[table-format=1.1]',r'S[table-format=1.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:4.0f}',r'{:1.1f}',r'{:1.1f}',r'{:1.2f}',r'{:1.2f}',r'{:1.2f}'])
+makeNewTable([Indium[0],Indium[1][0],Indium[1][1],np.log(Indium[1][0]),abs(np.log(Indium[1][0]+Indium[1][1])-np.log(Indium[1][0])),abs(np.log(Indium[1][0]-Indium[1][1])-np.log(Indium[1][0]))], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{240\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Indium', [r'S[table-format=4.0]',r'S[table-format=1.1]',r'S[table-format=1.1]',r'S[table-format=1.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:4.0f}',r'{:1.1f}',r'{:1.1f}',r'{:1.2f}',r'{:1.2f}',r'{:1.2f}'])
 
 x = np.linspace(0, Indium[0][-1]*1.02, 10000)
 plt.cla()
@@ -75,7 +75,7 @@ plt.plot(x, IndiumErgebnisse[0][0]*x+IndiumErgebnisse[0][1], label='linearer Fit
 #plt.ylim(0, line(t[-1], *params)+0.1)
 plt.xlim(0, x[-1])
 plt.xlabel(r'$t/\si{\second}$')
-plt.ylabel(r'$\log(N)$')
+plt.ylabel(r'$\log(N/\si[per-mode=reciprocal]{\per\second})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'IndiumLog')
@@ -90,13 +90,16 @@ RhodiumErgebnisse1 = linregress(Rhodium[0][WerteGroesserT0], np.log(Rhodium[1][0
 print('Ergebnisse 1 Rhodium',RhodiumErgebnisse1)
 a1 = unp.uarray(RhodiumErgebnisse1[0][0],RhodiumErgebnisse1[1][0])
 print('a1',a1)
+print('Halbwertszeit Rhodium 1',-np.log(2)/a1)
 RhodiumErgebnisse2 = linregress(Rhodium[0][WerteKleinerT1], np.log(Rhodium[1][0][WerteKleinerT1]))
 a2 = unp.uarray(RhodiumErgebnisse2[0][0],RhodiumErgebnisse2[1][0])
 print('Ergebnisse 2 Rhodium',RhodiumErgebnisse2)
 print('a2',a2)
 print('a2-a1',a2-a1)
+print('Halbwertszeit Rhodium 2',-np.log(2)/(a2-a1))
 
-makeNewTable([Rhodium[0],Rhodium[1][0],Rhodium[1][1],np.log(Rhodium[1][0]),abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0])),abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))], r'{$t/\si{\second}$}&{$N$}&{$\sigma=\sqrt(N)$}&{$\ln(N)$}&{$\ln(N+\sigma)-\ln(N)$}&{$\ln(N)-\ln(N-\sigma)$}', 'Rhodium', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
+makeNewTable([Rhodium[0][0:len(Rhodium[0])//2],Rhodium[1][0][0:len(Rhodium[0])//2],Rhodium[1][1][0:len(Rhodium[0])//2],np.log(Rhodium[1][0])[0:len(Rhodium[0])//2],abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0]))[0:len(Rhodium[0])//2],abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))[0:len(Rhodium[0])//2]], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{15\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Rhodium1', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
+makeNewTable([Rhodium[0][len(Rhodium[0])//2:],Rhodium[1][0][len(Rhodium[0])//2:],Rhodium[1][1][len(Rhodium[0])//2:],np.log(Rhodium[1][0])[len(Rhodium[0])//2:],abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0]))[len(Rhodium[0])//2:],abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))[-1+len(Rhodium[0])//2:]], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{15\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Rhodium2', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
 
 
 x = np.linspace(0, Rhodium[0][-1]*1.02, 10000)
@@ -109,7 +112,7 @@ plt.plot(x, RhodiumErgebnisse2[0][0]*x+RhodiumErgebnisse2[0][1], label=r'lineare
 #plt.ylim(0, line(t[-1], *params)+0.1)
 plt.xlim(0, x[-1])
 plt.xlabel(r'$t/\si{\second}$')
-plt.ylabel(r'$\log(N)$')
+plt.ylabel(r'$\log(N\si[per-mode=reciprocal]{\per\second})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'RhodiumLog')
