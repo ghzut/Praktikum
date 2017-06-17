@@ -63,6 +63,8 @@ IndiumErgebnisse = linregress(Indium[0], np.log(Indium[1][0]))
 print('Ergebnisse Indium',IndiumErgebnisse)
 s = unp.uarray(IndiumErgebnisse[0][0],IndiumErgebnisse[1][0])
 print('Halbwertszeit Indium',-np.log(2)/s)
+funktionswertbei240s = s*240+unp.uarray(IndiumErgebnisse[0][1], IndiumErgebnisse[1][1])
+print(r'N_0(1-e^-yT)', unp.exp(funktionswertbei240s))
 
 makeNewTable([Indium[0],Indium[1][0],Indium[1][1],np.log(Indium[1][0]),abs(np.log(Indium[1][0]+Indium[1][1])-np.log(Indium[1][0])),abs(np.log(Indium[1][0]-Indium[1][1])-np.log(Indium[1][0]))], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{240\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Indium', [r'S[table-format=4.0]',r'S[table-format=1.1]',r'S[table-format=1.1]',r'S[table-format=1.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:4.0f}',r'{:1.1f}',r'{:1.1f}',r'{:1.2f}',r'{:1.2f}',r'{:1.2f}'])
 
@@ -80,23 +82,27 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/'+'IndiumLog')
 
-T0 = 500
+T0 = 400
 WerteGroesserT0 = Rhodium[0] >= T0
-T1 = 200
+T1 = 100
 WerteKleinerT1 = Rhodium[0] <= T1
 
-x=Rhodium[0][WerteKleinerT1]
+
 RhodiumErgebnisse1 = linregress(Rhodium[0][WerteGroesserT0], np.log(Rhodium[1][0][WerteGroesserT0]))
 print('Ergebnisse 1 Rhodium',RhodiumErgebnisse1)
 a1 = unp.uarray(RhodiumErgebnisse1[0][0],RhodiumErgebnisse1[1][0])
 print('a1',a1)
 print('Halbwertszeit Rhodium 1',-np.log(2)/a1)
+funktionswertbei240s = a1*15+unp.uarray(RhodiumErgebnisse1[0][1], RhodiumErgebnisse1[1][1])
+print(r'N_0(1-e^-yT)', unp.exp(funktionswertbei240s))
 RhodiumErgebnisse2 = linregress(Rhodium[0][WerteKleinerT1], np.log(Rhodium[1][0][WerteKleinerT1]))
 a2 = unp.uarray(RhodiumErgebnisse2[0][0],RhodiumErgebnisse2[1][0])
 print('Ergebnisse 2 Rhodium',RhodiumErgebnisse2)
 print('a2',a2)
 print('a2-a1',a2-a1)
 print('Halbwertszeit Rhodium 2',-np.log(2)/(a2-a1))
+funktionswertbei240s = (a2-a1)*15+unp.uarray(RhodiumErgebnisse2[0][1], RhodiumErgebnisse2[1][1])
+print(r'N_0(1-e^-yT)', unp.exp(funktionswertbei240s))
 
 makeNewTable([Rhodium[0][0:len(Rhodium[0])//2],Rhodium[1][0][0:len(Rhodium[0])//2],Rhodium[1][1][0:len(Rhodium[0])//2],np.log(Rhodium[1][0])[0:len(Rhodium[0])//2],abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0]))[0:len(Rhodium[0])//2],abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))[0:len(Rhodium[0])//2]], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{15\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Rhodium1', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
 makeNewTable([Rhodium[0][len(Rhodium[0])//2:],Rhodium[1][0][len(Rhodium[0])//2:],Rhodium[1][1][len(Rhodium[0])//2:],np.log(Rhodium[1][0])[len(Rhodium[0])//2:],abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0]))[len(Rhodium[0])//2:],abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))[-1+len(Rhodium[0])//2:]], r'{$\frac{t}{\si{\second}}$}&{$\frac{N}{\si[per-mode=reciprocal]{\per\second}}$}&{$\sigma=\sqrt{\frac{N}{15\si[per-mode=reciprocal]{\per\second}}}$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N+\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)$}&{$\ln\left(\frac{N}{\si[per-mode=reciprocal]{\per\second}}\right)-\ln\left(\frac{N-\sigma}{\si[per-mode=reciprocal]{\per\second}}\right)$}', 'Rhodium2', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
