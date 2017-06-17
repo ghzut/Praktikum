@@ -56,31 +56,65 @@ Nullmessung2 = 213/900
 
 Indium = np.genfromtxt("scripts/Indium", unpack=True)
 Rhodium = np.genfromtxt("scripts/Rhodium", unpack=True)
-Indium = [Indium[0], unp.uarray(Indium[1]/240, np.sqrt(Indium[1])/240)]
-Rhodium = [Rhodium[0], unp.uarray(Rhodium[1]/15, np.sqrt(Rhodium[1])/15)]
+Indium = [Indium[0], [Indium[1]/240-Nullmessung1, np.sqrt(Indium[1]-Nullmessung1*240)/240]]
+Rhodium = [Rhodium[0], [Rhodium[1]/15-Nullmessung2, np.sqrt(Rhodium[1]-Nullmessung2*15)/15]]
 
 
 
-IndiumErgebnisse = curve_fit(customExp, Indium[0], unp.nominal_values(Indium[1]), sigma=unp.std_devs(Indium[1]))
-print(IndiumErgebnisse)
+IndiumErgebnisse = linregress(Indium[0], np.log(Indium[1][0]))
+print('Ergebnisse Indium',IndiumErgebnisse)
 
-print(Indium[1])
-print(unp.exp(unp.log(Indium[1])))
+makeNewTable([Indium[0],Indium[1][0],Indium[1][1],np.log(Indium[1][0]),abs(np.log(Indium[1][0]+Indium[1][1])-np.log(Indium[1][0])),abs(np.log(Indium[1][0]-Indium[1][1])-np.log(Indium[1][0]))], r'{$t/\si{\second}$}&{$N$}&{$\sigma=\sqrt(N)$}&{$\ln(N)$}&{$\ln(N+\sigma)-\ln(N)$}&{$\ln(N)-\ln(N-\sigma)$}', 'Indium', [r'S[table-format=4.0]',r'S[table-format=1.1]',r'S[table-format=1.1]',r'S[table-format=1.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:4.0f}',r'{:1.1f}',r'{:1.1f}',r'{:1.2f}',r'{:1.2f}',r'{:1.2f}'])
 
 x = np.linspace(0, Indium[0][-1]*1.02, 10000)
-y = x 
 plt.cla()
 plt.clf()
-plt.errorbar(Indium[0],unp.nominal_values(Indium[1]),yerr=unp.std_devs(Indium[1]), fmt='r', label='Messwerte', visible=False)
-plt.plot(x, customExp(x, *IndiumErgebnisse[0]))
-plt.yscale('log')
+plt.errorbar(Indium[0],np.log(Indium[1][0]),yerr=[abs(np.log(Indium[1][0]+Indium[1][1])-np.log(Indium[1][0])),abs(np.log(Indium[1][0]-Indium[1][1])-np.log(Indium[1][0]))], fmt='rx', label='Messwerte', visible=True)
+plt.plot(x, IndiumErgebnisse[0][0]*x+IndiumErgebnisse[0][1], label='linearer Fit')
+#plt.yscale(r'log')
 #plt.ylim(0, line(t[-1], *params)+0.1)
-#plt.xlim(0, t[-1]*100)
-plt.xlabel(r'$v/\si{\centi\meter\per\second}$')
-plt.ylabel(r'$\Delta f / \si{\hertz}$')
+plt.xlim(0, x[-1])
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$\log(N)$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/'+'VgegenDeltaV')
+plt.savefig('build/'+'IndiumLog')
+
+T0 = 500
+WerteGroesserT0 = Rhodium[0] >= T0
+T1 = 200
+WerteKleinerT1 = Rhodium[0] <= T1
+
+x=Rhodium[0][WerteKleinerT1]
+RhodiumErgebnisse1 = linregress(Rhodium[0][WerteGroesserT0], np.log(Rhodium[1][0][WerteGroesserT0]))
+print('Ergebnisse 1 Rhodium',RhodiumErgebnisse1)
+a1 = unp.uarray(RhodiumErgebnisse1[0][0],RhodiumErgebnisse1[1][0])
+print('a1',a1)
+RhodiumErgebnisse2 = linregress(Rhodium[0][WerteKleinerT1], np.log(Rhodium[1][0][WerteKleinerT1]))
+a2 = unp.uarray(RhodiumErgebnisse2[0][0],RhodiumErgebnisse2[1][0])
+print('Ergebnisse 2 Rhodium',RhodiumErgebnisse2)
+print('a2',a2)
+print('a2-a1',a2-a1)
+
+makeNewTable([Rhodium[0],Rhodium[1][0],Rhodium[1][1],np.log(Rhodium[1][0]),abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0])),abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))], r'{$t/\si{\second}$}&{$N$}&{$\sigma=\sqrt(N)$}&{$\ln(N)$}&{$\ln(N+\sigma)-\ln(N)$}&{$\ln(N)-\ln(N-\sigma)$}', 'Rhodium', [r'S[table-format=3.0]',r'S[table-format=2.1]',r'S[table-format=1.1]',r'S[table-format=2.2]',r'S[table-format=1.2]',r'S[table-format=1.2]'], [r'{:3.0f}',r'{:4.1f}',r'{:1.1f}',r'{:5.2f}',r'{:1.2f}',r'{:1.2f}'])
+
+
+x = np.linspace(0, Rhodium[0][-1]*1.02, 10000)
+plt.cla()
+plt.clf()
+plt.errorbar(Rhodium[0],np.log(Rhodium[1][0]),yerr=[abs(np.log(Rhodium[1][0]+Rhodium[1][1])-np.log(Rhodium[1][0])),abs(np.log(Rhodium[1][0]-Rhodium[1][1])-np.log(Rhodium[1][0]))], fmt='rx', label='Messwerte', visible=True)
+plt.plot(x, RhodiumErgebnisse1[0][0]*x+RhodiumErgebnisse1[0][1], label='linearer Fit der Werte für $t \ge' + str(T0) + r'\si{\second}$')
+plt.plot(x, RhodiumErgebnisse2[0][0]*x+RhodiumErgebnisse2[0][1], label=r'linearer Fit der Werte für $t \le' + str(T1) + r'\si{\second}$')
+#plt.yscale(r'log')
+#plt.ylim(0, line(t[-1], *params)+0.1)
+plt.xlim(0, x[-1])
+plt.xlabel(r'$t/\si{\second}$')
+plt.ylabel(r'$\log(N)$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'RhodiumLog')
+
+
 
 
 
