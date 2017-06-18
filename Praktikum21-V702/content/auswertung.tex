@@ -9,7 +9,7 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
 \subsection{Bestimmung der Zerfallskurve und Halbwertszeit von Indium}
  \begin{table}
   \centering
-  \caption{FEHLT NOCH.}
+  \caption{Die durchschnittlichen Zählraten $N$ bei Indium in einem Zeitintervall von $t-15\si{\second}$ bis $t$, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
   \input{build/Indium.tex}
  \end{table}
 \begin{figure}
@@ -18,17 +18,29 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
 	\includegraphics[width=\linewidth-30pt,height=\textheight-30pt,keepaspectratio]{build/IndiumLog.pdf}
 	\label{fig:Indium}
 \end{figure}
+Mithilfe einer linearen Ausgleichsrechnung der Form $y=a x + b$ für die Wertepaare $(t, \ln(N))$ aus Tabelle \ref{tab:Indium} ergibt sich nach Formel \eqref{}
+\begin{equation}
+	N(t)_{^{116}In}=\exp\left(a x + b\right)=\exp\left(\SI{-2.0(1)e-4}{\per\second} x + \SI{2.13(2)}{}\right)\text{.}
+\end{equation}
+daraus lässt sich die Halbwertszeit nach Formel \eqref{} berechnen zu
+\begin{equation}
+	T_{^{116}In}=-\frac{\ln(2)}{a}=\SI{58(3)}{\minute}\text{.}
+\end{equation}
+Für die erwartete Anzahl von Zerfällen in den ersten $\SI{240}{\second}$ ergibt sich
+\begin{equation}
+	Z_{^{116}In} = N(\SI{240}{\second})_{^{116}In}=\num{1933(48)}\text{.}
+\end{equation}
 
 \subsection{Bestimmung der Halbwertszeiten von Rhodium}
 Es sollen sowohl die Halbwertszeit von $^{104} Rh$ als auch $^{104i} Rh$ mithilfe von zwei Ausgleichsrechnungen bestimmt werden. Dabei handelt es sich bei $^{104i} Rh$ um einen zu $^{104} Rh$ isomeren Kern.
  \begin{table}
 	\centering
-	\caption{FEHLT NOCH.}
+	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
 	\input{build/Rhodium1.tex}
 \end{table}
 \begin{table}
 	\centering
-	\caption{FEHLT NOCH.}
+	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
 	\input{build/Rhodium2.tex}
 \end{table}
 \begin{figure}
@@ -37,5 +49,41 @@ Es sollen sowohl die Halbwertszeit von $^{104} Rh$ als auch $^{104i} Rh$ mithilf
 	\includegraphics[width=\linewidth-30pt,height=\textheight-30pt,keepaspectratio]{build/RhodiumLog.pdf}
 	\label{fig:Rhodium}
 \end{figure}
+Zunächst wird $N(t)_{^{104i}Rh}$ für das langlebigere $^{104i} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_1=a_1 x+b_1$ für die Wertepaare $(t,\ln(N))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2} mit $t\ge \SI{300}{\second}$ bestimmt.
+Es ergibt sich nach Formel \eqref{}
+\begin{equation}
+	N(t)_{^{104i}Rh} = \exp\left(a_1 x + b_1\right) = \exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)
+\end{equation}
+und somit für die Halbwertszeit von $^{104i} Rh$ nach Formel \eqref{}
+\begin{equation}
+	T_{^{104i}Rh} = -\frac{\ln(2)}{a_1}=\SI{4.3(4)}{\minute}\text{.}
+\end{equation}
+Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
+\begin{equation}
+	Z_{^{104i}Rh} = N(\SI{15}{\second})_{^{104i}Rh}=\num{61(9)}\text{.}
+\end{equation}
 
+
+Nun wird $N(t)_{^{104}Rh}$ für das kurzlebigere $^{104} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_2=a_2 x+b_2$ für die Wertepaare $(t,\ln(N-N(t)_{^{104i}Rh}))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2}  mit $t\le \SI{280}{\second}$ bestimmt.
+Es ergibt sich nach Formel \eqref{}
+\begin{align}
+N(t)_{^{104}Rh} &= N-N(t)_{^{104i}Rh} = \exp\left(a_2 x + b_2\right) \\
+ &= \exp\left(-\SI{1.62(6)e-2}{\per\second} x + \SI{4.01(9)}{}\right)
+\end{align}
+und somit für die Halbwertszeit von $^{104} Rh$ nach Formel \eqref{}
+\begin{equation}
+T_{^{104}Rh} = -\frac{\ln(2)}{a_2}=\SI{43(2)}{\second}\text{.}
+\end{equation}
+Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
+\begin{equation}
+Z_{^{104}Rh} = N(\SI{15}{\second})_{^{104}Rh}=\num{651(61)}\text{.}
+\end{equation}
+
+Für die gesamte durchschnittliche Zählrate $N(t)$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ ergibt sich
+\begin{align}
+N(t)&=N(t)_{^{104}Rh}+N(t)_{^{104i}Rh} =  \exp\left(a_2 x + b_2\right)+\exp\left(a_1 x + b_1\right) \\
+&= \exp\left(-\SI{1.62(6)e-2}{\per\second} x \SI{4.01(9)}{}\right) \\
+&\text{ }+\exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)\text{,}
+\end{align}
+welche in Abbildung \ref{fig:Rhodium} dargestellt ist.
 
