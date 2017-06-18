@@ -21,11 +21,14 @@ class floatFormat(object):
             temp = (r'{:'+format+r'}').format(float(self.u))
         else:
             temp = (r'{:'+self.p+r'}').format(float(self.u))
-        if self.SI!='':
-            temp3 = r'\,\si{'+self.SI+r'}'
         if self.SI2:
             temp4 = r'\SI{'
             temp5 = r'}'
+            if self.SI!="":
+                temp3 = r'{'+self.SI+r'}'
+        else:
+            if self.SI!="":
+                temp3 = r'\,\si{'+self.SI+r'}'
         return temp4+temp+temp5+temp3
 
 class unpFormat(object):
@@ -57,11 +60,14 @@ class unpFormat(object):
             temp2 = (r'\pm{:'+self.p+r'}').format(float(unp.std_devs(self.u)))
         if(unp.std_devs(self.u)==0):
             temp2=''
-        if self.SI!="":
-            temp3 = r'\,\si{'+self.SI+r'}'
         if self.SI2:
             temp4 = r'\SI{'
             temp5 = r'}'
+            if self.SI!="":
+                temp3 = r'{'+self.SI+r'}'
+        else:
+            if self.SI!="":
+                temp3 = r'\,\si{'+self.SI+r'}'
         return temp4+temp1+temp2+temp5+temp3
       
 
