@@ -2,24 +2,27 @@
 \section{Theorie}
 \label{sec:Theorie}
 \subsection{Die Natur von Schallwellen in Medien}
-Schallwellen sind longitudinale Wellen des Druckwellen der Form:
-\begin{equation}
-  p \left( x , t \right) = p_0 + v_0 Z \cdot \cos \left(\omega t -kx \right)\text{,}\label{eq:Schallwelle}
-  \end{equation}
-unter der akustischen Impedanz $Z = c \rho$ mit der Dichte $\rho$. Innerhalb von Festkörpern besitzt die Schallwelle
-aufgrund von Schubspannungen auch transversalen Schwingungskomponenten.
+Schallwellen sind longitudinale Wellen des Druckes.
+%wellen der Form:
+%\begin{equation}
+%  p \left( x , t \right) = p_0 + v_0 Z \cdot \cos \left(\omega t -kx %\right)\text{,}\label{eq:Schallwelle}
+%  \end{equation}
+%unter der akustischen Impedanz $Z = c \rho$ mit der Dichte $\rho$.
+ Innerhalb von Festkörpern besitzen Schallwellen
+aufgrund von Schubspannungen jedoch auch transversalen Schwingungskomponenten.
 Schallwellen oberhalb des hörbaren Bereiches von $\SI{22}{\kilo\hertz}$ werden als
-Ultraschall, oberhalb von $\SI{1}{\giga\hertz}$ als Hyperschall bezeichnet. Die
-Schallgeschwindigkeit in Flüssigkeiten und Gasen lassen sich durch:
-\begin{equation}
-  c_\text{Fl} = \sqrt{\frac{1}{\kappa \cdot \rho}}\text{, }\label{Fl}
-\end{equation}
-mit der Kompressibilität $\kappa$ beschreiben. In Festkörpern folgt die Schallgeschwindigkeit:
-\begin{equation}
-  c_\text{Fe} = \sqrt{\frac{E}{\rho}}\text{, }\label{Fe}
-\end{equation}
-mit dem Elastizitätsmodul $E$.
-Aufgrund der Struktur eines Festkörpers ist $c_\text{Fe}$ im allgemeinen Richtungsabhängig.
+Ultraschall, oberhalb von $\SI{1}{\giga\hertz}$ als Hyperschall bezeichnet.
+% Die
+%Schallgeschwindigkeit in Flüssigkeiten und Gasen lassen sich durch:
+%\begin{equation}
+%  c_\text{Fl} = \sqrt{\frac{1}{\kappa \cdot \rho}}\text{, }\label{Fl}
+%\end{equation}
+%mit der Kompressibilität $\kappa$ beschreiben. In Festkörpern folgt die %Schallgeschwindigkeit:
+%\begin{equation}
+%  c_\text{Fe} = \sqrt{\frac{E}{\rho}}\text{, }\label{Fe}
+%\end{equation}
+%mit dem Elastizitätsmodul $E$.
+Aufgrund der Struktur eines Festkörpers ist die Ausbreitungsgeschwindigkeit in  diesen $c_\text{Fe}$ im allgemeinen Richtungsabhängig.
 In der Regel kommt es zu einem Energieverlust der Schallwelle. Die Intensität nimmt daher mit
 \begin{equation}
   I\left(x\right) = I_0 \exp\left(\alpha x\right)\label{I}
@@ -28,11 +31,12 @@ ab. Der Absorptionskoeffizient $\alpha$ beschreibt, wie schnell die Wellenintens
 abnimmt. Da $\alpha$ für Luft nur sehr gering ist, wird in der Praxis ein Kontaktmittel
 zwischen Schallgeber und Beobachtungsmaterial eingesetzt. Ein weiterer Aspekt ist die Wellenreflexion.
 Trifft die Schallwelle auf eine Grenzfläche, kommt es zur teilweisen Reflexion der Welle.
-Für das Verhältnis der Intensitäten zwischen reflektiertem und einfallendem Anteil gilt:
-\begin{equation}
-  R = \left(\frac{Z_1-Z_2}{Z_1+Z_2}\right)^2
-\end{equation}
-Für den transmittierten Anteil folgt analog:$ T = 1-R $.
+%Für das Verhältnis der Intensitäten zwischen reflektiertem und einfallendem Anteil gilt:
+%\begin{equation}
+%  R = \left(\frac{Z_1-Z_2}{Z_1+Z_2}\right)^2
+%\end{equation}
+%Für den transmittierten Anteil folgt analog:$ T = 1-R $.
+
 \subsection{Die Erzeugung von hochfrequenten Ultraschallwellen}
 Eine mögliche Methode zur Erzeugung der benötigten, hochfrequenten Schallwellen
 ist das Ausnutzen des piezo--elektrischen Effektes. Hierzu wird ein Piezo-Kristall z.B ein Quarz
@@ -47,8 +51,7 @@ ausgewertet werden, da sie diesen zu Schwingungen im Wechselfeld anregen.
 Beim Durchschallungsverfahren werden eine Sender und eine Empfängersonde an je
 einer Seite der Probe angebracht. Nun wird ein kurzzeitiger Schallimpuls ausgesendet, welcher
 anschließend vom Empfänger gemessen wird und im Graphen einen Peak abzeichnet. Aus
-der messbaren Zeitdifferenz zwischen Start und Endpeak lässt sich die Schallgeschwindigkeit im Medium ermitteln.
-Befindet sich jedoch eine Fehlstelle im gemessenen Material, fällt der Endpeak kleiner als als der Startpeak.
+der messbaren Zeitdifferenz zwischen Start und Endpeak lässt sich die Schallgeschwindigkeit im Medium ermitteln. Aufgrund dieser fällt der Endpeak auch bei einer fehlerfreien Probe geringfügig kleiner aus. Fällt der Endpeak jedoch weitaus kleiner aus, lässt dies auf eine Fehlstelle im Material schließen.
 Es lässt sich jedoch keine Aussage machen, an welcher Stelle sich die Fehlstelle befindet.
 
 \subsection{Das Impuls-Echo-Verfahren}
