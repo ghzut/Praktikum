@@ -19,17 +19,17 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
 	\label{fig:Indium}
 \end{figure}
 Mithilfe einer linearen Ausgleichsrechnung der Form $y=a x + b$ für die Wertepaare $(t, \ln(N))$ aus Tabelle \ref{tab:Indium} ergibt sich
-\begin{equation}
+\begin{displaymath}
 	N(t)_{^{116}In}=\exp\left(a x + b\right)=\exp\left(\SI{-2.0(1)e-4}{\per\second} x + \SI{2.13(2)}{}\right)\text{.}
-\end{equation}
+\end{displaymath}
 daraus lässt sich die Halbwertszeit nach Formel \eqref{T} berechnen zu
-\begin{equation}
+\begin{displaymath}
 	T_{^{116}In}=-\frac{\ln(2)}{a}=\SI{58(3)}{\minute}\text{.}
-\end{equation}
+\end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{240}{\second}$ ergibt sich
-\begin{equation}
+\begin{displaymath}
 	Z_{^{116}In} = N(\SI{240}{\second})_{^{116}In}=\num{1933(48)}\text{.}
-\end{equation}
+\end{displaymath}
 
 \subsection{Bestimmung der Halbwertszeiten von Rhodium}
 Es sollen sowohl die Halbwertszeit von $^{104} Rh$ als auch $^{104i} Rh$ mithilfe von zwei Ausgleichsrechnungen bestimmt werden. Dabei handelt es sich bei $^{104i} Rh$ um einen zu $^{104} Rh$ isomeren Kern.
@@ -51,36 +51,36 @@ Es sollen sowohl die Halbwertszeit von $^{104} Rh$ als auch $^{104i} Rh$ mithilf
 \end{figure}
 Zunächst wird $N(t)_{^{104i}Rh}$ für das langlebigere $^{104i} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_1=a_1 x+b_1$ für die Wertepaare $(t,\ln(N))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2} mit $t\ge \SI{300}{\second}$ bestimmt.
 Es ergibt sich
-\begin{equation}
+\begin{displaymath}
 	N(t)_{^{104i}Rh} = \exp\left(a_1 x + b_1\right) = \exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)
-\end{equation}
+\end{displaymath}
 und somit für die Halbwertszeit von $^{104i} Rh$ nach Formel \eqref{T}
-\begin{equation}
+\begin{displaymath}
 	T_{^{104i}Rh} = -\frac{\ln(2)}{a_1}=\SI{4.3(4)}{\minute}\text{.}
-\end{equation}
+\end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
-\begin{equation}
+\begin{displaymath}
 	Z_{^{104i}Rh} = N(\SI{15}{\second})_{^{104i}Rh}=\num{61(9)}\text{.}
-\end{equation}
+\end{displaymath}
 Nun wird $N(t)_{^{104}Rh}$ für das kurzlebigere $^{104} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_2=a_2 x+b_2$ für die Wertepaare $(t,\ln(N-N(t)_{^{104i}Rh}))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2}  mit $t\le \SI{280}{\second}$ bestimmt.
 Es ergibt sich
-\begin{align}
+\begin{align*}
 N(t)_{^{104}Rh} &= N-N(t)_{^{104i}Rh} = \exp\left(a_2 x + b_2\right) \\
  &= \exp\left(-\SI{1.62(6)e-2}{\per\second} x + \SI{4.01(9)}{}\right)
-\end{align}
+\end{align*}
 und somit für die Halbwertszeit von $^{104} Rh$ nach Formel \eqref{T}
-\begin{equation}
+\begin{displaymath}
 T_{^{104}Rh} = -\frac{\ln(2)}{a_2}=\SI{43(2)}{\second}\text{.}
-\end{equation}
+\end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
-\begin{equation}
+\begin{displaymath}
 Z_{^{104}Rh} = N(\SI{15}{\second})_{^{104}Rh}=\num{651(61)}\text{.}
-\end{equation}
+\end{displaymath}
 Für die gesamte durchschnittliche Zählrate $N(t)$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ ergibt sich
-\begin{align}
+\begin{align*}
 N(t)&=N(t)_{^{104}Rh}+N(t)_{^{104i}Rh} =  \exp\left(a_2 x + b_2\right)+\exp\left(a_1 x + b_1\right) \\
 &= \exp\left(-\SI{1.62(6)e-2}{\per\second} x \SI{4.01(9)}{}\right) \\
 &\phantom{=}+\exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)\text{,}
-\end{align}
+\end{align*}
 welche in Abbildung \ref{fig:Rhodium} dargestellt ist.
 
