@@ -2,13 +2,19 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-Beugung ist eine typische Welleneigenschaft. Man spricht von Beugung an einem Hindernis, wenn ein Welle beim Passieren ihre Ausbreitungsrichtung verändert. Gleichzeitig kommt es zur Interferenz also zur Überlagerung von den Amplituden der Welle. Die Intensität der Welle hinter dem Hindernis in einem bestimmten Abstand wird Beugungsbild genannt. Eine mögliche Erklärung für Beugung liefert das HYIGENSCHE PRINZIP. Dieses besagt, das eine Welle sich in jedem Punkt der Welle wie eine Kugelwelle ausbreitet und die Superposition dieser die Welle ergeben. Die Amplitude einer auslaufenden Kugelwelle ist proportional zu $\exp(i (k r -w t+\phi))$, wobei $k$ die Wellenzahl, $r$ der Abstand zum Ausgangspunkt der Kugelwelle, $w$ die Kreisfrequenz der Welle und $t$ die Zeit ist. 
+Beugung ist eine typische Welleneigenschaft. Man spricht von Beugung an einem Hindernis, wenn ein Welle beim Passieren ihre Ausbreitungsrichtung verändert. Gleichzeitig kommt es zur Interferenz also zur Überlagerung von Wellen. Die Intensität der Welle hinter dem Hindernis in einem bestimmten Abstand wird Beugungsbild genannt. Eine mögliche Erklärung für Beugung liefert das Huygenssche Prinzip. Dieses besagt, das eine Welle sich in jedem Punkt der Welle wie eine Kugelwelle ausbreitet und die Superposition dieser die Welle ergeben. Die auslaufende Kugelwelle ist proportional zu $\exp(i (k r -w t+\phi))/r$, wobei $k$ die Wellenzahl, $r$ der Abstand zum Ausgangspunkt der Kugelwelle, $w$ die Kreisfrequenz der Welle und $t$ die Zeit ist. Es wird besonders zwischen zwei verschiedenen Näherungen unterschieden: der Fresnel-Beugung im nahem Bereich und der Fraunhofer-Beugung im fernem Bereich. Im folgendem wird nur die Fraunhofer-Beugung betrachtet.
 
 \subsection{Beugung von kohärenten Wellen an einer Blende}
 
-Im Folgendem wird zur Vereinfachung davon ausgegangen, dass eine kohärente Wellenfront homogener Intensität auf die Öffnung der Blende trifft, also dass die Welle an jeder Stelle der Öffnung die selbe Phase $\phi$ und Amplitude $A$ besitzt. Nach dem HYIGENSCHEn PRINZIP ergibt sich dann durch Summation über alle Amplituden der Kugelwellen für die Gesamtamplitude hinter der Öffnung
+Im Folgendem wird zur Vereinfachung davon ausgegangen, dass eine kohärente Wellenfront homogener Intensität auf die Öffnung der Blende trifft, also dass die Welle an jeder Stelle der Öffnung die selbe Phase $\phi$ und Amplitude $A$ besitzt (entspricht Fraunhofer-Näherung). Nach dem Huygensschen Prinzip ergibt sich dann durch Summation über alle Amplituden der Kugelwellen für die Welle $\psi$ hinter der Öffnung
 \begin{equation}
-	A_n \propto \Sum\limits_j \exp(i (k r_j -w t+\phi))= \int F(x, y) \exp(i (k \sqrt{(x-a_1)^2+(y-a_2)^2+z^2} -w t+\phi)) \diff x \diff y,
+	\psi = A \sum \limits_j \frac{\exp(i (k r_j -w t+\phi))}{r_j}= \int_{\mathbb{R}^2} F(x, y) \frac{\exp(i (k |\vec{a}_0-\vec{x}| -w t+\phi))}{|\vec{a}_0-\vec{x}|} \diff x \diff y,\label{lang}
 \end{equation}
-wobei $F(x, y)$ die Blendenfunktion, $(x,y)$ die Position auf der Blende und $(a_1,a_2,a_3)$ die Position eines Punktes hinter der Blende ist.
-Die Blendenfunktion $F(x,y)$ ist gleich Eins für die $(x, y)$ an denen die Blende durchlässig ist und ansonsten gleich Null. Nun ist jedoch keine allgemeine Stammfunktion von \eqref{label} bekannt. Deswegen wird 
+wobei $F(x, y)$ die Blendenfunktion, $\vec{x}=(x,y,0)^\text{T}$ eine Position auf der Blende und $\vec{a}_0=(a_1,a_2,a_3)^\text{T}$ die Position eines Punktes hinter der Blende ist.
+Die Blendenfunktion $F(x,y)$ ist gleich Eins für die $(x, y)$ an denen die Blende durchlässig ist und ansonsten gleich Null. Nun ist jedoch keine allgemeine Stammfunktion von \eqref{lang} bekannt. Deswegen wird die Näherung $|\vec{a}_0-\vec{x}| \approx |\vec{a}_0|- \vec{a}_0 \vec{x}$ und $1/|\vec{a}_0-\vec{x}|=1/\vec{a}_0 $ für $|\vec{a}_0|\gg |\vec{x}|$ verwendet. Dies entspricht der Fraunhofer-Näherung. Durch einsetzen und Umformen ergibt sich bei einen festen Abstand $|\vec{a}_0|$ zur Blende
+\begin{equation}
+	\psi \propto \int_{\mathbb{R}^2} F(x,y) \exp(-i k \vec{a}_0 \vec{x}) \diff x \diff y,
+\end{equation}
+was der Fouriertransformation der Blendenfunktion entspricht.
+
+\subsection{Beugung von kohärenten Wellen an einem Einzel- bzw. Doppelspalt}
