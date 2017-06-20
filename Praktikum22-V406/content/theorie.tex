@@ -8,5 +8,7 @@ Beugung ist eine typische Welleneigenschaft. Man spricht von Beugung an einem Hi
 
 Im Folgendem wird zur Vereinfachung davon ausgegangen, dass eine kohärente Wellenfront homogener Intensität auf die Öffnung der Blende trifft, also dass die Welle an jeder Stelle der Öffnung die selbe Phase $\phi$ und Amplitude $A$ besitzt. Nach dem HYIGENSCHEn PRINZIP ergibt sich dann durch Summation über alle Amplituden der Kugelwellen für die Gesamtamplitude hinter der Öffnung
 \begin{equation}
-	A_n \propto \Sum\limits_i \exp(i (k r_i -w t+\phi))=
+	A_n \propto \Sum\limits_j \exp(i (k r_j -w t+\phi))= \int F(x, y) \exp(i (k \sqrt{(x-a_1)^2+(y-a_2)^2+z^2} -w t+\phi)) \diff x \diff y,
 \end{equation}
+wobei $F(x, y)$ die Blendenfunktion, $(x,y)$ die Position auf der Blende und $(a_1,a_2,a_3)$ die Position eines Punktes hinter der Blende ist.
+Die Blendenfunktion $F(x,y)$ ist gleich Eins für die $(x, y)$ an denen die Blende durchlässig ist und ansonsten gleich Null. Nun ist jedoch keine allgemeine Stammfunktion von \eqref{label} bekannt. Deswegen wird 
