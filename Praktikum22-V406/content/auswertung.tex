@@ -4,4 +4,66 @@
 
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
-Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+Der verwendete Einzelspalt besitzt eine Breite von $\SI{0.075}{\milli\meter}$. Der erste Doppelspalt
+ hat eine Spaltbreite von $\SI{0.25}{\milli\meter}$ bei einem Spaltabstand von $\SI{0.15}{\milli\meter}$.
+ Der erste Doppelspalt
+ hat eine Spaltbreite von $\SI{0.1}{\milli\meter}$ bei einem Spaltabstand von $\SI{0.4}{\milli\meter}$.
+%Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+\subsection{Die gemessenen Daten}
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am Einzelspalt.}
+ \input{build/tabeinzelspalt.tex}
+ \label{tab:einzel}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am ersten Doppelspalt.}
+ \input{build/tabds1.tex}
+ \label{tab:ds12}
+ \input{build/tabds12.tex}
+\end{table}
+
+\begin{table}
+ \centering
+ \caption{Die gemessenen Daten am zweiten Doppelspalt.}
+ \input{build/tabds2.tex}
+ \label{tab:ds2}
+ \input{build/tabds22.tex}
+\end{table}
+
+\subsection{Bestimmung der Spaltbreite eines Einzelspaltes aus seinem Beugungsbild}
+Zunächst wird die Spaltbreite des verwendeten Einzelspaltes aus dem entstandenen Beugungsbildes bestimmt.
+Auf Basis von Formel \eqref{HJHK} folgt die nichtlineare Ausgleichsrechnung der Form:
+\begin{equation}
+  y(x) = A \left( \frac{\sin(B (x+C))}{(x+C)}\right)^2 \text{,}
+\end{equation}
+wobei sich die Spaltbreite $b$ durch
+\begin{equation}
+  b = \frac{B \lambda}{\pi}
+  \end{equation}
+  berechnet. Mit den Daten aus Tabelle \ref{tab:} folgen die Parameter $A = \SI{87000(439)}{}$, $B = \SI{383(2)}{}$, $C = \SI{-0.60(2)}{}$ und die Spaltbreite $b = \SI{0.0774(4)}{\milli\meter}$. Ein Vergleich mit der auf der Blende angegeben Spaltbreite ergibt einen relativen Fehler von $\SI{3.3(6)}{\percent}$.
+\begin{figure}
+ \centering
+ \caption{Das bestimmte Intensitätenbeugungsbild des Einzelspaltes mit der Stromstärke gegenüber dem Abstand zur Mitte aufgetragen.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/einzelspalt.pdf}
+ \label{fig:einzer}
+\end{figure}
+
+\subsection{Betrachtung der beiden vermessenen Doppelspaltbeugungsbilder}
+\begin{figure}
+ \centering
+ \caption{Das bestimmte Intensitätenbeugungsbild des ersten Doppelspaltes mit der Stromstärke gegenüber dem Abstand zur Mitte aufgetragen.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/ds1.pdf}
+ \label{fig:dseins}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \caption{Das bestimmte Intensitätenbeugungsbild des zweiten Doppelspaltes mit der Stromstärke gegenüber dem Abstand zur Mitte aufgetragen.}
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/ds2.pdf}
+ \label{fig:dszwei}
+\end{figure}
+
+Die bestimmten Ergebnisse zu beiden Doppelspaltblenden in den Graphen zeigen ähnliche Verläufe wie die nach Formel \eqref{JHJJ} berechneten, theoretischen Intensitätskurven. Beim Vergleich der Messpunkte mit der zugehörigen Kurven fällt auf, dass die Punkte bei der ersten Doppelspaltblende insgesamt besser auf ihrer Kurve liegen als die Punkte der Zweiten. Die Ursachen hierfür müssen in der Diskussion geklärt werden.
