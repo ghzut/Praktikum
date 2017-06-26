@@ -35,7 +35,7 @@ Der verwendete Einzelspalt besitzt eine Breite von $\SI{0.075}{\milli\meter}$. D
 
 \subsection{Bestimmung der Spaltbreite eines Einzelspaltes aus seinem Beugungsbild}
 Zunächst wird die Spaltbreite des verwendeten Einzelspaltes aus dem entstandenen Beugungsbildes bestimmt.
-Auf Basis von Formel \eqref{HJHK} folgt die nichtlineare Ausgleichsrechnung der Form:
+Auf Basis von Formel \eqref{eq:1Spalt} folgt die nichtlineare Ausgleichsrechnung der Form:
 \begin{equation}
   y(x) = A \left( \frac{\sin(B (x+C))}{(x+C)}\right)^2 \text{,}
 \end{equation}
@@ -43,7 +43,11 @@ wobei sich die Spaltbreite $b$ durch
 \begin{equation}
   b = \frac{B \lambda}{\pi}
   \end{equation}
-  berechnet. Mit den Daten aus Tabelle \ref{tab:} folgen die Parameter $A = \SI{87000(439)}{}$, $B = \SI{383(2)}{}$, $C = \SI{-0.60(2)}{}$ und die Spaltbreite $b = \SI{0.0774(4)}{\milli\meter}$. Ein Vergleich mit der auf der Blende angegeben Spaltbreite ergibt einen relativen Fehler von $\SI{3.3(6)}{\percent}$.
+  berechnet. Um eine Ausgleichsrechnung dieser Form durchführen zu können wird $\sin(\varphi)$mit $\tan(\varphi)$ genähert.
+  Aufgrund der $\Delta x$ im der Größenordnung weniger Millimeter und einer Entfernung
+   zwischen Spalt und Laser von $\SI{126.5}{\centi\meter}$ ist die Näherung möglich. Mit den Daten aus Tabelle \ref{tab:einzel} folgen die Parameter
+  $A = \SI{87000(439)}{}$, $B = \SI{383(2)}{}$, $C = \SI{-0.60(2)}{\milli\meter}$ und
+   die Spaltbreite $b = \SI{0.0774(4)}{\milli\meter}$. Der Parameter $C$ ist nach oben beschriebenen Maß bereits in $\si{\milli\meter}$ zurückberechnet.
 \begin{figure}
  \centering
  \caption{Das bestimmte Intensitätenbeugungsbild des Einzelspaltes mit der Stromstärke gegenüber dem Abstand zur Mitte aufgetragen.}
@@ -65,5 +69,11 @@ wobei sich die Spaltbreite $b$ durch
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/ds2.pdf}
  \label{fig:dszwei}
 \end{figure}
-
-Die bestimmten Ergebnisse zu beiden Doppelspaltblenden in den Graphen zeigen ähnliche Verläufe wie die nach Formel \eqref{JHJJ} berechneten, theoretischen Intensitätskurven. Beim Vergleich der Messpunkte mit der zugehörigen Kurven fällt auf, dass die Punkte bei der ersten Doppelspaltblende insgesamt besser auf ihrer Kurve liegen als die Punkte der Zweiten. Die Ursachen hierfür müssen in der Diskussion geklärt werden.
+Nun werden die experimentellen Messwerte der beiden Doppelspalte der Tabellen \ref{tab:ds12} bzw. \ref{tab:ds2} mit ihren zugehörigen Theoriegraphen nach Formel \eqref{Jochen.3} verglichen.
+Um eine bessere Übereinstimmung mit den Werten zu erreichen wird der beim Einzelspalt bestimmte Korrekturwert beim Graphen des ersten Doppelspalts berücksichtigt.
+Der Zweite Doppelspalt zeigt in dieser Hinsicht keine Verbesserung, weshalb er dort weggelassen wird.
+Es ist erkennbar, dass die Messwerte die Theoriekurven in beiden Fällen ungefähr abbilden. Der Graph des ersten Doppelspalts weist weniger
+ dichte und im allgemeinen auch kleinere Peaks auf als der Zweite.
+Der Kurvenverlauf des Ersten weist zudem weitaus bessere Übereinstimmung mit den Werten auf als die des Zweiten. Die dargestellten Einhüllenden,
+welche nach Formel \eqref{eq:1Spalt}
+Die Ursachen hierfür müssen in der Diskussion geklärt werden.

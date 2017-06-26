@@ -58,6 +58,9 @@ ds2 = np.array([ds2[0],ds2[0]/1265,ds2[1]-0.36])
 def intens(phi,b,d,lamda):
     return ((np.cos(np.pi*d*np.sin(phi)/lamda))**2)*((lamda/(np.pi*b*np.sin(phi)))**2)*((np.sin(np.pi*b*np.sin(phi)/lamda))**2)
 
+def jochen(phi,b,lamda):
+    return ((lamda/(np.pi*b*np.sin(phi)))**2)*((np.sin(np.pi*b*np.sin(phi)/lamda))**2)
+
 #b = sin
 l= np.pi/(635*10**-9)
 #def einzel(x,a,b):
@@ -97,7 +100,8 @@ plt.savefig('build/'+'einzelspalt')
 plt.cla()
 plt.clf()
 plt.plot(ds1[1], ds1[2], 'gx', label='Daten von Doppelspalt 1')
-plt.plot(x1,intens(x1,0.00015,0.00025,635*10**(-9))*6200)
+plt.plot(x1,intens(x1-0.6/1265,0.00015,0.00025,635*10**(-9))*6200,'y',label = 'Theoriekurve')
+plt.plot(x1,jochen(x1-0.6/1265,0.00015,635*10**-9)*6200,'k',label = 'Einhüllende')
 #plt.plot(x1,intens(x1,0.0001,0.0004,635*10**(-9))*5000)
 #plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'rx', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
 #plt.ylim(0, line(t[-1], *params)+0.1)
@@ -111,7 +115,8 @@ plt.savefig('build/'+'ds1')
 plt.cla()
 plt.clf()
 plt.plot(ds2[1], ds2[2], 'gx', label='Daten von Doppelspalt 2')
-plt.plot(x1,intens(x1,0.0001,0.0004,635*10**(-9))*1300)
+plt.plot(x1,intens(x1,0.0001,0.0004,635*10**(-9))*1300,'y',label = 'Theoriekurve')
+plt.plot(x1,jochen(x1,0.0001,635*10**-9)*1300,'k',label = 'Einhüllende')
 #plt.plot(BackwardsVNominal*100, DeltaVBackwardsNominal, 'rx', label='Daten mit Bewegungsrichtung vom Mikrofon weg')
 #plt.ylim(0, line(t[-1], *params)+0.1)
 #plt.xlim(0, t[-1]*100)
