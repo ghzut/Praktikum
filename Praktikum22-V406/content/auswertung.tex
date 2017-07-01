@@ -6,7 +6,7 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 Der verwendete Einzelspalt besitzt eine Breite von $\SI{0.075}{\milli\meter}$. Der erste Doppelspalt
  hat eine Spaltbreite von $\SI{0.25}{\milli\meter}$ bei einem Spaltabstand von $\SI{0.15}{\milli\meter}$.
- Der erste Doppelspalt
+ Der zweite Doppelspalt
  hat eine Spaltbreite von $\SI{0.1}{\milli\meter}$ bei einem Spaltabstand von $\SI{0.4}{\milli\meter}$.
 %Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
 \subsection{Die gemessenen Daten}
@@ -35,7 +35,8 @@ Der verwendete Einzelspalt besitzt eine Breite von $\SI{0.075}{\milli\meter}$. D
 
 \subsection{Bestimmung der Spaltbreite eines Einzelspaltes aus seinem Beugungsbild}
 Zunächst wird die Spaltbreite des verwendeten Einzelspaltes aus dem entstandenen Beugungsbildes bestimmt.
-Auf Basis von Formel \eqref{eq:1Spalt} folgt die nichtlineare Ausgleichsrechnung der Form:
+Mit den Daten aus Tabelle \ref{tab:einzel} ergibt sich der Graph in Abb. \ref{fig:einzer}.
+ Auf Basis von Formel \eqref{eq:1Spalt} folgt die nichtlineare Ausgleichsrechnung der Form:
 \begin{equation}
   y(x) = A \left( \frac{\sin(B (x+C))}{(x+C)}\right)^2 \text{,}
 \end{equation}
@@ -43,11 +44,11 @@ wobei sich die Spaltbreite $b$ durch
 \begin{equation}
   b = \frac{B \lambda}{\pi}
   \end{equation}
-  berechnet. Um eine Ausgleichsrechnung dieser Form durchführen zu können wird $\sin(\varphi)$mit $\tan(\varphi)$ genähert.
-  Aufgrund der $\Delta x$ im der Größenordnung weniger Millimeter und einer Entfernung
-   zwischen Spalt und Laser von $\SI{126.5}{\centi\meter}$ ist die Näherung möglich. Mit den Daten aus Tabelle \ref{tab:einzel} folgen die Parameter
+  berechnet. Um eine Ausgleichsrechnung dieser Form durchführen zu können wird $\sin(\varphi)$ mit $\tan(\varphi)$ genähert.
+  Da $\Delta x$ nur wenige Millimeter groß ist und die Entfernung
+   von Spalt und Laser $\SI{126.5}{\centi\meter}$ beträgt, ist diese Näherung möglich. Mit den Daten aus Tabelle \ref{tab:einzel} folgen die Parameter
   $A = \SI{87000(439)}{}$, $B = \SI{383(2)}{}$, $C = \SI{-0.60(2)}{\milli\meter}$ und
-   die Spaltbreite $b = \SI{0.0774(4)}{\milli\meter}$. Der Parameter $C$ ist nach oben beschriebenen Maß bereits in $\si{\milli\meter}$ zurückberechnet.
+   die Spaltbreite $b = \SI{0.0774(4)}{\milli\meter}$. Der Parameter $C$ ist nach oben beschriebenen Maß bereits in $\si{\milli\meter}$ umgeformt worden.
 \begin{figure}
  \centering
  \caption{Das bestimmte Intensitätenbeugungsbild des Einzelspaltes mit der Stromstärke gegenüber dem Abstand zur Mitte aufgetragen.}
@@ -69,11 +70,12 @@ wobei sich die Spaltbreite $b$ durch
  \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/ds2.pdf}
  \label{fig:dszwei}
 \end{figure}
-Nun werden die experimentellen Messwerte der beiden Doppelspalte der Tabellen \ref{tab:ds12} bzw. \ref{tab:ds2} mit ihren zugehörigen Theoriegraphen nach Formel \eqref{Jochen.3} verglichen.
+Nun werden die experimentellen Messwerte der beiden Doppelspalte der Tabellen \ref{tab:ds12} bzw. \ref{tab:ds2} mit ihren zugehörigen Theoriegraphen nach Formel \eqref{Jochen.3} in den Graphen \ref{fig:dseins} und \ref{fig:dszwei} verglichen.
 Um eine bessere Übereinstimmung mit den Werten zu erreichen wird der beim Einzelspalt bestimmte Korrekturwert beim Graphen des ersten Doppelspalts berücksichtigt.
-Der Zweite Doppelspalt zeigt in dieser Hinsicht keine Verbesserung, weshalb er dort weggelassen wird.
-Es ist erkennbar, dass die Messwerte die Theoriekurven in beiden Fällen ungefähr abbilden. Der Graph des ersten Doppelspalts weist weniger
+Der Zweite Doppelspalt zeigt in dieser Hinsicht eine Verschlechterung, weshalb der Korrekturterm dort weggelassen wird.
+
+Es ist erkennbar, dass die Messwerte, die Theoriekurven in beiden Fällen ungefähr abbilden. Der Graph des ersten Doppelspalts weist weniger
  dichte und im allgemeinen auch kleinere Peaks auf als der Zweite.
-Der Kurvenverlauf des Ersten weist zudem weitaus bessere Übereinstimmung mit den Werten auf als die des Zweiten. Die dargestellten Einhüllenden,
-welche nach Formel \eqref{eq:1Spalt}
+Der Kurvenverlauf des Ersten weist zudem eine weitaus bessere Übereinstimmung mit den Werten auf, als die des Zweiten. Die dargestellten Einhüllenden,
+welche nach Formel \eqref{eq:1Spalt} berechnet wurden, verhalten sich analog.
 Die Ursachen hierfür müssen in der Diskussion geklärt werden.
