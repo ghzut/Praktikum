@@ -2,85 +2,90 @@
 \label{sec:Auswertung}
 
 
-Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
-Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
+Die Graphen werden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
+Fehlerrechnung wird mithilfe von Uncertainties \cite{uncertainties} durchgeführt. Es wird im Folgendem
+von einer Poisson-Verteilung der gemessenen Anzahlen von Zerfällen in einem Zeitintervall ausgegangen. Für die Standardabweichung $\sigma$ des Mittelwertes $\mu$ für eine Messung gilt dann $\sigma=\sqrt{\mu}$. Für Fehlerfortpflanzung wird das Gauß'sche Fehlerfortpflanzungsgesetz verwendet. Dieses hat die Form
+\begin{equation}
+	\sigma_y=\sqrt{\sum\limits_{i=1}^{n}\left(\frac{\partial f}{\partial x_i} \cdot \sigma_i\right)^2+2 \sum\limits_{i=1}^{n-1} \sum\limits_{k=i+1}^n\left(\frac{\partial f}{\partial x_i}\right) \left(\frac{\partial f}{\partial x_k}\right) \cdot \sigma(x_i,x_k)} \label{Gauss},
+\end{equation}
+wobei $\sigma_y$ die Standartabweichung des Wertes $y(x_1,\cdots, x_n)$ und $\sigma(x_i,x_k)$ die Kovarianz der fehlerbehafteten Größen $x_i$  mit Standartabweichung von $\sigma_i$ sind.
 
 
 \subsection{Bestimmung der Zerfallskurve und Halbwertszeit von Indium}
  \begin{table}
   \centering
-  \caption{Die durchschnittlichen Zählraten $N$ bei Indium in einem Zeitintervall von $t-15\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
+  \caption{Die durchschnittlichen Zählraten $N$ bei Indium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
   \input{build/Indium.tex}
  \end{table}
 \begin{figure}
 	\centering
-	\caption{Der Logarithmus der gemessenen durchschnittlichen Zählraten $N$ bei Indium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung gegen die vergangene Zeit $t$ aufgetragen, sowie ein linearer Fit der Wertepaare.}
 	\includegraphics[width=\linewidth-30pt,height=\textheight-30pt,keepaspectratio]{build/IndiumLog.pdf}
+	\caption{Der Logarithmus der gemessenen durchschnittlichen Zählraten $N$ bei Indium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung gegen die vergangene Zeit $t$ aufgetragen, sowie ein linearer Fit der Wertepaare.}
 	\label{fig:Indium}
 \end{figure}
 Mithilfe einer linearen Ausgleichsrechnung der Form $y=a x + b$ für die Wertepaare $(t, \ln(N))$ aus Tabelle \ref{tab:Indium} ergibt sich
 \begin{displaymath}
-	N(t)_{^{116}In}=\exp\left(a x + b\right)=\exp\left(\SI{-2.0(1)e-4}{\per\second} x + \SI{2.13(2)}{}\right)\text{.}
+	N(t)_{^{116}\text{In}}=\exp\left(a x + b\right)=\exp\left(\SI{-2.0(1)e-4}{\per\second} x + (\SI{2.13(2)}{})\right)\text{.}
 \end{displaymath}
-daraus lässt sich die Halbwertszeit nach Formel \eqref{T} berechnen zu
+daraus lässt sich die Halbwertszeit nach Formel \eqref{T} und dem Gauß'schem Fehlerfortpflanzungsgesetz \eqref{Gauss} berechnen zu
 \begin{displaymath}
-	T_{^{116}In}=-\frac{\ln(2)}{a}=\SI{58(3)}{\minute}\text{.}
+	T_{^{116}\text{In}}=-\frac{\ln(2)}{a}=\SI{58(3)}{\minute}\text{.}
 \end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{240}{\second}$ ergibt sich
 \begin{displaymath}
-	Z_{^{116}In} = N(\SI{240}{\second})_{^{116}In}=\num{1933(48)}\text{.}
+	Z_{^{116}\text{In}} = N(\SI{240}{\second})_{^{116}\text{In}}=\num{1933(48)}\text{.}
 \end{displaymath}
 
 \subsection{Bestimmung der Halbwertszeiten von Rhodium}
-Es sollen sowohl die Halbwertszeit von $^{104} Rh$ als auch $^{104i} Rh$ mithilfe von zwei Ausgleichsrechnungen bestimmt werden. Dabei handelt es sich bei $^{104i} Rh$ um einen zu $^{104} Rh$ isomeren Kern.
+Es sollen sowohl die Halbwertszeit von $^{104}\text{Rh}$ als auch $^{104i}\text{Rh}$ mithilfe von zwei Ausgleichsrechnungen bestimmt werden. Dabei handelt es sich bei $^{104i}\text{Rh}$ um einen zu $^{104}\text{Rh}$ isomeren Kern.
  \begin{table}
 	\centering
-	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
+	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-15\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
 	\input{build/Rhodium1.tex}
 \end{table}
 \begin{table}
 	\centering
-	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
+	\caption{Die durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-15\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung, die zugehörige Standartabweichung $\sigma$ und der logarithmierte Wert von $N$ mit der zugehörigen Abweichung nach oben und unten zu verschiedenen Zeiten $t$.}
 	\input{build/Rhodium2.tex}
 \end{table}
 \begin{figure}
 	\centering
-	\caption{Der Logarithmus der gemessenen durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung gegen die vergangene Zeit $t$ aufgetragen, sowie jeweils ein linearer Fit der Wertepaare für $t\ge \SI{300}{\second}$ und der logarithmierten Differenzen der Messwerte von den aus der anderen linearen Ausgleichsrechnung bestimmten Werte für $N$ für $t\le \SI{280}{\second}$.}
 	\includegraphics[width=\linewidth-30pt,height=\textheight-30pt,keepaspectratio]{build/RhodiumLog.pdf}
+	\caption{Der Logarithmus der gemessenen durchschnittlichen Zählraten $N$ bei Rhodium in einem Zeitintervall von $t-15\si{\second}$ bis $t$ unter Berücksichtigung der Nullmessung gegen die vergangene Zeit $t$ aufgetragen, sowie jeweils ein linearer Fit der Wertepaare für $t\ge \SI{300}{\second}$ und der logarithmierten Differenzen der Messwerte von den aus der anderen linearen Ausgleichsrechnung bestimmten Werte für $N$ für $t\le \SI{280}{\second}$.}
 	\label{fig:Rhodium}
 \end{figure}
-Zunächst wird $N(t)_{^{104i}Rh}$ für das langlebigere $^{104i} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_1=a_1 x+b_1$ für die Wertepaare $(t,\ln(N))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2} mit $t\ge \SI{300}{\second}$ bestimmt.
+Zunächst wird $N(t)_{^{104i}\text{Rh}}$ für das langlebigere $^{104i}\text{Rh}$ durch eine lineare Ausgleichsrechnung der Form $y_1=a_1 x+b_1$ für die Wertepaare $(t,\ln(N))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2} mit $t\ge \SI{300}{\second}$ bestimmt.
 Es ergibt sich
 \begin{displaymath}
-	N(t)_{^{104i}Rh} = \exp\left(a_1 x + b_1\right) = \exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)
+	N(t)_{^{104i}\text{Rh}} = \exp\left(a_1 x + b_1\right) = \exp\left(-\SI{2.7(3)e-3}{\per\second} x + (\SI{1.4(2)}{})\right)
 \end{displaymath}
-und somit für die Halbwertszeit von $^{104i} Rh$ nach Formel \eqref{T}
+und somit für die Halbwertszeit von $^{104i}\text{Rh}$ nach Formel \eqref{T} und dem Gauß'schem Fehlerfortpflanzungsgesetz \eqref{Gauss}
 \begin{displaymath}
-	T_{^{104i}Rh} = -\frac{\ln(2)}{a_1}=\SI{4.3(4)}{\minute}\text{.}
+	T_{^{104i}\text{Rh}} = -\frac{\ln(2)}{a_1}=\SI{4.3(4)}{\minute}\text{.}
 \end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
 \begin{displaymath}
-	Z_{^{104i}Rh} = N(\SI{15}{\second})_{^{104i}Rh}=\num{61(9)}\text{.}
+	Z_{^{104i}\text{Rh}} = N(\SI{15}{\second})_{^{104i}\text{Rh}}=\num{61(9)}\text{.}
 \end{displaymath}
-Nun wird $N(t)_{^{104}Rh}$ für das kurzlebigere $^{104} Rh$ durch eine lineare Ausgleichsrechnung der Form $y_2=a_2 x+b_2$ für die Wertepaare $(t,\ln(N-N(t)_{^{104i}Rh}))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2}  mit $t\le \SI{280}{\second}$ bestimmt.
+Nun wird $N(t)_{^{104}\text{Rh}}$ für das kurzlebigere $^{104}\text{Rh}$ durch eine lineare Ausgleichsrechnung der Form $y_2=a_2 x+b_2$ für die Wertepaare $(t,\ln(N-N(t)_{^{104i}\text{Rh}}))$ aus Tabelle \ref{tab:Rhodium1} und \ref{tab:Rhodium2}  mit $t\le \SI{280}{\second}$ bestimmt.
 Es ergibt sich
 \begin{align*}
-N(t)_{^{104}Rh} &= N-N(t)_{^{104i}Rh} = \exp\left(a_2 x + b_2\right) \\
- &= \exp\left(-\SI{1.62(6)e-2}{\per\second} x + \SI{4.01(9)}{}\right)
+N(t)_{^{104}\text{Rh}} &= N-N(t)_{^{104i}\text{Rh}} = \exp\left(a_2 x + b_2\right) \\
+ &= \exp\left(-\SI{1.62(6)e-2}{\per\second} x + (\SI{4.01(9)}{})\right)
 \end{align*}
-und somit für die Halbwertszeit von $^{104} Rh$ nach Formel \eqref{T}
+und somit für die Halbwertszeit von $^{104}\text{Rh}$ nach Formel \eqref{T} und dem Gauß'schem Fehlerfortpflanzungsgesetz \eqref{Gauss}
 \begin{displaymath}
-T_{^{104}Rh} = -\frac{\ln(2)}{a_2}=\SI{43(2)}{\second}\text{.}
+T_{^{104}\text{Rh}} = -\frac{\ln(2)}{a_2}=\SI{43(2)}{\second}\text{.}
 \end{displaymath}
 Für die erwartete Anzahl von Zerfällen in den ersten $\SI{15}{\second}$ ergibt sich
 \begin{displaymath}
-Z_{^{104}Rh} = N(\SI{15}{\second})_{^{104}Rh}=\num{651(61)}\text{.}
+Z_{^{104}\text{Rh}} = N(\SI{15}{\second})_{^{104}\text{Rh}}=\num{651(61)}\text{.}
 \end{displaymath}
-Für die gesamte durchschnittliche Zählrate $N(t)$ bei Rhodium in einem Zeitintervall von $t-240\si{\second}$ bis $t$ ergibt sich
+Für die gesamte durchschnittliche Zählrate $N(t)$ bei Rhodium in einem Zeitintervall von $t-15\si{\second}$ bis $t$ ergibt sich
 \begin{align*}
-N(t)&=N(t)_{^{104}Rh}+N(t)_{^{104i}Rh} =  \exp\left(a_2 x + b_2\right)+\exp\left(a_1 x + b_1\right) \\
-&= \exp\left(-\SI{1.62(6)e-2}{\per\second} x \SI{4.01(9)}{}\right) \\
-&\phantom{=}+\exp\left(-\SI{2.7(3)e-3}{\per\second} x + \SI{1.4(2)}{}\right)\text{,}
+N(t)&=N(t)_{^{104}\text{Rh}}+N(t)_{^{104i}\text{Rh}} =  \exp\left(a_2 x + b_2\right)+\exp\left(a_1 x + b_1\right) \\
+&= \exp\left(-\SI{1.62(6)e-2}{\per\second} x + (\SI{4.01(9)}{})\right) \\
+&\phantom{=}+\exp\left(-\SI{2.7(3)e-3}{\per\second} x + (\SI{1.4(2)}{})\right)\text{,}
 \end{align*}
 welche in Abbildung \ref{fig:Rhodium} dargestellt ist.
 
