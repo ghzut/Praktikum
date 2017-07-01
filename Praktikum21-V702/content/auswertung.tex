@@ -4,7 +4,7 @@
 
 Die Graphen werden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wird mithilfe von Uncertainties \cite{uncertainties} durchgeführt. Es wird im Folgendem
-von einer Poisson-Verteilung der gemessenen Anzahlen von Zerfällen in einem Zeitintervall ausgegangen. Für die Standardabweichung $\sigma$ des Mittelwertes $\mu$ für eine Messung gilt dann $\sigma=\sqrt{\mu}$. Für Fehlerfortpflanzung wird das Gauß'sche Fehlerfortpflanzungsgesetz verwendet. Dieses hat die Form
+von einer Poisson-Verteilung der gemessenen Werte für die Anzahl von Zerfällen in einem Zeitintervall ausgegangen. Für die Standardabweichung $\sigma$ des Mittelwertes $\mu$ für eine Messung gilt dann $\sigma=\sqrt{\mu}$. Für Fehlerfortpflanzung wird das Gauß'sche Fehlerfortpflanzungsgesetz verwendet. Dieses hat die Form
 \begin{equation}
 	\sigma_y=\sqrt{\sum\limits_{i=1}^{n}\left(\frac{\partial f}{\partial x_i} \cdot \sigma_i\right)^2+2 \sum\limits_{i=1}^{n-1} \sum\limits_{k=i+1}^n\left(\frac{\partial f}{\partial x_i}\right) \left(\frac{\partial f}{\partial x_k}\right) \cdot \sigma(x_i,x_k)} \label{Gauss},
 \end{equation}
