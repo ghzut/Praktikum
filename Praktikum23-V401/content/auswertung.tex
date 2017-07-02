@@ -6,20 +6,30 @@ Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 Die Konstanten $T_0$ und $p_0$ sind vom NIST \cite{nistgov}.
 
-\subsection{Bestimmung der Wellenlänge eines Lasers (WAS FÜRN LASER)}
+\subsection{Bestimmung der Wellenlänge des Lichtes eines Lasers}
 \begin{table}
 	\centering
 	\caption{Die gemessene Anzahl von Lichtimpulsen $N$ bei einer Verschiebung des Spiegels um $\Delta s$.}
 	\input{build/a.tex}
 	\label{tab:a}
 \end{table}
+Aus der gemessenen Anzahl von Lichtimpulsen $N$ bei einer Verschiebung des Spiegels um $\Delta s$ lässt sich nach Formel \eqref{lambda} die Wellenlänge $\lambda$ berechnen.
+Für die Werte aus Tabelle \ref{tab:a} ergibt sich
+\begin{equation}
+	\lambda = 4 \frac{\delta s}{N}=\SI{662.0(3)}{\nano\meter}.
+\end{equation}
 
 
 \subsection{Bestimmung des Brechungsindexes von Luft unter Normalbedingungen}
 \begin{table}
 	\centering
-	\caption{Die gemessene Anzahl von Lichtimpulsen $N$ bei einer Änderung des Druckes um $\Delta p$.}
+	\caption{Die gemessene Anzahl von Lichtimpulsen $N$ bei einer Änderung des Druckes in der Messzelle um $\Delta p$ bei einer Temperatur $T$ von ca. $\SI{17}{\degreeCelsius}$.}
 	\input{build/b.tex}
 	\label{tab:b}
 \end{table}
-
+Aus der gemessen Anzahl von Lichtimpulsen $N$ bei einer Änderung des Druckes in der Messzelle um $\Delta p$ lässt sich nach Formel \eqref{deltan} und \eqref{nausdeltan} der Brechungsindex $n$ von Luft unter Normalbedingungen berechnen.
+Für die Werte aus Tabelle \ref{tab:b} und mit $L=\SI{50}{\milli\meter}$ ergibt sich
+\begin{equation}
+	n = 1 + \Delta n \frac{T p_0}{T_0 \Delta p} = 1+ \frac{N \lambda T p_0}{2 L T_0 \Delta p} = \SI{1.0029(1)}{},
+\end{equation}
+wobei $T_0=\SI{273,15}{\kelvin}$ und $p_0=\SI{1,0132}{\bar}$ sind.
