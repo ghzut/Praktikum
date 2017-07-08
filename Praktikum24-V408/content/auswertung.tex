@@ -5,3 +5,69 @@
 Die Graphen wurden sowohl mit Matplotlib \cite{matplotlib} als auch NumPy \cite{numpy} erstellt. Die
 Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgeführt.
 Die Konstanten $k$, $\hslash$, $e_0$, $m_0$, $u_0$ und $N_\text{A}$ sind vom NIST \cite{nistgov}.
+\subsection{Die aufgenommenen Daten}
+\begin{table}
+	\centering
+	\caption{Die gemessenen Daten der Sammellinse mit $f = \SI{100}{mm}$}
+	\input{build/taberste.tex}
+	\label{tab:b}
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Die gemessenen Daten der Wasserlinse}
+	\input{build/tabwasser.tex}
+	\label{tab:w}
+\end{table}
+
+
+\subsection{Überprüfung der pyhsikalischen Gesetze der geometrischen Optik}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/erstelinse.pdf}
+ \caption{Darstellung von Gegenstandsweite und Brennweite der Sammellinse mit $f = \SI{100}{\milli\meter}$}
+ \label{fig:erste}
+\end{figure}
+
+
+\begin{table}
+	\centering
+	\caption{Die gemessenen Daten der Wasserlinse}
+	\input{build/tabf.tex}
+	\label{tab:ff}
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Die experimentellen Verhältnisse}
+	\input{build/tabverh.tex}
+	\label{tab:vv}
+\end{table}
+
+Zunächst wird die Wirksamkeit der Formeln \eqref{HJKHJKH} und \eqref{hHK} überprüft.
+Mit den Daten aus Tabelle \ref{tab:b} ergibt sich der Graph in Abb. \ref{fig:erste}. Nach Formel \eqref{HJHJ} ergeben sich die Brennweiten in Tabelle \ref{tab:ff}
+, welche einen Mittelwert von $\SI{9.55(2)}{\centi\meter}$ liefert. Der siebte Wert wurde aufgrund zu hoher Abweichungen nicht berücksichtigt. Beim Vergleich mit dem Graphen erscheint dieser Wert realistisch.
+Für die Formel \eqref{hGHJ} ergeben sich die experimentellen Werte in Tabelle \ref{tab:vv}. Diese liefern für $\frac{b}{g}$ den Mittelwert
+$\SI{0.7(2)}{}$, für $\frac{B}{G}$ den Mittelwert $\SI{0.9(2)}{}$.
+
+
+
+\subsection{Bestimmung der Brennweite einer Wasserlinse bei festem Wasserdruck}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\linewidth-70pt,height=\textheight-70pt,keepaspectratio]{build/wasserlinse.pdf}
+ \caption{Darstellung der Brennweite der Sammellinse mit unbekannter Brennweite.}
+ \label{fig:water}
+\end{figure}
+
+Nun wird die Brennweite einer unbekannten Linse bestimmt. Mit den bestimmten Werten in Tabelle \ref{tab:w} folgt der Graph in Abb. \ref{fig:water}. Nach Formel \eqref{HJHK} ergeben sich zudem die Brennweiten in Tabelle \ref{tab:ff}. Damit ergibt sich eine mittlere Brennweite von $\SI{8.45(2)}{\centi\meter}$.
+
+
+
+\subsection{Bestimmung der Brennweite nach Bessel}
+ Als nächstes wird die Brennweite über die Methode nach Bessel bestimmt. Mit den Daten aus Tabelle \ref{HJKHJK} ergeben sich die Brennweiten in Tabelle \ref{jHKH}. Diese liefern eine mittlere Brennweite von $\SI{9.67(2)}{\centi\meter}$.
+
+ \subsection{Betrachtung der Effekte aufgrund von chromatischen Abberation}
+Die Besselmethode wird nun jeweils für blaues und rotes Licht wiederholt. Mit den gemessenen Daten ergeben sich die Brennweiten in Tabelle \ref{JKJK}. Daraus folgt für das rote Licht eine mittlere Brennweite von $\SI{9.85(1)}{\centi\meter}$, für das blaue hingegen eine von $\SI{9.78(2)}{\centi\meter}$. Daraus lässt sich folgern, dass die Brennweite bei rotem Licht größer ausfällt als bei blauem.
