@@ -48,3 +48,112 @@ import scipy.constants as const
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 # makeNewTable([convert((r'$c_\text{1}$',r'$c_\text{2}$',r'$T_{\text{A}1}$',r'$T_{\text{A}2}$',r'$\alpha$',r'$D_1$',r'$D_2$',r'$A_1$',r'$A_2$',r'$A_3$',r'$A_4$'),strFormat),convert(np.array([paramsGes2[0],paramsGes1[0],deltat2*10**6,deltat1*10**6,-paramsDaempfung[0]*2,4.48*10**-6 *paramsGes1[0]/2*10**3, 7.26*10**-6 *paramsGes1[0]/2*10**3, (VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2*10**3, unp.uarray((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2*10**3, 0), unp.uarray((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2*10**3, 0),unp.uarray((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2*10**3, 0)]),unpFormat,[[r'\meter\per\second',"",True],[r'\meter\per\second',"",True],[r'\micro\second',"",True],[r'\micro\second',"",True],[r'\per\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'2.2f',True]]),convert(np.array([2730,2730]),floatFormat,[r'\meter\per\second','1.0f',True])+convert((r'-',r'-'),strFormat)+convert(unp.uarray([57,6.05,9.9],[2.5,0,0]),unpFormat,[[r'\per\meter',"",True],[r'\milli\meter',r'1.2f',True],[r'\milli\meter',r'1.2f',True]])+convert((r'-',r'-',r'-',r'-'),strFormat),convert(np.array([(2730-paramsGes2[0])/2730*100,(2730-paramsGes1[0])/2730*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-'),strFormat)+convert(np.array([(-paramsDaempfung[0]*2-unp.uarray(57,2.5))/unp.uarray(57,2.5)*100,(4.48*10**-6 *paramsGes1[0]/2*10**3-6.05)/6.05*100, (-7.26*10**-6 *paramsGes1[0]/2*10**3+9.90)/9.90*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-',r'-',r'-'),strFormat)],r'{Wert}&{gemessen}&{Literaturwert\cite{cAcryl},\cite{alphaAcryl}}&{Abweichung}','Ergebnisse', ['c ','c',r'c','c'])
 
+es = (np.array(np.genfromtxt("scripts/erstelinse", unpack=True)))
+#print("es",es)
+erstelinse = np.array([es[1]-es[0],es[2]-es[1],es[3]])
+#print("erstelinse",erstelinse)
+
+ws = (np.array(np.genfromtxt("scripts/wasserlinse", unpack=True)))
+wasserlinse = np.array([ws[1]-ws[0],ws[2]-ws[1]])
+
+bessel = (np.array(np.genfromtxt("scripts/Bessel", unpack=True)))
+#print("bessel",bessel)
+bessel = np.array([bessel[1]-bessel[0],bessel[2]-bessel[0],bessel[3]-bessel[1],bessel[3]-bessel[2],bessel[3]-bessel[0],bessel[2]-bessel[1]])
+
+besself = (np.array(np.genfromtxt("scripts/besselfarbe", unpack=True)))
+besselfr = np.array([besself[2]-besself[0],besself[3]-besself[0],besself[1]-besself[2],besself[1]-besself[3],besself[1]-besself[0],besself[3]-besself[2]])
+besselfb = np.array([besself[4]-besself[0],besself[5]-besself[0],besself[1]-besself[4],besself[1]-besself[5],besself[1]-besself[0],besself[5]-besself[4]])
+#Funktion
+
+def tosimple(x,y):
+    return 1/(1/x + 1/y)
+#rechnen:
+#linse
+#f1rech = (invert(oneone,erstelinse[0],erstelinse[1]))
+f1rech = tosimple(erstelinse[0],erstelinse[1])
+f1rech2 = f1rech[np.arange(len(f1rech))!=6]
+f1rechm = np.mean(f1rech2)
+f1rechstd = stats.sem(f1rech2)
+
+print("yeah",erstelinse[2][0:7])
+
+verhaltm1 = unp.uarray([np.mean(erstelinse[2][0:6]/2.8)],[stats.sem(erstelinse[2][0:6]/2.8)])
+print("verhaltm",verhaltm1)
+verhaltm2 = unp.uarray([np.mean(erstelinse[1][0:6]/erstelinse[0][0:6])],[stats.sem(erstelinse[1][0:6]/erstelinse[0][0:6])])
+print("verhaltm2",verhaltm2)
+#wasserlinse
+#fwrech = np.array(invert(oneone,wasserlinse[0],wasserlinse[1]))
+fwrech = tosimple(wasserlinse[0],wasserlinse[1])
+fwrechm = np.mean(fwrech)
+fwrechstd = stats.sem(fwrech)
+frech = unp.uarray([f1rechm,fwrechm],[f1rechstd,fwrechstd])
+print("frech",frech)
+#grafisch
+#erstelinse
+plt.cla()
+plt.clf()
+i = 0
+while i< len(erstelinse[0]):
+    plt.plot([0,erstelinse[1][i]],[erstelinse[0][i],0])
+    i = i+1
+
+# plt.ylim(0, line(t[-1], *params)+0.1)
+# plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$g$')
+plt.ylabel(r'$b$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'erstelinse')
+
+#wasserlinse
+plt.cla()
+plt.clf()
+i = 0
+while i< len(wasserlinse[0]):
+    plt.plot([0,wasserlinse[1][i]],[wasserlinse[0][i],0])
+    i = i+1
+
+# plt.ylim(0, line(t[-1], *params)+0.1)
+# plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$g$')
+plt.ylabel(r'$b$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'wasserlinse')
+
+
+#zugehörige Tabellen
+#erste
+makeTable([erstelinse[0],erstelinse[1],erstelinse[2]], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'}' ,'taberste' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'S[table-format=1.1]'] ,  ["%2.1f", "%3.1f", "%1.1f"])
+#wasserlinse
+makeTable([wasserlinse[0],wasserlinse[1]], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'}' ,'tabwasser' , ['S[table-format=2.1]' , 'S[table-format=3.1]'] ,  ["%2.1f", "%3.1f"])
+
+#Brennweite
+
+#print("f1rech",f1rech)
+#print("fwrech",fwrech)
+
+
+makeTable([f1rech,fwrech], r'{'+r'$f_\text{100}/\si{\centi\meter}$'+r'} & {'+r'$f_\text{Wasser}/\si{\centi\meter}$'+r'}' ,'tabf' , ['S[table-format=2.2]' , 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f"])
+
+makeTable([erstelinse[1][0:6]/erstelinse[0][0:6],erstelinse[2][0:6]/2.8], r'{'+r'$b/g$'+r'} & {'+r'$B/G$'+r'}' ,'tabverh' , ['S[table-format=1.2]' , 'S[table-format=1.2]'] ,  ["%1.2f", "%1.2f"])
+
+
+
+#Bessel
+
+def bes(e,d):
+    return (e*e-d*d)/(4*e)
+
+
+fbessel = bes(bessel[4],bessel[5])
+print("fbessel",fbessel)
+fbesselr = bes(besselfr[4],besselfr[5])
+fbesselb = bes(besselfb[4],besselfb[5])
+
+fbesselm = unp.uarray([np.mean(fbessel),np.mean(fbesselr),np.mean(fbesselb)],[stats.sem(fbessel),stats.sem(fbesselr),stats.sem(fbesselb)])
+print("fbesselmall, erst weiss, dann rot, dann blau",fbesselm)
+
+
+
+#besselfarbe
