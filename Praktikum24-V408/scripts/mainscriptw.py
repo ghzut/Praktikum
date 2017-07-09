@@ -63,10 +63,27 @@ bessel = np.array([bessel[1]-bessel[0],bessel[2]-bessel[0],bessel[3]-bessel[1],b
 besself = (np.array(np.genfromtxt("scripts/besselfarbe", unpack=True)))
 besselfr = np.array([besself[2]-besself[0],besself[3]-besself[0],besself[1]-besself[2],besself[1]-besself[3],besself[1]-besself[0],besself[3]-besself[2]])
 besselfb = np.array([besself[4]-besself[0],besself[5]-besself[0],besself[1]-besself[4],besself[1]-besself[5],besself[1]-besself[0],besself[5]-besself[4]])
+
+
+makeTable([bessel[4],bessel[0],bessel[1],bessel[5]], r'{'+r'$e/\si{\centi\meter}$'+r'} & {'+r'$g_1/\si{\centi\meter}$'+r'} & {'+r'$g_2/\si{\centi\meter}$'+r'} & {'+r'$d/\si{\centi\meter}$'+r'}' ,'tabbessel' , ['S[table-format=2.2]' , 'S[table-format=2.2]', 'S[table-format=2.2]', 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f", "%2.2f", "%2.2f"])
+
+makeTable([besselfr[4],besselfr[0],besselfr[1],besselfr[5],besselfb[0],besselfb[1],besselfb[5]], r'{'+r'$e/\si{\centi\meter}$'+r'} & {'+r'$g_\text{rot,1}/\si{\centi\meter}$'+r'} & {'+r'$g_\text{rot,2}/\si{\centi\meter}$'+r'} & {'+r'$d_\text{rot}/\si{\centi\meter}$'+r'} & {'+r'$g_\text{blau,1}/\si{\centi\meter}$'+r'} & {'+r'$g_\text{blau,2}/\si{\centi\meter}$'+r'} & {'+r'$d_\text{blau}/\si{\centi\meter}$'+r'}' ,'tabbesself' , ['S[table-format=2.2]' , 'S[table-format=2.2]', 'S[table-format=2.2]', 'S[table-format=2.2]', 'S[table-format=2.2]', 'S[table-format=2.2]', 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f", "%2.2f", "%2.2f", "%2.2f", "%2.2f", "%2.2f"])
+
+
+abbe = (np.array(np.genfromtxt("scripts/abbe", unpack=True)))
+abbe = np.array([abbe[0]-23.2,abbe[1]-abbe[0],abbe[2]/2.8])
+#g',b',V
+print("abbe",abbe)
+makeTable([abbe[0],abbe[1],abbe[2],abbe[2]/2.8], r'{'+r'$g\'/\si{\centi\meter}$'+r'} & {'+r'$b\'/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'}  & {'+r'$V$'+r'}' ,'tababbe' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'S[table-format=1.1]', 'S[table-format=1.1]'] ,  ["%2.1f", "%3.1f", "%1.1f", "%1.1f"])
+
 #Funktion
 
 def tosimple(x,y):
     return 1/(1/x + 1/y)
+
+def lin(a,b,x):
+    return a*x+b
+
 #rechnen:
 #linse
 #f1rech = (invert(oneone,erstelinse[0],erstelinse[1]))
@@ -124,9 +141,9 @@ plt.savefig('build/'+'wasserlinse')
 
 #zugehörige Tabellen
 #erste
-makeTable([erstelinse[0],erstelinse[1],erstelinse[2]], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'}' ,'taberste' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'S[table-format=1.1]'] ,  ["%2.1f", "%3.1f", "%1.1f"])
+makeTable([erstelinse[0],erstelinse[1],erstelinse[2],f1rech], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'} & {'+r'$f_\text{100}/\si{\centi\meter}$'+r'}' ,'taberste' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'S[table-format=1.1]', 'S[table-format=2.1]'] ,  ["%2.1f", "%3.1f", "%1.1f","%2.1f"])
 #wasserlinse
-makeTable([wasserlinse[0],wasserlinse[1]], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'}' ,'tabwasser' , ['S[table-format=2.1]' , 'S[table-format=3.1]'] ,  ["%2.1f", "%3.1f"])
+makeTable([wasserlinse[0],wasserlinse[1],fwrech], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$f_\text{Wasser}/\si{\centi\meter}$'+r'}' ,'tabwasser' , ['S[table-format=2.1]' , 'S[table-format=3.1]','S[table-format=2.1]'] ,  ["%2.1f", "%3.1f","%2.1f"])
 
 #Brennweite
 
@@ -134,7 +151,7 @@ makeTable([wasserlinse[0],wasserlinse[1]], r'{'+r'$b/\si{\centi\meter}$'+r'} & {
 #print("fwrech",fwrech)
 
 
-makeTable([f1rech,fwrech], r'{'+r'$f_\text{100}/\si{\centi\meter}$'+r'} & {'+r'$f_\text{Wasser}/\si{\centi\meter}$'+r'}' ,'tabf' , ['S[table-format=2.2]' , 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f"])
+#makeTable([f1rech,fwrech], r'{'+r'$f_\text{100}/\si{\centi\meter}$'+r'} & {'+r'$f_\text{Wasser}/\si{\centi\meter}$'+r'}' ,'tabf' , ['S[table-format=2.2]' , 'S[table-format=2.2]'] ,  ["%2.2f", "%2.2f"])
 
 makeTable([erstelinse[1][0:6]/erstelinse[0][0:6],erstelinse[2][0:6]/2.8], r'{'+r'$b/g$'+r'} & {'+r'$B/G$'+r'}' ,'tabverh' , ['S[table-format=1.2]' , 'S[table-format=1.2]'] ,  ["%1.2f", "%1.2f"])
 
@@ -156,4 +173,46 @@ print("fbesselmall, erst weiss, dann rot, dann blau",fbesselm)
 
 
 
-#besselfarbe
+#abbe
+unneutig = 1+1/abbe[2]
+linfit = curve_fit(lin,unneutig,abbe[0])
+linfits1 = [linfit[0],np.sqrt(np.diag(linfit[1]))]
+print("linfitsg",linfits1)
+plt.cla()
+plt.clf()
+punkte = np.linspace(0,(1+1/abbe[2][-1])*1.1,1000)
+plt.plot(1+(1/abbe[2]),abbe[0], 'rx', label='Die gemessenen Gegenstandsweiten')
+plt.plot(punkte,linfits1[0][1]*punkte+linfits1[0][0],label= 'lineare Ausgleichsgerade')
+# plt.ylim(0, line(t[-1], *params)+0.1)
+# plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$1+1/V$')
+plt.ylabel(r'$g\'$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'abbeg')
+
+
+linfit = curve_fit(lin,1+abbe[2],abbe[1])
+linfits2 = [linfit[0],np.sqrt(np.diag(linfit[1]))]
+print("linfits",linfits2)
+plt.cla()
+plt.clf()
+punkte = np.linspace(0,1+abbe[2][0]*1.1,1000)
+plt.plot(1+abbe[2],abbe[1], 'rx', label='Die gemessenen Bildweiten')
+plt.plot(punkte,linfits2[0][1]*punkte+linfits2[0][0],label='lineare Ausgleichsgerade')
+# plt.ylim(0, line(t[-1], *params)+0.1)
+# plt.xlim(0, t[-1]*100)
+plt.xlabel(r'$1+V$')
+plt.ylabel(r'$b\'$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/'+'abbeb')
+
+fabbe1 = unp.uarray(linfits1[0][1],linfits1[1][1])
+fabbe2 = unp.uarray(linfits2[0][1],linfits2[1][1])
+fabbem = (fabbe1+fabbe2)/2
+atb = fabbem-100/6
+print("fabbem",fabbem)
+print("deltaabbetheo",atb)
+atbperc = abs(atb)/(100/6)
+print(atbperc)
