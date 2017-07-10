@@ -28,3 +28,23 @@ wobei $b$ der Abstand des Bildes und $g$ der Abstand des Gegenstandes zur nächs
 	\label{3}
 \end{figure}
 Nun gibt es allerdings Effekte, welche die tatsächlichen Verläufe von den theoretischen abweichen lassen. So gilt stellt die Brechung ein der Mittelebene bzw. Hauptebene eine Näherung für achsennahe Strahlen dar. Bei der sphärischen Abberration werden die achsennahen Strahlen weniger stark gebrochen als die achsenfernen, sodass die Brennweite für achsenferne Strahlen geringer ist als für achsennahe. Zudem tritt bei Licht mit unterschiedlichen Wellenlängen auch chromatische Abberation auf, wenn das Licht mit unterschiedlichen Wellenlängen verschieden stark gebrochen wird und somit sich die Brennweite Abhängig von der Wellenlänge des Lichtes ändert. Diese Effekte führen dazu, dass sich das Bild nicht vollkommen scharf stellen lässt.
+
+Um die Brennweite einer Linse experimentell zu bestimmen gibt es mehrere Möglichkeiten. Eine ist die Methode nach Bessel. Hierbei wird der Abstand zwischen Gegenstand und Bild konstant gehalten und die zwei Positionen der Linse gesucht. Durch Einsetzen von der Beziehungen $e=g_1+b_1=g_2+b_2$ und $d=g_1−b_1=g_2−b_2$ in die Linsengleichung \eqref{linsen} ergibt sich
+\begin{equation}
+	f=\frac{e^2-d^2}{4 e}. \label{unnoetig1}
+\end{equation}
+Um die Brennweite eines Linsensystems oder einer dicken Linse und die Lage deren Hauptebenen zu bestimmen, kann die Methode von Abbe verwendet werden. Hierbei wird Referenzpunkt $A$ gewählt, welcher sich immer im selben Abstand zum Linsensystem befindet. Zu diesem wird der Abstand vom Gegenstand $g'$ und vom Bild $b'$ gemessen. Aus der Linsengleichung \eqref{linsen} und dem Abbildungsmaßstab $V$ folgt mit den Abständen $h$ bzw. $h'$ der Hauptebenen zu dem Referenzpunkt
+\begin{equation}
+	g'=g+h=f \cdot \left(1+\frac{1}{V}\right)+h\label{unnoetig2}
+\end{equation}
+und
+\begin{equation}
+b'=b+h'=f \cdot \left(1+V\right)+h' .\label{unnoetig3}
+\end{equation}
+Da $f$, $h$ und $h'$ konstant sind kann z.B durch eine Ausgleichsrechnung die Steigung der Geraden bezüglich $1+1/V$ bzw. $1+V$ bestimmt werden, welche der gesuchten Brennweite entspricht. Der Achsenabschnitt entspricht dann $h$ bzw. $h'$.
+\begin{figure}
+	\centering
+	\caption{Die exemplarische Darstellung eines Linsensystems das mit der Methode nach Abbe vermessen werden soll mit eingezeichneten relevanten Größen \cite{V408}.}
+	\includegraphics[width=\linewidth-150pt,height=\textheight-150pt,keepaspectratio]{content/images/7.png}
+	\label{7}
+\end{figure}
