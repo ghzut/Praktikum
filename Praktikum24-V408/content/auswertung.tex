@@ -32,10 +32,10 @@ Fehlerrechnung wurde mithilfe von Uncertainties \cite{uncertainties} durchgefüh
 	\label{tab:vv}
 \end{table}
 
-Zunächst wird die Wirksamkeit der Formeln \eqref{HJKHJKH} und \eqref{hHK} überprüft.
-Mit den Daten aus Tabelle \ref{tab:erste} ergibt sich der Graph in Abb. \ref{fig:erste}. Nach Formel \eqref{HJHJ} ergeben sich zudem die Brennweiten in Tabelle \ref{tab:b}
-, welche einen Mittelwert von $\SI{9.55(2)}{\centi\meter}$ liefert. Der siebte Wert wurde aufgrund zu hoher Abweichungen nicht berücksichtigt. Beim Vergleich mit dem Graphen erscheint dieser Wert realistisch.
-Für die Formel \eqref{hGHJ} ergeben sich die experimentellen Werte in Tabelle \ref{tab:vv}. Diese liefern für $\frac{b}{g}$ den Mittelwert
+Zunächst wird die Wirksamkeit der Formeln \eqref{linsen} und \eqref{mast} überprüft.
+Mit den Daten aus Tabelle \ref{tab:erste} ergibt sich der Graph in Abb. \ref{fig:erste}. Nach Formel \eqref{linsen} ergeben sich zudem die Brennweiten in Tabelle \ref{tab:b}
+, welche einen Mittelwert von $\SI{9.55(2)}{\centi\meter}$ liefert. Der siebte Wert wurde aufgrund zu hoher Abweichungen nicht berücksichtigt. Beim Vergleich mit dem Graphen erscheint dieser Wert realistisch. Ein Vergleich mit dem Theoriewert von $f = \SI{10}{\centi\meter}$ zeigt Abweichungen von ca. $\SI{5}{\percent}$.
+Für die Formel \eqref{mast} ergeben sich die experimentellen Werte in Tabelle \ref{tab:vv}. Diese liefern für $\frac{b}{g}$ den Mittelwert
 $\SI{0.7(2)}{}$, für $\frac{B}{G}$ den Mittelwert $\SI{0.9(2)}{}$.
 
 
@@ -56,7 +56,7 @@ $\SI{0.7(2)}{}$, für $\frac{B}{G}$ den Mittelwert $\SI{0.9(2)}{}$.
  \label{fig:water}
 \end{figure}
 
-Nun wird die Brennweite einer unbekannten Linse bestimmt. Mit den bestimmten Werten in Tabelle \ref{tab:w} folgt der Graph in Abb. \ref{fig:water}. Nach Formel \eqref{HJHK} ergeben sich zudem die Brennweiten in Tabelle \ref{tab:w}. Damit ergibt sich eine mittlere Brennweite von $\SI{8.45(2)}{\centi\meter}$.
+Nun wird die Brennweite einer unbekannten Linse bestimmt. Mit den bestimmten Werten in Tabelle \ref{tab:w} folgt der Graph in Abb. \ref{fig:water}. Nach Formel \eqref{linsen} ergeben sich zudem die Brennweiten in Tabelle \ref{tab:w}. Damit ergibt sich eine mittlere Brennweite von $\SI{8.45(2)}{\centi\meter}$.
 
 
 
@@ -71,7 +71,7 @@ Nun wird die Brennweite einer unbekannten Linse bestimmt. Mit den bestimmten Wer
 
 
 
- Als nächstes wird die Brennweite über die Methode nach Bessel bestimmt. Mit den Messungen ergeben sich die Daten in Tabelle \ref{tab:bessel}. Mithilfe von Formel von \eqref{J} folgen zusätzlich die zugehörigen Brennweiten. Diese liefern eine mittlere Brennweite von $\SI{9.67(2)}{\centi\meter}$. Das Ergebnis dieser Methode liegt damit näher am Theoriewert von $f = \SI{10}{\centi\meter}$, als die nach Formel \eqref{jKJ} berechnete.
+ Als nächstes wird die Brennweite über die Methode nach Bessel bestimmt. Mit den Messungen ergeben sich die Daten in Tabelle \ref{tab:bessel}. Mithilfe von Formel von \eqref{unnoetig1} folgen zusätzlich die zugehörigen Brennweiten. Diese liefern eine mittlere Brennweite von $\SI{9.67(2)}{\centi\meter}$. Das Ergebnis dieser Methode liegt damit näher am Theoriewert von $f = \SI{10}{\centi\meter}$, als die nach Formel \eqref{linsen} berechnete.
 
  \subsection{Betrachtung der Effekte aufgrund von chromatischen Abberation}
 
@@ -110,7 +110,8 @@ Die Methode nach Bessel wird nun nochmals jeweils für blaues und rotes Licht wi
 \end{table}
 
 
-Zur Bestimmung der Brennweite eines Linsensystems wird nun die Methode nach Abbe verwendet. Da die benötigten Hauptebenen nicht bekannt sind, wird zur Bestimmung von Bildweite und Gegenstandsweite ein Punkt $A$ gewählt. Dieser wurde auf die Mitte der Zerstreuungslinse festgesetzt. Damit ergeben sich die Weiten in Tabelle \ref{tab:abbe}. Mit den Formeln \eqref{jJ} und \eqref folgen die Graphen in Abb. \ref{fig:abbeg} und \ref{fig:abbeb}. Mithilfe einer linearen Ausgleichsrechnung ergibt sich aus der Regression der Gegenstandsweite eine Brennweite von $\SI{14.5(4)}{\centi\meter}$, aus der Bildweitenregression eine Brennweite von $\SI{14.7(5)}{\centi\meter}$.
-Gemittelt folgt eine Brennweite von $14.6(3)$. Mit Formel \eqref{JJ} lässt sich die theoretische Brennweite des Linsensystems ermitteln.
+Zur Bestimmung der Brennweite eines Linsensystems wird nun die Methode nach Abbe verwendet. Da die benötigten Hauptebenen nicht bekannt sind, wird zur Bestimmung von Bildweite und Gegenstandsweite ein Punkt $A$ gewählt. Dieser wurde auf die Mitte der Zerstreuungslinse festgesetzt. Damit ergeben sich die Weiten in Tabelle \ref{tab:abbe}. Mit den Formeln \eqref{unnoetig2} und \eqref{unnoetig3} folgen die Graphen in Abb. \ref{fig:abbeg} und \ref{fig:abbeb}. Mithilfe einer linearen Ausgleichsrechnung ergibt sich aus der Regression der Gegenstandsweite eine Brennweite von $\SI{14.5(4)}{\centi\meter}$, aus der Bildweitenregression eine Brennweite von $\SI{14.7(5)}{\centi\meter}$.
+Gemittelt folgt eine Brennweite von $\SI{14.6(3)}{\centi\meter}$. Mit Formel \eqref{JJ} lässt sich die theoretische Brennweite des Linsensystems ermitteln.
 Bei einer Brennweite der Zerstreuunglinse von $f_\text{Z} = \SI{-10}{\centi\meter}$, einer von $f_\text{S} = \SI{10}{\centi\meter}$ bei der Sammellinse sowie einem Linsenabstand von $\SI{6}{\centi\meter}$ liefert sie eine theoretische Gesamtbrennweite von $\SI{16.7}{\centi\meter}$. Im Vergleich liegt der experimentelle Wert damit um $\SI{2.1(3)}{\centi\meter}$ oder $\SI{12(2)}{\percent}$ neben dem Theoriewert. Die Gründe hierfür müssen in der Diskussion geklärt werden.
+ Die Hauptachsen lassen sich aus den Y-Abschnitten der Graphen bestimmen.
  Für die Hauptachse der Zerstreunungslinse ergibt sich ein Abstand zum gewählten Punkt $A$ von $\SI{-8(1)}{\centi\meter}$, für die der Sammellinse einer von $\SI{15.8(9)}{\centi\meter}$. Auch diese Ergebnisse müssen in der Diskussion erörtert werden.
