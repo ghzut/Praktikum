@@ -48,10 +48,10 @@ import scipy.constants as const
 # params = unp.uarray(params, np.sqrt(np.diag(covar)))
 # makeNewTable([convert((r'$c_\text{1}$',r'$c_\text{2}$',r'$T_{\text{A}1}$',r'$T_{\text{A}2}$',r'$\alpha$',r'$D_1$',r'$D_2$',r'$A_1$',r'$A_2$',r'$A_3$',r'$A_4$'),strFormat),convert(np.array([paramsGes2[0],paramsGes1[0],deltat2*10**6,deltat1*10**6,-paramsDaempfung[0]*2,4.48*10**-6 *paramsGes1[0]/2*10**3, 7.26*10**-6 *paramsGes1[0]/2*10**3, (VierteMessung-2*deltat2*10**6)[0]*10**-6 *1410 /2*10**3, unp.uarray((VierteMessung[1]-VierteMessung[0])*10**-6 *1410 /2*10**3, 0), unp.uarray((VierteMessung[2]-VierteMessung[1])*10**-6 *2500 /2*10**3, 0),unp.uarray((VierteMessung[3]-VierteMessung[2])*10**-6 *1410 /2*10**3, 0)]),unpFormat,[[r'\meter\per\second',"",True],[r'\meter\per\second',"",True],[r'\micro\second',"",True],[r'\micro\second',"",True],[r'\per\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',"",True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'1.3f',True],[r'\milli\meter',r'2.2f',True]]),convert(np.array([2730,2730]),floatFormat,[r'\meter\per\second','1.0f',True])+convert((r'-',r'-'),strFormat)+convert(unp.uarray([57,6.05,9.9],[2.5,0,0]),unpFormat,[[r'\per\meter',"",True],[r'\milli\meter',r'1.2f',True],[r'\milli\meter',r'1.2f',True]])+convert((r'-',r'-',r'-',r'-'),strFormat),convert(np.array([(2730-paramsGes2[0])/2730*100,(2730-paramsGes1[0])/2730*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-'),strFormat)+convert(np.array([(-paramsDaempfung[0]*2-unp.uarray(57,2.5))/unp.uarray(57,2.5)*100,(4.48*10**-6 *paramsGes1[0]/2*10**3-6.05)/6.05*100, (-7.26*10**-6 *paramsGes1[0]/2*10**3+9.90)/9.90*100]),unpFormat,[r'\percent','',True])+convert((r'-',r'-',r'-',r'-'),strFormat)],r'{Wert}&{gemessen}&{Literaturwert\cite{cAcryl},\cite{alphaAcryl}}&{Abweichung}','Ergebnisse', ['c ','c',r'c','c'])
 
-es = (np.array(np.genfromtxt("scripts/erstelinse", unpack=True)))
+es = np.array(np.genfromtxt("scripts/erstelinse", unpack=True))
 #print("es",es)
 erstelinse = np.array([es[1]-es[0],es[2]-es[1],es[3]])
-#print("erstelinse",erstelinse)
+print("erstelinse",erstelinse)
 
 ws = (np.array(np.genfromtxt("scripts/wasserlinse", unpack=True)))
 wasserlinse = np.array([ws[1]-ws[0],ws[2]-ws[1]])
@@ -141,7 +141,7 @@ plt.savefig('build/'+'wasserlinse')
 
 #zugehörige Tabellen
 #erste
-makeTable([erstelinse[0],erstelinse[1],erstelinse[2],f1rech], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'} & {'+r'$f_\text{100}/\si{\centi\meter}$'+r'}' ,'taberste' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'S[table-format=1.1]', 'S[table-format=2.1]'] ,  ["%2.1f", "%3.1f", "%1.1f","%2.1f"])
+makeNewTable([convert(erstelinse[0],floatFormat),convert(erstelinse[1],floatFormat),convert(erstelinse[2],floatFormat,['','',True])[0:-4]+convert(('-','-','-','-'),strFormat),convert(f1rech,floatFormat)], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$B/\si{\centi\meter}$'+r'} & {'+r'$f_\text{100}/\si{\centi\meter}$'+r'}' ,'taberste' , ['S[table-format=2.1]' , 'S[table-format=3.1]' , 'c', 'S[table-format=2.1]'] ,  ["{:2.1f}", "{:3.1f}", "{:1.1f}","{:2.1f}"])
 #wasserlinse
 makeTable([wasserlinse[0],wasserlinse[1],fwrech], r'{'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$b/\si{\centi\meter}$'+r'} & {'+r'$f_\text{Wasser}/\si{\centi\meter}$'+r'}' ,'tabwasser' , ['S[table-format=2.1]' , 'S[table-format=3.1]','S[table-format=2.1]'] ,  ["%2.1f", "%3.1f","%2.1f"])
 
