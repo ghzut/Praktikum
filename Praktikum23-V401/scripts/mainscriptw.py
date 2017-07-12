@@ -70,5 +70,5 @@ def deltan(N, lambdaLaser):
     return (N/2)*(lambdaLaser/L)
 
 deln = deltan(N, Lambda)
-n = brechungsindex(deln,p,const.zero_Celsius+17)
+n = brechungsindex(deln,p,const.zero_Celsius+20)
 print(n)
