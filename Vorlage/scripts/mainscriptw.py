@@ -11,7 +11,9 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 import uncertainties.unumpy as unp
 import scipy.constants as const
-
+from errorfunkt2tex import error_to_tex
+from errorfunkt2tex import scipy_to_unp
+from sympy import *
 # BackwardsVNominal = []
 # BackwardsVStd = []
 # for value in BackwardsV:
