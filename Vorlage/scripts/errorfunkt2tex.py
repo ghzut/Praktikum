@@ -2,7 +2,7 @@ from sympy import *
 from uncertainties import unumpy as unp
 from uncertainties import umath
 
-unumpy = {"sqrt":unp.sqrt,"sin":umath.sin,"cos":unp.cos,"tan":unp.tan,"arcsin":unp.arcsin,"arccos":unp.arccos,"arctan":unp.arctan,"log":unp.log,"exp":unp.exp,}
+unumpy = {"sqrt":unp.sqrt,"sin":umath.sin,"cos":unp.cos,"tan":unp.tan,"arcsin":unp.arcsin,"arccos":unp.arccos,"arctan":unp.arctan,"log":unp.log,"exp":unp.exp}
 
 def error_to_tex(f, name='Name', var=None, all_vars=None,err_vars=None):
     from sympy import Symbol, latex

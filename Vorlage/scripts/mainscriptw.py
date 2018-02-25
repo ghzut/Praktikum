@@ -60,6 +60,6 @@ CW = 3
 
 
 print(f2(AW, BW, CW))
-print(error_to_tex(f,'f',[AW, BW, CW], [A, B, C]))
+print(error_to_tex(f,'f',[AW, BW, CW], [A, B, C],[A, B]))
 
 
